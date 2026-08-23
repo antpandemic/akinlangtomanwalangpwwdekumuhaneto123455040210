@@ -105,6 +105,30 @@
   .flashcard-hint{font-size:0.68rem;margin-top:8px;opacity:0.75;font-style:italic;}
   .flashcard-def{font-size:0.82rem;line-height:1.45;}
 
+  .palace-intro{
+    display:flex;align-items:flex-start;gap:10px;background:#fff8ec;border:1px dashed #d98c2b;
+    border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:0.88rem;color:var(--ink);line-height:1.5;
+  }
+  .palace-intro .icon{width:1.3em;height:1.3em;margin-right:0;flex-shrink:0;color:#d98c2b;}
+  body.dark .palace-intro{background:#241d10;border-color:#8a6323;}
+  .palace-track{position:relative;padding-left:6px;}
+  .palace-track::before{
+    content:'';position:absolute;left:23px;top:10px;bottom:10px;width:2px;
+    background:repeating-linear-gradient(to bottom,var(--accent2) 0,var(--accent2) 6px,transparent 6px,transparent 12px);
+  }
+  .palace-stop{display:flex;gap:16px;margin-bottom:22px;position:relative;}
+  .palace-num{
+    flex-shrink:0;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:1.1rem;
+    z-index:1;box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  }
+  .palace-body{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 16px;flex:1;}
+  body.dark .palace-body{background:#1a1e28;}
+  .palace-location{font-weight:bold;color:var(--accent2);font-size:0.85rem;letter-spacing:0.3px;margin-bottom:4px;text-transform:uppercase;}
+  .palace-image{font-size:0.92rem;line-height:1.5;font-style:italic;margin-bottom:8px;color:var(--ink);}
+  .palace-fact{font-size:0.82rem;color:var(--muted);line-height:1.4;padding-top:6px;border-top:1px dashed var(--border);}
+  .palace-fact strong{color:var(--accent);}
+
   /* Quiz styles */
   .quiz-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px 24px;}
   .quiz-meta{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted);margin-bottom:10px;}
@@ -313,6 +337,15 @@ const DATA = [
     {term:'Sample Space (S)', def:'the set of all possible outcomes of a chance experiment.'},
     {term:'Favorable Outcome', def:'an outcome that satisfies the condition of the event being measured.'},
     {term:'P(E) = n(E)/n(S)', def:'the probability formula: number of favorable outcomes divided by total possible outcomes.'}
+  ], palace:[
+    {stop:'Front Door', image:'A giant capital letter S is bolted to your front door, and a tiny lowercase s dangles from the doorknob like a keychain.', fact:'Capital letter = the random variable (S); lowercase letter = one specific value (s).'},
+    {stop:'Doormat', image:'You wipe your feet on a doormat woven from little dice and coin symbols, each square labeled "P(X)."', fact:'A probability distribution lists every value a random variable can take with its matching probability.'},
+    {stop:'Hallway Mirror', image:'The hallway mirror only reflects fractions — you see n(E) stacked on top of n(S), like a fraction taped to the glass.', fact:'P(E) = n(E)/n(S): favorable outcomes over total outcomes.'},
+    {stop:'Kitchen Counter', image:'On the counter, red and blue balls spill out of a bag, some rolling toward the sink (12 total: 4 red, 3 green, 5 blue).', fact:'Classic bag-of-balls example: P(blue or red) = 9/12 = 0.75.'},
+    {stop:'Refrigerator', image:'A checklist stuck to the fridge with a magnet has one rule circled in red marker: "ΣP(X) must equal exactly 1."', fact:'A valid probability distribution requires all probabilities to sum to 1.'},
+    {stop:'Dining Table', image:'Two bowls sit on the table — one full of red and green balls (2 green picks without replacement), the other empty because the second draw has one less ball to choose from.', fact:'P(2 green, no replacement) = 3/12 × 2/11 ≈ 0.045 — probabilities shrink after each draw.'},
+    {stop:'Pantry Corner', image:'A fruit bowl with an apple, banana, cherry, and dragon fruit sits with a note: "if apple, put it back first."', fact:'Special replacement rule example: apples get replaced before the 2nd fruit is picked, forming a PD table for A = {0,1,2}.'},
+    {stop:'Parking Sign Out Front', image:'Two parking meters stand side by side — one always eats a flat ₱100 coin, the other flips a coin: 40% chance of nothing, 60% chance of ₱200.', fact:'Comparing flat-rate vs. probabilistic cost requires computing expected value to see which is cheaper.'}
   ]},
 
 {id:'gm2', title:'2. Mean & Standard Deviation', content:[
@@ -346,6 +379,14 @@ const DATA = [
     {q:'The formula Σ(X²·P(X)) − μ² gives which value directly (before taking the square root)?', c:['The mean','The variance (σ²)','The sample space','The probability'], a:1},
     {q:'A ticket costs ₱15; you win ₱100 with probability 0.1. What is the expected value of playing?', c:['−₱5','−₱4','+₱5','+₱10'], a:0},
     {q:'Standard deviation applied to project management is used to measure:', c:['Employee attendance','Variability in project timeline and costs','Customer satisfaction only','Stock market crashes'], a:1}
+  ], palace:[
+    {stop:'Garage', image:'A giant Greek letter μ (mu) hangs from the garage ceiling like a swing, with basketballs (0, 1, 2, 3) orbiting it at different speeds.', fact:'μ = E(X) = Σ[X·P(X)] — the mean/expected value.'},
+    {stop:'Workbench', image:'On the workbench, a measuring tape stretches out from the mean to each data point, and someone is squaring every measurement before writing it down.', fact:'σ = √[Σ(X²·P(X)) − μ²] — the standard deviation formula.'},
+    {stop:'Tool Shelf', image:'A raffle ticket is pinned above a piggy bank that\'s slightly tipped over, spilling more coins out than in.', fact:'Expected value can be negative — meaning you lose money on average over many plays.'},
+    {stop:'Storage Bin', image:'Four labeled jars sit in a row: a stock ticker, a magnifying glass over a graph, a calendar with red X\'s, and a smiley-face survey card.', fact:'SD applications: Finance (volatility), Market Research (trends), Project Management (timelines), Customer Satisfaction (consistency).'},
+    {stop:'Laundry Room', image:'A washing machine spins a basketball around exactly 1.82 times before stopping, with a sticky note reading "3 free throws, long-run average."', fact:'μ = 1.82 baskets: the free-throw expected-value example.'},
+    {stop:'Sink Basin', image:'Water drains out leaving exactly 0.86 inches marked on the side of the basin, right where the "no more than 1 point off" tape is stuck.', fact:'σ = 0.86 for the free-throw example — spread from the mean.'},
+    {stop:'Recycling Bin', image:'A lottery ticket costing ₱1 sits crumpled next to three ₱3 coins that only appear when a die lands on 5.', fact:'Expected value of gains/losses: pay ₱1, win ₱3 on a roll of 5, expected value = −₱0.50 per game.'}
   ]},
   {id:'gm3', title:'3. Normal Distribution', content:[
     {h:'Key Properties', b:[
@@ -388,6 +429,14 @@ const DATA = [
     {term:'Percentile', def:'the percentage of data points that fall below a given value in a distribution.'},
     {term:'Calculator', def:'use P for area to the left, R for area to the right, Q(x)+Q(y) for the middle.'},
     {term:'Also called the quantile/percentile point function', def:'the reverse of the normal distribution.'}
+  ], palace:[
+    {stop:'Living Room', image:'A giant bell hangs perfectly symmetrical over the couch — pull the rope on either side and it rings the same tone.', fact:'The normal distribution is a symmetric, bell-shaped curve where mean = median = mode.'},
+    {stop:'Bookshelf', image:'Books are stacked in bands around a central shelf: 68 books close to the middle, 95 books one shelf out, and 99.7 books almost touching the edges.', fact:'The Empirical Rule: 68% within 1 SD, 95% within 2 SD, 99.7% within 3 SD of the mean.'},
+    {stop:'Thermostat on the Wall', image:'The thermostat is stuck reading exactly "0" for temperature and "1" for humidity, no matter what.', fact:'The Standard Normal Distribution always has mean 0 and standard deviation 1.'},
+    {stop:'Remote Control', image:'A TV remote has three buttons oddly labeled P, R, and Q — pressing P dims the left side of the screen, R dims the right, Q dims the middle.', fact:'Calculator shortcuts: P = area left, R = area right, Q(x)+Q(y) = area in the middle.'},
+    {stop:'Coffee Table', image:'A percentile chart sits open on the table with the "75%" mark circled and an arrow pointing to "Z ≈ 0.67" scribbled in the margin.', fact:'The 75th percentile corresponds to Z ≈ 0.67 — an inverse normal distribution example.'},
+    {stop:'Window Blinds', image:'The blinds are pulled to let in exactly one standard deviation of sunlight, then two, then three, each brighter band making up 68%, 95%, 99.7% of the room.', fact:'Empirical Rule: 68-95-99.7% of data within 1, 2, 3 standard deviations of the mean.'},
+    {stop:'Picture Frame on the Wall', image:'A framed photo shows a bell perfectly split in half by a mirror, both halves identical.', fact:'The normal curve is symmetric about the mean; mean = median = mode.'}
   ]},
   {id:'gm4', title:'4. Sampling Methods', content:[
     {h:'Probability Sampling', b:[
@@ -428,6 +477,15 @@ const DATA = [
     {term:'Convenience', def:'easily accessible participants.'},
     {term:'Purposive', def:'intentionally chosen based on criteria.'},
     {term:'Quota', def:'purposive sampling continued until a quota is reached.'}
+  ], palace:[
+    {stop:'Front Yard', image:'A giant fishbowl sits on the lawn with everyone\'s name in it, and a hand reaches in completely blindfolded.', fact:'Simple Random Sampling: equal chance for everyone (fishbowl draw, lottery).'},
+    {stop:'Mailbox', image:'The mailbox only accepts every 5th letter that arrives — the mail carrier skips four, drops one in, skips four more.', fact:'Systematic Sampling: selecting every nth member.'},
+    {stop:'Garden Beds', image:'The garden is divided into neat labeled boxes — tomatoes, carrots, peppers — and you must pick at least one plant from every single box.', fact:'Stratified Sampling: population split into similar groups (strata); every stratum represented.'},
+    {stop:'Neighborhood Map', image:'A map on the porch wall has colored pins in different neighborhoods, and you only interview people in the pinned neighborhoods, not everywhere.', fact:'Cluster Sampling: grouping by location/geography.'},
+    {stop:'Porch Steps', image:'You interview whoever happens to walk by your porch right now — no plan, just convenience.', fact:'Convenience Sampling: choosing easily accessible participants (non-probability).'},
+    {stop:'Driveway', image:'You only knock on doors belonging to licensed doctors, deliberately skipping every other house on the block.', fact:'Purposive Sampling: intentionally chosen based on specific criteria.'},
+    {stop:'Front Lawn Sign', image:'A tally board on the lawn keeps count, and once it hits "100 women aged 18-25," a bell rings and the survey stops immediately.', fact:'Quota Sampling: purposive sampling continued until a target quota is reached.'},
+    {stop:'Multi-Story Treehouse', image:'You first pick which branches of the treehouse to search (clusters), then randomly grab kids from just those branches.', fact:'Multistage Sampling: clusters formed, then random selection within them (PSU & SSU).'}
   ]},
   {id:'gm5', title:'5. Measurement & Conversion', content:[
     {h:'The 7 Fundamental Quantities (SI)', b:[
@@ -469,6 +527,14 @@ const DATA = [
     {term:'Time', def:'duration; continuous progression of events (second).'},
     {term:'Amount of Substance', def:'mole, number of particles. Luminous Intensity — brightness/light intensity (candela).'},
     {term:'Temperature', def:'K = °C + 273; °F = (9/5 × °C) + 32; °C = (°F − 32) × 5/9.'}
+  ], palace:[
+    {stop:'Hallway Ruler', image:'A giant ruler is nailed along the hallway wall, and a meter stick is duct-taped right on top of it as the "official" unit.', fact:'Length: measurement of space; base unit is the meter.'},
+    {stop:'Bathroom Scale', image:'The bathroom scale only displays results in kilogram symbols, no matter what you step on it.', fact:'Mass: quantity of matter; base unit is the kilogram.'},
+    {stop:'Wall Clock', image:'A ticking clock on the wall has only one hand, and it\'s labeled "seconds" in giant red letters.', fact:'Time: base unit is the second.'},
+    {stop:'Kitchen Thermometer', image:'A thermometer stuck in a pot shows three scales at once: Kelvin, Celsius, and Fahrenheit, all fighting for the same red line.', fact:'K = °C + 273; °F = (9/5 × °C) + 32; °C = (°F − 32) × 5/9.'},
+    {stop:'Junk Drawer', image:'A tiny lightbulb sits glowing at low wattage, next to a label reading "candela" and a science-fair ribbon for "amount of substance = mole."', fact:'Luminous Intensity (candela), Amount of Substance (mole) — two more SI base quantities.'},
+    {stop:'Coin Jar on the Counter', image:'A stack of pesos and dollar bills sits side by side, with an exchange-rate sticky note: "₱56 = $1."', fact:'Currency conversion example: ₱1,400 ÷ 56 = $25.'},
+    {stop:'Bathroom Scale', image:'The scale flashes between kilograms and pounds every few seconds, refusing to settle on one unit.', fact:'Mass conversions: e.g. 10 lb ≈ 4.54 kg (1 lb = 0.454 kg).'}
   ]},
   {id:'gm6', title:'6. Surface Area & Volume of Solid Figures', content:[
     {h:'Prisms', b:[
@@ -522,6 +588,14 @@ const DATA = [
     {term:'Cylinder', def:'LA = 2πrh; SA = 2πrh + 2πr²; V = πr²h. Right cylinder has axis perpendicular to bases.'},
     {term:'Cone', def:'LA = πrs (s = slant height); SA = πr(r+s); V = 1/3πr²h.'},
     {term:'Sphere', def:'Surface Area = 4πr²; Volume = 4/3πr³.'}
+  ], palace:[
+    {stop:'Attic', image:'A pyramid-shaped lampshade sits directly above a square rug, its apex pointing straight up at the ceiling like an arrow.', fact:'Right pyramid: apex directly above the center of the base.'},
+    {stop:'Chimney', image:'A perfectly cylindrical chimney has a tape measure wrapped around it (2πr) and another running up its height (h).', fact:'Cylinder: LA = 2πrh; SA = 2πrh + 2πr²; V = πr²h.'},
+    {stop:'Party Table', image:'An ice cream cone stands upright in a cup holder, its slanted side labeled "s" in glitter pen.', fact:'Cone: LA = πrs (s = slant height); SA = πr(r+s); V = 1/3πr²h.'},
+    {stop:'Snow Globe on the Shelf', image:'A snow globe sits perfectly round, and etched into the glass is "4πr²" on the outside and "4/3πr³" swirling inside with the snow.', fact:'Sphere: Surface Area = 4πr²; Volume = 4/3πr³.'},
+    {stop:'Cardboard Box in the Corner', image:'A cube-shaped box has "6a²" spray-painted on every one of its six identical faces.', fact:'Cube Surface Area formula: SA = 6a².'},
+    {stop:'Toy Box Full of Blocks', image:'Hexagonal and octagonal building blocks are stacked with tiny flags counting their faces, edges, and vertices out loud.', fact:'Hexagonal prism: 8 faces, 18 edges, 12 vertices. Octagonal: 10 faces, 24 edges, 16 vertices.'},
+    {stop:'Ceiling Fan Housing', image:'A cylindrical fan housing spins with a tape measure wrapped twice around its curved side, both ends labeled "2πrh."', fact:'Lateral Area of a cylinder: LA = 2πrh.'}
   ]}
 ]},
 
@@ -559,6 +633,14 @@ const DATA = [
     {term:'Historia/Historie', def:'salitang Griyego na nangangahulugang pagkatuto/pagtatanong sa pag-aaral o pag-iimbestiga.'},
     {term:'Historical Revisionism', def:'pagbabago/pag-rerevise ng kasaysayan para maging mas accurate.'},
     {term:'Historical Distortion', def:'MALI — intensyonal na pagbabago ng tala sa personal na antas.'}
+  ], palace:[
+    {stop:'Bahay-Bahayan sa Harap ng Bakuran', image:'Isang matandang lalaking may sumbrero ang nakaupo sa harap, nagtatanong-tanong sa lahat ng dumadaan — siya\'y si Herodotus.', fact:'Si Herodotus ay ang "Ama ng Kasaysayan," na tumawag sa kanyang pamamaraan na "historiya" (imbestigasyon).'},
+    {stop:'Aparador ng mga Dokumento', image:'Isang aparador na puno ng lumang papel, pero may nakasabit na malaking krus sa ibabaw — nagpapahiwatig na "walang dokumento, walang kasaysayan."', fact:'Ang tradisyunal na kahulugan ng kasaysayan ay batay lamang sa nakasulat na dokumento.'},
+    {stop:'Lumang Salamin', image:'Sa harap ng salamin, may dalawang larawan mo — isang tama at isang baluktot — parehong may label na "Revisionism" at "Distortion."', fact:'Revisionism = pagbabago para maging accurate. Distortion = maling, intensyonal na pagbabago.'},
+    {stop:'Bandila sa Bubong', image:'May bandilang Pilipino na paikot-ikot sa hangin, at sa ilalim nito nakatayo ang mga tao na magkahawak-kamay.', fact:'Kahalagahan ng kasaysayan: nagpapalaganap ng nasyonalismo at pambansang pagkakakilanlan.'},
+    {stop:'Pintuan sa Likod-Bahay', image:'May malaking eskultura ni Leopold Von Ranke na nakatayo, hawak ang isang timbangan na may salitang "siyentipiko" sa magkabilang panig.', fact:'Leopold Von Ranke: Ama ng Kasaysayang Siyentipiko.'},
+    {stop:'Bintana sa Ikalawang Palapag', image:'Dalawang salamin ang nakadikit — isa lang ang malinaw (Tradisyunal, batay lang sa dokumento), ang isa ay may dagdag na larawan ng oral na kwento at gamit (Makabago/Moderno).', fact:'Tradisyunal na kahulugan = nakasulat lamang; Makabagong kahulugan = kasama na ang oral history at artifacts.'},
+    {stop:'Sulok ng Silid-Aralan', image:'Isang estudyanteng nagsasalaysay ng kwento ng kanyang lolo, habang may lumang larawan at gamit na nakalatag sa mesa.', fact:'Makabagong kasaysayan ay muling pagbubuo ng nakaraan gamit ang tala, oral history, at cultural artifacts.'}
   ]},
   {id:'pk2', title:'2. Ika-19 na Siglo at Historiyograpiya', content:[
     {h:'Impluwensya ng Ika-19 na Siglo (1801-1900)', b:[
@@ -597,6 +679,14 @@ const DATA = [
     {term:'Panlabas na kritisismo', def:'sinusuri ang piskal na anyo ng dokumento (ano, saan, kailan, paano nakuha).'},
     {term:'Panloob na kritisismo', def:'mas mataas na antas, sinusuri ang nilalaman at interpretasyon ng dokumento.'},
     {term:'Paaralan ng Annales', def:'inter-disciplinary na paraan, humantong sa paglikha ng iba pang sangay ng kasaysayan.'}
+  ], palace:[
+    {stop:'Simbahan sa Kanto', image:'Tatlong estatwa ang nakatayo sa harap ng simbahan, may pangalan na "God," "Gold," at "Glory," bawat isa\'y may korona.', fact:'3Gs ng kolonisasyon: God (kristiyanismo), Gold (yaman), Glory (kapangyarihan).'},
+    {stop:'Silid-Aklatan', image:'Isang malaking dokumento ang nakabitin sa gitna ng silid, may dalawang tao ang sumusuri — isa sa labas (piskal na anyo), isa sa loob (nilalaman).', fact:'Panlabas na kritisismo = piskal na anyo. Panloob na kritisismo = nilalaman/interpretasyon.'},
+    {stop:'Mesa ng mga Manunulat', image:'Apat na Espanyol ang nakaupo sa mesa, sabay-sabay na sumusulat tungkol sa mga Pilipino habang nakasimangot.', fact:'Mga manunulat noong ika-16 siglo: Miguel de Loarca, Antonio de Morga, Francisco Alcina, Juan de Plasencia.'},
+    {stop:'Poster sa Dingding', image:'Isang poster na may nakasulat na "Kami, hindi kayo" sa malaking letra, habang may taong nakaturo palayo sa kausap.', fact:'Pangkaming Pananaw: hindi kasama ang taong kausap sa "kami."'},
+    {stop:'Salamin sa Banyo', image:'Ang salamin ay may nakasulat na "Pantayong Pananaw," at sa halip na larawan mo, ang wikang Filipino ang nakikita.', fact:'Pantayong Pananaw ni Zeus Salazar: gamit ang wikang Pilipino, "nagmula sa atin, para sa atin."'},
+    {stop:'Katalogo sa Aparador', image:'Maraming sanga ng aklat ang lumalabas mula sa isang punong-kahoy: pampulitika, ekonomiya, kultura, panlipunan, kapaligiran.', fact:'Paaralan ng Annales: inter-disciplinary, humantong sa iba\'t ibang sangay ng kasaysayan.'},
+    {stop:'Basement ng Bahay', image:'Isang timbangan ang nagpapakita kung alin ang mas mabigat: ang "positivist" na panig (agham) o ang "empiricist" na panig (karanasan) — parehong pantay.', fact:'Positivist at Empiricist: parehong nagbibigay-diin sa scientific method/karanasan bilang kaalaman.'}
   ]},
   {id:'pk3', title:'3. Elemento ng Kasaysayan at Heograpiya', content:[
     {h:'Mga Elemento ng Kasaysayan', b:[
@@ -637,6 +727,14 @@ const DATA = [
     {term:'Deterministic', def:'pananaw na hindi nagbabago ang heograpiya (hal. lokasyon sa Ring of Fire).'},
     {term:'Possibilism', def:'pananaw na may magagawa tayo upang baguhin ang ating kapaligiran.'},
     {term:'Continental Drift Theory', def:'ni Alfred Wegener — malaking lupain (Pangea) na naghiwalay.'}
+  ], palace:[
+    {stop:'Bintana', image:'May malaking tao na nakatayo sa gitna ng kwarto, mas malaki kaysa lahat ng gamit — siya ang bida ng bawat kwento.', fact:'Ang Tao ang pinaka-importanteng elemento ng kasaysayan.'},
+    {stop:'Mapa sa Dingding', image:'Isang mapa ng Pilipinas na may 7,641 na maliliit na kalatong (isla) na nakadikit gamit ang tape.', fact:'Ang Pilipinas ay may 7,641 na isla — isang archipelagic state.'},
+    {stop:'Jigsaw Puzzle sa Mesa', image:'Isang malaking puzzle ng mundo ang naghihiwalay sa gitna, kumakalat ang mga piraso patungo sa magkabilang sulok ng kwarto.', fact:'Continental Drift Theory (Alfred Wegener): naghiwalay ang Pangea sa mga kontinente.'},
+    {stop:'Tulay na Kahoy', image:'Isang lumang tulay na kahoy ang dumudugtong sa Palawan patungo sa Asya, pero sira na at 25,000 taon nang hindi ginagamit.', fact:'Land Bridges Theory: konektado ang Pilipinas sa mainland Asia 25,000 taon nakalipas.'},
+    {stop:'Bulkang Nakaukit sa Bakuran', image:'Isang maliit na bulkan-mainan ang sumasabog sa gitna ng bakuran, itinutulak paitaas ang lupa sa palibot nito.', fact:'Volcanic Origin Theory: maraming bulkan sa ilalim ng tubig na bumuo ng lupa ng Pilipinas.'},
+    {stop:'Compass sa Bintana', image:'Dalawang karatula ang nakadikit sa bintana: "Deterministic — hindi nagbabago" sa isang bahagi, at "Possibilism — kaya nating baguhin" sa kabila.', fact:'Deterministic vs. Possibilism: dalawang pananaw sa heograpiya.'},
+    {stop:'Lababo sa Kusina', image:'Tubig-alat mula sa gripo ang naghahalo sa fresh na tubig sa palanggana, kasama ang maliliit na bangkang naglalayag pabalik-balik.', fact:'Oryentasyong Pandagat: resulta ng iba\'t ibang wika/diyalekto at pagiging arkipelago.'}
   ]},
   {id:'pk4', title:'4. Mga Teorya ng Sinaunang Migrasyon', content:[
     {h:'Austronesian Out of Taiwan (Bellwood)', b:[
@@ -667,6 +765,13 @@ const DATA = [
   ], glossary:[
     {term:'Austronesian Out of Taiwan', def:'teorya ni Bellwood — nanggaling sa Taiwan ang mga Austronesian bago kumalat sa Timog-Silangang Asya.'},
     {term:'Core Population Theory', def:'ni Felipe Landa Jocano — pangunahing grupong unang nanirahan at nag-ugat sa isang lugar.'}
+  ], palace:[
+    {stop:'Daungan (Dock)', image:'Isang malaking bangkang Taiwanese ang nakadaong, may mga taong bumababa dala ang binhi ng palay at sanga ng tanim.', fact:'Austronesian Out of Taiwan (Bellwood): mula Taiwan nanggaling ang mga Austronesian, dala ang kaalaman sa pagsasaka.'},
+    {stop:'Yungib (Cave)', image:'Isang madilim na yungib sa Palawan, may mga buto at gamit na nakalatag sa sahig, tila pinabayaan nang matagal.', fact:'Tabon Cave, Palawan — ebidensya ng Core Population Theory ni Felipe Landa Jocano.'},
+    {stop:'Krus-daanan (Crossroads)', image:'Maraming daan ang naghahalo-halo sa gitna ng bayan, at bawat isa\'y may ibang wika at bandila.', fact:'Ang arkipelago ay nagresulta sa rehiyonalismo at seksyonalismo — mahirap bumuo ng nasyonalismo.'},
+    {stop:'Palengke ng mga Intsik', image:'Isang tindahan ang nagpapalitan ng kabibe at perlas kapalit ng seda at porselana mula sa mga mangangalakal na Tsino.', fact:'Kalakalan sa mga Tsino: kabibe, perlas, ginto, pagkaing-dagat kapalit ng seda, porselana.'},
+    {stop:'Hagdan ng Terraces', image:'Isang hagdan-hagdang bukid ang inukit sa gilid ng bundok, may mga taong nagsasaka habang umaakyat.', fact:'Pag-angkop sa kabuhayan: pangingisda, pagsasaka sa terrace farms, angkop na pag-aalaga ng hayop.'},
+    {stop:'Basurahan sa Kalye', image:'Mga basurang plastik at usok mula sa pabrika ang bumabara sa isang maliit na sapa.', fact:'Mga suliraning may kinalaman sa heograpiya: climate change, pagkawala ng likas na yaman, polusyon, urbanisasyon.'}
   ]},
   {id:'pk5', title:'5. Ilaya at Ilawod: Mga Katutubong Pamayanan', content:[
     {h:'Ilaya at Ilawod', b:[
@@ -703,6 +808,14 @@ const DATA = [
     {term:'Binukot', def:'"wrapped up/veiled" — tradisyon ng Panay-Bukidnon na itinatago ang kababaihan mula pagkabata.'},
     {term:'Animism', def:'paniniwala na may espiritu ang bawat bagay sa kalikasan.'},
     {term:'Lumad', def:'Bisayan word para sa "native/indigenous" — hindi Muslim, hindi Kristiyanong grupo sa Mindanao.'}
+  ], palace:[
+    {stop:'Bundok sa Likod', image:'Isang batang babae ang nakatago sa loob ng bahay-kubo sa taluktok ng bundok, hindi nakikita ng sinuman, habang may nakaturong daliri paakyat.', fact:'Ilaya = upstream, bundok na pinagmulan ng ilog. Binukot = itinatagong babae ng Panay-Bukidnon.'},
+    {stop:'Ilog', image:'Isang ilog na dumadaloy pababa patungo sa dagat, may bangkang naglalayag na may mangingisdang naka-turban.', fact:'Ilawod = downstream. Badjao = sea dwellers/sea gypsies sa Zamboanga at Sulu.'},
+    {stop:'Terraces sa Burol', image:'Hagdan-hagdang palayan ang umaakyat sa burol, at sa itaas nakatayo si Apo Whang-Od na may karayom sa kamay.', fact:'Banaue Rice Terraces at Apo Whang-Od — mga Igorot ng Cordilleras.'},
+    {stop:'Kubo sa Gubat', image:'Isang pamilyang nagsasaka sa likod-bahay habang may espiritung nakikita lamang nila sa mga puno.', fact:'Lumad: "native/indigenous," naniniwala sa Animism, nakatuon sa agrikultura at kalikasan.'},
+    {stop:'Tulay Palapit sa Dagat', image:'Isang bangkang nakalutang lamang, walang lupa sa paligid, may pamilyang nabubuhay sa loob nito magpakailanman.', fact:'Badjao: sea dwellers/sea gypsies sa Zamboanga at Sulu, sustainable fishing methods.'},
+    {stop:'Silid ng mga Katutubong Habi', image:'Mga bayong, plato, at basong hinabi ay nakasabit sa dingding, dala mula sa Oriental Mindoro.', fact:'Iraya Mangyan: kilala sa paghahabi (bayong, plato, baso) sa Abra de Ilog, Mamburao, Paluan.'},
+    {stop:'Batong Marka sa Bakuran', image:'Isang tanda ng batok (traditional tattoo) ang nakaguhit sa bato, may pangalang "Apo Whang-Od" nakaukit sa ilalim.', fact:'Apo Whang-Od — mambabatok, kilalang Igorot artist ng Cordilleras.'}
   ]}
 ]},
 {id:'effcom1', name:'EffCom1: Effective Communication', lessons:[
@@ -753,6 +866,11 @@ const DATA = [
     {term:'Non-verbal Communication', def:'spontaneous and unstructured; facial expressions, gestures, proxemics, paralinguistics, etc.'},
     {term:'G.R.E.P.S.', def:'Gender, Roles, Ethnicity, Preferences, Status — framework for ethical verbal communication.'},
     {term:'9 C\'s of Communication', def:'Congruency, Conciseness, Clarity, Consistency, Considering your Audience, Content, Checking for Understanding, Choosing the Right Medium, Common Language.'}
+  ], palace:[
+    {stop:'Front Porch', image:'Two people stand at your porch, one talking (sender), one nodding (receiver), passing a ball of yarn labeled "meaning" back and forth.', fact:'Communication is a two-way process between a sender and receiver.'},
+    {stop:'Coat Closet', image:'A rigid mannequin in a suit (Verbal) stands next to a wild, gesturing puppet with no strings (Non-verbal).', fact:'Verbal = rule-specific, planned. Non-verbal = spontaneous, unstructured.'},
+    {stop:'Living Room Rug', image:'Four concentric circles are painted on the rug, labeled Intimate, Personal, Social, Public, like archery target rings.', fact:'Proxemics zones: Intimate (1-1.5ft), Personal (1.5-4ft), Social (4-12ft), Public (12ft+).'},
+    {stop:'Bathroom Mirror', image:'Five letters — G, R, E, P, S — are written in soap on the mirror, spelling out a code only visible when you breathe on the glass.', fact:'G.R.E.P.S.: Gender, Roles, Ethnicity, Preferences, Status.'}
   ]},
   {id:'ec2', title:'2. Speech Styles', content:[
     {h:'The 5 Speech Styles (I Can Count Five Fingers)', b:[
@@ -786,6 +904,12 @@ const DATA = [
     {term:'Consultative Style', def:'professional transaction; one party is the expert.'},
     {term:'Formal Style', def:'follows conventions, grammar rules, and politeness.'},
     {term:'Frozen Style', def:'most rigid; non-negotiable message, lacks personal interaction.'}
+  ], palace:[
+    {stop:'Bedroom', image:'A couple whispers a secret nickname only they understand, tucked under a blanket fort.', fact:'Intimate style: private relationship, own exclusive way of communicating.'},
+    {stop:'Kitchen', image:'Friends lounge on the counter, talking in half-sentences and slang while snacking.', fact:'Casual style: friends/acquaintances, relaxed grammar.'},
+    {stop:'Home Office', image:'A doctor in a white coat sits across a desk from a patient, giving expert advice with a clipboard.', fact:'Consultative style: professional transaction, one party is the expert.'},
+    {stop:'Front Hall Coat Rack', image:'A judge\'s black robe hangs stiffly on the rack, perfectly pressed, following an unbendable dress code.', fact:'Formal style: follows conventions, grammar rules, politeness.'},
+    {stop:'Safe in the Wall', image:'A locked safe holds the Miranda Rights carved in stone — nothing about the wording can ever be changed.', fact:'Frozen style: most rigid, non-negotiable message.'}
   ]},
   {id:'ec3', title:'3. Communication Functions', content:[
     {h:'The 5 Communication Functions', b:[
@@ -824,6 +948,12 @@ const DATA = [
     {term:'Informative', def:'common function between people of equal rank/status.'},
     {term:'Instructive', def:'function used between people of unequal rank/status.'},
     {term:'Therapeutic', def:'goal is to make the other person\'s feelings much better.'}
+  ], palace:[
+    {stop:'Garage', image:'A referee whistle hangs on a hook, blasting every time someone walks by without permission.', fact:'Regulation/Control: wanting others to manage their behavior or do what you want.'},
+    {stop:'Backyard Table', image:'Two strangers forced to share one umbrella in the rain end up laughing and swapping stories.', fact:'Social Interaction: forming bonds/friendship.'},
+    {stop:'Gym Corner', image:'A sales agent in a tracksuit is hyping up a crowd with a megaphone, pumping fists in the air.', fact:'Motivation: persuading, convincing, or inspiring.'},
+    {stop:'Doorstep', image:'A street child extends an open palm, eyes wide and pleading, tugging at your sleeve.', fact:'Emotional Expression: appealing to others\' emotions.'},
+    {stop:'Mailbox', image:'A stack of DOH reports spills out of the mailbox, covered in graphs and casualty numbers.', fact:'Information: sharing facts, figures, statistics.'}
   ]},
   {id:'ec4', title:'4. Communication Models', content:[
     {h:'What Are Communication Models?', b:[
@@ -860,6 +990,11 @@ const DATA = [
     {term:'Shannon-Weaver Model', def:'"Mother of communication models"; first to introduce noise; sender-encoder-channel-decoder-receiver.'},
     {term:'Schramm\'s Model', def:'Venn diagram of shared "field of experience"; Interactive.'},
     {term:'Barnlund\'s Model', def:'Transactional — sending/receiving happens simultaneously.'}
+  ], palace:[
+    {stop:'Ancient Statue in the Garden', image:'A toga-wearing statue of Aristotle points a marble finger along a straight arrow painted on the ground: Speaker → Speech → Occasion → Audience → Effect.', fact:'Aristotle\'s Model: the oldest, simplest, linear model.'},
+    {stop:'Old Radio on the Shelf', image:'A crackling antique radio has a hand-drawn diagram taped to it: sender-encoder-channel-decoder-receiver, with static labeled "NOISE" buzzing around it.', fact:'Shannon-Weaver Model: "mother of communication models," first to introduce noise.'},
+    {stop:'Window with Overlapping Curtains', image:'Two circles of colored glass overlap in the window, and where they overlap, light shines brightest.', fact:'Schramm\'s Model: Venn diagram of shared "field of experience," Interactive.'},
+    {stop:'Rotating Ceiling Fan', image:'Two people below the fan are talking and listening at the EXACT same time, their words crossing mid-air like the fan blades.', fact:'Barnlund\'s Model: Transactional — sending and receiving happen simultaneously.'}
   ]},
   {id:'ec5', title:'5. Communication Strategies', content:[
     {h:'Language as a Communication Barrier', b:[
@@ -897,6 +1032,12 @@ const DATA = [
     {term:'Word Coinage', def:'inventing a new term based on word-formation rules.'},
     {term:'Circumlocution', def:'describing an idea vividly instead of naming it directly.'},
     {term:'Appeal for Help', def:'asking someone else to relay your message — a last resort.'}
+  ], palace:[
+    {stop:'Hallway Light Switch', image:'You reach for the switch, start to say something, then just shrug and walk away mid-sentence.', fact:'Message Abandonment: stopping mid-expression due to difficulty communicating.'},
+    {stop:'Dinner Table', image:'Every time someone asks about your grades, you loudly point out the window and yell "look, a bird!"', fact:'Topic Avoidance: changing the topic instead of discussing the issue.'},
+    {stop:'Workshop Bench', image:'A homemade gadget sits on the bench with a hand-painted label: "SHRINKINATOR" in bubble letters.', fact:'Word Coinage: inventing a new term.'},
+    {stop:'Chicken Coop out Back', image:'You point at a chicken and ask, loudly, "where\'s its mother?" instead of just saying the word.', fact:'Circumlocution: describing an idea instead of naming it directly.'},
+    {stop:'Phone on the Counter', image:'You hand your phone to a friend and beg them to text the awkward message FOR you.', fact:'Appeal for Help: asking someone else to relay your message — a last resort.'}
   ]},
   {id:'ec6', title:'6. Listening', content:[
     {h:'The Listening Process (P-R-I-R)', b:[
@@ -944,6 +1085,11 @@ const DATA = [
     {term:'Empathic listening', def:'understanding what the speaker feels by putting yourself in their shoes.'},
     {term:'Critical listening', def:'identifying truths from fallacies, assessing validity.'},
     {term:'Discriminative listening', def:'identifying sound differences (e.g. paralinguistics, instruments).'}
+  ], palace:[
+    {stop:'Front Door Buzzer', image:'A giant ear is glued above the doorbell, and every time it buzzes, four letters light up in sequence: P-R-I-R.', fact:'P-R-I-R: Perceiving, Receiving, Interpreting, Responding — the listening process.'},
+    {stop:'Clock in the Hallway', image:'The clock hands are stuck, but a caption underneath reads "45% of your life," with a tiny mouth icon crossed out.', fact:'Listening is used ~45% of our lives, yet the least taught macroskill.'},
+    {stop:'Cozy Armchair', image:'You sink into the armchair wearing someone else\'s shoes, feeling exactly what they feel.', fact:'Empathic listening: putting yourself in the speaker\'s shoes.'},
+    {stop:'Music Room', image:'A row of instruments each play a different note, and you can tell them all apart with your eyes closed.', fact:'Discriminative listening: identifying sound differences.'}
   ]},
   {id:'ec7', title:'7. Intercultural Communication', content:[
     {h:'Intercultural Communication', b:[
@@ -991,6 +1137,11 @@ const DATA = [
     {term:'Stereotyping', def:'generalizing people based on group identity.'},
     {term:'High-context / Low-context culture', def:'High relies on non-verbal/shared meaning; Low relies on explicit spoken/written words.'},
     {term:'Developmental Model of Intercultural Sensitivity', def:'Denial → Defense → Minimization → Acceptance → Adaptation → Integration.'}
+  ], palace:[
+    {stop:'World Map on the Wall', image:'A flag from your own country is pinned proudly in the center, dwarfing all the tiny flags of other nations around it.', fact:'Ethnocentrism: thinking your race/ethnicity is superior to others.'},
+    {stop:'Suitcase by the Door', image:'The suitcase is packed with labeled boxes: "Singaporeans = math," each box sealed shut without ever being opened.', fact:'Stereotyping: generalizing people based on group identity.'},
+    {stop:'Dimmer Switch on the Wall', image:'A dimmer switch labeled "Context" — turn it up high and the room goes quiet with just gestures and glances; turn it down and everyone starts explaining everything out loud.', fact:'High-context relies on non-verbal/shared meaning; Low-context relies on explicit words.'},
+    {stop:'Staircase Going Up', image:'Six steps lead upward, each labeled: Denial, Defense, Minimization, Acceptance, Adaptation, Integration — and at the top, someone is happily blending two flags together.', fact:'Developmental Model of Intercultural Sensitivity, from Denial to Integration.'}
   ]},
   {id:'ec8', title:'8. Defining Reading', content:[
     {h:'Understanding Reading', b:[
@@ -1030,6 +1181,11 @@ const DATA = [
     {term:'Bottom-Up Theory', def:'relying heavily on the text itself, with little/no schema.'},
     {term:'Top-Down Theory', def:'relying heavily on schema/background knowledge.'},
     {term:'Interactive Theory', def:'using both schema and information in the text.'}
+  ], palace:[
+    {stop:'Study Desk', image:'A math equation floats above the desk: Accuracy + Fluency = a glowing trophy labeled "Proficiency."', fact:'Reading Proficiency = Accuracy (understanding) + Fluency (smoothness).'},
+    {stop:'Filing Cabinet', image:'Drawers labeled "Schemata" are stuffed with everything you already know, and a new folder keeps trying to find a matching drawer.', fact:'Schemata = background knowledge, connected to new ideas while reading.'},
+    {stop:'Blank Notebook', image:'A first-time Harry Potter reader stares at a totally blank page, relying completely on the words in front of them with zero prior context.', fact:'Bottom-Up Theory: relying heavily on the text, with no schema yet.'},
+    {stop:'Overflowing Bookshelf', image:'A reader closes their eyes and reconstructs the whole story from memory alone, barely glancing at the actual page.', fact:'Top-Down Theory: relying heavily on schema/background knowledge.'}
   ]}
 ]},
 {id:'gensci', name:'GenSci: General Science', lessons:[
@@ -1065,6 +1221,11 @@ const DATA = [
     {term:'Binary fission', def:'DNA duplicates, undergoes mitosis, splits into 2 genetically identical organisms.'},
     {term:'Gametogenesis', def:'creates sperm/ovum via meiosis, halving chromosome number.'},
     {term:'Theory of Use and Disuse', def:'traits used more become more prominent; traits used less fade over generations.'}
+  ], palace:[
+    {stop:'Front Gate', image:'A checklist with 7 icons swings on the gate: a gear, a baby, a thermostat, a growth chart, a running shoe, a family tree, a fossil.', fact:'7 characteristics of life: Metabolism, Reproduction, Homeostasis, Growth & Development, Movement, Heredity, Evolution.'},
+    {stop:'Garden Bed', image:'A tiny bud grows sideways out of a cactus and slowly detaches to roll away on its own.', fact:'Budding: a "bud" grows on the parent, matures, and may detach.'},
+    {stop:'Greenhouse', image:'A sunflower cranes its whole body to follow a flashlight you\'re waving around the room.', fact:'Movement: e.g. plants responding to light/stimuli.'},
+    {stop:'Toolshed', image:'A worn-out wrist strap hangs unused on a hook, fraying more each year, while a well-used hammer grows shinier and bigger.', fact:'Theory of Use and Disuse: used traits grow prominent, unused ones fade.'}
   ]},
   {id:'gs2', title:'2. Biological Organization', content:[
     {h:'Overview & Biological Systems', b:[
@@ -1096,6 +1257,10 @@ const DATA = [
   ], glossary:[
     {term:'Form Follows Function', def:'the structure of a biological component is directly related to its function.'},
     {term:'Biological organization hierarchy', def:'Atoms → Cells → Tissues → Organs → Organ Systems → Organisms → Population → Community → Ecosystem → Biosphere.'}
+  ], palace:[
+    {stop:'Staircase Up the Hall', image:'Ten steps climb from the basement to the attic, each labeled: Atoms, Cells, Tissues, Organs, Organ Systems, Organisms, Population, Community, Ecosystem, Biosphere.', fact:'Biological organization hierarchy, smallest to largest.'},
+    {stop:'Basement Workshop', image:'A single brick has a tiny keychain tag reading "DNA — the blueprint," dictating the shape of the whole house above it.', fact:'Chemical Level: DNA dictates genetic information, the "blueprint."'},
+    {stop:'Elevator Shaft', image:'Three tiny cell-shaped elevators zoom past: a red one carrying oxygen tanks, a blue one always buzzing with electricity, and a green one gobbling up germs.', fact:'Erythrocytes (oxygen), Neurons (nerve signals), Macrophages (immune cells).'}
   ]},
 {id:'gs3', title:'3. Cellular Processes: Energy & Enzymes', content:[
     {h:'How Cells Harness Power', b:[
@@ -1130,6 +1295,10 @@ const DATA = [
     {term:'ATP (adenosine triphosphate)', def:'releases just the right amount of usable energy for cellular work.'},
     {term:'Hyperglycemia / Hypoglycemia', def:'high / low blood sugar levels.'},
     {term:'Enzyme', def:'a reusable, specific "helper" that speeds up a chemical reaction without being changed itself.'}
+  ], palace:[
+    {stop:'Pantry Shelf', image:'A big glass jar labeled "GLUCOSE" sits next to a tiny battery labeled "ATP" — the jar is heavy and dense, the battery is small but always fully charged.', fact:'Glucose = stable, energy-dense storage; ATP = small, immediately usable energy.'},
+    {stop:'Kitchen Counter', image:'A blood pressure cuff reads "HYPER" in red when the sugar bowl overflows, and "HYPO" in blue when it\'s nearly empty.', fact:'Hyperglycemia = high blood sugar; Hypoglycemia = low blood sugar.'},
+    {stop:'Junk Drawer', image:'A rusty can opener sits in the drawer — it never changes shape no matter how many cans it opens, and it only ever works on cans, never bottles.', fact:'Enzymes are reusable, specific catalysts — not consumed, and substrate-specific.'}
   ]},
 {id:'gs4', title:'4. Photosynthesis', content:[
     {h:'Introduction: Producers & Consumers', b:[
@@ -1180,6 +1349,11 @@ const DATA = [
     {term:'Calvin Cycle (light-independent)', def:'in the stroma; uses ATP/NADPH + CO2 → glucose.'},
     {term:'RuBisCo', def:'enzyme that fixes CO2 onto RuBP during carbon fixation.'},
     {term:'Producers / Consumers', def:'organisms that make their own food (via photosynthesis) vs. those that rely on others for food.'}
+  ], palace:[
+    {stop:'Sunroom Window', image:'Green curtains (thylakoid membranes) glow as sunlight hits them, and water droplets on the glass split apart, hissing out little oxygen bubbles.', fact:'Light-dependent reactions: in the thylakoid; water splits, releasing O2, producing ATP + NADPH.'},
+    {stop:'Sunroom Floor (Stroma)', image:'A carbon dioxide cloud drifts down to the floor where a machine labeled "RuBisCo" grabs it and welds it onto a spinning wheel of sugar.', fact:'Calvin Cycle: in the stroma, RuBisCo fixes CO2 onto RuBP to build glucose.'},
+    {stop:'Recipe Card Taped to the Fridge', image:'A recipe card reads: 6 CO2 + 6 H2O + Light → 1 big glucose cake + 6 balloons of O2.', fact:'Photosynthesis equation: 6CO2 + 6H2O + Light → C6H12O6 + 6O2.'},
+    {stop:'Fish Tank in the Corner', image:'Tiny green specks (microalgae) bubble away furiously, producing way more oxygen bubbles than the potted plant next to it.', fact:'Microalgae are the primary producers of oxygen on Earth.'}
   ]},
   {id:'gs5', title:'5. Cellular Respiration', content:[
     {h:'Respiration Overview', b:[
@@ -1235,6 +1409,11 @@ const DATA = [
     {term:'Krebs Cycle (Citric Acid Cycle)', def:'Pyruvate → CO2 + electron carriers (NADH, FADH2), in the mitochondrial matrix.'},
     {term:'Electron Transport Chain (ETC)', def:'electrons → ATP production (~34 ATP), in the inner mitochondrial membrane; oxygen is the final electron acceptor.'},
     {term:'Fermentation', def:'anaerobic energy release when oxygen is low; produces lactic acid (humans/bacteria) or alcohol+CO2 (yeast).'}
+  ], palace:[
+    {stop:'Kitchen Sink', image:'A glucose molecule splits in half right at the drain, and two tiny "2 ATP" coins fall in while two "NADH" tokens float on top.', fact:'Glycolysis: Glucose → 2 pyruvate, in the cytoplasm, net 2 ATP + 2 NADH.'},
+    {stop:'Pressure Cooker on the Stove', image:'A pressure cooker (the mitochondrial matrix) hisses out CO2 steam while spinning citric acid around and around in circles.', fact:'Krebs Cycle: pyruvate → CO2 + electron carriers, in the mitochondrial matrix.'},
+    {stop:'Power Strip on the Wall', image:'A power strip with 34 lightbulbs plugged in all lights up at once as electrons zip down the cord and oxygen catches them at the very end.', fact:'ETC produces ~34 ATP; oxygen is the final electron acceptor.'},
+    {stop:'Gym Bag by the Door', image:'A sweaty gym bag smells like sour milk, with a tag reading "no oxygen left — lactic acid inside."', fact:'Fermentation: when oxygen is low, muscles produce lactic acid.'}
   ]},
 {id:'gs6', title:'6. Interconnected Biological Systems', content:[
     {h:'Plant & Animal Systems: Distinctions & Shared Principles', b:[
@@ -1281,6 +1460,11 @@ const DATA = [
     {term:'Phloem', def:'transports sugars bidirectionally to all parts of the plant.'},
     {term:'Thermoregulation', def:'maintaining stable core body temperature (~37°C) via homeostasis.'},
     {term:'Herd/Community immunity', def:'when a high % of a population is vaccinated, reducing pathogen spread and protecting the unvaccinated.'}
+  ], palace:[
+    {stop:'Front Yard Sprinkler System', image:'Pipes run only ONE direction uphill (xylem, roots to leaves) while a second set of pipes flows freely BOTH ways (phloem, sugars everywhere).', fact:'Xylem: unidirectional water transport. Phloem: bidirectional sugar transport.'},
+    {stop:'Knee-High Fence Post', image:'A wobbly fence post is labeled "ACL," barely holding together, with a sign reading "poor blood flow — 6 months to heal."', fact:'ACL connects femur to tibia; heals slowly due to poor blood flow.'},
+    {stop:'Thermostat by the Front Door', image:'The thermostat has two dials: a fast digital one (nervous system, sweat/shiver) and a slow analog one (endocrine system, thyroid hormones).', fact:'Nervous system = immediate thermoregulation; Endocrine system = long-term.'},
+    {stop:'Mailbox', image:'A tiny fake spider (harmless antigen) is mailed to your immune system, which overreacts and remembers it forever after.', fact:'Vaccines introduce a harmless antigen, creating memory cells for future protection.'}
   ]},
   {id:'gs7', title:'7. Philippine Ecosystems', content:[
     {h:'Ecosystem Overview', b:[
@@ -1310,6 +1494,10 @@ const DATA = [
     {term:'Biotic / Abiotic', def:'living factors / nonliving factors in an ecosystem.'},
     {term:'Estuary', def:'area where freshwater rivers meet the salty ocean, creating brackish water (mangroves).'},
     {term:'Coral Triangle', def:'region including the Philippines, home to 5% of the world\'s coral reefs.'}
+  ], palace:[
+    {stop:'Backyard Treehouse', image:'A giant Philippine Eagle perches on the treehouse roof, and a sign nailed below reads "Sierra Madre — 40% of remaining forest."', fact:'Sierra Madre holds ~40% of the Philippines\' remaining forest cover.'},
+    {stop:'Fish Pond', image:'A lone freshwater sardine swims in circles, with a plaque reading "Only found HERE — Taal Lake."', fact:'Sardinella tawilis is a freshwater sardine exclusive to the Philippines.'},
+    {stop:'Aquarium on the Shelf', image:'Delicate coral branches sit inside, with a tiny "5%" sticker on the glass and a sea turtle gliding past a sign that says "Tubbataha — UNESCO."', fact:'PH owns 5% of the world\'s coral reefs; Tubbataha Reef is a UNESCO site and turtle nesting ground.'}
   ]},
   {id:'gs8', title:'8. Climate Change', content:[
     {h:'What is Climate Change?', b:[
@@ -1348,6 +1536,11 @@ const DATA = [
     {term:'Mitigation', def:'actions that reduce man-made climate change (reduce emissions or increase sequestration).'},
     {term:'RA 9729', def:'the Climate Change Act of 2009, basis for the Philippine National Climate Change Action Plan.'},
     {term:'7 Key Priorities', def:'Water Sufficiency, Food Security, Ecological/Environmental Stability, Sustainable Energy, Climate-smart Industries/Services, Human Security, Knowledge/Capacity Development.'}
+  ], palace:[
+    {stop:'Garage Exhaust Pipe', image:'A thick gray blanket wraps around the whole house, trapping heat inside no matter how many windows you open.', fact:'Greenhouse gases trap heat, raising global temperatures.'},
+    {stop:'Swimming Pool Out Back', image:'The pool water is boiling slightly, and the tile coral around the edges is turning bone white.', fact:'Ocean warming (absorbs 90%+ of excess heat) causes coral bleaching.'},
+    {stop:'Rice Field Model on the Table', image:'A tiny rice plant wears a raincoat and rubber boots, standing firm in a miniature flood.', fact:'Climate-resilient rice varieties are an example of Adaptation.'},
+    {stop:'Solar Panel on the Roof', image:'Solar panels and a bicycle lane are painted directly onto the shingles, glowing under the sun.', fact:'Solar panels and bike lanes are examples of Mitigation (reducing emissions).'}
   ]}
 ]},
 {id:'bionotes', name:'Biology (1st Sem)', lessons:[
@@ -1443,6 +1636,12 @@ const DATA = [
     {term:'Induced Fit', def:'a change in the configuration of an enzyme\'s active site.'},
     {term:'Competitive / Noncompetitive Inhibitor', def:'competes for the active site / binds elsewhere, altering the active site shape.'},
     {term:'Nucleotide', def:'monomer of nucleic acids: nitrogenous base + pentose sugar + phosphate group.'}
+  ], palace:[
+    {stop:'Pantry', image:'Four labeled bins line the shelf: CHO (sugar cubes), CHO again (oil bottles), CHON (protein powder), CHONP (a glowing DNA strand).', fact:'Elemental memory aid: CHO=Carbs, CHO=Lipids, CHON=Proteins, CHONP=Nucleic Acids.'},
+    {stop:'Sugar Bowl on the Counter', image:'Three sugar cubes labeled Sucrose, Maltose, Lactose sit stuck together in pairs — each pair a different combo of glucose, fructose, galactose.', fact:'Disaccharides: Sucrose=Glu+Fru, Maltose=Glu+Glu, Lactose=Glu+Gal.'},
+    {stop:'Bathroom Cabinet', image:'A bottle of cooking oil floats stubbornly on top of the water in the sink, refusing to mix no matter how hard you stir.', fact:'Lipids are hydrophobic — nonpolar bonds won\'t dissolve in water.'},
+    {stop:'Toolbox in the Garage', image:'A rusty can opener sits next to a sign: "Fits ONLY this exact can — no substitutes," while it opens can after can without ever wearing out.', fact:'Enzymes are reusable and highly specific catalysts.'},
+    {stop:'Filing Cabinet Upstairs', image:'A locked drawer holds twisted double-helix ladders, each rung labeled A-T or C-G, with a photocopier next to it constantly making RNA copies.', fact:'DNA → RNA → Proteins; base pairing A-T, C-G (A-U in RNA).'}
   ]},
 {id:'bn2', title:'2. Cells: Theory, Prokaryotic & Eukaryotic Structure', content:[
     {h:'The Cell Theory: Historical Development', b:[
@@ -1525,6 +1724,12 @@ const DATA = [
     {term:'Cristae', def:'folded inner mitochondrial membrane, increases surface area.'},
     {term:'Amyloplast / Chromoplast', def:'colorless starch-storing plastid / plastid giving fruits/flowers color.'},
     {term:'Cilia vs. Flagella', def:'Cilia: many, short, for locomotion. Flagella: few (1-2), longer, for locomotion.'}
+  ], palace:[
+    {stop:'Front Hall Portrait Gallery', image:'Four portraits hang in a row: Hooke labeling a cork cell "CELL," Leeuwenhoek squinting at "little animacules," Schwann & Schleiden shaking hands over "basic unit of life," and Virchow pointing at two cells splitting into more.', fact:'Cell Theory history: Hooke (named "cell"), Leeuwenhoek (microorganisms), Schwann/Schleiden (basic unit), Virchow (cells from cells).'},
+    {stop:'Front Door', image:'A plain, unmarked room behind the door has no name tag on its control center — just a loose cloud of DNA floating in the corner.', fact:'Prokaryotes lack a true nucleus; DNA is in the unenclosed nucleoid.'},
+    {stop:'Living Room', image:'A brick wall stands only around the plant-shaped furniture, while the animal-shaped furniture has no wall, just a stretchy curtain.', fact:'Plant cells have a rigid cellulose cell wall; animal cells only have the flexible plasma membrane.'},
+    {stop:'Factory Room Upstairs', image:'A conveyor belt covered in ribosome-studded bumps (Rough ER) feeds into a smooth slide (Smooth ER), both dumping packages into a stack of Golgi boxes labeled "cis" on one end and "trans" on the other.', fact:'Rough ER = studded with ribosomes, secretory proteins. Smooth ER = lipids/detox. Golgi: cis (receiving) → trans (dispatching).'},
+    {stop:'Furnace Room in the Basement', image:'A furnace with deeply folded metal fins (cristae) roars louder the harder the house works — more fins mean more heat/energy output.', fact:'Mitochondrial cristae increase surface area; mitochondria number correlates with metabolic activity.'}
   ]},
 {id:'bn3', title:'3. Microscopy', content:[
     {h:'Types of Microscopes', b:[
@@ -1577,6 +1782,11 @@ const DATA = [
     {term:'Atomic Force Microscope', def:'uses a stylus; sees actual specimen movement; live or preserved.'},
     {term:'Confocal Microscope', def:'laser + fluorescent microscope; images thin planes of thick specimens.'},
     {term:'Coarse vs. Fine adjustment knob', def:'Coarse — for magnification/focus; Fine — for better resolution.'}
+  ], palace:[
+    {stop:'Study Desk', image:'A microscope sits with a sticky note reading "1000x MAX" taped to the eyepiece, right next to a bulkier dissecting scope labeled "100x MAX — but you can cut things."', fact:'Compound Light Microscope: max 1000x. Stereoscope: max 100x, allows dissection.'},
+    {stop:'Lab Cabinet', image:'Two glowing electron guns sit side by side — one shoots straight THROUGH a thin dead bug (flat 2D shadow appears on the wall), the other bounces OFF a dead bug\'s surface (a glowing 3D shape appears).', fact:'TEM: electrons pass through, 2D image. SEM: electrons reflect off, 3D image.'},
+    {stop:'Windowsill', image:'A tiny robotic finger (stylus) pokes gently at a live, wriggling specimen, tracing every bump without hurting it.', fact:'Atomic Force Microscope: uses a stylus, can observe live specimen movement.'},
+    {stop:'Supply Drawer', image:'Two knobs sit on a control panel — a big chunky one that yanks the lens closer FAST, and a tiny delicate one that nudges it a hair\'s width for a crisper picture.', fact:'Coarse adjustment = magnification/focus. Fine adjustment = better resolution.'}
   ]}
 ]},
 {id:'funfaith', name:'FunFaith: Religion', lessons:[
@@ -1626,6 +1836,11 @@ const DATA = [
     {term:'Special Revelation', def:'"supernatural revelation," equated with the Bible.'},
     {term:'Private Revelation', def:'apparitions/mystical experiences, examined by the Magisterium.'},
     {term:'Public Revelation', def:'revelation through Jesus Christ; final, complete, imposes obligation of faith.'}
+  ], palace:[
+    {stop:'Front Curtain', image:'A heavy velvet curtain is being lifted by an unseen hand, revealing a glowing figure behind it — "Revelare: to lift the veil."', fact:'Revelare means to lift the veil, to disclose, to uncover.'},
+    {stop:'Family Photo Wall', image:'A family portrait shows God depicted as both a warm Mother figure and a close Friend, with sticky notes on each: one saying "approachable," the other "watch the over-familiarity."', fact:'God as Mother/Friend: positive (approachable/immanent) and negative (weakens image/over-familiarity) aspects.'},
+    {stop:'Bookshelf of Four Volumes', image:'Four books stand in a row: a leafy green one (Nature), a golden one (Special/Bible), a shimmering ghostly one (Private/apparitions), and a bright shining one glowing brighter than the rest (Public/Christ).', fact:'4 Types of Revelation: Natural, Special, Private, Public.'},
+    {stop:'Prayer Corner', image:'Three candles are lit in a row, labeled KNOW (an open Bible), LOVE (two clasped hands), WORSHIP (a bowed head).', fact:'The 3-part challenge: Know Him more clearly, Love Him more deeply, Worship more sincerely.'}
   ]},
   {id:'ff2', title:'2. Transmission of Faith', content:[
     {h:'Faith', b:[
@@ -1668,6 +1883,11 @@ const DATA = [
     {term:'Tradare', def:'Latin: to pass on; to hand over — root of "tradition."'},
     {term:'Sola Scriptura', def:'Reformers\' belief that Scripture alone is the final authority.'},
     {term:'Tripod of Catholic Faith', def:'Sacred Tradition, Sacred Scripture, and the Magisterium — working together.'}
+  ], palace:[
+    {stop:'Handshake at the Door', image:'Two hands clasp firmly, one labeled "Fides" (trust/loyalty), the other whispering "ob-audire" (to listen).', fact:'Fides = trust, loyalty. Ob-Audire = obedience, to hear/listen.'},
+    {stop:'Keys on the Hook', image:'A giant set of keys hangs labeled "PETER," with a cornerstone behind it reading "on this rock I will build my Church."', fact:'St. Peter, the first Pope, was commissioned by Christ.'},
+    {stop:'Relay Race Baton on the Table', image:'A baton passes hand to hand down a long line of runners, first spoken aloud (Oral Tradition), then eventually written on a scroll (Written Tradition).', fact:'Tradare = to pass on/hand over; Oral Tradition came first, Written Tradition followed.'},
+    {stop:'Three-Legged Stool in the Corner', image:'A stool with exactly three legs — one carved "Tradition," one "Scripture," one "Magisterium" — falls over if any leg is removed.', fact:'The Tripod of Catholic Faith: Sacred Tradition, Sacred Scripture, Magisterium.'}
   ]},
   {id:'ff3', title:'3. Faith, Creed, and the Holy Trinity', content:[
     {h:'Faith: Fides Qua and Fides Quae', b:[
@@ -1706,6 +1926,11 @@ const DATA = [
     {term:'Fides Quae', def:'the content of what is believed (Creed, Decalogue, Dogmas).'},
     {term:'Credo', def:'Latin: "I believe" — root of "creed."'},
     {term:'Consubstantial', def:'sharing the same divine substance — describes the unity of the Trinity by nature.'}
+  ], palace:[
+    {stop:'Twin Mirrors in the Hallway', image:'One mirror shows you actively doing something (going to Mass), the other shows the reflection\'s written content (the Creed itself) — same moment, two different views.', fact:'Fides Qua = the act of believing. Fides Quae = the content believed.'},
+    {stop:'Baptismal Font by the Entrance', image:'An ancient stone basin has "CREDO" carved deep into its rim, with no signature — nobody knows who first wrote it.', fact:'Credo = "I believe"; the Apostles\' Creed has no single author.'},
+    {stop:'Stained Glass Window', image:'Three glowing figures merge into one seamless beam of light shining through the glass — impossible to tell where one ends and the next begins.', fact:'The Holy Trinity: Father, Son, Holy Spirit — one God, three Persons.'},
+    {stop:'Family Tree on the Wall', image:'A tree with one root (the Father, unbegotten), one branch begotten FROM that root (the Son), and a wind blowing FROM both onto everything else (the Spirit).', fact:'Father = origin without origin. Son = begotten by the Father. Holy Spirit = proceeds from Father and Son.'}
   ]},
   {id:'ff4', title:'4. The Bible: Old and New Testament', content:[
     {h:'The Bible', b:[
@@ -1751,6 +1976,11 @@ const DATA = [
     {term:'Canon of Scripture', def:'the official list of inspired books; means "measuring stick."'},
     {term:'Deuterocanonical', def:'"second canon" — books Catholics consider equally inspired, finalized at the Council of Trent.'},
     {term:'Biblical Inerrancy', def:'freedom from error — the Bible teaches no error in the saving truth.'}
+  ], palace:[
+    {stop:'Old Scroll Case by the Window', image:'A roll of papyrus is stacked flat, then bound together into a "codex," with a Greek label reading "Byblos."', fact:'Byblos (Greek: papyrus) → codex (bound book) → Biblion/Biblia.'},
+    {stop:'Rubber Stamp Station', image:'Three official stamps sit in a row: "Nihil Obstat" (nothing hinders), "Imprimi Potest" (may be printed), "Imprimatur" (let it be printed) — each needing a different official\'s signature.', fact:'Nihil Obstat (Censor Librorum), Imprimi Potest (major superior), Imprimatur (diocesan bishop).'},
+    {stop:'Breathing Statue in the Corner', image:'A statue exhales gently onto a blank page, and words appear — but the statue\'s hand still moves the pen itself, guided but not possessed.', fact:'Inspiration = "to breathe into"; NOT dictation — the Holy Spirit guided human authors who still wrote normally.'},
+    {stop:'Library Card Catalog', image:'A drawer labeled "73" (Catholic) sits next to a slightly thinner drawer labeled "66" (Non-Catholic), with a "second canon" tab sticking out of the fatter drawer.', fact:'Catholic Bible: 73 books. Non-Catholic Bible: 66 books. Deuterocanonical = "second canon."'}
   ]}
 ]},
 {id:'lcs', name:'LCS: Life Career Skills', lessons:[
@@ -1786,6 +2016,10 @@ const DATA = [
     {term:'Nurture', def:'influences of learning and environment.'},
     {term:'Risk Factors', def:'internal/external conditions that negatively affect development.'},
     {term:'Protective Factors', def:'internal/external conditions that positively affect development.'}
+  ], palace:[
+    {stop:'Bathroom Mirror', image:'Two reflections argue in the mirror — one calling itself "Actual Self," the other "Ideal Self" — slowly inching closer together.', fact:'Healthy self-concept forms when actual self and ideal self are close together.'},
+    {stop:'Family Photo Album', image:'One photo shows your face, the other shows a strand of DNA wearing your face too, arguing over whose fault your allergies are.', fact:'Nature = genetic predisposition. Nurture = environmental influence.'},
+    {stop:'Two Doors Side by Side', image:'One door has a warning sign covered in red flags (Risk Factors); the other has a shield glowing gold (Protective Factors) — same hallway, opposite effects.', fact:'Risk factors negatively affect development; protective factors positively affect it.'}
   ]},
 {id:'lc2', title:'2. Physical Development Across the Lifespan', content:[
     {h:'Prenatal Development (3 Stages)', b:[
@@ -1827,6 +2061,11 @@ const DATA = [
     {term:'Teratogens', def:'harmful substances (alcohol, smoke, chemicals) that can affect embryo development.'},
     {term:'Root / Suck / Moro Reflex', def:'baby instincts: finding food, taking in food, startle response.'},
     {term:'Gross motor skills', def:'larger movements like biking. Fine motor skills — more intricate movements like nail clipping.'}
+  ], palace:[
+    {stop:'Nursery Crib', image:'A newborn instinctively turns its head toward a feather brushing its cheek, then suddenly flings its arms out at a loud clap.', fact:'Root Reflex (finding food) and Moro Reflex (startle response).'},
+    {stop:'Toddler Play Mat', image:'A wobbling toddler kicks a ball, twists a doorknob, and flips book pages all at once, giggling the whole time.', fact:'Toddler milestones: kicking, running, twisting knobs, page-turning.'},
+    {stop:'Teen Bedroom Door (Closed)', image:'A "Do Not Disturb" sign hangs crooked, and behind the door, friends matter way more than family dinner right now.', fact:'Early Adolescence: peer relationships become more important than family time.'},
+    {stop:'Gym in the Basement', image:'A young adult effortlessly lifts weights at the absolute peak of their strength, glowing with stamina.', fact:'Early Adulthood (18-40) is the peak of physical health, strength, and stamina.'}
   ]},
 {id:'lc3', title:'3. Erikson\'s Psychosocial Development', content:[
     {h:'Overview: Erikson\'s 8 Stages', b:[
@@ -1867,6 +2106,12 @@ const DATA = [
     {term:'Intimacy vs. Isolation', def:'20-40 yrs, virtue: Love.'},
     {term:'Generativity vs. Stagnation', def:'40-65 yrs, virtue: Care.'},
     {term:'Integrity vs. Despair', def:'65-death, virtue: Wisdom.'}
+  ], palace:[
+    {stop:'8-Room Hallway', image:'Eight numbered doors line a long hallway, each with a two-word plaque nailed above it, from a baby crib room to a rocking chair room at the very end.', fact:'Erikson\'s 8 stages, Trust vs. Mistrust through Integrity vs. Despair.'},
+    {stop:'Room 1: Nursery', image:'A baby reaches trustingly for a bottle offered by a caregiver, glowing with a tiny halo labeled "Hope."', fact:'Trust vs. Mistrust (0-2), virtue: Hope.'},
+    {stop:'Room 2: Toddler Bathroom', image:'A toddler stomps and yells "ME DO IT!" while wrestling their own shirt on backwards.', fact:'Autonomy vs. Shame and Doubt (2-4), virtue: Will.'},
+    {stop:'Room 5: Teen Bedroom', image:'A mirror covered in sticky notes reads "Who am I?" over and over in different handwriting styles.', fact:'Identity vs. Role Confusion (12-19), virtue: Fidelity.'},
+    {stop:'Room 8: Rocking Chair Room', image:'An elderly figure rocks slowly, smiling at an old photo album, whispering "it was a good one."', fact:'Integrity vs. Despair (65-death), virtue: Wisdom.'}
   ]},
 {id:'lc4', title:'4. Piaget\'s Cognitive & Kohlberg\'s Moral Development', content:[
     {h:'Piaget: Cognitive Development Overview', b:[
@@ -1912,6 +2157,11 @@ const DATA = [
     {term:'Assimilation', def:'integrating new information into an existing schema.'},
     {term:'Accommodation', def:'modifying/creating a schema to fit new information.'},
     {term:'Pre-Conventional / Conventional / Post-Conventional', def:'Kohlberg\'s 3 levels of moral development, from punishment-avoidance to universal ethical principles.'}
+  ], palace:[
+    {stop:'Baby\'s Crib', image:'A baby plays peek-a-boo, gasping in genuine surprise every single time your face reappears — object permanence hasn\'t clicked yet.', fact:'Sensorimotor stage (0-2): object permanence is the main milestone.'},
+    {stop:'Playroom Floor', image:'A child insists a flattened blob of clay is "more" than a round ball of the exact same clay, pointing proudly at the flat one.', fact:'Preoperational stage: lack of conservation.'},
+    {stop:'Filing Cabinet in the Study', image:'A drawer labeled "DOG" jams shut on a cat, refusing to accept it doesn\'t fit — until someone forces a NEW drawer open labeled "CAT."', fact:'Assimilation: forcing new info into an old schema. Accommodation: creating/modifying a schema.'},
+    {stop:'Courthouse Steps', image:'Three levels of a staircase: bottom step has a kid avoiding a spanking, middle step has an adult following the law to fit in, top step has a person standing up for a stranger\'s rights on principle alone.', fact:'Kohlberg\'s levels: Pre-Conventional (avoid punishment) → Conventional (social order) → Post-Conventional (universal principles).'}
   ]},
 {id:'lc5', title:'5. Self-Concept and Identity', content:[
     {h:'Self-Concept', b:[
@@ -1957,6 +2207,10 @@ const DATA = [
     {term:'Identity Moratorium', def:'Yes exploration, No commitment. "#FindingMe."'},
     {term:'Identity Achievement', def:'Yes exploration, Yes commitment. "#ThisIsMe."'},
     {term:'MAMA Cycle', def:'Moratorium → Achievement → Moratorium → Achievement — identity development as an ongoing cycle.'}
+  ], palace:[
+    {stop:'Closet Full of Costumes', image:'Four hangers labeled #LostMode, #PrePlannedLife, #FindingMe, #ThisIsMe hold different outfits, and you try each one on in a mirror.', fact:'Marcia\'s 4 Identity Statuses: Diffusion, Foreclosure, Moratorium, Achievement.'},
+    {stop:'Parent\'s Old Trophy Shelf', image:'A kid wears a trophy their parent already won, never having competed for it themselves, nodding along obediently.', fact:'Identity Foreclosure: No exploration, Yes commitment (goals set by authority figures).'},
+    {stop:'Revolving Door at the Entrance', image:'A person spins through the same revolving door again and again — out into "exploring," back into "committed," out again.', fact:'MAMA Cycle: Moratorium → Achievement → Moratorium → Achievement, a lifelong loop.'}
   ]},
 {id:'lc6', title:'6. Self-Esteem', content:[
     {h:'What is Self-Esteem?', b:[
@@ -2000,6 +2254,11 @@ const DATA = [
     {term:'Self-Concept vs. Self-Esteem', def:'Self-concept = informative/cognitive (what you know); Self-esteem = evaluative/emotional (how you feel about it).'},
     {term:'#KnowYourReach', def:'threatened high self-esteem can lead to setting unrealistic, risky goals.'},
     {term:'#PeaceOverPride', def:'fragile/inflated self-esteem, when threatened, may lead to aggression.'}
+  ], palace:[
+    {stop:'Bathroom Scale', image:'The scale doesn\'t weigh your body — it weighs how much you VALUE yourself, and the number swings wildly after every test grade.', fact:'Self-esteem is situational, our attitude/value toward ourselves.'},
+    {stop:'Trophy Case', image:'A shaky trophy labeled "grades" is balanced precariously ON TOP of a much bigger base labeled "self-esteem," not the other way around.', fact:'Self-esteem is an EFFECT, not a cause, of academic performance.'},
+    {stop:'Balloon Animal on a String', image:'An overinflated balloon animal pops the SECOND someone pokes it, lashing out wildly as it deflates.', fact:'Inflated/fragile self-esteem, when threatened, can lead to outward aggression.'},
+    {stop:'Cork Board with Sticky Notes', image:'Sticky notes cover the board: "positive self-talk," "celebrate small wins," "don\'t compare," each glowing slightly.', fact:'Ways to boost self-esteem: positive self-talk, celebrating wins, avoiding comparison.'}
   ]},
 {id:'lc7', title:'7. Emotional Intelligence', content:[
     {h:'What is Emotional Intelligence?', b:[
@@ -2039,6 +2298,10 @@ const DATA = [
     {term:'5 Components of EI', def:'Self-Awareness, Self-Regulation, Motivation, Empathy, Social Skills (Goleman).'},
     {term:'Self-Regulation traits', def:'Trustworthiness, Conscientiousness, Adaptability, Innovation.'},
     {term:'Feeling vs. Thought', def:'"feel" followed by "that/like/as if" or nouns/pronouns often signals a thought, not a true feeling.'}
+  ], palace:[
+    {stop:'Control Panel with 5 Dials', image:'Five dials labeled Self-Awareness, Self-Regulation, Motivation, Empathy, Social Skills all need to be turned up for the machine to run smoothly.', fact:'Goleman\'s 5 Components of Emotional Intelligence.'},
+    {stop:'Dashboard Warning Light', image:'A dashboard light flashes "TRUSTWORTHY, CONSCIENTIOUS, ADAPTABLE, INNOVATIVE" in sequence whenever you try to cut corners.', fact:'Self-Regulation traits: Trustworthiness, Conscientiousness, Adaptability, Innovation.'},
+    {stop:'Speech Bubble Above Your Head', image:'A thought bubble says "I feel THAT my teacher is unfair" and pops instantly, revealing the REAL feeling hiding underneath: anger.', fact:'"Feel" + that/like/noun usually signals a thought disguised as a feeling.'}
   ]},
 {id:'lc8', title:'8. Managing One\'s Emotions', content:[
     {h:'Skills for Managing Emotions', b:[
@@ -2078,6 +2341,10 @@ const DATA = [
     {term:'Aggressive response', def:'expressing needs/feelings in a threatening/humiliating way; disrespectful to others.'},
     {term:'Assertive response', def:'expressing needs/feelings honestly and respectfully; respectful to both self and others.'},
     {term:'Traffic Light Model', def:'Green (calm/manageable), Yellow (caution, pause), Red (stop, calm down before acting).'}
+  ], palace:[
+    {stop:'Front Porch Light', image:'A porch light only turns on once you say your emotion OUT LOUD by name — "frustrated" — click, it switches on.', fact:'Noticing + Labeling emotions is the most basic EQ skill.'},
+    {stop:'Actual Traffic Light on the Corner', image:'A real traffic light hangs outside, but instead of cars it controls YOUR reactions — green means keep going, yellow means pause and check yourself, red means pull over completely.', fact:'Traffic Light Model: Green (manageable), Yellow (pause/caution), Red (stop and calm down).'},
+    {stop:'Three Mailboxes in a Row', image:'One mailbox is empty and never gets sent (Passive), one is stuffed so aggressively it\'s ripping (Aggressive), and one has a neat, respectful letter inside (Assertive).', fact:'Passive = disrespectful to self. Aggressive = disrespectful to others. Assertive = respectful to both.'}
   ]},
 {id:'lc9', title:'9. Adolescence & Havighurst\'s Developmental Tasks', content:[
     {h:'Adolescence Overview', b:[
@@ -2121,6 +2388,11 @@ const DATA = [
     {term:'Personal Fable', def:'belief that one is uniquely special/invulnerable, unlike anyone else.'},
     {term:'Tact', def:'the art of making a point without making an enemy.'},
     {term:'Havighurst\'s Developmental Tasks', def:'if completed at the "correct" time, leads to happiness/acceptance; failure leads to unhappiness.'}
+  ], palace:[
+    {stop:'Bathroom Mirror', image:'You feel like the entire mirror is a spotlight and everyone in the house is watching your every move.', fact:'Imaginary Audience: belief that others are as focused on you as you are.'},
+    {stop:'Car in the Driveway', image:'A teen hops in the driver\'s seat convinced that accidents only happen to OTHER people, never them.', fact:'Personal Fable: belief that one is uniquely invulnerable.'},
+    {stop:'Diplomat\'s Desk', image:'A tiny diplomat figurine makes a sharp point without anyone storming off angry — smooth, careful wording.', fact:'Tact: the art of making a point without making an enemy.'},
+    {stop:'11-Step Staircase', image:'Eleven stairs climb the wall, each with a sticky note: body changes, harder tests, choosing friends, bigger words, "who am I," career dreams, moving out, growing up sexually, personal values, self-control.', fact:'Havighurst\'s 11 developmental tasks for adolescence.'}
   ]},
 {id:'lc10', title:'10. Physiological Development & Health', content:[
     {h:'Physiological Development in Adolescents', b:[
@@ -2164,6 +2436,11 @@ const DATA = [
     {term:'Recommended sleep (adolescents)', def:'8-10 hours per night.'},
     {term:'Recommended exercise (adolescents)', def:'at least 60 minutes/day.'},
     {term:'Recommended exercise (adults)', def:'at least 30 minutes of moderate-intensity exercise.'}
+  ], palace:[
+    {stop:'Nursery Growth Chart', image:'A pencil mark on the wall labeled "still under construction" hovers right at brain-height, with wires sticking out.', fact:'The brain is still developing during adolescence, affecting decision-making/impulse control.'},
+    {stop:'Kids\' Lunch Tray', image:'Three colorful sections spell out "GO, GROW, GLOW" in food shapes.', fact:'"Go, Grow, Glow" foods: a nutrition framework for children.'},
+    {stop:'Teen\'s Sports Bag', image:'A stopwatch reads exactly "60 minutes" strapped to a basketball rolling out the door.', fact:'Adolescents: recommended 60 minutes/day of physical activity.'},
+    {stop:'Adult\'s Calendar on the Wall', image:'A circled reminder reads "30 min walk + doctor checkup" every single week without fail.', fact:'Adults: 30 min moderate exercise + regular health checkups.'}
   ]},
 {id:'lc11', title:'11. Fitness, Health, and Wellness', content:[
     {h:'Physiological Development & Factors', b:[
@@ -2211,6 +2488,10 @@ const DATA = [
     {term:'Health-related Fitness Components', def:'Body Composition, Flexibility, Muscular Fitness, Cardiovascular Fitness.'},
     {term:'Skill-related Fitness Components', def:'Speed, Coordination, Balance, Reaction-time, Power.'},
     {term:'Philippines Physical Activity Pyramid', def:'Everyday Activities (base) → 4-6x/week → 2-3x/week vigorous → Cut Down sedentary behavior (top).'}
+  ], palace:[
+    {stop:'Couch in the Living Room', image:'A couch potato slowly turns into a stiff joint and a racing heartbeat, with a sign taped to the remote: "hypo = low, kinetic = movement."', fact:'Hypokinetic diseases come from lack of physical activity (e.g. hypertension, diabetes).'},
+    {stop:'Backyard Pyramid Structure', image:'A stone pyramid stands in the yard — walking/chores at the wide base, biking/sports on the next level up, HIIT/strength training near the top, and a "cut down screen time" flag at the very peak.', fact:'Philippines Physical Activity Pyramid, base to top.'},
+    {stop:'Gym Equipment Rack', image:'Four labeled machines line the wall: a body-scanner, a stretchy band, a weight rack, a treadmill — all under a sign reading "HEALTH-related."', fact:'Health-related fitness: Body Composition, Flexibility, Muscular Fitness, Cardiovascular Fitness.'}
   ]},
 {id:'lc12', title:'12. Recreational Activities & Mindfulness', content:[
     {h:'Recreational Activities: Passive vs. Active', b:[
@@ -2251,6 +2532,11 @@ const DATA = [
     {term:'Mindfulness', def:'the basic human ability to be fully present and aware, without being overly reactive.'},
     {term:'Box Breathing (4-4-4-4)', def:'inhale 4, hold 4, exhale 4, hold 4.'},
     {term:'STOP Technique', def:'Stop, Take a breath, Observe, Proceed with awareness.'}
+  ], palace:[
+    {stop:'Cozy Reading Nook', image:'A person sinks into a beanbag with a book, a movie playing softly, background music humming — completely relaxed and still.', fact:'Passive Recreation: low physical demand, relaxation-focused (reading, movies, music).'},
+    {stop:'Backyard Obstacle Course', image:'Someone bikes, hikes, and rock-climbs all in one loop around the yard, endorphins practically visible in the air.', fact:'Active Recreation: physical exertion, releases endorphins.'},
+    {stop:'Garden Bench', image:'You sit perfectly still, noticing your breath, the breeze, the birds — nothing rushed, nothing judged.', fact:'Mindfulness: the basic human ability to be fully present and aware.'},
+    {stop:'Front Gate (STOP sign)', image:'A red STOP sign hangs on the gate, and each letter glows one at a time: Stop, Take a breath, Observe, Proceed.', fact:'The STOP Technique for a mindful pause.'}
   ]}
 ]},
 ];
@@ -2268,7 +2554,8 @@ const ICONS = {
   check: '<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>',
   cross: '<svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
   bulb: '<svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.9 1 1 1.8V17h6v-.5c.1-.8.5-1.4 1-1.8A7 7 0 0 0 12 2z"/></svg>',
-  flip: '<svg class="icon" viewBox="0 0 24 24"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H3"/></svg>'
+  flip: '<svg class="icon" viewBox="0 0 24 24"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H3"/></svg>',
+  palace: '<svg class="icon" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01M12 6.5V4"/></svg>'
 };
 
 /* ============================= THEME ============================= */
@@ -2360,7 +2647,11 @@ function renderMain(){
   quizBtn.innerHTML = ICONS.edit + 'Quiz';
   quizBtn.className = state.mode==='quiz' ? 'active' : '';
   quizBtn.onclick = ()=>{ state.mode='quiz'; state.quiz=null; renderMain(); };
-  toggle.appendChild(studyBtn); toggle.appendChild(termsBtn); toggle.appendChild(quizBtn);
+  const palaceBtn = document.createElement('button');
+  palaceBtn.innerHTML = ICONS.palace + 'Memory Palace';
+  palaceBtn.className = state.mode==='palace' ? 'active' : '';
+  palaceBtn.onclick = ()=>{ state.mode='palace'; state.quiz=null; renderMain(); };
+  toggle.appendChild(studyBtn); toggle.appendChild(termsBtn); toggle.appendChild(quizBtn); toggle.appendChild(palaceBtn);
   headerDiv.appendChild(toggle);
   main.appendChild(headerDiv);
 
@@ -2378,9 +2669,42 @@ function renderMain(){
     });
   } else if(state.mode==='terms'){
     renderTerms(lesson, main);
+  } else if(state.mode==='palace'){
+    renderPalace(lesson, main);
   } else {
     renderQuiz(lesson, main);
   }
+}
+
+function renderPalace(lesson, main){
+  const stops = lesson.palace || [];
+  if(stops.length===0){
+    const empty = document.createElement('div');
+    empty.className = 'welcome';
+    empty.textContent = 'No memory palace built for this lesson yet.';
+    main.appendChild(empty);
+    return;
+  }
+  const intro = document.createElement('div');
+  intro.className = 'palace-intro';
+  intro.innerHTML = `${ICONS.palace}<span>Walk through this route in your head, in order. Picture each scene vividly — the weirder, the more it sticks.</span>`;
+  main.appendChild(intro);
+
+  const track = document.createElement('div');
+  track.className = 'palace-track';
+  stops.forEach((s,i)=>{
+    const row = document.createElement('div');
+    row.className = 'palace-stop';
+    row.innerHTML = `
+      <div class="palace-num">${i+1}</div>
+      <div class="palace-body">
+        <div class="palace-location">${s.stop}</div>
+        <div class="palace-image">${s.image}</div>
+        <div class="palace-fact"><strong>Encodes:</strong> ${s.fact}</div>
+      </div>`;
+    track.appendChild(row);
+  });
+  main.appendChild(track);
 }
 
 function renderTerms(lesson, main){
