@@ -73,10 +73,45 @@
   }
   .mixed-review-btn svg{width:14px;height:14px;}
   .mastery-line{font-size:0.82rem;color:var(--muted);margin-top:8px;}
+
+  .mixed-setup-panel{max-width:560px;}
+  .mixed-setup-section{
+    background:var(--card);border:1px solid var(--border);border-radius:10px;
+    padding:14px 16px;margin-bottom:16px;
+  }
+  .mixed-setup-section h4{margin:0 0 10px;font-size:0.92rem;color:var(--accent2);}
+  .mixed-quick-row{display:flex;gap:8px;margin-bottom:10px;}
+  .mixed-lesson-checklist{display:flex;flex-direction:column;gap:6px;max-height:260px;overflow-y:auto;}
+  .mixed-lesson-row{
+    display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--ink);
+    padding:6px 8px;border-radius:6px;cursor:pointer;
+  }
+  .mixed-lesson-row:hover{background:var(--hover);}
+  .mixed-lesson-row input[type="checkbox"]{width:16px;height:16px;flex-shrink:0;cursor:pointer;}
+  .mixed-count-input{
+    width:90px;padding:6px 10px;font-size:0.9rem;border-radius:6px;
+    border:1px solid var(--border);background:var(--choice-bg);color:var(--ink);
+  }
+  .mixed-count-hint{font-size:0.78rem;color:var(--muted);margin-top:8px;}
+  .start-mixed-btn{
+    display:flex;align-items:center;gap:8px;justify-content:center;width:100%;
+    background:var(--accent);color:#fff;border:none;border-radius:24px;
+    padding:12px 20px;font-size:0.95rem;font-weight:bold;cursor:pointer;
+  }
+  .start-mixed-btn:hover{opacity:0.92;}
+  .start-mixed-btn:disabled{opacity:0.5;cursor:not-allowed;}
+  .start-mixed-btn svg{width:16px;height:16px;}
+
   .source-tag{
     display:inline-block;font-size:0.72rem;color:var(--accent2);background:var(--hover);
     padding:3px 10px;border-radius:12px;margin-bottom:10px;font-weight:bold;
   }
+  .dual-statement-wrap{margin-bottom:14px;}
+  .statement-block{
+    background:var(--hover);border:1px solid var(--border);border-radius:8px;
+    padding:10px 14px;margin-bottom:8px;font-size:0.92rem;line-height:1.5;color:var(--ink);
+  }
+  .statement-label{font-weight:bold;color:var(--accent2);}
 
   main{flex:1;padding:22px 26px;}
   .welcome{color:var(--muted);text-align:center;margin-top:60px;font-size:0.95rem;}
@@ -684,7 +719,27 @@ const DATA = [
     {q:'Ano ang kahinaan ng tradisyunal na kahulugan ng kasaysayan?', c:['Masyadong maraming batis','Batay lamang sa nakasulat na dokumento, hindi isinasaalang-alang ang oral history','Hindi kailanman ginamit sa paaralan','Wala itong kahinaan'], a:1, e:'Ang tradisyunal na kahulugan ay batay lamang sa nakasulat na dokumento — hindi isinasaalang-alang ang oral history o mga cultural artifact.'},
     {q:'Ang intensyonal na pagbabago sa tala ng kasaysayan sa personal na antas ay tinatawag na:', c:['Historical Revisionism','Historical Distortion','Historiography','Ethnography'], a:1, e:'Historical Distortion ang tawag sa MALING, intensyonal na pagbabago ng tala ng kasaysayan sa personal na antas — iba ito sa Revisionism na para sa accuracy.'},
     {q:'Sino ang kinikilalang "Ama ng Kasaysayang Siyentipiko"?', c:['Herodotus','Leopold Von Ranke','Renato Constantino','Teodoro Agoncillo'], a:1, e:'Si Leopold Von Ranke ang kinikilalang Ama ng Kasaysayang Siyentipiko.'},
-    {q:'Alin ang HINDI kabilang sa kahalagahan ng kasaysayan?', c:['Gabay sa hinaharap','Pagpapalaganap ng nasyonalismo','Pagbibigay linaw sa mga kondisyon ng isang panahon','Pagbabawal sa pag-aaral ng ibang bansa'], a:3, e:'Ang kasaysayan ay nagsisilbing gabay, nagpapalaganap ng nasyonalismo, at nagbibigay linaw sa konteksto ng isang panahon — hindi ito nagbabawal ng pag-aaral ng ibang bansa.'}
+    {q:'Alin ang HINDI kabilang sa kahalagahan ng kasaysayan?', c:['Gabay sa hinaharap','Pagpapalaganap ng nasyonalismo','Pagbibigay linaw sa mga kondisyon ng isang panahon','Pagbabawal sa pag-aaral ng ibang bansa'], a:3, e:'Ang kasaysayan ay nagsisilbing gabay, nagpapalaganap ng nasyonalismo, at nagbibigay linaw sa konteksto ng isang panahon — hindi ito nagbabawal ng pag-aaral ng ibang bansa.'},
+    {q:'Saan nagmula ang salitang "Historia/Historie"?', c:['Salitang Latin','Salitang Griyego','Salitang Espanyol','Salitang Arabe'], a:1, e:'Ang "Historia/Historie" ay mula sa salitang Griyego.'},
+    {q:'Ano ang ibig sabihin ng "Historia" sa wikang Griyego?', c:['Talaan ng mga hari','Pagkatuto, pagtatanong sa pag-aaral o pag-iimbestiga','Sining ng pagsasalaysay','Koleksiyon ng dokumento'], a:1, e:'Sa Griyego, ang "Historia" ay nangangahulugang pagkatuto o pagtatanong sa pag-aaral/pag-iimbestiga — ito ang pinakamahalagang kahulugan.'},
+    {q:'Ayon sa modyul, ang kasaysayan ay isang sanaysay na:', c:['Walang saysay sa kasalukuyan', 'May saysay na magpapabago sa lipunan ngayon', 'Puro alamat at kathang-isip lamang', 'Tungkol lamang sa mga hari at reyna'], a:1, e:'Ang kasaysayan ay isang sanaysay na isinasalaysay na may saysay na magpapabago sa lipunan ngayon.'},
+    {q:'Ano ang mahalagang gawain ng isang historyador?', c:['Gumawa ng sariling alamat', 'Tamang interpretasyon at pagbuhay muli sa nakaraan gamit ang artifacts sa sistematikong paraan', 'Sumulat lamang ng kathang-isip', 'Huwag gumamit ng mga dokumento'], a:1, e:'Mahalagang gawain ng historyador ang tamang interpretasyon at pagbuhay muli sa nakaraan sa pamamagitan ng mga artifacts sa maayos at sistematikong paraan.'},
+    {q:'Bakit mahalaga ang mga historyador sa pag-aaral ng kasaysayan?', c:['Sila lamang ang may karapatang bumasa ng libro', 'Wala tayong maaaral na kasaysayan kung wala sila — sila ang gumagawa ng tala mula sa mga natagpuang datos', 'Sila ang gumagawa ng mga batas', 'Wala silang mahalagang gawain'], a:1, e:'Kung wala ang mga historyador, wala tayong maaaral na kasaysayan sapagkat sila ang gumagawa ng mga tala batay sa mga nahanap na datos at artifacts.'},
+    {q:'Ang Makabago/Modernong kahulugan ng kasaysayan ay muling pagbubuo ng nakaraan batay sa:', c:['Nakasulat na tala lamang', 'Nakasulat na tala, oral history/kasaysayang pagsalita, at cultural artifacts', 'Alamat lamang', 'Opinyon ng mga hari'], a:1, e:'Ang makabagong kahulugan ay gumagamit ng nakasulat na tala, kasaysayang pagsalita (oral history), at mga artifacts sa kultura at tradisyon.'},
+    {q:'Ano ang "artifacts" ayon sa makabagong kahulugan ng kasaysayan?', c:['Mga tangible objects na nagrerepresenta sa nakaraan', 'Mga kwentong-bayan lamang', 'Mga bagong batas', 'Mga modernong teknolohiya'], a:0, e:'Ang artifacts ay mga tangible objects (hal. kasangkapan, larawan) na nagrerepresenta sa nakaraan.'},
+    {q:'Ano ang layunin ng Historical Revisionism?', c:['Sirain ang orihinal na tala', 'Gawing mas accurate ang kasaysayan kung may mahalagang pagbabagong kailangan', 'Itago ang katotohanan', 'Palitan ang tala para sa sariling interes'], a:1, e:'Ang Historical Revisionism ay ang pagbabago o pag-rerevise ng kasaysayan upang mas maging accurate ito, kung may mahalagang pagbabagong kailangan.'},
+    {q:'Paano naiiba ang Historical Distortion sa Historical Revisionism?', c:['Walang pagkakaiba ang dalawa', 'Ang Distortion ay intensyonal at para sa personal na interes; ang Revisionism ay para sa accuracy', 'Ang Revisionism ay laging mali', 'Ang Distortion ay ginagawa lamang ng mga historyador'], a:1, e:'Ang Historical Distortion ay intensyonal na pagbabago para sa personal na interes o layunin — mali ito, kumpara sa Revisionism na naglalayong maging mas accurate.'},
+    {q:'Alin sa sumusunod ang halimbawa ng Historical Distortion?', c:['Pagwawasto ng petsa dahil may bagong nahanap na ebidensya', 'Sadyang pagbabago ng tala upang itago ang katotohanan tungkol sa sarili', 'Pagdaragdag ng bagong saliksik sa isang libro', 'Pag-publish ng bagong edisyon ng aklat'], a:1, e:'Ang sadyang pagbabago ng tala upang itago ang katotohanan (para sa personal na interes) ay Historical Distortion.'},
+    {q:'Ang kasaysayan ay nagsisilbing gabay at tulay sa pagitan ng:', c:['Dalawang bansa', 'Kasalukuyan at nakaraan', 'Agham at sining', 'Relihiyon at pulitika'], a:1, e:'Ang kasaysayan ay gabay at tulay sa pagitan ng kasalukuyan at nakaraan.'},
+    {q:'Paano nakakatulong ang kasaysayan sa pag-unawa ng hinaharap?', c:['Wala itong kinalaman sa hinaharap', 'Nagbibigay ito ng linaw sa maaaring mangyari batay sa nangyari noon', 'Ito ay nagbabawal lamang', 'Hindi ito maaasahan'], a:1, e:'Nagbibigay linaw ang kasaysayan sa mga maaaring mangyari sa hinaharap batay sa kung ano ang nangyari noon.'},
+    {q:'Ang pagtataguyod ng nasyonalismo at pagkamakabayan ay bahagi ng:', c:['Kahinaan ng kasaysayan', 'Kahalagahan ng kasaysayan', 'Historical Distortion', 'Ethnography'], a:1, e:'Isa sa kahalagahan ng kasaysayan ang pagtataguyod ng nasyonalismo at pagkamakabayan.'},
+    {q:'Ang kasaysayan ay kasangkapan din sa pag-unawa ng:', c:['Pambansang pagkakakilanlan', 'Mga banyagang wika lamang', 'Agham pang-kalawakan', 'Matematika'], a:0, e:'Ang kasaysayan ay isang kasangkapan sa pag-unawa ng pambansang pagkakakilanlan.'},
+    {q:'DUAL — Statement 1: Si Herodotus ang Ama ng Kasaysayan. Statement 2: Si Leopold Von Ranke ang Ama ng Kasaysayang Siyentipiko.', c:[], type:'dual', s1:'Si Herodotus ang Ama ng Kasaysayan.', s2:'Si Leopold Von Ranke ang Ama ng Kasaysayang Siyentipiko.', a:0, e:'Parehong totoo — si Herodotus ang Ama ng Kasaysayan, at si Von Ranke naman ang Ama ng Kasaysayang Siyentipiko.'},
+    {type:'dual', s1:'Ang Historical Revisionism ay palaging negatibo o mali.', s2:'Ang Historical Distortion ay ginagawa para sa layuning maging mas accurate.', a:1, e:'Parehong mali — ang Revisionism ay maaaring positibo (para sa accuracy), samantalang ang Distortion ay HINDI para sa accuracy kundi para sa personal na interes.'},
+    {type:'dual', s1:'Ang tradisyunal na kahulugan ng kasaysayan ay batay lamang sa nakasulat na dokumento.', s2:'Ang makabagong kahulugan ay sumasali rin ng oral history at cultural artifacts.', a:0, e:'Parehong totoo — ito nga ang pangunahing pagkakaiba ng tradisyunal at makabagong kahulugan ng kasaysayan.'},
+    {type:'dual', s1:'Walang kaugnayan ang kasaysayan sa nasyonalismo.', s2:'Ang kasaysayan ay nakakatulong lamang sa pag-aaral ng ibang bansa.', a:1, e:'Parehong mali — nakakatulong ang kasaysayan sa nasyonalismo, at hindi lamang ito tungkol sa ibang bansa kundi pati na rin sa sariling bansa.'},
+    {type:'dual', s1:'Si Herodotus ay taga-Gresya.', s2:'Ang salitang "Historia" ay nagmula sa wikang Latin.', a:2, e:'Tama ang Statement 1 (Griyego/Gresya si Herodotus), pero mali ang Statement 2 — ang "Historia" ay mula sa Griyego, hindi Latin.'}
+  
   ], glossary:[
     {term:'Historia/Historie', def:'salitang Griyego na nangangahulugang pagkatuto/pagtatanong sa pag-aaral o pag-iimbestiga.'},
     {term:'Historical Revisionism', def:'pagbabago/pag-rerevise ng kasaysayan para maging mas accurate.'},
@@ -698,17 +753,25 @@ const DATA = [
     {stop:'Bintana sa Ikalawang Palapag', image:'Dalawang salamin ang nakadikit — isa lang ang malinaw (Tradisyunal, batay lang sa dokumento), ang isa ay may dagdag na larawan ng oral na kwento at gamit (Makabago/Moderno).', fact:'Tradisyunal na kahulugan = nakasulat lamang; Makabagong kahulugan = kasama na ang oral history at artifacts.'},
     {stop:'Sulok ng Silid-Aralan', image:'Isang estudyanteng nagsasalaysay ng kwento ng kanyang lolo, habang may lumang larawan at gamit na nakalatag sa mesa.', fact:'Makabagong kasaysayan ay muling pagbubuo ng nakaraan gamit ang tala, oral history, at cultural artifacts.'}
   ]},
-  {id:'pk2', title:'2. Ika-19 na Siglo at Historiyograpiya', content:[
+  {id:'pk2', title:'2. Ika-19 na Siglo at Historiyograpiya',   content: [
     {h:'Impluwensya ng Ika-19 na Siglo (1801-1900)', b:[
       'Positivist: diin sa scientific method/proseso. Empiricist: batay sa karanasan bilang pinagmumulan ng kaalaman — magkatulad ang dalawa.',
       'Ang kasaysayan ay naging isang agham — "walang dokumento, walang kasaysayan."',
       'Mga pangyayari noong ika-19 siglo: Industrial Revolution, pagsikat ni Karl Marx, pagkabuhay ni Jose Rizal, pagkabuo ng mga Ilustrado.',
-      '3Gs ng kolonisasyon: God (kristiyanismo), Gold (spices/yaman), Glory (mas maraming kolonya, kapangyarihan).'
+      '3Gs ng kolonisasyon: God (kristiyanismo), Gold (spices/yaman), Glory (mas maraming kolonya, kapangyarihan).',
+      'Leopold Von Ranke: "Ama ng Kasaysayang Siyentipiko," may impluwensya ng positivism at empiricism.'
+    ]},
+    {h:'Araling Panlipunan (AP)', b:[
+      'Araling Panlipunan (Social Studies): pag-aaral ng mga indibidwal, komunidad, sistema, at ang kanilang ugnayan sa paglipas ng panahon.',
+      'Layunin: siyasatin ang malawak na karanasan ng sangkatauhan — pagsusuri sa nakaraan, pakikilahok sa kasalukuyan, at paghubog ng kinabukasan.'
     ]},
     {h:'Batis at Historiyograpiya', b:[
       'Facts, Archives (koleksiyon ng batis), Historyador (sumusulat sa mga batis), Historical methodology (interpretasyon, pagsusuri, pagpili ng impormasyon).',
       'Historiography/Historiyograpiya: ang pag-aaral ng pagsulat ng kasaysayan; ika-16 siglo — mga salaysay ng mga Espanyol (Ethnography).',
-      'Mga manunulat: Miguel de Loarca, Antonio de Morga, Francisco Alcina, Juan de Plasencia, Boxer Codex — lahat may kritisismo sa mga Pilipino.'
+      'Bakit hindi nagsimula ang historiography ng Pilipinas bago dumating ang mga Espanyol? Dahil wala pang pormal na sulat noong panahong iyon.',
+      'Mga manunulat: Miguel de Loarca (Relación de las Islas Filipinas, 1582), Pedro Chirino (Relación de las Islas Filipinas, 1604), Antonio de Morga (Sucesos de las Islas Filipinas), Francisco Alcina (Historia de las Islas e Indios de las Bisayas), Juan de Plasencia (La Relación de las Costumbres de los Tagalos), at ang Boxer Codex — walang tiyak na may-akda.',
+      'Karaniwan sa lahat: hindi isinaalang-alang ang naganap o historical fact mula sa perspektibo ng mga Pilipino — puro obserbasyon/kritisismo ng mga Espanyol.',
+      'Reform Movement: isinulat ang mga account ng ating sariling kasaysayan bilang reaksyon sa mga batis ng mga Espanyol tungkol sa mga Pilipino.'
     ]},
     {h:'Mga Pananaw sa Pagsulat ng Kasaysayan', b:[
       'Teodoro Agoncillo: kasaysayan bilang interpretasyon, mula sa pananaw ng Pilipinong historyador.',
@@ -718,38 +781,63 @@ const DATA = [
       'Paaralan ng Annales: inter-disciplinary, humantong sa iba\'t ibang sangay ng kasaysayan (pampulitika, ekonomiya, kultura, panlipunan, kapaligiran).'
     ]},
     {h:'Historical Methodology', b:[
+      'Hakbang: (1) Pagpili ng paksa, (2) Pagtitipon ng batis, (3) Pagsusuri/Historical Criticism, (4) Pagkuha ng datos mula sa tunay at kapani-paniwalang batis, (5) Pagsulat ng kasaysayang maayos, magkakaugnay, at angkop sa mambabasa.',
       'Panlabas na kritisismo: sinusuri ang piskal na anyo ng dokumento (ano, saan, kailan, paano nakuha).',
-      'Panloob na kritisismo: mas mataas na antas, sinusuri ang nilalaman at interpretasyon ng dokumento.',
-      'Kasaysayan bilang agham: batay sa facts, may mahigpit na proseso. Kasaysayan bilang sining: binibigyang kahulugan ng mananalaysay ang katotohanan mula sa batis.'
+      'Panloob na kritisismo: mas mataas na antas, sinusuri ang nilalaman, interpretasyon, at mga salitang ginamit sa dokumento.',
+      'Kasaysayan bilang agham: batay sa facts, sumusunod sa siyentipikong pamamaraan, may mahigpit na proseso. Kasaysayan bilang sining: binibigyang kahulugan ng mananalaysay ang katotohanan mula sa batis, dapat maayos, magkakaugnay, at eleganteng nakasulat.',
+      '"History repeats itself": hindi talaga literal na inuulit ang kasaysayan dahil nagbabago ang mga elemento nito — nagkakaroon lamang ng mga pattern na maihahalintulad sa kasalukuyan.',
+      'Kritisismo ng mga Batis: dapat tunay at kapani-paniwala ang batis; sinusuri ang pagiging tunay (authenticity) at kredibilidad nito.'
     ]}
-  ], quiz:[
+  ],
+  quiz: [
     {q:'Ano ang ibig sabihin ng "positivist" na diwa noong ika-19 siglo?', c:['Diin sa scientific method/proseso','Diin sa personal na damdamin','Diin sa oral tradition','Diin sa relihiyon'], a:0, e:'Ang positivist na kaisipan ay nagbibigay-diin sa scientific method o proseso bilang batayan ng kaalaman.'},
     {q:'Ano ang 3Gs ng kolonisasyon?', c:['Gold, Guns, Government','God, Gold, Glory','Greed, Gold, Government','God, Guns, Glory'], a:1, e:'Ang 3Gs ay God (kristiyanismo), Gold (spices/yaman), at Glory (mas maraming kolonya at kapangyarihan).'},
     {q:'Sino ang nagbigay-diin sa "kasaysayan bilang interpretasyon" mula sa pananaw ng Pilipinong historyador?', c:['Renato Constantino','Teodoro Agoncillo','Zeus Salazar','Leopold Von Ranke'], a:1, e:'Si Teodoro Agoncillo ang lumikha ng bagong pananaw — kasaysayan bilang interpretasyon, sa pananaw ng mga Pilipinong historyador.'},
     {q:'Ang "Pantayong Pananaw" ni Zeus Salazar ay may sloganng:', c:['"Kami, hindi kayo"','"Nagmula sa atin, para sa atin"','"Walang kasaysayan kung walang dokumento"','"Kasaysayan bilang agham"'], a:1, e:'Ang Pantayong Pananaw ay gumagamit ng wikang Pilipino, may sloganng "nagmula sa atin, para sa atin."'},
     {q:'Ang "Pangkaming Pananaw" ay tumutukoy sa:', c:['Pagsasama ng kausap sa "kami"','Hindi pagsasama ng kausap sa "kami" ("kami, hindi kayo")','Isang uri ng batis','Isang teorya ng migrasyon'], a:1, e:'Sa Pangkaming Pananaw, ang "kami" ay hindi kasama ang taong kausap — "kami, hindi kayo."'},
     {q:'Alin ang mas mataas na antas ng kritisismo — sumusuri sa nilalaman at interpretasyon ng dokumento?', c:['Panlabas na kritisismo','Panloob na kritisismo','Historiography','Ethnography'], a:1, e:'Ang panloob na kritisismo ay mas mataas na antas, sumusuri sa nilalaman, interpretasyon, at mga salitang ginamit sa dokumento.'},
-    {q:'Alin sa mga sumusunod ang HINDI isa sa mga manunulat na dumating sa Pilipinas noong ika-16 siglo?', c:['Miguel de Loarca','Antonio de Morga','Teodoro Agoncillo','Juan de Plasencia'], a:2, e:'Sina Miguel de Loarca, Antonio de Morga, at Juan de Plasencia ay mga Espanyol na manunulat noong ika-16 siglo; si Teodoro Agoncillo ay modernong Pilipinong historyador.'}
-  ], glossary:[
+    {q:'Alin sa mga sumusunod ang HINDI isa sa mga manunulat na dumating sa Pilipinas noong ika-16 siglo?', c:['Miguel de Loarca','Antonio de Morga','Teodoro Agoncillo','Juan de Plasencia'], a:2, e:'Sina Miguel de Loarca, Antonio de Morga, at Juan de Plasencia ay mga Espanyol na manunulat noong ika-16 siglo; si Teodoro Agoncillo ay modernong Pilipinong historyador.'},
+    {q:'Ano ang sinulat ni Antonio de Morga?', c:['Sucesos de las Islas Filipinas','Relación de las Islas Filipinas','Boxer Codex','Historia de las Islas e Indios de las Bisayas'], a:0, e:'Si Antonio de Morga ang sumulat ng "Sucesos de las Islas Filipinas."'},
+    {q:'Ano ang kaibahan ng "Boxer Codex" sa ibang batis ng ika-16 siglo?', c:['Ito ay may kilalang may-akda', 'Walang tiyak na may-akda; halo-halong accounts', 'Isinulat ito ng isang Pilipino', 'Ito lamang ang nagtataglay ng katotohanan'], a:1, e:'Ang Boxer Codex ay isang manuskrito na walang tiyak/kilalang may-akda — halo-halong accounts ito.'},
+    {q:'Ano ang karaniwang katangian ng mga unang salaysay ng mga Espanyol tungkol sa mga Pilipino?', c:['Isinulat mula sa pananaw ng Pilipino', 'Hindi isinaalang-alang ang historical fact mula sa perspektibong Pilipino', 'Palagi itong pabor sa mga Pilipino', 'Isinulat pagkatapos ng Ikalawang Digmaang Pandaigdig'], a:1, e:'Karaniwan, hindi isinaalang-alang ng mga manunulat na Espanyol ang naganap o historical fact mula sa perspektibo ng mga Pilipino.'},
+    {q:'Ang "Reform Movement" sa pagsulat ng kasaysayan ay:', c:['Pagsunod lamang sa isinulat ng mga Espanyol', 'Pagsulat ng sariling kasaysayan bilang reaksyon sa mga batis ng mga Espanyol', 'Pagbabawal sa pagsulat ng kasaysayan', 'Pagpapalit ng wikang ginagamit sa paaralan'], a:1, e:'Sa Reform Movement, isinulat ng mga Pilipino ang kanilang sariling account bilang reaksyon sa paraan ng pagtingin ng mga Espanyol sa kanila.'},
+    {q:'Ayon sa Araling Panlipunan (AP), ito ay pag-aaral ng mga indibidwal, komunidad, sistema, at:', c:['Kanilang ugnayan sa paglipas ng panahon', 'Kanilang wika lamang', 'Kanilang kayamanan', 'Kanilang relihiyon lamang'], a:0, e:'Ang Araling Panlipunan ay pag-aaral ng mga indibidwal, komunidad, sistema, at ang kanilang ugnayan sa paglipas ng panahon.'},
+    {q:'Ano ang layunin ng Araling Panlipunan ayon sa modyul?', c:['Alamin lamang ang mga petsa ng kasaysayan', 'Siyasatin ang karanasan ng sangkatauhan, pagsusuri sa nakaraan, pakikilahok sa kasalukuyan, at paghubog ng kinabukasan', 'Ituro ang matematika sa mag-aaral', 'Pag-aralan lamang ang heograpiya'], a:1, e:'Layunin ng AP ang pagsisiyasat sa karanasan ng sangkatauhan upang masuri ang nakaraan, makilahok sa kasalukuyan, at mahubog ang kinabukasan.'},
+    {q:'Ano ang unang hakbang sa Historical Methodology?', c:['Pagsulat ng kasaysayan', 'Pagpili ng paksa', 'Pagpapatunay ng datos', 'Pagsusuri ng dokumento'], a:1, e:'Ang unang hakbang sa historical methodology ay ang pagpili ng paksa, bago magpatuloy sa pagtitipon at pagsusuri ng mga batis.'},
+    {q:'Bakit itinuturing na "agham" ang kasaysayan?', c:['Dahil batay ito sa facts at sumusunod sa siyentipikong pamamaraan', 'Dahil hindi ito nangangailangan ng ebidensya', 'Dahil ito ay puro haka-haka', 'Dahil walang proseso ang pagsulat nito'], a:0, e:'Itinuturing na agham ang kasaysayan dahil batay ito sa facts at sumusunod sa mahigpit, siyentipikong proseso (historical methodology).'},
+    {q:'Bakit itinuturing ding "sining" ang kasaysayan?', c:['Dahil binibigyang-kahulugan ng mananalaysay ang katotohanan mula sa mga batis, dapat itong maayos at eleganteng nakasulat', 'Dahil walang katotohanang kinakailangan', 'Dahil hindi ito gumagamit ng batis', 'Dahil kathang-isip lamang ito'], a:0, e:'Kasaysayan bilang sining: binibigyang-kahulugan ng mananalaysay ang katotohanan mula sa batis, at dapat itong isulat nang maayos, magkakaugnay, at eleganteng paraan.'},
+    {q:'Ano ang ibig sabihin ng kasabihang "History repeats itself" ayon sa modyul?', c:['Literal na nauulit ang parehong pangyayari', 'Hindi talaga literal na umuulit dahil nagbabago ang mga elemento — pattern lamang ang paulit-ulit', 'Hindi na dapat pag-aralan ang kasaysayan', 'Palaging tama ang mga hula batay sa nakaraan'], a:1, e:'Hindi talaga literal na inuulit ang kasaysayan dahil nagbabago ang mga elemento nito; nagkakaroon lamang ng mga pattern na kahalintulad sa kasalukuyan.'},
+    {q:'Sa Kritisismo ng mga Batis, ano ang sinusuri?', c:['Presyo ng dokumento', 'Pagiging tunay (authenticity) at kredibilidad ng batis', 'Bilang ng pahina ng dokumento', 'Kulay ng papel na ginamit'], a:1, e:'Sinusuri sa kritisismo ng mga batis ang pagiging tunay at kredibilidad ng mga ito bago gamitin sa pagsulat ng kasaysayan.'},
+    {type:'dual', s1:'Ang Positivist ay nagbibigay-diin sa scientific method.', s2:'Ang Empiricist ay batay rin sa karanasan bilang batayan ng kaalaman.', a:0, e:'Parehong totoo — magkatulad ang diin ng dalawa sa masusing/siyentipikong paraan ng pagkuha ng kaalaman.'},
+    {type:'dual', s1:'Ang Paaralan ng Annales ay hindi gumagamit ng ibang agham panlipunan.', s2:'Dahil dito, wala itong naidulot na bagong sangay ng kasaysayan.', a:1, e:'Parehong mali — inter-disciplinary ang Paaralan ng Annales at humantong ito sa paglikha ng iba pang sangay ng kasaysayan.'},
+    {type:'dual', s1:'Ang panloob na kritisismo ay mas mababang antas kaysa sa panlabas na kritisismo.', s2:'Sinusuri ng panlabas na kritisismo ang piskal na anyo ng dokumento.', a:3, e:'Mali ang Statement 1 (mas mataas na antas ang panloob), pero tama ang Statement 2 — sinusuri nga ng panlabas na kritisismo ang piskal na anyo.'},
+    {type:'dual', s1:'Si Teodoro Agoncillo ay kilala sa Marxist perspective sa kasaysayan.', s2:'Si Renato Constantino ay kilala sa Marxist perspective.', a:3, e:'Mali ang Statement 1 (si Agoncillo ay kilala sa kasaysayan bilang interpretasyon), pero tama ang Statement 2 — Marxist perspective nga si Constantino.'},
+    {type:'dual', s1:'Ang mga unang manunulat noong ika-16 siglo ay Espanyol.', s2:'Isinulat nila ang kasaysayan mula sa perspektibo ng mga Pilipino.', a:2, e:'Tama ang Statement 1, pero mali ang Statement 2 — HINDI nila isinaalang-alang ang perspektibo ng mga Pilipino sa kanilang mga isinulat.'}
+  ],
+  glossary: [
     {term:'Historiography/Historiyograpiya', def:'ang pag-aaral ng pagsulat ng kasaysayan.'},
     {term:'Panlabas na kritisismo', def:'sinusuri ang piskal na anyo ng dokumento (ano, saan, kailan, paano nakuha).'},
     {term:'Panloob na kritisismo', def:'mas mataas na antas, sinusuri ang nilalaman at interpretasyon ng dokumento.'},
-    {term:'Paaralan ng Annales', def:'inter-disciplinary na paraan, humantong sa paglikha ng iba pang sangay ng kasaysayan.'}
-  ], palace:[
+    {term:'Paaralan ng Annales', def:'inter-disciplinary na paraan, humantong sa paglikha ng iba pang sangay ng kasaysayan.'},
+    {term:'Araling Panlipunan', def:'pag-aaral ng mga indibidwal, komunidad, sistema, at kanilang ugnayan sa paglipas ng panahon.'},
+    {term:'Reform Movement', def:'pagsulat ng sariling kasaysayan bilang reaksyon sa mga batis ng mga Espanyol.'}
+  ],
+  palace: [
     {stop:'Simbahan sa Kanto', image:'Tatlong estatwa ang nakatayo sa harap ng simbahan, may pangalan na "God," "Gold," at "Glory," bawat isa\'y may korona.', fact:'3Gs ng kolonisasyon: God (kristiyanismo), Gold (yaman), Glory (kapangyarihan).'},
     {stop:'Silid-Aklatan', image:'Isang malaking dokumento ang nakabitin sa gitna ng silid, may dalawang tao ang sumusuri — isa sa labas (piskal na anyo), isa sa loob (nilalaman).', fact:'Panlabas na kritisismo = piskal na anyo. Panloob na kritisismo = nilalaman/interpretasyon.'},
-    {stop:'Mesa ng mga Manunulat', image:'Apat na Espanyol ang nakaupo sa mesa, sabay-sabay na sumusulat tungkol sa mga Pilipino habang nakasimangot.', fact:'Mga manunulat noong ika-16 siglo: Miguel de Loarca, Antonio de Morga, Francisco Alcina, Juan de Plasencia.'},
+    {stop:'Mesa ng mga Manunulat', image:'Anim na Espanyol ang nakaupo sa mesa, sabay-sabay na sumusulat tungkol sa mga Pilipino habang nakasimangot, walang sumusulat mula sa panig ng mga Pilipino.', fact:'Mga manunulat noong ika-16 siglo (Loarca, Chirino, De Morga, Alcina, Plasencia, Boxer Codex) ay hindi isinaalang-alang ang pananaw ng mga Pilipino.'},
     {stop:'Poster sa Dingding', image:'Isang poster na may nakasulat na "Kami, hindi kayo" sa malaking letra, habang may taong nakaturo palayo sa kausap.', fact:'Pangkaming Pananaw: hindi kasama ang taong kausap sa "kami."'},
     {stop:'Salamin sa Banyo', image:'Ang salamin ay may nakasulat na "Pantayong Pananaw," at sa halip na larawan mo, ang wikang Filipino ang nakikita.', fact:'Pantayong Pananaw ni Zeus Salazar: gamit ang wikang Pilipino, "nagmula sa atin, para sa atin."'},
     {stop:'Katalogo sa Aparador', image:'Maraming sanga ng aklat ang lumalabas mula sa isang punong-kahoy: pampulitika, ekonomiya, kultura, panlipunan, kapaligiran.', fact:'Paaralan ng Annales: inter-disciplinary, humantong sa iba\'t ibang sangay ng kasaysayan.'},
-    {stop:'Basement ng Bahay', image:'Isang timbangan ang nagpapakita kung alin ang mas mabigat: ang "positivist" na panig (agham) o ang "empiricist" na panig (karanasan) — parehong pantay.', fact:'Positivist at Empiricist: parehong nagbibigay-diin sa scientific method/karanasan bilang kaalaman.'}
+    {stop:'Basement ng Bahay', image:'Isang timbangan ang nagpapakita kung alin ang mas mabigat: ang "positivist" na panig (agham) o ang "empiricist" na panig (karanasan) — parehong pantay.', fact:'Positivist at Empiricist: parehong nagbibigay-diin sa scientific method/karanasan bilang kaalaman.'},
+    {stop:'Klasrum na may Poster ng "AP"', image:'Isang guro ang nagtuturo tungkol sa mga tao, komunidad, at sistema, habang may globo at orasan sa mesa.', fact:'Araling Panlipunan: pag-aaral ng indibidwal, komunidad, sistema, at kanilang ugnayan sa paglipas ng panahon.'}
   ]},
-  {id:'pk3', title:'3. Elemento ng Kasaysayan at Heograpiya', content:[
+  {id:'pk3', title:'3. Elemento ng Kasaysayan at Heograpiya',   content: [
     {h:'Mga Elemento ng Kasaysayan', b:[
       'Tao: pinaka-importanteng elemento — siya ang gumaganap at gumagawa ng kasaysayan.',
-      'Lokasyon: pambansa o lokal — malalaman dito ang kultura, tradisyon, pagkain, kasuotan.',
+      'Lokasyon: pambansa o lokal — malalaman dito ang kultura, tradisyon, pagkain, kasuotan; may kaugnayan din sa globalisasyon/pananaw ng lugar.',
       'Konteksto: kailan, anong kultura, anong pilosopiya, sanhi at epekto.',
-      'Batis (Sources): nakasulat (birth/death certificate, census) at artifacts (larawan, kasangkapan, armas).'
+      'Batis (Sources): nakasulat (birth/death certificate, census) at artifacts (larawan, kasangkapan, armas, mga labi ng kalansay, oral history, mga panayam).'
     ]},
     {h:'Mga Hamon sa Lokal na Kasaysayan', b:[
       'Kaunting materyales/batis sa lokal na kasaysayan; problema sa paglalapat ng dokumentong nakasulat sa dayuhang lengguwahe.',
@@ -757,76 +845,124 @@ const DATA = [
       'Kakulangan ng batis para irepresenta ang buong bansa; kakulangan ng sanay/tunay na historyador.'
     ]},
     {h:'Heograpiya ng Pilipinas', b:[
-      'Matatagpuan sa Timog-Silangang Asya; bahagi ng Pacific Ring of Fire at Pacific Typhoon Belt.',
+      'Ang heograpiya ay pag-aaral ng mga pisikal na katangian ng daigdig at atmospera nito, at ng aktibidad ng tao habang ito ay nakakaapekto at apektado ng mga ito.',
+      'Matatagpuan sa Timog-Silangang Asya; bahagi ng Pacific Ring of Fire (Seismic/Earthquake Belt) at Pacific Typhoon Belt.',
       'Nasa itaas ng ekwador (tropikal); may 7,641 na isla (archipelagic state).',
-      'Iba\'t ibang wika/diyalekto = rehiyonalismo at sub-cultures; resulta: Oryentasyong Pandagat.',
+      'Iba\'t ibang wika/diyalekto = rehiyonalismo at sub-cultures; resulta: Oryentasyong Pandagat (kultura na may kinalaman sa pandagat).',
       'Dalawang paraan ng pagtingin sa heograpiya: Deterministic (hindi nagbabago, hal. lokasyon sa Ring of Fire) at Possibilism (kaya nating gawin upang magbago ang paligid).'
     ]},
-    {h:'Mga Teorya sa Pinagmulan ng Pilipinas (Heograpikal)', b:[
-      'Continental Drift Theory (Alfred Wegener): malaking lupain na naghiwalay (Pangea); ebidensya — pagkakadugtong ng mga kontinente at fossils.',
-      'Land Bridges Theory: Pilipinas konektado sa mainland Asia (Palawan) 25,000 taon nakalipas; napatunayang hindi totoong pinagmulan dahil may record na 70,000+ taon nang may naninirahan sa Pilipinas.',
-      'Faulting at Folding: normal, reverse, at strike-slip fault — nabuo ang mga bulubundukin.',
-      'Volcanic Origin Theory: maraming bulkan sa ilalim ng tubig na sumabog at bumuo ng lupa.',
+    {h:'Mga Teoryang Siyentipiko: Heolohikal at Heograpiyang Pundasyon ng Kapuluan', b:[
+      'Continental Drift Theory (Alfred Wegener): malaking lupain na naghiwalay sa isa\'t isa; napatunayan sa pamamagitan ng iba\'t ibang gawain/earthquake; nabuo ang pitong kontinente.',
+      'Land Bridges Theory (Edward Suess): Pilipinas konektado sa mainland Asia 25,000 taon nakalipas sa pamamagitan ng mga tulay-lupa na natunaw at lumubog; ang Palawan lamang ang direktang nakasama sa teoryang ito.',
+      'Faulting at Folding: dalawang paraan kung paano gumagalaw ang lupa — Faulting (pagka-akma/pagbibitak ng lupa) at Folding (pagpapatupi/pagbabaluktot ng lupa); mga uri: Normal, Reverse, Strike-slip Fault.',
+      'Volcanic Origin Theory: maraming bulkan na nakapaligid/nasa ilalim ng dagat na sumabog at bumuo ng lupa; ang Taal Volcano ay binanggit bilang unang malaking suliraning pangklima ng bansa bago pa man magkaroon ng pandemya.',
       'Mga Labi ng Kontinente sa Pasipiko (Mu/Lemuria): hindi napatunayan; walang ebidensyang lupain.',
-      'Mitolohiyang Pinagmulan: banal na paglikha, pag-aaway ng langit at dagat, "Giant Tale."'
+      'Mitolohiyang Pinagmulan (hindi siyentipiko): banal na paglikha, pag-aaway ng langit at dagat, "Giant Tale."'
     ]}
-  ], quiz:[
+  ],
+  quiz: [
     {q:'Alin ang pinaka-importanteng elemento ng kasaysayan?', c:['Lokasyon','Tao','Konteksto','Batis'], a:1, e:'Ang Tao ang pinaka-importanteng elemento — siya ang gumaganap at gumagawa ng kasaysayan.'},
     {q:'Ilang isla mayroon ang Pilipinas ayon sa notes?', c:['5,000','7,107','7,641','10,000'], a:2, e:'Ayon sa notes, may 7,641 na isla ang Pilipinas, kaya ito ay tinatawag na archipelagic state.'},
-    {q:'Sino ang nagmungkahi ng Continental Drift Theory?', c:['Alfred Wegener','Felipe Landa Jocano','Bellwood','Herodotus'], a:0, e:'Si Alfred Wegener ang nagmungkahi ng Continental Drift Theory, na nagsasabing nagkahiwalay ang isang malaking lupain (Pangea).'},
-    {q:'Ayon sa Land Bridges Theory, ilang taon na ang nakalipas nang konektado ang Pilipinas sa mainland Asia?', c:['5,000 taon','25,000 taon','100,000 taon','1 milyong taon'], a:1, e:'Ayon sa Land Bridges Theory, 25,000 taon na ang nakalipas nang konektado ang Pilipinas sa mainland Asia malapit sa Palawan.'},
-    {q:'Bakit itinuturing na hindi totoong pinagmulan ng sinaunang Pilipino ang Land Bridges Theory?', c:['Dahil walang ebidensyang lupa noon','Dahil may record na 70,000+ taon nang may naninirahan sa Pilipinas','Dahil hindi kailanman umiral ang teoryang ito','Dahil napatunayang mali ang lahat ng datos'], a:1, e:'May ebidensyang 70,000+ taon nang may naninirahan sa Pilipinas — mas matanda kaysa sa 25,000-taong land bridge, kaya hindi ito ang tunay na pinagmulan.'},
+    {q:'Sino ang nagmungkahi ng Continental Drift Theory?', c:['Alfred Wegener','Felipe Landa Jocano','Edward Suess','Herodotus'], a:0, e:'Si Alfred Wegener ang nagmungkahi ng Continental Drift Theory, na nagsasabing nagkahiwalay ang isang malaking lupain patungong pitong kontinente.'},
+    {q:'Ilang kontinente ang nabuo ayon sa Continental Drift Theory?', c:['Lima','Anim','Pito','Walo'], a:2, e:'Ayon sa Continental Drift Theory, nagkahiwa-hiwalay ang isang malaking lupain hanggang sa mabuo ang pitong kontinente.'},
+    {q:'Sino ang nagmungkahi ng Land Bridges Theory?', c:['Alfred Wegener','Edward Suess','Peter Bellwood','Felipe Landa Jocano'], a:1, e:'Si Edward Suess ang nagmungkahi ng Land Bridges Theory.'},
+    {q:'Ayon sa Land Bridges Theory, ilang taon na ang nakalipas nang konektado ang Pilipinas sa mainland Asia?', c:['5,000 taon','25,000 taon','100,000 taon','1 milyong taon'], a:1, e:'Ayon sa Land Bridges Theory, 25,000 taon na ang nakalipas nang konektado ang Pilipinas sa mainland Asia.'},
+    {q:'Aling isla ang binanggit bilang direktang nakasama/konektado sa Land Bridges Theory?', c:['Cebu','Palawan','Mindoro','Bohol'], a:1, e:'Ang Palawan ang binanggit bilang direktang nakasama sa Land Bridges Theory dahil sa kalapitan nito sa mainland Asia.'},
+    {q:'Ano ang dalawang paraan ng paggalaw ng lupa sa Faulting at Folding?', c:['Pag-init at paglamig','Faulting (pagbibitak) at Folding (pagbabaluktot)','Pag-ikot at pag-taas','Pagtunaw at pagyelo'], a:1, e:'Ang Faulting ay pagka-akma/pagbibitak ng lupa, habang ang Folding ay pagpapatupi/pagbabaluktot ng lupa.'},
+    {q:'Alin sa sumusunod ang HINDI isa sa mga uri ng fault na binanggit?', c:['Normal Fault','Reverse Fault','Strike-slip Fault','Diagonal Fault'], a:3, e:'Ang tatlong uri ng fault na binanggit ay Normal, Reverse, at Strike-slip Fault — walang "Diagonal Fault."'},
+    {q:'Aling bulkan ang binanggit bilang unang malaking suliraning pangklima ng Pilipinas bago pa man ang pandemya?', c:['Mayon Volcano','Taal Volcano','Pinatubo','Kanlaon'], a:1, e:'Ang Taal Volcano ang binanggit bilang unang malaking suliraning pangklima ng bansa bago pa magkaroon ng pandemya.'},
+    {q:'Bakit itinuturing na hindi totoong pinagmulan ng sinaunang Pilipino ang Mu/Lemuria?', c:['Dahil walang nakitang ebidensya ng nabuong malaking lupain', 'Dahil masyadong malapit ito sa Pilipinas', 'Dahil hindi ito kilalang teorya', 'Dahil napatunayang totoo ito'], a:0, e:'Napatunayang hindi totoo ang teorya ng Mu/Lemuria dahil walang nakitang ebidensya ng isang nabuong malaking lupaing ito.'},
     {q:'Aling pananaw sa heograpiya ang naniniwalang hindi ito nagbabago (hal. lokasyon sa Ring of Fire)?', c:['Possibilism','Deterministic','Historiography','Ethnography'], a:1, e:'Ang Deterministic na pananaw ay naniniwalang hindi nagbabago ang heograpikal na katangian, tulad ng lokasyon ng Pilipinas sa Pacific Ring of Fire.'},
-    {q:'Ang "Oryentasyong Pandagat" ay resulta ng:', c:['Pagiging solidong lupain ng Pilipinas','Iba\'t ibang wika/diyalekto at pagiging arkipelago','Pananakop ng mga Espanyol','Pag-aaral ng Continental Drift'], a:1, e:'Ang iba\'t ibang wika/diyalekto at ang pagiging arkipelago ng Pilipinas ay nagresulta sa "oryentasyong pandagat" — pag-asa sa dagat bilang paraan ng koneksyon.'}
-  ], glossary:[
+    {q:'Ang "Oryentasyong Pandagat" ay resulta ng:', c:['Pagiging solidong lupain ng Pilipinas','Iba\'t ibang wika/diyalekto at pagiging arkipelago','Pananakop ng mga Espanyol','Pag-aaral ng Continental Drift'], a:1, e:'Ang iba\'t ibang wika/diyalekto at ang pagiging arkipelago ng Pilipinas ay nagresulta sa "oryentasyong pandagat" — kultura na may kinalaman sa pandagat.'},
+    {q:'Ano ang kahulugan ng heograpiya ayon sa modyul?', c:['Pag-aaral lamang ng mga bundok', 'Pag-aaral ng pisikal na katangian ng daigdig at atmospera nito, at aktibidad ng tao', 'Pag-aaral ng mga wika sa mundo', 'Pag-aaral ng kasaysayan ng mga hari'], a:1, e:'Ang heograpiya ay pag-aaral ng pisikal na katangian ng daigdig at atmospera nito, kasama ang aktibidad ng tao na nakakaapekto at apektado nito.'},
+    {q:'Bakit maaaring ituring na kahinaan ng nasyonalismong Pilipino ang pagiging arkipelago?', c:['Dahil walang mga isla ang Pilipinas', 'Dahil mas malaki ang pagkakawatak-watak ng mga tao dahil sa maraming isla', 'Dahil bawal pumunta sa ibang isla', 'Dahil isang isla lamang ang Pilipinas'], a:1, e:'Dahil sa pagiging arkipelago, mas malaki ang pagkakawatak-watak ng mga Pilipino, na nagpapahirap sa pagbuo ng nagkakaisang pambansang pagkakakilanlan.'},
+    {q:'Alin sa sumusunod ang bahagi ng "Kahalagahan ng Heograpiya"?', c:['Pag-unawa ng kapaligiran, pag-ayon ng tao sa kalikasan, transportasyon', 'Pagbabawal sa paglalakbay', 'Pagsira sa kalikasan', 'Pagbabalewala sa klima'], a:0, e:'Kabilang sa kahalagahan ng heograpiya ang pag-unawa ng kapaligiran, ang pag-ayon (pag-adapt) ng tao sa kalikasan, at ang transportasyon.'},
+    {q:'Ano ang ibig sabihin ng "Possibilism" sa heograpiya?', c:['Walang magagawa ang tao upang baguhin ang kanyang kapaligiran', 'May magagawa ang tao upang baguhin ang nakapaligid sa kanya', 'Ang heograpiya ay hindi nakakaapekto sa tao', 'Palaging kontrolado ng kalikasan ang tao'], a:1, e:'Ang Possibilism ay naniniwalang may magagawa ang tao upang baguhin/umangkop sa kanyang kapaligiran.'},
+    {type:'dual', s1:'Ang Continental Drift Theory ay iminungkahi ni Alfred Wegener.', s2:'Sinasabi ng teoryang ito na nagkahiwalay ang malaking lupain patungong pitong kontinente.', a:0, e:'Parehong totoo — ito nga ang buod ng Continental Drift Theory ni Wegener.'},
+    {type:'dual', s1:'Napatunayang totoo ang Land Bridges Theory bilang pinagmulan ng lahat ng sinaunang Pilipino.', s2:'Ang Land Bridges Theory ay iminungkahi ni Edward Suess.', a:3, e:'Mali ang Statement 1 (may ebidensyang mas matanda pang paninirahan sa Pilipinas kaysa sa teoryang ito), pero tama ang Statement 2 — si Edward Suess nga ang nagmungkahi nito.'},
+    {type:'dual', s1:'Ang Deterministic na pananaw ay naniniwalang hindi nagbabago ang heograpiya.', s2:'Ang Possibilism ay naniniwalang may magagawa tayo upang baguhin ang paligid.', a:0, e:'Parehong totoo — ito ang pangunahing pagkakaiba ng Deterministic at Possibilism na pananaw sa heograpiya.'},
+    {type:'dual', s1:'Ang Pilipinas ay matatagpuan sa Hilagang Asya.', s2:'Ang Pilipinas ay may 7,641 na isla.', a:3, e:'Mali ang Statement 1 (Timog-Silangang Asya ang Pilipinas), pero tama ang Statement 2 — mayroon nga itong 7,641 na isla.'},
+    {type:'dual', s1:'Ang Taal Volcano ay binanggit bilang halimbawa ng Volcanic Origin Theory.', s2:'Ito rin ay binanggit bilang unang malaking suliraning pangklima ng Pilipinas bago ang pandemya.', a:0, e:'Parehong totoo — bahagi ang Taal Volcano ng talakayan sa Volcanic Origin Theory, at binanggit din ito bilang unang malaking suliraning pangklima.'}
+  ],
+  glossary: [
     {term:'Batis', def:'sources — mga nakasulat na tala (birth/death certificate, census) at artifacts (larawan, kasangkapan, armas).'},
     {term:'Deterministic', def:'pananaw na hindi nagbabago ang heograpiya (hal. lokasyon sa Ring of Fire).'},
     {term:'Possibilism', def:'pananaw na may magagawa tayo upang baguhin ang ating kapaligiran.'},
-    {term:'Continental Drift Theory', def:'ni Alfred Wegener — malaking lupain (Pangea) na naghiwalay.'}
-  ], palace:[
+    {term:'Continental Drift Theory', def:'ni Alfred Wegener — malaking lupain na naghiwalay patungong pitong kontinente.'},
+    {term:'Land Bridges Theory', def:'ni Edward Suess — konektado umano ang Pilipinas sa mainland Asia sa pamamagitan ng tulay-lupa.'}
+  ],
+  palace: [
     {stop:'Bintana', image:'May malaking tao na nakatayo sa gitna ng kwarto, mas malaki kaysa lahat ng gamit — siya ang bida ng bawat kwento.', fact:'Ang Tao ang pinaka-importanteng elemento ng kasaysayan.'},
     {stop:'Mapa sa Dingding', image:'Isang mapa ng Pilipinas na may 7,641 na maliliit na kalatong (isla) na nakadikit gamit ang tape.', fact:'Ang Pilipinas ay may 7,641 na isla — isang archipelagic state.'},
-    {stop:'Jigsaw Puzzle sa Mesa', image:'Isang malaking puzzle ng mundo ang naghihiwalay sa gitna, kumakalat ang mga piraso patungo sa magkabilang sulok ng kwarto.', fact:'Continental Drift Theory (Alfred Wegener): naghiwalay ang Pangea sa mga kontinente.'},
-    {stop:'Tulay na Kahoy', image:'Isang lumang tulay na kahoy ang dumudugtong sa Palawan patungo sa Asya, pero sira na at 25,000 taon nang hindi ginagamit.', fact:'Land Bridges Theory: konektado ang Pilipinas sa mainland Asia 25,000 taon nakalipas.'},
-    {stop:'Bulkang Nakaukit sa Bakuran', image:'Isang maliit na bulkan-mainan ang sumasabog sa gitna ng bakuran, itinutulak paitaas ang lupa sa palibot nito.', fact:'Volcanic Origin Theory: maraming bulkan sa ilalim ng tubig na bumuo ng lupa ng Pilipinas.'},
+    {stop:'Jigsaw Puzzle sa Mesa', image:'Isang malaking puzzle ng mundo ang naghihiwalay sa gitna, kumakalat ang pitong piraso patungo sa magkabilang sulok ng kwarto.', fact:'Continental Drift Theory (Alfred Wegener): naghiwalay ang malaking lupain sa pitong kontinente.'},
+    {stop:'Tulay na Kahoy', image:'Isang lumang tulay na kahoy na may pangalang "E. Suess" ang dumudugtong sa Palawan patungo sa Asya, pero sira na at 25,000 taon nang hindi ginagamit.', fact:'Land Bridges Theory (Edward Suess): konektado ang Palawan/Pilipinas sa mainland Asya 25,000 taon nakalipas.'},
+    {stop:'Bulkang Nakaukit sa Bakuran', image:'Isang maliit na bulkan-mainan na may label na "Taal" ang sumasabog sa gitna ng bakuran, itinutulak paitaas ang lupa sa palibot nito.', fact:'Volcanic Origin Theory: maraming bulkan (kasama ang Taal) na bumuo ng lupa ng Pilipinas.'},
     {stop:'Compass sa Bintana', image:'Dalawang karatula ang nakadikit sa bintana: "Deterministic — hindi nagbabago" sa isang bahagi, at "Possibilism — kaya nating baguhin" sa kabila.', fact:'Deterministic vs. Possibilism: dalawang pananaw sa heograpiya.'},
     {stop:'Lababo sa Kusina', image:'Tubig-alat mula sa gripo ang naghahalo sa fresh na tubig sa palanggana, kasama ang maliliit na bangkang naglalayag pabalik-balik.', fact:'Oryentasyong Pandagat: resulta ng iba\'t ibang wika/diyalekto at pagiging arkipelago.'}
   ]},
-  {id:'pk4', title:'4. Mga Teorya ng Sinaunang Migrasyon', content:[
-    {h:'Austronesian Out of Taiwan (Bellwood)', b:[
+  {id:'pk4', title:'4. Mga Teorya ng Sinaunang Migrasyon',   content: [
+    {h:'Austronesian Out of Taiwan (Peter Bellwood)', b:[
       'Ang mga Austronesian ay nanggaling sa Taiwan bago kumalat sa Timog-Silangang Asya at Karagatang Pasipiko (hanggang Madagascar).',
       'Mga Indigenous People ng Taiwan — kilalang maritime navigators; mula sa kanila ang kaalaman sa pagsasaka, pagtatanim, pangangaso.',
+      'Ebidensya na galing ang mga Pilipino sa Austronesia: lengguwahe, at mga artifacts tulad ng pottery na makikita sa Taiwan, Pilipinas, at Malaysia.',
       'Dahilan ng migrasyon: kalapitan sa mga isla, kasanayan sa paglalayag/pagsasaka, prestihiyo sa pananakop, tumataas na densidad ng populasyon.',
       'Nagkaroon ng kalakalan sa mga Tsino (kabibe, perlas, ginto, pagkaing-dagat kapalit ng seda, porselana).'
     ]},
-    {h:'Core Population Theory (Felipe Landa Jocano)', b:[
+    {h:'Unti-unting Pag-unlad ng mga Austronesian', b:[
+      'Sociological Progress: mula sa kani-kanyang pagtatanim (individual), naging horti-cultural — nagtanim para magkaroon ng permanenteng pagkain.',
+      'Resources/Teknolohiya: pagdiskubre ng apoy; paggamit ng domestic animals para sa araw-araw na pangangailangan.',
+      'Palayok: mahalagang imbensyon — ginamit sa pagluluto, pagtatago at pag-iimpok ng tubig at pagkain, at kalauna\'y sa paglilibing.',
+      'Agrikultura: dumami ang ani, humantong sa ugnayang pangkalakalan sa Tsina, Arabo, at Islam.'
+    ]},
+    {h:'Core Population Theory (Felipe Landa Jocano Sr.)', b:[
       'Pangunahing pangkat ng tao na unang nanirahan at nag-ugat sa isang lugar.',
       'Sila ang unang komunidad na bumuo ng kultura/tradisyon/paniniwalang naging pundasyon ng pagkakakilanlan ng isang lipunan.',
       'Lumalawak ang populasyon habang nadaragdagan ng bagong miyembro/impluwensya mula sa ibang grupo.',
-      'Ebidensya: Tabon Cave (Palawan).'
+      'Tabon Cave (Palawan): sentro ng populasyon ng mga unang tao sa Pilipinas ayon kay Jocano; ebidensya ng mahabang proseso ng pag-unlad ng kultura at paglipat ng mga tao.',
+      'Karagdagang punto/alternatibong pananaw: napatunayang mas matanda ang Callao Cave (Cagayan) kaysa sa Tabon Cave — hamon ito sa orihinal na teorya kung saan talaga nagmula ang unang populasyon.'
     ]},
     {h:'Epekto ng Migrasyon at Heograpiya', b:[
-      'Impluwensya sa kultura: pisikal na kapaligiran (iba\'t ibang wika), kapuluan (sub-kultura), kalakalan (Intsik, Indiyano, Arabo).',
+      'Impluwensya sa kultura: pisikal na kapaligiran (iba\'t ibang wika), kapuluan (sub-kultura), kalakalan (Intsik, Indiyano, Arabo); "there is no one culture in one society."',
       'Sosyo-politikal na epekto: diwa ng rehiyonalismo at seksyonalismo — mahirap bumuo ng nasyonalismo dahil sa arkipelago; heograpikal na paghihiwalay nagpahirap sa mga dayuhang mananakop (hal. Cordillera/Ifugao).',
       'Pag-angkop sa kabuhayan: pangingisda, pagsasaka sa terrace farms, pag-aalaga ng hayop na angkop sa lugar.',
-      'Mga suliraning may kinalaman sa heograpiya: climate change, pagkawala ng likas na yaman, polusyon, erosion, urbanisasyon/overpopulation, migrasyon.'
+      'Mga suliraning may kinalaman sa heograpiya: climate change, pagkawala ng likas na yaman, polusyon, erosion, urbanisasyon/overpopulation, hazard-prone areas, kakulangan sa transportasyon/imprastraktura, migrasyon.'
     ]}
-  ], quiz:[
-    {q:'Sino ang nagmungkahi ng "Austronesian Out of Taiwan" theory?', c:['Bellwood','Felipe Landa Jocano','Alfred Wegener','Zeus Salazar'], a:0, e:'Si Bellwood ang nagmungkahi ng "Austronesian Out of Taiwan" theory, na nagsasabing mula sa Taiwan nanggaling ang mga Austronesian.'},
+  ],
+  quiz: [
+    {q:'Sino ang nagmungkahi ng "Austronesian Out of Taiwan" theory?', c:['Peter Bellwood','Felipe Landa Jocano','Alfred Wegener','Zeus Salazar'], a:0, e:'Si Peter Bellwood ang nagmungkahi ng "Austronesian Out of Taiwan" theory, na nagsasabing mula sa Taiwan nanggaling ang mga Austronesian.'},
     {q:'Saan umabot ang pagkalat ng mga Austronesian people ayon sa teorya?', c:['Hawaii lamang','Madagascar','Australia lamang','Europa'], a:1, e:'Ang pagkalat ng mga Austronesian ay umabot hanggang Madagascar, mula sa Taiwan.'},
-    {q:'Sino ang nagmungkahi ng Core Population Theory?', c:['Bellwood','Felipe Landa Jocano','Herodotus','Teodoro Agoncillo'], a:1, e:'Si Felipe Landa Jocano ang nagmungkahi ng Core Population Theory.'},
-    {q:'Ano ang ebidensya para sa Core Population Theory?', c:['Tabon Cave (Palawan)','Banaue Rice Terraces','Boxer Codex','Pangea fossils'], a:0, e:'Ang Tabon Cave sa Palawan ang binanggit na ebidensya para sa Core Population Theory.'},
+    {q:'Ano ang ebidensyang ginagamit para patunayan na nagmula sa Austronesia ang mga Pilipino?', c:['Lengguwahe at mga artifacts tulad ng pottery', 'Larawan lamang', 'Pananamit ngayon', 'Musikang popular'], a:0, e:'Lengguwahe at mga artifacts tulad ng pottery na makikita sa Taiwan, Pilipinas, at Malaysia ang ebidensyang binanggit.'},
+    {q:'Ano ang sumunod na hakbang matapos ang "kani-kanyang pagtatanim" sa unti-unting pag-unlad ng mga Austronesian?', c:['Pagiging horti-cultural — pagtatanim para sa permanenteng pagkain', 'Pagbabalik sa pangangaso', 'Pagtigil sa pagsasaka', 'Paglipat sa ibang planeta'], a:0, e:'Mula sa individual na pagtatanim, umunlad ang mga Austronesian tungo sa pagiging horti-cultural, kung saan nagtanim sila para sa permanenteng suplay ng pagkain.'},
+    {q:'Anong imbensyon ang mahalaga sa pagluluto, pagtatago, at kalauna\'y sa paglilibing ng mga Austronesian?', c:['Palayok','Bangka','Tela','Kutsilyo'], a:0, e:'Ang palayok ay mahalagang imbensyon na ginamit sa pagluluto, pag-iimbak ng tubig/pagkain, at kalaunan ay sa paglilibing.'},
+    {q:'Sino ang nagmungkahi ng Core Population Theory?', c:['Bellwood','Felipe Landa Jocano Sr.','Herodotus','Teodoro Agoncillo'], a:1, e:'Si Felipe Landa Jocano Sr. ang nagmungkahi ng Core Population Theory.'},
+    {q:'Ano ang orihinal na ebidensya para sa Core Population Theory?', c:['Tabon Cave (Palawan)','Banaue Rice Terraces','Boxer Codex','Pangea fossils'], a:0, e:'Ang Tabon Cave sa Palawan ang orihinal na binanggit na ebidensya para sa Core Population Theory ni Jocano.'},
+    {q:'Anong yungib ang napatunayang mas matanda kaysa sa Tabon Cave, na naghahamon sa orihinal na Core Population Theory?', c:['Callao Cave','Sagada Cave','Banaue Cave','Cordillera Cave'], a:0, e:'Napatunayang mas matanda ang Callao Cave (Cagayan) kaysa sa Tabon Cave, na nagbibigay ng alternatibong pananaw tungkol sa sentro ng unang populasyon.'},
     {q:'Bakit mahirap bumuo ng diwa ng nasyonalismo sa Pilipinas ayon sa sosyo-politikal na epekto ng heograpiya?', c:['Dahil isang solidong lupain lamang ang Pilipinas','Dahil arkipelago ang Pilipinas — hiwa-hiwalay ang mga tao, iba-iba ang kultura','Dahil walang mga Pilipinong historyador','Dahil bawal pag-usapan ang nasyonalismo'], a:1, e:'Dahil arkipelago ang Pilipinas, hiwa-hiwalay ang mga tao at iba-iba ang paniniwala/kultura, mahirap magkaroon ng sense of unity.'},
-    {q:'Alin ang HINDI kabilang sa mga dahilan ng migrasyon ng mga Austronesian?', c:['Kasanayan sa paglalayag','Prestihiyo sa pananakop ng lupain','Kakulangan ng interes sa pagsasaka','Tumataas na densidad ng populasyon'], a:2, e:'Ang mga Austronesian ay may kasanayan sa pagsasaka (hindi kakulangan ng interes) na naging bahagi ng dahilan ng kanilang paglipat.'}
-  ], glossary:[
-    {term:'Austronesian Out of Taiwan', def:'teorya ni Bellwood — nanggaling sa Taiwan ang mga Austronesian bago kumalat sa Timog-Silangang Asya.'},
-    {term:'Core Population Theory', def:'ni Felipe Landa Jocano — pangunahing grupong unang nanirahan at nag-ugat sa isang lugar.'}
-  ], palace:[
+    {q:'Alin ang HINDI kabilang sa mga dahilan ng migrasyon ng mga Austronesian?', c:['Kasanayan sa paglalayag','Prestihiyo sa pananakop ng lupain','Kakulangan ng interes sa pagsasaka','Tumataas na densidad ng populasyon'], a:2, e:'Ang mga Austronesian ay may kasanayan sa pagsasaka (hindi kakulangan ng interes) na naging bahagi ng dahilan ng kanilang paglipat.'},
+    {q:'Ang kasabihang "there is no one culture in one society" ay tumutukoy sa:', c:['Iisa lamang ang kultura sa buong Pilipinas', 'Maraming impluwensyang kultural (Intsik, Indiyano, Arabo, atbp.) ang bumubuo sa lipunan', 'Walang kultura ang Pilipinas', 'Pare-parehong kultura ang lahat ng bansa'], a:1, e:'Ipinapakita nito na ang isang lipunan ay hinuhubog ng maraming impluwensyang kultural mula sa iba\'t ibang bansa/grupo, hindi lang iisa.'},
+    {q:'Ano ang naging epekto ng kalakalan sa mga Tsino, Arabo, at Islam sa mga sinaunang Pilipino?', c:['Wala itong naidulot na pagbabago', 'Nakatulong ito sa pag-unlad ng agrikultura at kultura ng mga sinaunang Pilipino', 'Ito ang dahilan ng paghina ng ekonomiya', 'Nagdulot lamang ito ng digmaan'], a:1, e:'Ang kalakalan sa mga Tsino, Arabo, at Islam ay nakatulong sa pag-unlad ng agrikultura at kultura ng mga sinaunang Pilipino.'},
+    {q:'Ano ang tinutukoy ng "Sociological Progress" sa pag-unlad ng mga Austronesian?', c:['Ang pagbabago mula sa individual na pagsasaka tungo sa horti-cultural na komunidad', 'Ang pagbuo ng mga pamahalaan', 'Ang pagdating ng mga Espanyol', 'Ang modernisasyon ng lipunan'], a:0, e:'Tinutukoy ng Sociological Progress ang paglipat mula sa kani-kanyang pagtatanim (individual) tungo sa isang mas organisadong, horti-cultural na paraan ng pagsasaka.'},
+    {q:'Alin sa sumusunod ang isang halimbawa ng pag-angkop sa kabuhayan ayon sa heograpiya?', c:['Pagsasaka sa terrace farms', 'Pagbili ng gadgets', 'Paggamit ng internet', 'Pagbabago ng relihiyon'], a:0, e:'Ang pagsasaka sa terrace farms ay isang paraan ng pag-angkop sa kabuhayan batay sa heograpiya ng lugar.'},
+    {q:'Ano ang tinutukoy ng "Resources/Teknolohiya" na yugto sa pag-unlad ng mga Austronesian?', c:['Pagdiskubre ng apoy at paggamit ng domestic animals', 'Pagdating ng mga Espanyol', 'Paggamit ng kuryente', 'Pagbuo ng unang paaralan'], a:0, e:'Kabilang sa yugtong ito ang pagdiskubre ng apoy at ang paggamit ng domestic animals para sa araw-araw na pangangailangan.'},
+    {type:'dual', s1:'Ang Austronesian Out of Taiwan theory ay iminungkahi ni Peter Bellwood.', s2:'Ang Core Population Theory ay iminungkahi ni Felipe Landa Jocano Sr.', a:0, e:'Parehong totoo — magkaiba ang dalawang teoryang ito ng pinagmulan, at magkaiba rin ang nagmungkahi sa bawat isa.'},
+    {type:'dual', s1:'Ang Tabon Cave ay ang pinakamatandang ebidensya ng paninirahan ng tao sa Pilipinas.', s2:'Ang Callao Cave ay napatunayang mas matanda kaysa sa Tabon Cave.', a:3, e:'Mali ang Statement 1 (hindi na ito ang "pinakamatanda" dahil sa bagong ebidensya), pero tama ang Statement 2 — mas matanda nga ang Callao Cave.'},
+    {type:'dual', s1:'Nagdala ang mga Austronesian ng wika at kultura sa mga lugar na kanilang narating.', s2:'Wala silang naidulot na impluwensya sa teknolohiya ng mga lokal na populasyon.', a:2, e:'Tama ang Statement 1, pero mali ang Statement 2 — nagdala rin sila ng teknolohiya na nakaimpluwensya sa maraming populasyon.'},
+    {type:'dual', s1:'Ang palayok ay ginamit lamang para sa pagluluto.', s2:'Ginamit din ang palayok sa pag-iimbak ng tubig at kalaunan sa paglilibing.', a:3, e:'Mali ang Statement 1 (hindi lang pagluluto ang gamit nito), pero tama ang Statement 2 — ginamit din ito sa pag-iimbak at paglilibing.'},
+    {type:'dual', s1:'Ang heograpikal na paghihiwalay ng Pilipinas ay nagpadali sa pananakop ng mga dayuhan.', s2:'Nakatulong ang kalakalan sa mga Tsino at Arabo sa pag-unlad ng kultura ng mga sinaunang Pilipino.', a:3, e:'Mali ang Statement 1 (nagpahirap ito, hindi nagpadali, tulad sa Cordillera/Ifugao), pero tama ang Statement 2 — nakatulong nga ang kalakalan sa pag-unlad ng kultura.'}
+  ],
+  glossary: [
+    {term:'Austronesian Out of Taiwan', def:'teorya ni Peter Bellwood — nanggaling sa Taiwan ang mga Austronesian bago kumalat sa Timog-Silangang Asya.'},
+    {term:'Core Population Theory', def:'ni Felipe Landa Jocano Sr. — pangunahing grupong unang nanirahan at nag-ugat sa isang lugar.'},
+    {term:'Callao Cave', def:'yungib sa Cagayan na napatunayang mas matanda kaysa sa Tabon Cave — hamon sa orihinal na Core Population Theory.'},
+    {term:'Horti-cultural', def:'yugto ng pag-unlad kung saan nagtanim ang mga tao para magkaroon ng permanenteng pagkain.'}
+  ],
+  palace: [
     {stop:'Daungan (Dock)', image:'Isang malaking bangkang Taiwanese ang nakadaong, may mga taong bumababa dala ang binhi ng palay at sanga ng tanim.', fact:'Austronesian Out of Taiwan (Bellwood): mula Taiwan nanggaling ang mga Austronesian, dala ang kaalaman sa pagsasaka.'},
-    {stop:'Yungib (Cave)', image:'Isang madilim na yungib sa Palawan, may mga buto at gamit na nakalatag sa sahig, tila pinabayaan nang matagal.', fact:'Tabon Cave, Palawan — ebidensya ng Core Population Theory ni Felipe Landa Jocano.'},
+    {stop:'Bakuran ng Palayok', image:'Napakaraming palayok ang nakahanay sa bakuran — ilan ay may pagkain, ilan ay may tubig, at isa ay may inilibing na buto sa ilalim.', fact:'Ang palayok ay ginamit sa pagluluto, pag-iimbak ng tubig/pagkain, at kalaunan sa paglilibing.'},
+    {stop:'Yungib sa Palawan', image:'Isang madilim na yungib sa Palawan (Tabon), may mga buto at gamit na nakalatag sa sahig, tila pinabayaan nang matagal.', fact:'Tabon Cave, Palawan — orihinal na ebidensya ng Core Population Theory ni Felipe Landa Jocano Sr.'},
+    {stop:'Yungib sa Cagayan', image:'Isang mas malalim at mas madilim na yungib (Callao) na may lumang buto na mas maalikabok pa kaysa sa nakita sa Palawan.', fact:'Callao Cave (Cagayan): napatunayang mas matanda kaysa sa Tabon Cave — hamon sa orihinal na teorya.'},
     {stop:'Krus-daanan (Crossroads)', image:'Maraming daan ang naghahalo-halo sa gitna ng bayan, at bawat isa\'y may ibang wika at bandila.', fact:'Ang arkipelago ay nagresulta sa rehiyonalismo at seksyonalismo — mahirap bumuo ng nasyonalismo.'},
-    {stop:'Palengke ng mga Intsik', image:'Isang tindahan ang nagpapalitan ng kabibe at perlas kapalit ng seda at porselana mula sa mga mangangalakal na Tsino.', fact:'Kalakalan sa mga Tsino: kabibe, perlas, ginto, pagkaing-dagat kapalit ng seda, porselana.'},
-    {stop:'Hagdan ng Terraces', image:'Isang hagdan-hagdang bukid ang inukit sa gilid ng bundok, may mga taong nagsasaka habang umaakyat.', fact:'Pag-angkop sa kabuhayan: pangingisda, pagsasaka sa terrace farms, angkop na pag-aalaga ng hayop.'},
+    {stop:'Palengke ng mga Intsik', image:'Isang tindahan ang nagpapalitan ng kabibe at perlas kapalit ng seda at porselana mula sa mga mangangalakal na Tsino.', fact:'Kalakalan sa mga Tsino, Arabo, at Islam: nakatulong sa pag-unlad ng agrikultura at kultura.'},
     {stop:'Basurahan sa Kalye', image:'Mga basurang plastik at usok mula sa pabrika ang bumabara sa isang maliit na sapa.', fact:'Mga suliraning may kinalaman sa heograpiya: climate change, pagkawala ng likas na yaman, polusyon, urbanisasyon.'}
   ]},
   {id:'pk5', title:'5. Ilaya at Ilawod: Mga Katutubong Pamayanan', content:[
@@ -852,12 +988,28 @@ const DATA = [
     ]}
   ], quiz:[
     {q:'Ano ang ibig sabihin ng "Ilaya"?', c:['Downstream','Upstream/bundok na pinagmulan ng ilog','Baybayin','Kapatagan'], a:1, e:'Ang Ilaya ay tumutukoy sa upstream — ang bundok na pinagmulan ng ilog, source of water.'},
+    {q:'Ano ang ibig sabihin ng "Ilawod"?', c:['Upstream','Downstream — lugar na binabaan ng ilog mula sa bundok','Gitna ng bundok','Pinakamataas na bahagi ng bundok'], a:1, e:'Ang Ilawod ay tumutukoy sa downstream — lugar na dinadaanan/binabaan ng ilog mula sa bundok.'},
     {q:'Ano ang tradisyong "Binukot" ng Panay-Bukidnon?', c:['Isang uri ng pagkain','Kababaihang itinatago mula pagkabata upang mapanatili ang kagandahan at kadalisayan','Isang uri ng bahay','Isang ritwal sa digmaan'], a:1, e:'Ang Binukot ay tradisyon kung saan itinatago ang kababaihan mula pagkabata upang mapanatili ang kagandahan at maituro sa kanila ang epiko/kasaysayan ng kanilang lahi.'},
     {q:'Alin sa mga sumusunod ang isa sa 6 pangunahing ethno-linguistic groups ng Igorot?', c:['Ifugao','Badjao','Moro','Lumad'], a:0, e:'Ang Ifugao ay isa sa 6 pangunahing ethno-linguistic groups ng Igorot, kilala sa Banaue Rice Terraces.'},
     {q:'Sino ang kilalang mambabatok (traditional tattoo artist) na binanggit sa notes?', c:['Lucia Caballero','Apo Whang-Od','Datu Mabanhaw','Zeus Salazar'], a:1, e:'Si Apo Whang-Od ang kilalang oldest mambabatok (pamamaraan ng paglalagay ng tattoo) na binanggit sa notes.'},
     {q:'Ang termino bang "Moro" ay nagmula saan?', c:['Salitang Tagalog','"Moor" (Espanyol) mula sa "Mauru" (Latin)','Salitang Ingles','Salitang Intsik'], a:1, e:'Ang "Moro" ay nagmula sa salitang Espanyol na "Moor," na nagmula naman sa Latin na "Mauru."'},
     {q:'Ang Badjao ay kilala rin bilang:', c:['Mountain dwellers','Sea gypsies/sea dwellers','Forest guardians','Urban settlers'], a:1, e:'Ang Badjao ay kilala bilang sea dwellers, sea tribes, fisher folks, sea gypsies, o sea guardians.'},
-    {q:'Ang Cotabato Congress noong Hunyo 1986 ay ginanap para sa:', c:['Pagtatalaga ng bagong pangulo','Pagkilala at pagtala sa mga pangkat etniko (Lumad, Bangsa Moro, Mindanaon, Christian)','Pagbabawal sa Animism','Pagtatayo ng bagong lungsod'], a:1, e:'Ang Cotabato Congress ay para matukoy, maisa-isa, at maitala ang mga pangkat etniko sa Mindanao.'}
+    {q:'Ang Cotabato Congress noong Hunyo 1986 ay ginanap para sa:', c:['Pagtatalaga ng bagong pangulo','Pagkilala at pagtala sa mga pangkat etniko (Lumad, Bangsa Moro, Mindanaon, Christian)','Pagbabawal sa Animism','Pagtatayo ng bagong lungsod'], a:1, e:'Ang Cotabato Congress ay para matukoy, maisa-isa, at maitala ang mga pangkat etniko sa Mindanao.'},
+    {q:'Saan matatagpuan ang mga Iraya Mangyan?', c:['Cordillera','Abra de Ilog, Mamburao, Paluan (Oriental Mindoro)','Zamboanga','Sulu'], a:1, e:'Ang mga Iraya Mangyan ay matatagpuan sa Abra de Ilog, Mamburao, at Paluan sa Oriental Mindoro.'},
+    {q:'Ano ang pangunahing kabuhayan/kasanayan ng mga Iraya Mangyan?', c:['Paghahabi (bayong, plato, baso)','Pangingisda','Pagmimina','Paglalayag'], a:0, e:'Ang mga Iraya Mangyan ay kilala sa paghahabi ng bayong, plato, at baso.'},
+    {q:'Ang Panay-Bukidnon/Suludnon ay matatagpuan sa:', c:['Kabundukan ng Panay Island','Cordilleras','Zamboanga','Palawan'], a:0, e:'Ang mga Panay-Bukidnon o Suludnon ay matatagpuan sa kabundukan ng Panay Island.'},
+    {q:'Saan matatagpuan ang mga Igorot?', c:['Cordilleras, Hilagang Luzon','Visayas','Mindanao','Palawan'], a:0, e:'Ang mga Igorot ay matatagpuan sa Cordilleras, sa Hilagang Luzon.'},
+    {q:'Ano ang paniniwala ng mga Igorot?', c:['Kristiyanismo lamang','Animism (Dios Adi Kaila, Kabunyan, Anitos)','Islam','Wala silang paniniwala'], a:1, e:'Naniniwala ang mga Igorot sa Animism — kabilang ang Dios Adi Kaila, Kabunyan, at Anitos.'},
+    {q:'Saan matatagpuan ang mga Moro?', c:['Mindanao, Sulu, Palawan','Cordillera','Bicol','Visayas'], a:0, e:'Ang mga Moro ay matatagpuan sa Mindanao, Sulu, at Palawan.'},
+    {q:'Ilang ethnolinguistic groups mayroon ang Moro?', c:['5','8','13','20'], a:2, e:'May 13 ethnolinguistic groups ang mga Moro.'},
+    {q:'Saan matatagpuan ang mga Badjao?', c:['Zamboanga at Sulu','Ilocos','Bicol','Cordillera'], a:0, e:'Ang mga Badjao ay matatagpuan sa Zamboanga at Sulu, at kilala bilang sea dwellers.'},
+    {q:'Ano ang paniniwala ng mga Badjao?', c:['Kristiyanismo','Animism (espiritu ng karagatan)','Islam lamang','Walang relihiyon'], a:1, e:'Naniniwala ang mga Badjao sa Animism — partikular sa mga espiritu ng karagatan.'},
+    {q:'Ano ang ibig sabihin ng "Lumad"?', c:['"Native/indigenous" sa Bisayang salita','Isang uri ng pagkain','Isang lungsod sa Mindanao','Isang uri ng damit'], a:0, e:'Ang Lumad ay Bisayang salita para sa "native/indigenous," ginagamit para sa hindi-Muslim, hindi-Kristiyanong etnikong grupo sa Mindanao.'},
+    {q:'Alin sa sumusunod ang isang halimbawa ng grupong Lumad?', c:['Subanen','Moro','Badjao','Iraya Mangyan'], a:0, e:'Ang Subanen ay isa sa mga grupong kinilala bilang Lumad sa Cotabato Congress noong 1986.'},
+    {type:'dual', s1:'Ang Ilaya ay tumutukoy sa upstream/bundok na pinagmulan ng ilog.', s2:'Ang Ilawod ay tumutukoy sa downstream, lugar na binabaan ng ilog.', a:0, e:'Parehong totoo — magkasalungat ngunit magkaugnay na konsepto ang Ilaya at Ilawod.'},
+    {type:'dual', s1:'Ang mga Igorot ay matatagpuan sa Mindanao.', s2:'Naniniwala ang mga Igorot sa Animism.', a:3, e:'Mali ang Statement 1 (nasa Cordilleras/Hilagang Luzon sila, hindi Mindanao), pero tama ang Statement 2 — naniniwala nga sila sa Animism.'},
+    {type:'dual', s1:'Ang Badjao ay kilala bilang mountain dwellers.', s2:'Ang Badjao ay naniniwala sa Animism.', a:3, e:'Mali ang Statement 1 (sea dwellers/sea gypsies sila, hindi mountain dwellers), pero tama ang Statement 2 — naniniwala nga sila sa Animism.'}
+  
   ], glossary:[
     {term:'Ilaya', def:'upstream — bundok na pinagmulan ng ilog.'},
     {term:'Ilawod', def:'downstream — lugar na binabaan ng ilog mula sa bundok.'},
@@ -872,7 +1024,84 @@ const DATA = [
     {stop:'Tulay Palapit sa Dagat', image:'Isang bangkang nakalutang lamang, walang lupa sa paligid, may pamilyang nabubuhay sa loob nito magpakailanman.', fact:'Badjao: sea dwellers/sea gypsies sa Zamboanga at Sulu, sustainable fishing methods.'},
     {stop:'Silid ng mga Katutubong Habi', image:'Mga bayong, plato, at basong hinabi ay nakasabit sa dingding, dala mula sa Oriental Mindoro.', fact:'Iraya Mangyan: kilala sa paghahabi (bayong, plato, baso) sa Abra de Ilog, Mamburao, Paluan.'},
     {stop:'Batong Marka sa Bakuran', image:'Isang tanda ng batok (traditional tattoo) ang nakaguhit sa bato, may pangalang "Apo Whang-Od" nakaukit sa ilalim.', fact:'Apo Whang-Od — mambabatok, kilalang Igorot artist ng Cordilleras.'}
-  ]}
+  ]},
+  {
+  id: 'pk6',
+  title: '6. Pilosopiya ng Kasaysayan at Karagdagang Konsepto',
+  content: [
+    {h:'Mga Pananaw at Pilosopiya sa Pag-aaral ng Kasaysayan', b:[
+      'Noong ika-19 siglo, malinaw ang "hati-hating gawain" (division of labor) sa pagitan ng mga historyador at pilosopo. Noong ika-20 siglo, nagkaroon ng pagkakaunawaan sa pagitan nila — layunin ay ang pag-unawa sa "konsepto at estruktura ng makasaysayang pagsusuri."',
+      'Progressive/Linear: ipinapakita na ang kasaysayan ay umuunlad at sumusulong nang tuwid o diretsong linya; ginagamit upang ipaliwanag ang ideya ng pag-unlad.',
+      'Cyclical: naniniwala na ang kasaysayan ay umiikot at inuulit, gaya ng siklo ng panahon — hal. ang pagbagsak at muling pag-angat ng mga imperyo/kaharian.',
+      'Open-ended/Contingent: ipinapakita na ang kasaysayan ay hindi tiyak o nakatakda; nakadepende sa mga pangyayari, desisyon, at pagkakataon — maaaring magbago ang takbo nito dahil sa mga hindi inaasahang pangyayari.',
+      'Interpretive/Hermeneutic: nakatuon sa pagbibigay-kahulugan at pagsusuri sa mga pangyayari at teksto; ginagamit ng mga historyador sa pagsusuri ng dokumento, akda, o testimonya upang maintindihan hindi lang ang nangyari kundi ang kahulugan nito.'
+    ]},
+    {h:'Historiograpiya: Higit pa sa "Ano ang Nangyari"', b:[
+      'Ang Historiograpiya ay hindi lamang tungkol sa kung ano ang nangyari sa kasaysayan, kundi pati kung paano natin ito nalaman, at kung paano ito ipinaliwanag ng iba\'t ibang historyador.',
+      'Tinutukoy nito kung paano isinusulat ang kasaysayan — kabilang ang mga pamamaraan, interpretasyon, at paggamit ng mga sanggunian.',
+      'Sa madaling salita, sinasagot ng Historiograpiya ang: Ano ang nangyari? Bakit ito nangyari? Ano ang aral?'
+    ]},
+    {h:'Zeus Salazar: Tatlong Pananaw sa Pagsulat ng Kasaysayan', b:[
+      'Pantayong Pananaw: isinasangkot/isinasaalang-alang ang LAHAT ng Pilipino sa pagsulat ng kasaysayan — ito ang pinaka-nais na paraan ni Salazar; "para sa atin, ng atin, mula sa atin" (for us, by us, among us).',
+      'Pangkaming Pananaw: iilan lamang ang kasama o isinasaalang-alang — "kami, hindi kayo."',
+      'Pansilang Pananaw: mga dayuhan (outsiders) ang gumagawa/nagsusulat ng kasaysayan tungkol sa atin; kahit gamitin ito, dapat manatiling nasa loob ng pananaw na "Pansila" lamang (hindi ipinapalit sa Pantayo).'
+    ]},
+    {h:'Florentino Hornedo: Cognitive History', b:[
+      'Cognitive History: isang teorya na nakabatay sa pananaw na ang tao ay nakikibahagi sa lipunan at kultura sa pamamagitan ng kanyang pag-iisip, pag-unawa, at pagbibigay-kahulugan.',
+      'Ang kaalaman ay hindi lamang basta impormasyon, kundi isang pagpapakahulugan (meaning-making).',
+      'Natututo ang tao hindi lamang dahil sa pag-iimbak ng datos, kundi dahil sa kanyang kakayahang magbigay ng kabuluhan sa mga karanasan at simbolo sa loob ng lipunan.',
+      'Dahil dito, ang edukasyon at kultura ay hindi hiwalay — sa pamamagitan ng isip at wika, hinuhubog ng tao ang kanyang pagkatao at pagkakakilanlan.',
+      'Kahalagahan: ipinapakita ni Hornedo na ang pagkatuto ay isang aktibong proseso na nakaugat sa kultura, tradisyon, at tao — ang tunay na edukasyon ay hindi lamang pagsasaulo ng datos, kundi pag-unawa at pagpapahalaga sa kabuluhan ng kaalaman sa buhay at lipunan.'
+    ]},
+    {h:'Araling Panlipunan at Critical Thinking', b:[
+      'Araling Panlipunan (AP)/Social Studies: pag-aaral ng mga indibidwal, komunidad, sistema, at ang kanilang ugnayan sa paglipas ng panahon.',
+      'Layunin: siyasatin ang malawak na karanasan ng sangkatauhan — pagsusuri sa nakaraan, pakikilahok sa kasalukuyan, at paghubog ng kinabukasan.',
+      'Bilang mga mag-aaral at historyador, hinihikayat tayong linangin ang mga Key Critical Thinking Skills: Inference, Open-mindedness, Communication, Analysis, Problem-solving, at Evaluation.'
+    ]}
+  ],
+  quiz: [
+    {q:'Aling pananaw sa kasaysayan ang naniniwalang umuunlad at sumusulong ito nang tuwid o diretsong linya?', c:['Cyclical','Progressive/Linear','Open-ended','Interpretive'], a:1, e:'Ang Progressive/Linear na pananaw ay naniniwalang ang kasaysayan ay umuunlad nang tuwid o diretsong linya.'},
+    {q:'Aling pananaw sa kasaysayan ang gumagamit ng halimbawang "pagbagsak at muling pag-angat ng mga imperyo"?', c:['Progressive/Linear','Cyclical','Open-ended','Interpretive'], a:1, e:'Ang Cyclical na pananaw ay naniniwalang umiikot at inuulit ang kasaysayan, gaya ng pagbagsak at muling pag-angat ng mga imperyo.'},
+    {q:'Aling pananaw sa kasaysayan ang nagsasabing hindi tiyak/nakatakda ang takbo nito, at nakadepende sa mga pagkakataon?', c:['Progressive/Linear','Cyclical','Open-ended/Contingent','Interpretive'], a:2, e:'Ang Open-ended/Contingent na pananaw ay naniniwalang hindi tiyak ang kasaysayan — nakadepende ito sa mga pangyayari, desisyon, at pagkakataon.'},
+    {q:'Aling pananaw sa kasaysayan ang nakatuon sa pagbibigay-kahulugan at pagsusuri ng mga dokumento at testimonya?', c:['Progressive/Linear','Cyclical','Open-ended','Interpretive/Hermeneutic'], a:3, e:'Ang Interpretive/Hermeneutic na pananaw ay nakatuon sa pagbibigay-kahulugan sa mga pangyayari at teksto upang maunawaan ang kahulugan nito.'},
+    {q:'Ilan ang pangunahing pananaw/pilosopiya sa pag-aaral ng kasaysayan na tinalakay?', c:['2','3','4','5'], a:2, e:'May apat (4) na pangunahing pananaw: Progressive/Linear, Cyclical, Open-ended, at Interpretive/Hermeneutic.'},
+    {q:'Ayon kay Zeus Salazar, aling pananaw ang isinasaalang-alang ang LAHAT ng Pilipino sa pagsulat ng kasaysayan?', c:['Pangkaming Pananaw','Pantayong Pananaw','Pansilang Pananaw','Walang tamang sagot'], a:1, e:'Ang Pantayong Pananaw ang isinasaalang-alang ang lahat ng Pilipino — ito ang pinaka-nais na paraan ni Zeus Salazar.'},
+    {q:'Ang Pantayong Pananaw ay maaaring ibuod bilang:', c:['"Para sa atin, ng atin, mula sa atin" (for us, by us, among us)','"Kami, hindi kayo"','Pananaw ng mga dayuhan lamang','Walang partikular na paksa'], a:0, e:'Ang Pantayong Pananaw ay naibubuod bilang "for us, by us, among us" — nagmula sa atin, para sa atin.'},
+    {q:'Aling pananaw ang tumutukoy sa mga dayuhan bilang gumagawa/sumusulat ng kasaysayan tungkol sa atin?', c:['Pantayong Pananaw','Pangkaming Pananaw','Pansilang Pananaw','Walang tamang sagot'], a:2, e:'Ang Pansilang Pananaw ay tumutukoy sa mga dayuhan (outsiders) na gumagawa ng kasaysayan tungkol sa atin.'},
+    {q:'Sino ang nagpakilala ng konsepto ng "Cognitive History"?', c:['Zeus Salazar','Florentino Hornedo','Teodoro Agoncillo','Renato Constantino'], a:1, e:'Si Florentino Hornedo ang nagpakilala ng Cognitive History.'},
+    {q:'Ayon sa Cognitive History, ang tao ay nakikibahagi sa lipunan at kultura sa pamamagitan ng:', c:['Kanyang lakas ng katawan','Kanyang pag-iisip, pag-unawa, at pagbibigay-kahulugan','Kanyang kayamanan','Kanyang katungkulan sa gobyerno'], a:1, e:'Ayon kay Hornedo, ang tao ay nakikibahagi sa lipunan at kultura sa pamamagitan ng kanyang pag-iisip, pag-unawa, at pagbibigay-kahulugan.'},
+    {q:'Ayon sa Cognitive History, ang kaalaman ay:', c:['Basta impormasyon lamang', 'Isang pagpapakahulugan (meaning-making), hindi lamang impormasyon', 'Hindi mahalaga', 'Palaging mali'], a:1, e:'Ayon sa teorya, ang kaalaman ay hindi lamang basta impormasyon kundi isang proseso ng pagpapakahulugan o meaning-making.'},
+    {q:'Bakit hindi hiwalay ang edukasyon at kultura ayon kay Hornedo?', c:['Dahil parehong walang silbi', 'Dahil sa pamamagitan ng isip at wika, hinuhubog ng tao ang kanyang pagkatao at pagkakakilanlan', 'Dahil parehong ipinagbabawal', 'Dahil magkatulad ang kahulugan ng dalawa'], a:1, e:'Sa pamamagitan ng isip at wika, hinuhubog ng tao ang kanyang pagkatao at pagkakakilanlan, kaya hindi hiwalay ang edukasyon at kultura.'},
+    {q:'Ano ang Araling Panlipunan (AP) ayon sa modyul?', c:['Pag-aaral lamang ng matematika', 'Pag-aaral ng mga indibidwal, komunidad, sistema, at kanilang ugnayan sa paglipas ng panahon', 'Pag-aaral ng agham lamang', 'Pag-aaral ng wikang banyaga'], a:1, e:'Ang Araling Panlipunan ay pag-aaral ng mga indibidwal, komunidad, sistema, at ang kanilang ugnayan sa paglipas ng panahon.'},
+    {q:'Alin sa sumusunod ang HINDI kabilang sa mga Key Critical Thinking Skills na hinihikayat sa mga mag-aaral/historyador?', c:['Inference','Open-mindedness','Memorization','Evaluation'], a:2, e:'Ang mga Key Critical Thinking Skills ay Inference, Open-mindedness, Communication, Analysis, Problem-solving, at Evaluation — hindi kasama ang "Memorization."'},
+    {q:'Ano ang tinutukoy ng Historiograpiya bukod pa sa "ano ang nangyari"?', c:['Kung paano at bakit natin nalaman ang mga pangyayari, at kung paano ito ipinaliwanag ng iba\'t ibang historyador', 'Kung sino ang pinakamayaman noon', 'Kung ano ang kulay ng damit noon', 'Wala nang iba pang tinutukoy'], a:0, e:'Ang Historiograpiya ay tumutukoy din sa kung paano at bakit natin nalaman ang mga pangyayari, at kung paano ito ipinaliwanag ng iba\'t ibang historyador.'},
+    {q:'Kailan nagkaroon ng malapit na ugnayan ang mga historyador at pilosopo ayon sa modyul?', c:['Ika-16 na siglo','Ika-18 na siglo','Ika-19 hanggang ika-20 na siglo','Ika-21 na siglo'], a:2, e:'Noong ika-19 siglo, may malinaw na "division of labor," ngunit noong ika-20 siglo, nagkaroon ng malapit na ugnayan ang mga historyador at pilosopo.'},
+    {q:'Ang pag-unawa sa "konsepto at estruktura ng makasaysayang pagsusuri" ay layunin ng:', c:['Historiograpiya','Ethnography','Geograpiya','Sosyolohiya'], a:0, e:'Ang layuning ito ay bahagi ng pag-aaral ng Historiograpiya, lalo na sa ugnayan ng kasaysayan at pilosopiya.'},
+    {type:'dual', s1:'Ang Pantayong Pananaw ay isinasaalang-alang ang lahat ng Pilipino sa pagsulat ng kasaysayan.', s2:'Ang Pangkaming Pananaw ay iilan lamang ang kasama o isinasaalang-alang.', a:0, e:'Parehong totoo — ito ang pangunahing pagkakaiba ng Pantayong Pananaw at Pangkaming Pananaw ayon kay Zeus Salazar.'},
+    {type:'dual', s1:'Si Florentino Hornedo ang nagpakilala ng Cognitive History.', s2:'Ang Cognitive History ay nakabatay sa ideyang ang kaalaman ay basta impormasyon lamang.', a:2, e:'Tama ang Statement 1, pero mali ang Statement 2 — sa Cognitive History, ang kaalaman ay isang pagpapakahulugan (meaning-making), hindi lamang basta impormasyon.'},
+    {type:'dual', s1:'Ang Cyclical na pananaw ay naniniwalang umiikot at inuulit ang kasaysayan.', s2:'Ang Open-ended na pananaw ay naniniwalang tiyak at nakatakda ang takbo ng kasaysayan.', a:2, e:'Tama ang Statement 1, pero mali ang Statement 2 — ang Open-ended na pananaw ay naniniwalang HINDI tiyak/nakatakda ang takbo ng kasaysayan.'}
+  ],
+  glossary: [
+    {term:'Progressive/Linear', def:'pananaw na ang kasaysayan ay umuunlad nang tuwid o diretsong linya.'},
+    {term:'Cyclical', def:'pananaw na ang kasaysayan ay umiikot at inuulit gaya ng siklo.'},
+    {term:'Open-ended/Contingent', def:'pananaw na hindi tiyak ang kasaysayan — nakadepende sa mga pangyayari at pagkakataon.'},
+    {term:'Interpretive/Hermeneutic', def:'pananaw na nakatuon sa pagbibigay-kahulugan at pagsusuri ng mga pangyayari at teksto.'},
+    {term:'Pantayong Pananaw', def:'ni Zeus Salazar — isinasaalang-alang ang LAHAT ng Pilipino sa pagsulat ng kasaysayan.'},
+    {term:'Pangkaming Pananaw', def:'iilan lamang ang kasama o isinasaalang-alang — "kami, hindi kayo."'},
+    {term:'Pansilang Pananaw', def:'mga dayuhan ang gumagawa/sumusulat ng kasaysayan tungkol sa atin.'},
+    {term:'Cognitive History', def:'ni Florentino Hornedo — ang tao ay nakikibahagi sa lipunan/kultura sa pamamagitan ng pag-iisip at pagbibigay-kahulugan.'}
+  ],
+  palace: [
+    {stop:'Gulong na Umiikot sa Bakuran', image:'Isang malaking gulong ang paikot-ikot sa bakuran, may maliliit na tao sa bawat bahagi nito — ang isa ay umaakyat, ang isa naman ay bumabagsak, paulit-ulit.', fact:'Cyclical na pananaw sa kasaysayan: umiikot at inuulit, gaya ng pagbagsak at muling pag-angat ng mga imperyo.'},
+    {stop:'Daang Diretso sa Harap ng Bahay', image:'Isang mahabang daang tuwid ang umaabot hanggang sa abot-tanaw, walang liko, may mga taong maayos na naglalakad pasulong.', fact:'Progressive/Linear na pananaw: umuunlad ang kasaysayan nang tuwid o diretsong landas.'},
+    {stop:'Sangang-daan (Fork in the Road)', image:'Maraming sangang-daan ang lumalabas mula sa isang gitnang punto, bawat isa\'y humahantong sa ibang direksyon, walang tiyak na destinasyon.', fact:'Open-ended/Contingent na pananaw: hindi tiyak ang takbo ng kasaysayan, nakadepende sa mga pagkakataon.'},
+    {stop:'Silid ng mga Salamin', image:'Bawat salamin sa silid ay nagpapakita ng ibang interpretasyon ng parehong larawan — depende sa anggulo ng pagtingin.', fact:'Interpretive/Hermeneutic na pananaw: pagbibigay-kahulugan at pagsusuri sa mga teksto/pangyayari.'},
+    {stop:'Malaking Mesang Pinagsasaluhan', image:'Lahat ng Pilipino ay nakaupo sa isang malaking mesa, magkakasamang nagsusulat ng iisang aklat ng kasaysayan.', fact:'Pantayong Pananaw (Zeus Salazar): isinasaalang-alang ang LAHAT ng Pilipino sa pagsulat ng kasaysayan.'},
+    {stop:'Maliit na Mesa sa Sulok', image:'Iilan lamang na tao ang nakaupo sa isang maliit na mesa sa sulok, hindi kasama ang ibang naroroon sa silid.', fact:'Pangkaming Pananaw: iilan lamang ang kasama — "kami, hindi kayo."'},
+    {stop:'Bintana Mula sa Labas', image:'May mga dayuhang nakatingin mula sa bintana papasok sa bahay, sumusulat ng kanilang nakikita mula sa labas.', fact:'Pansilang Pananaw: mga dayuhan ang gumagawa ng kasaysayan tungkol sa atin, mula sa labas.'},
+    {stop:'Utak na Gawa sa Salamin (Study)', image:'Isang malaking modelo ng utak na gawa sa salamin ang nasa gitna ng silid-aklatan, nagpapakita ng mga larawan at simbolo sa loob nito.', fact:'Cognitive History (Florentino Hornedo): ang tao ay natututo sa pamamagitan ng pag-iisip, pag-unawa, at pagbibigay-kahulugan.'}
+  ]
+}
 ]},
 {id:'effcom1', name:'EffCom1: Effective Communication', lessons:[
   {id:'ec1', title:'1. Communication: An Overview', content:[
@@ -2849,7 +3078,7 @@ function toggleTheme(){
 }
 
 /* ============================= APP LOGIC ============================= */
-let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false };
+let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null };
 
 function getSubject(id){ return DATA.find(s=>s.id===id); }
 function getLesson(subId, lesId){ return getSubject(subId).lessons.find(l=>l.id===lesId); }
@@ -2925,11 +3154,16 @@ function saveStats(subjectId, lessonId, stats){
   try{ localStorage.setItem(statsKey(subjectId, lessonId), JSON.stringify(stats)); }catch(e){ /* storage full/unavailable */ }
 }
 
-function recordAnswer(subjectId, lessonId, questionText, wasCorrect){
+// Stable identity for a question regardless of type — used for stats keys and repeat-avoidance.
+function qKey(q){
+  return q.q || (q.type==='dual' ? ('DUAL::' + q.s1 + '::' + q.s2) : JSON.stringify(q));
+}
+
+function recordAnswer(subjectId, lessonId, questionKey, wasCorrect){
   const stats = getStats(subjectId, lessonId);
-  if(!stats.questions[questionText]) stats.questions[questionText] = { correct:0, wrong:0 };
-  if(wasCorrect) stats.questions[questionText].correct++;
-  else stats.questions[questionText].wrong++;
+  if(!stats.questions[questionKey]) stats.questions[questionKey] = { correct:0, wrong:0 };
+  if(wasCorrect) stats.questions[questionKey].correct++;
+  else stats.questions[questionKey].wrong++;
   saveStats(subjectId, lessonId, stats);
 }
 
@@ -2964,13 +3198,61 @@ function weightedSample(items, weights, k){
 function weightedQuizSample(pool, count, subjectId, lessonId){
   const stats = getStats(subjectId, lessonId);
   const weights = pool.map(q=>{
-    const s = stats.questions[q.q];
+    const s = stats.questions[qKey(q)];
     if(!s || (s.correct+s.wrong)===0) return 2.2;      // never seen — see it at a normal-ish rate
     if(s.wrong > s.correct) return 4 + s.wrong;          // missed more than got right — resurface often
     if(s.wrong === s.correct) return 2;                  // shaky — normal rate
     return 1;                                            // mastered — show less often
   });
   return weightedSample(pool, weights, count);
+}
+
+// Fixed answer set for dual-statement ("Statement 1 / Statement 2") questions.
+const DUAL_CHOICES = [
+  'Both statements are TRUE.',
+  'Both statements are FALSE.',
+  'Statement 1 is TRUE, but Statement 2 is FALSE.',
+  'Statement 2 is TRUE, but Statement 1 is FALSE.'
+];
+
+function buildQuizQuestion(q){
+  const statKey = qKey(q);
+  if(q.type === 'dual'){
+    return { type:'dual', s1:q.s1, s2:q.s2, choices: DUAL_CHOICES.slice(), answer: q.a, explanation: q.e || null, source: q._src || null, statKey };
+  }
+  const idxs = shuffle(q.c.map((_,i)=>i));
+  const choices = idxs.map(i=>q.c[i]);
+  const answer = idxs.indexOf(q.a);
+  return { type:'mc', q:q.q, choices, answer, explanation: q.e || null, source: q._src || null, statKey };
+}
+
+// Picks a weighted subset from a lesson's pool and starts a fresh quiz attempt in state.quiz.
+function startQuiz(lesson, servedCount, statsSubjectId, statsLessonId){
+  const poolSize = lesson.quiz.length;
+  const served = Math.min(servedCount, poolSize);
+  let picked;
+  let attempts = 0;
+  do{
+    picked = weightedQuizSample(lesson.quiz, served, statsSubjectId, statsLessonId);
+    attempts++;
+  } while(
+    attempts < 6 &&
+    poolSize > served &&
+    lesson._lastPickSignature &&
+    picked.map(qKey).join('|') === lesson._lastPickSignature
+  );
+  lesson._lastPickSignature = picked.map(qKey).join('|');
+
+  state.quiz = {
+    questions: picked.map(buildQuizQuestion),
+    current: 0,
+    score: 0,
+    selected: null,
+    locked: false,
+    confirming: false,
+    attemptRecorded: false,
+    statsSubjectId, statsLessonId
+  };
 }
 
 function formatMasteryBadge(pct){
@@ -2991,6 +3273,7 @@ function renderSidebar(){
       if(state.subjectId===subj.id){
         state.subjectId = null;
         state.mixedReview = false;
+        state.mixedSetup = null;
       } else {
         state.subjectId = subj.id;
       }
@@ -3010,6 +3293,7 @@ function renderSidebar(){
         state.subjectId = subj.id;
         state.lessonId = null;
         state.mixedReview = true;
+        state.mixedSetup = null;
         state.quiz = null;
         renderSidebar();
         renderMain();
@@ -3039,6 +3323,7 @@ function renderSidebar(){
         state.mode = 'study';
         state.quiz = null;
         state.mixedReview = false;
+        state.mixedSetup = null;
         state.termsOrder = null;
         renderSidebar();
         renderMain();
@@ -3312,6 +3597,23 @@ function renderMixedReview(main){
   const subj = getSubject(state.subjectId);
   main.innerHTML = '';
 
+  const quizzableLessons = subj.lessons.filter(l=>l.quiz && l.quiz.length);
+  if(quizzableLessons.length===0){
+    const empty = document.createElement('div');
+    empty.className = 'welcome';
+    empty.textContent = 'No quiz questions found in this subject yet.';
+    main.appendChild(empty);
+    return;
+  }
+
+  if(!state.mixedSetup){
+    const totalAll = quizzableLessons.reduce((s,l)=>s+l.quiz.length,0);
+    state.mixedSetup = {
+      selected: new Set(quizzableLessons.map(l=>l.id)),
+      count: Math.max(1, Math.min(20, totalAll))
+    };
+  }
+
   const headerDiv = document.createElement('div');
   headerDiv.className = 'lesson-header';
   headerDiv.innerHTML = `<h2>${ICONS.dice}Mixed Review — ${subj.name}</h2>`;
@@ -3320,6 +3622,7 @@ function renderMixedReview(main){
   exitBtn.textContent = 'Exit Mixed Review';
   exitBtn.onclick = ()=>{
     state.mixedReview = false;
+    state.mixedSetup = null;
     state.quiz = null;
     renderSidebar();
     renderMain();
@@ -3327,28 +3630,133 @@ function renderMixedReview(main){
   headerDiv.appendChild(exitBtn);
   main.appendChild(headerDiv);
 
-  const combined = [];
-  subj.lessons.forEach(les=>{
-    (les.quiz||[]).forEach(q=>{
-      combined.push(Object.assign({}, q, { _src: les.title }));
-    });
-  });
-
-  if(combined.length===0){
-    const empty = document.createElement('div');
-    empty.className = 'welcome';
-    empty.textContent = 'No quiz questions found in this subject yet.';
-    main.appendChild(empty);
+  if(!state.quiz){
+    renderMixedSetupPanel(subj, quizzableLessons, main);
     return;
   }
 
-  const virtualLesson = { id:'mixed', title:'Mixed Review — ' + subj.name, quiz: combined };
-  renderQuiz(virtualLesson, main, {
+  // A quiz is already in progress (or just finished) — just display it.
+  renderQuiz({ id:'mixed', title:'Mixed Review — ' + subj.name, quiz:[] }, main, {
     statsSubjectId: subj.id,
     statsLessonId: 'mixed',
-    servedOverride: Math.min(30, combined.length),
     isMixed: true
   });
+}
+
+function renderMixedSetupPanel(subj, quizzableLessons, main){
+  const setup = state.mixedSetup;
+  const panel = document.createElement('div');
+  panel.className = 'mixed-setup-panel';
+
+  const lessonSection = document.createElement('div');
+  lessonSection.className = 'mixed-setup-section';
+  const lsTitle = document.createElement('h4');
+  lsTitle.textContent = 'Choose lessons to include:';
+  lessonSection.appendChild(lsTitle);
+
+  const quickRow = document.createElement('div');
+  quickRow.className = 'mixed-quick-row';
+  const allBtn = document.createElement('button');
+  allBtn.type = 'button'; allBtn.className = 'hl-clear-btn'; allBtn.textContent = 'Select All';
+  const noneBtn = document.createElement('button');
+  noneBtn.type = 'button'; noneBtn.className = 'hl-clear-btn'; noneBtn.textContent = 'Select None';
+  quickRow.appendChild(allBtn); quickRow.appendChild(noneBtn);
+  lessonSection.appendChild(quickRow);
+
+  const checklist = document.createElement('div');
+  checklist.className = 'mixed-lesson-checklist';
+
+  const countInput = document.createElement('input');
+  countInput.type = 'number';
+  countInput.min = '1';
+  countInput.className = 'mixed-count-input';
+
+  const countHint = document.createElement('div');
+  countHint.className = 'mixed-count-hint';
+
+  const startBtn = document.createElement('button');
+  startBtn.className = 'start-mixed-btn';
+  startBtn.innerHTML = ICONS.dice + 'Start Mixed Review';
+
+  function updateCountBounds(){
+    const total = quizzableLessons
+      .filter(l=>setup.selected.has(l.id))
+      .reduce((s,l)=>s+l.quiz.length,0);
+    countInput.max = String(Math.max(1, total));
+    if(total === 0){
+      countHint.textContent = 'Select at least one lesson to continue.';
+      startBtn.disabled = true;
+    } else {
+      if(setup.count > total) setup.count = total;
+      countInput.value = setup.count;
+      countHint.textContent = `Combined pool: ${total} question${total===1?'':'s'} across ${setup.selected.size} lesson${setup.selected.size===1?'':'s'} selected.`;
+      startBtn.disabled = false;
+    }
+  }
+
+  quizzableLessons.forEach(les=>{
+    const row = document.createElement('label');
+    row.className = 'mixed-lesson-row';
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = setup.selected.has(les.id);
+    cb.onchange = ()=>{
+      if(cb.checked) setup.selected.add(les.id);
+      else setup.selected.delete(les.id);
+      updateCountBounds();
+    };
+    const span = document.createElement('span');
+    span.textContent = `${les.title} (${les.quiz.length} question${les.quiz.length===1?'':'s'})`;
+    row.appendChild(cb);
+    row.appendChild(span);
+    checklist.appendChild(row);
+  });
+  lessonSection.appendChild(checklist);
+
+  allBtn.onclick = ()=>{
+    quizzableLessons.forEach(l=>setup.selected.add(l.id));
+    renderMain();
+  };
+  noneBtn.onclick = ()=>{
+    setup.selected.clear();
+    renderMain();
+  };
+
+  const countSection = document.createElement('div');
+  countSection.className = 'mixed-setup-section';
+  const countLabel = document.createElement('h4');
+  countLabel.textContent = 'How many questions?';
+  countSection.appendChild(countLabel);
+  countInput.value = setup.count;
+  countInput.onchange = ()=>{
+    const max = parseInt(countInput.max,10) || 1;
+    let v = parseInt(countInput.value,10) || 1;
+    v = Math.max(1, Math.min(max, v));
+    countInput.value = v;
+    setup.count = v;
+    countHint.textContent = countHint.textContent.replace(/^Combined pool: \d+/, `Combined pool: ${max}`);
+  };
+  countSection.appendChild(countInput);
+  countSection.appendChild(countHint);
+
+  startBtn.onclick = ()=>{
+    const combined = [];
+    quizzableLessons.forEach(les=>{
+      if(!setup.selected.has(les.id)) return;
+      les.quiz.forEach(q=> combined.push(Object.assign({}, q, { _src: les.title })));
+    });
+    if(combined.length===0) return;
+    const virtualLesson = { id:'mixed', title:'Mixed Review — ' + subj.name, quiz: combined };
+    startQuiz(virtualLesson, setup.count, subj.id, 'mixed');
+    renderMain();
+  };
+
+  panel.appendChild(lessonSection);
+  panel.appendChild(countSection);
+  panel.appendChild(startBtn);
+  main.appendChild(panel);
+
+  updateCountBounds();
 }
 
 function renderQuiz(lesson, main, opts){
@@ -3370,36 +3778,7 @@ function renderQuiz(lesson, main, opts){
     const btn = document.createElement('button');
     btn.innerHTML = ICONS.dice + (opts.isMixed ? 'Start Mixed Review' : 'Start Quiz');
     btn.onclick = ()=>{
-      // Weighted pick (spaced repetition), avoiding the exact same picks used last attempt when possible.
-      let picked;
-      let attempts = 0;
-      do{
-        picked = weightedQuizSample(lesson.quiz, served, statsSubjectId, statsLessonId);
-        attempts++;
-      } while(
-        attempts < 6 &&
-        poolSize > served &&
-        lesson._lastPickSignature &&
-        picked.map(q=>q.q).join('|') === lesson._lastPickSignature
-      );
-      lesson._lastPickSignature = picked.map(q=>q.q).join('|');
-
-      state.quiz = {
-        questions: picked.map(q=>{
-          // shuffle choices, track correct index
-          const idxs = shuffle(q.c.map((_,i)=>i));
-          const choices = idxs.map(i=>q.c[i]);
-          const answer = idxs.indexOf(q.a);
-          return { q:q.q, choices, answer, explanation: q.e || null, source: q._src || null };
-        }),
-        current: 0,
-        score: 0,
-        selected: null,   // choice the user has tapped but not yet locked in
-        locked: false,    // true once the user confirms "yes, lock this in"
-        confirming: false, // true while showing the "are you sure?" prompt
-        attemptRecorded: false,
-        statsSubjectId, statsLessonId
-      };
+      startQuiz(lesson, served, statsSubjectId, statsLessonId);
       renderMain();
     };
     panel.appendChild(btn);
@@ -3463,10 +3842,35 @@ function renderQuiz(lesson, main, opts){
     box.appendChild(srcTag);
   }
 
-  const qt = document.createElement('div');
-  qt.className = 'question-text';
-  qt.textContent = q.q;
-  box.appendChild(qt);
+  if(q.type === 'dual'){
+    const dualWrap = document.createElement('div');
+    dualWrap.className = 'dual-statement-wrap';
+
+    const s1div = document.createElement('div');
+    s1div.className = 'statement-block';
+    const s1label = document.createElement('span');
+    s1label.className = 'statement-label';
+    s1label.textContent = 'Statement 1: ';
+    s1div.appendChild(s1label);
+    s1div.appendChild(document.createTextNode(q.s1));
+
+    const s2div = document.createElement('div');
+    s2div.className = 'statement-block';
+    const s2label = document.createElement('span');
+    s2label.className = 'statement-label';
+    s2label.textContent = 'Statement 2: ';
+    s2div.appendChild(s2label);
+    s2div.appendChild(document.createTextNode(q.s2));
+
+    dualWrap.appendChild(s1div);
+    dualWrap.appendChild(s2div);
+    box.appendChild(dualWrap);
+  } else {
+    const qt = document.createElement('div');
+    qt.className = 'question-text';
+    qt.textContent = q.q;
+    box.appendChild(qt);
+  }
 
   q.choices.forEach((choice, i)=>{
     const cbtn = document.createElement('button');
@@ -3501,7 +3905,7 @@ function renderQuiz(lesson, main, opts){
       quiz.confirming = false;
       const wasCorrect = quiz.selected===q.answer;
       if(wasCorrect) quiz.score++;
-      recordAnswer(quiz.statsSubjectId, quiz.statsLessonId, q.q, wasCorrect);
+      recordAnswer(quiz.statsSubjectId, quiz.statsLessonId, q.statKey, wasCorrect);
       renderMain();
     };
     const noBtn = document.createElement('button');
