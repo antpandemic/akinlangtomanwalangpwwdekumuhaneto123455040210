@@ -83,6 +83,38 @@
   }
   .mastery-line{font-size:0.82rem;color:var(--muted);margin-top:8px;}
 
+  .lesson-row{display:flex;align-items:center;gap:2px;}
+  .lesson-row .lesson-btn{flex:1;min-width:0;}
+  .hide-lesson-btn{
+    order:-1;flex-shrink:0;background:none;border:none;cursor:pointer;color:var(--muted);
+    padding:6px;border-radius:6px;display:flex;align-items:center;justify-content:center;
+    opacity:0.32;transition:opacity .15s;
+  }
+  .hide-lesson-btn svg{width:14px;height:14px;}
+  .lesson-row:hover .hide-lesson-btn{opacity:1;}
+  .hide-lesson-btn:hover{background:var(--hover);color:var(--warn);}
+  .lesson-row.hidden-lesson-row .lesson-btn{opacity:0.5;}
+  .lesson-row.hidden-lesson-row .hide-lesson-btn{opacity:1;color:var(--accent2);}
+  .lesson-row.hidden-lesson-row .hide-lesson-btn:hover{color:var(--accent2);background:var(--hover);}
+  .lesson-select-checkbox{
+    order:-1;flex-shrink:0;width:15px;height:15px;margin:0 8px 0 2px;cursor:pointer;accent-color:var(--accent2);
+  }
+  .hidden-toggle-btn{
+    display:flex;align-items:center;gap:6px;width:100%;text-align:left;background:none;
+    border:none;cursor:pointer;font-size:0.74rem;color:var(--muted);padding:6px 10px;
+    border-radius:6px;font-style:italic;
+  }
+  .hidden-toggle-btn:hover{background:var(--hover);color:var(--ink);}
+  .hidden-toggle-btn svg{width:13px;height:13px;flex-shrink:0;}
+  .select-mode-btn{font-style:normal;font-weight:bold;color:var(--accent2);}
+  .select-mode-btn.active{background:var(--active-lesson-bg);color:var(--accent);}
+  .bulk-hide-btn{
+    font-style:normal;font-weight:bold;color:#fff;background:var(--warn)!important;
+    justify-content:center;margin-top:2px;
+  }
+  .bulk-hide-btn:hover{opacity:0.9;background:var(--warn)!important;color:#fff;}
+  .bulk-hide-btn:disabled{background:var(--hover)!important;color:var(--muted);cursor:not-allowed;opacity:0.6;}
+
   .weak-item-row{
     padding:12px 0;border-bottom:1px solid var(--border);
   }
@@ -2354,6 +2386,238 @@ const DATA = [
     {stop:'Swimming Pool Out Back', image:'The pool water is boiling slightly, and the tile coral around the edges is turning bone white.', fact:'Ocean warming (absorbs 90%+ of excess heat) causes coral bleaching.'},
     {stop:'Rice Field Model on the Table', image:'A tiny rice plant wears a raincoat and rubber boots, standing firm in a miniature flood.', fact:'Climate-resilient rice varieties are an example of Adaptation.'},
     {stop:'Solar Panel on the Roof', image:'Solar panels and a bicycle lane are painted directly onto the shingles, glowing under the sun.', fact:'Solar panels and bike lanes are examples of Mitigation (reducing emissions).'}
+  ]},
+  {id:'gs9', title:'9. Cell Membrane, Transport & Tonicity', content:[
+    {h:'Cell Membrane Structure', b:[
+      'The cell membrane (plasma membrane) surrounds the cell and acts as a selective barrier between the interior and exterior.',
+      'Composed of phospholipids (arranged in a bilayer, hydrophilic heads facing out/in and hydrophobic tails facing each other), proteins, and cholesterol.',
+      'Proteins act as transport channels and are highly selective about what passes through; specialized proteins also enable cellular communication.',
+      'Cholesterol provides stability and helps maintain the cell\'s shape.'
+    ]},
+    {h:'Passive vs. Active Transport', b:[
+      'Any movement of particles is broadly called diffusion; when water is the substance moving, it\'s specifically called osmosis.',
+      'Passive transport requires NO energy: diffusion (particles move from high to low concentration through the membrane) and facilitated diffusion (same direction, but needs a specific transport protein to pass through).',
+      'Active transport REQUIRES energy (ATP): transport proteins move substances against their concentration gradient (low → high), and bulk transport (endocytosis/exocytosis) also requires ATP.',
+      'The goal of passive transport is equilibrium — equal parts in and out of the cell.'
+    ]},
+    {h:'Active Transport: Moving Against the Gradient', b:[
+      'Sodium: cells actively pump sodium against its gradient, and this uses ATP (ATP → ADP) to power the transport protein.',
+      'Potassium transport, by contrast, does not require the same active energy investment in this system — illustrating that not all ions cross the membrane the same way.',
+      'Active transport lets a cell keep specific concentrations of ions inside vs. outside that diffusion alone could never maintain.'
+    ]},
+    {h:'Bulk Transport: Endocytosis & Exocytosis', b:[
+      'Endocytosis: the cell membrane folds inward to bring materials INTO the cell ("entrance"); requires ATP.',
+      'Exocytosis: the cell membrane pushes materials OUT of the cell ("exits"); requires ATP.',
+      'Phagocytosis ("cell eating"): a more specific form of endocytosis where white blood cells engulf and digest substances like bacteria.',
+      'Pinocytosis ("cell drinking"): a smaller-scale movement of materials/fluids into the cell.',
+      'Receptor-Mediated Endocytosis: specific receptor proteins on the cell surface recognize and bind a target material before it is brought inside.',
+      'Viruses (like COVID-19) are infectious partly because their surface protein coat resembles the human body\'s own protein coat — this similarity lets them slip past recognition, so the immune system doesn\'t flag them as foreign and the virus more easily invades.'
+    ]},
+    {h:'Cell Tonicity & Osmosis', b:[
+      'Solute = the substance that dissolves; Solvent = the substance that does the dissolving. Water always flows toward the area with MORE solute.',
+      'Hypotonic solution: more solute INSIDE the cell than outside → water moves INTO the cell → the cell swells → too much water causes lysis (rupture).',
+      'Isotonic solution: solute concentration is balanced inside and outside → the cell stays at equilibrium, no net water movement.',
+      'Hypertonic solution: more solute OUTSIDE the cell → water moves OUT of the cell (e.g., skin after swimming draws out moisture, a dehydration process) → the cell shrinks, a process called crenation.'
+    ]},
+    {h:'Kidneys & Osmoregulation', b:[
+      'The kidneys filter waste out of the blood; blood delivers oxygen and picks up waste from different parts of the body, then red blood cells travel to the kidneys.',
+      'Nephrons are the kidney\'s small blood-vessel-rich filtering units — waste is squeezed out of the blood there, and the cleaned blood is released.',
+      'Nephrons contain loops that create different concentration gradients, which act as an attractor pulling water back in (reabsorption).',
+      'If the kidneys are not working properly, solute is left inside red blood cells, causing them to swell/get bigger and eventually become damaged — diet changes can help manage this.'
+    ]}
+  ], quiz:[
+    {q:'What is the primary role of the cell membrane (plasma membrane)?', c:['To generate ATP for the cell','To act as a selective barrier regulating passage between the interior and exterior','To store the cell\'s genetic material','To break down glucose into pyruvate'], a:1, e:'The cell membrane surrounds the cell and acts as a selective barrier, regulating the passage of substances like nutrients and waste.'},
+    {q:'The cell membrane is composed of which three main components?', c:['DNA, RNA, and ribosomes','Phospholipids, proteins, and cholesterol','Glucose, ATP, and enzymes','Chlorophyll, starch, and cellulose'], a:1, e:'The cell membrane is composed of phospholipids (forming the bilayer), proteins (for transport/communication), and cholesterol (for stability).'},
+    {q:'In the phospholipid bilayer, which part of each phospholipid faces the watery environment?', c:['The hydrophobic tail','The hydrophilic head','Neither part interacts with water','Both parts equally avoid water'], a:1, e:'The hydrophilic ("water-loving") heads face outward toward the watery environment, while the hydrophobic tails face inward, away from water.'},
+    {q:'What role does cholesterol play in the cell membrane?', c:['It transports glucose across the membrane','It provides stability and helps maintain the cell\'s shape','It generates energy for active transport','It stores genetic information'], a:1, e:'Cholesterol embedded in the membrane provides stability and helps maintain the cell\'s shape.'},
+    {q:'Which type of transport does NOT require any energy (ATP) from the cell?', c:['Active transport','Bulk transport (endocytosis)','Passive transport','Exocytosis'], a:2, e:'Passive transport (diffusion, facilitated diffusion, osmosis) requires no energy — substances move down their concentration gradient naturally.'},
+    {q:'Facilitated diffusion differs from simple diffusion in that it:', c:['Moves substances from low to high concentration','Requires a specific transport protein for particles to pass through','Always requires ATP','Only occurs with water molecules'], a:1, e:'Facilitated diffusion moves substances the same direction as diffusion (high to low concentration) but needs a specific protein channel to cross the membrane.'},
+    {q:'When a cell actively pumps sodium against its concentration gradient, what happens to ATP?', c:['ATP is created from ADP','ATP is converted to ADP, releasing energy to power the pump','ATP has no role in this process','ATP is stored, unchanged'], a:1, e:'Active transport of sodium uses ATP, which is converted to ADP as its energy is released to power the transport protein.'},
+    {q:'What is the general GOAL of passive transport processes like diffusion?', c:['To use as much ATP as possible','To reach equilibrium — equal concentration inside and outside the cell','To pump all particles out of the cell','To destroy old cell membranes'], a:1, e:'Passive transport processes work toward equilibrium, where concentrations inside and outside the cell become equal.'},
+    {q:'"Cell eating," where white blood cells engulf and digest bacteria, is specifically called:', c:['Pinocytosis','Phagocytosis','Facilitated diffusion','Osmosis'], a:1, e:'Phagocytosis ("to devour") is the process where cells like white blood cells engulf substances such as bacteria and digest them.'},
+    {q:'"Cell drinking," involving smaller-scale movement of fluids into the cell, is called:', c:['Phagocytosis','Pinocytosis','Exocytosis','Crenation'], a:1, e:'Pinocytosis ("cell drinking") describes the smaller-scale intake of fluids/materials into the cell.'},
+    {q:'In Receptor-Mediated Endocytosis, what allows the cell to bring in a specific target material?', c:['Random diffusion','Receptor proteins on the surface that recognize the material before it is brought inside','A concentration gradient only','The nucleus signaling the membrane'], a:1, e:'Receptor-Mediated Endocytosis relies on receptor proteins on the cell surface that specifically recognize the incoming material.'},
+    {q:'According to the notes, a virus like COVID-19 can infect cells more easily partly because:', c:['It has no protein coat at all','Its protein coat resembles the human body\'s own protein coat, so it isn\'t easily flagged as foreign','It destroys the cell membrane instantly','It only affects plant cells'], a:1, e:'The similarity between the virus\'s protein coat and the body\'s own protein coat makes it harder for the immune system to recognize the virus as foreign, allowing easier invasion.'},
+    {q:'Exocytosis is best described as the process where the cell membrane:', c:['Brings materials into the cell','Pushes materials out of the cell','Breaks down glucose','Splits water into hydrogen and oxygen'], a:1, e:'Exocytosis ("exits") is when the cell membrane pushes materials out of the cell; like endocytosis, it requires ATP.'},
+    {q:'In cell tonicity, water always moves toward the area with:', c:['Less solute','More solute','Equal solute only','No solute at all'], a:1, e:'Water follows solute concentration — it moves toward the area that has MORE solute (higher solute concentration).'},
+    {q:'A red blood cell placed in a HYPOTONIC solution will:', c:['Shrink (crenation)','Stay exactly the same size','Swell with water, potentially leading to lysis (rupture)','Immediately dissolve into the solution'], a:2, e:'In a hypotonic solution, there is more solute inside the cell than outside, so water rushes IN, causing the cell to swell and potentially rupture (lysis).'},
+    {q:'A red blood cell placed in a HYPERTONIC solution will:', c:['Swell and rupture','Shrink, undergoing crenation','Stay in perfect equilibrium','Multiply rapidly'], a:1, e:'In a hypertonic solution, there is more solute outside the cell, so water moves OUT of the cell, causing it to shrink — a process called crenation.'},
+    {q:'In an ISOTONIC solution, a cell will:', c:['Swell until it bursts','Shrink until it withers','Stay at equilibrium, with no net water movement','Immediately undergo phagocytosis'], a:2, e:'An isotonic solution has balanced solute concentrations inside and outside the cell, so the cell stays at equilibrium.'},
+    {q:'After swimming, skin can feel dehydrated because pool water (with fewer solutes than skin cells) draws moisture OUT — this is an example of skin cells being in a:', c:['Hypotonic environment','Isotonic environment','Hypertonic environment','Neutral environment with no tonicity'], a:2, e:'When more solute is outside the cells (relative to the surrounding water), water is drawn out, dehydrating the skin — a hypertonic-type effect described in the notes.'},
+    {q:'What is the main function of nephrons in the kidney?', c:['To produce red blood cells','To filter waste out of the blood and reabsorb what the body needs','To store bile for digestion','To synthesize proteins from mRNA'], a:1, e:'Nephrons are the kidney\'s functional filtering units — they filter waste out of the blood and use concentration gradients to reabsorb needed substances like water.'},
+    {q:'If the kidneys are not functioning properly, what can happen to red blood cells, according to the notes?', c:['They shrink and disappear','Solute is left inside them, causing them to swell and eventually get damaged','They immediately turn into white blood cells','They stop carrying oxygen entirely'], a:1, e:'Poor kidney function can leave excess solute inside red blood cells, causing them to swell and eventually sustain damage — diet changes can help manage this.'}
+  ], glossary:[
+    {term:'Phospholipid bilayer', def:'two layers of phospholipids (hydrophilic heads out, hydrophobic tails in) forming the cell membrane.'},
+    {term:'Passive transport', def:'movement of substances requiring no energy (diffusion, facilitated diffusion, osmosis).'},
+    {term:'Active transport', def:'movement of substances against their gradient, requiring ATP.'},
+    {term:'Osmosis', def:'diffusion specifically of water, always toward the area with more solute.'},
+    {term:'Phagocytosis / Pinocytosis', def:'"cell eating" of larger particles / "cell drinking" of fluids, both forms of endocytosis.'},
+    {term:'Hypotonic / Isotonic / Hypertonic', def:'more solute inside cell (water in, may lyse) / balanced (equilibrium) / more solute outside cell (water out, crenation).'},
+    {term:'Nephron', def:'the kidney\'s functional filtering unit; uses concentration gradients to reabsorb water.'}
+  ], palace:[
+    {stop:'Front Door (Bilayer Curtain)', image:'A two-layer curtain hangs at the door, with little "heads" pointing outward toward the rain and "tails" tucked safely inside, dry.', fact:'Phospholipid bilayer: hydrophilic heads face out, hydrophobic tails face in.'},
+    {stop:'Turnstile in the Hallway', image:'One turnstile spins freely with no effort (passive transport), while another needs a coin (ATP) dropped in before it will turn (active transport).', fact:'Passive transport needs no energy; active transport requires ATP.'},
+    {stop:'Kitchen Sponge in the Sink', image:'A red sponge floating in salty water shrivels up and wrinkles, while the same sponge in plain water puffs up like a balloon.', fact:'Hypertonic solution shrinks cells (crenation); hypotonic solution swells cells (risk of lysis).'},
+    {stop:'Water Filter Under the Sink', image:'A tiny filter with looping tubes squeezes gunk out of a stream of water, then pulls clean water back in through the loops.', fact:'Nephrons filter waste from blood and use loops to reabsorb water via concentration gradients.'}
+  ]},
+  {id:'gs10', title:'10. Protein Synthesis: DNA, RNA & Ribosomes', content:[
+    {h:'Why Protein Synthesis Matters', b:[
+      'Protein synthesis is the process of building and repairing cellular structures, regulating biological processes, and expressing the specific characteristics of each organism.',
+      'DNA → Proteins: proteins are used for structural support, communication, and enzymes.',
+      'The "Central Dogma" of molecular biology: DNA (in the nucleus) → mRNA → Ribosomes → Proteins.'
+    ]},
+    {h:'Step 1: DNA Replication', b:[
+      'DNA unwinds and makes a new complementary partner strand by adding the appropriate nucleotide, following base-pairing rules.',
+      'Key enzymes: Helicase (unwinds the DNA double helix) and Polymerase (binds and adds new nucleotides to build the new strand).'
+    ]},
+    {h:'Step 2: Transcription (DNA → mRNA)', b:[
+      'Transcription works much like DNA replication, but Thymine is replaced by Uracil in the new strand.',
+      'Base pairing in transcription: Adenine pairs with Uracil (A-U), and Guanine pairs with Cytosine (G-C).',
+      'The result is a strand of messenger RNA (mRNA) that carries the genetic instructions out of the nucleus.'
+    ]},
+    {h:'Step 3: Translation (mRNA → Protein)', b:[
+      'Translation involves amino acids, codons, and anti-codons, and takes place at the ribosome.',
+      'The mRNA is used as a template to determine the sequence of tRNA (transfer RNA).',
+      'The tRNA sequence determines the sequence of amino acids, which are linked together in a chain to produce a polypeptide/protein molecule.'
+    ]},
+    {h:'Ribosomes', b:[
+      'Ribosomes are the main organelle responsible for the production of proteins.',
+      'They are essential organelles for overall cellular functioning and survival.',
+      'Ribosomes synthesize proteins using the genetic information carried by mRNA, which is crucial for cellular structure, function, and regulation.',
+      'Ribosomes are located in the cytoplasm and on the surface of the rough endoplasmic reticulum (Rough ER).'
+    ]},
+    {h:'DNA Expression', b:[
+      'Even though every cell in an organism carries the same DNA, each cell can produce a different protein / express its DNA differently.',
+      'Which genes get expressed depends on the specific need of that cell — this is why, for example, a muscle cell and a skin cell (with identical DNA) look and function so differently.'
+    ]}
+  ], quiz:[
+    {q:'What is the correct order of the "Central Dogma" of molecular biology?', c:['Proteins → mRNA → DNA → Ribosomes','DNA → mRNA → Ribosomes → Proteins','mRNA → DNA → Proteins → Ribosomes','Ribosomes → DNA → mRNA → Proteins'], a:1, e:'The Central Dogma flows: DNA (nucleus) → mRNA → Ribosomes → Proteins.'},
+    {q:'Proteins produced through protein synthesis are used for which purposes?', c:['Structural support, communication, and enzymes','Only as a backup energy source','Exclusively for photosynthesis','Only for DNA replication'], a:0, e:'Proteins serve many roles, including structural support, cellular communication, and functioning as enzymes.'},
+    {q:'During DNA replication, which enzyme UNWINDS the DNA double helix?', c:['Polymerase','Helicase','RuBisCo','Amylase'], a:1, e:'Helicase is the enzyme responsible for unwinding the DNA double helix during replication.'},
+    {q:'During DNA replication, which enzyme BINDS and adds new nucleotides to build the new strand?', c:['Helicase','Polymerase','Lipase','Protease'], a:1, e:'Polymerase binds to the unwound DNA strand and adds the appropriate nucleotides to build the new complementary strand.'},
+    {q:'What is the key difference between DNA replication and Transcription, according to the notes?', c:['Transcription happens in the cytoplasm only','In transcription, Thymine is replaced with Uracil','Transcription does not involve base pairing','Transcription produces new DNA instead of RNA'], a:1, e:'Transcription is similar to DNA replication, but Thymine is replaced by Uracil in the resulting RNA strand.'},
+    {q:'In Transcription, which base pairs with Adenine?', c:['Thymine','Uracil','Cytosine','Guanine'], a:1, e:'In transcription, Adenine pairs with Uracil (A-U) instead of Thymine, since Thymine is replaced by Uracil in RNA.'},
+    {q:'What is the product of Transcription?', c:['A new protein','A strand of messenger RNA (mRNA)','A duplicated DNA molecule','A ribosome'], a:1, e:'Transcription converts a DNA sequence into a complementary strand of messenger RNA (mRNA).'},
+    {q:'Which process converts RNA into a Protein?', c:['Replication','Transcription','Translation','Photosynthesis'], a:2, e:'Translation is the process where RNA (mRNA) is used to build a protein, involving amino acids, codons, and anti-codons.'},
+    {q:'Where does Translation take place?', c:['In the nucleus','At the ribosome','In the mitochondria','In the chloroplast'], a:1, e:'Translation takes place at the ribosome, where mRNA is used as a template to build a protein.'},
+    {q:'During Translation, what determines the sequence of tRNA used?', c:['The mRNA sequence, used as a template','A random selection process','The DNA sequence directly, bypassing mRNA','The type of enzyme present in the cytoplasm'], a:0, e:'The mRNA sequence is used as a template to determine the sequence of tRNA that will be recruited during translation.'},
+    {q:'What does the sequence of tRNA ultimately determine during Translation?', c:['The sequence of amino acids linked together to form a protein','The rate of DNA replication','The number of ribosomes produced','The color of the cell membrane'], a:0, e:'The tRNA sequence determines the sequence of amino acids, which are linked in a chain to form a polypeptide/protein molecule.'},
+    {q:'What is the MAIN organelle responsible for the production of proteins?', c:['Mitochondria','Ribosome','Chloroplast','Nucleus'], a:1, e:'Ribosomes are the main organelle responsible for producing proteins, using genetic information from mRNA.'},
+    {q:'Where are ribosomes located within the cell?', c:['Only inside the nucleus','In the cytoplasm and on the surface of the rough endoplasmic reticulum','Only inside mitochondria','Only inside chloroplasts'], a:1, e:'Ribosomes are located in the cytoplasm and on the surface of the rough ER (which is why it\'s called "rough").'},
+    {q:'Why are ribosomes considered essential for cellular survival?', c:['They generate all of the cell\'s ATP','They synthesize proteins crucial for cellular structure, function, and regulation','They store the cell\'s genetic material','They control cell tonicity'], a:1, e:'Ribosomes synthesize proteins using genetic info from mRNA, which is crucial for cellular structure, function, and regulation — essential for functioning and survival.'},
+    {q:'"DNA Expression" refers to the idea that:', c:['All cells produce the exact same proteins at all times','Each cell can produce a different protein / express its DNA differently, depending on need','Only reproductive cells contain DNA','DNA expression never changes throughout an organism\'s life'], a:1, e:'DNA Expression means that although each cell contains the same DNA, each cell can express that DNA differently and produce different proteins depending on its specific need.'},
+    {q:'What determines WHICH proteins a specific cell expresses from its DNA?', c:['The cell\'s specific need','Random chance with no pattern','The size of the cell only','The temperature of the environment only'], a:0, e:'According to the notes, gene/DNA expression in a given cell depends on that cell\'s specific need.'},
+    {q:'Which molecule carries the genetic code OUT of the nucleus to the ribosomes?', c:['tRNA','mRNA','rRNA only','DNA polymerase'], a:1, e:'Messenger RNA (mRNA) is transcribed from DNA in the nucleus and carries the genetic code out to the ribosomes in the cytoplasm.'},
+    {q:'A codon on the mRNA is matched by which complementary structure during Translation?', c:['A helicase enzyme','An anti-codon on tRNA','Another codon on mRNA','A phospholipid'], a:1, e:'During translation, codons on the mRNA pair with complementary anti-codons carried by tRNA molecules.'},
+    {q:'Which of the following correctly lists the 3 main steps of protein synthesis, in order?', c:['Translation, Transcription, Replication','DNA Replication, Transcription, Translation','Transcription, Replication, Translation','Translation, Replication, Transcription'], a:1, e:'The correct order is: 1. DNA Replication, 2. Transcription (DNA → mRNA), 3. Translation (RNA → Protein).'},
+    {q:'The final product of protein synthesis — a chain of linked amino acids — is called a:', c:['Nucleotide','Polypeptide/protein molecule','Ribosome','Codon'], a:1, e:'The chain of amino acids linked together during translation forms a polypeptide, or protein molecule.'}
+  ], glossary:[
+    {term:'Central Dogma', def:'DNA → mRNA → Ribosomes → Proteins.'},
+    {term:'Helicase', def:'enzyme that unwinds the DNA double helix during replication.'},
+    {term:'DNA Polymerase', def:'enzyme that binds and adds nucleotides to build a new DNA strand.'},
+    {term:'Transcription', def:'DNA → mRNA; same base-pairing as replication, but Thymine is replaced by Uracil.'},
+    {term:'Translation', def:'mRNA → Protein; uses codons/anti-codons and tRNA to link amino acids into a protein.'},
+    {term:'Ribosome', def:'main organelle for protein production; located in the cytoplasm and on the rough ER.'},
+    {term:'DNA Expression', def:'each cell may express its identical DNA differently / produce different proteins depending on need.'}
+  ], palace:[
+    {stop:'Front Hallway (Copy Machine)', image:'A copy machine unzips a long scroll (DNA), then two little robot arms — one labeled Helicase, one labeled Polymerase — unwind it and print a fresh matching copy.', fact:'DNA Replication: Helicase unwinds, Polymerase adds nucleotides to build a new strand.'},
+    {stop:'Mailroom', image:'A DNA scroll gets photocopied onto thinner "memo" paper, except every "T" stamp is swapped for a "U" stamp before it\'s mailed out of the building (nucleus).', fact:'Transcription: DNA → mRNA, Thymine replaced by Uracil.'},
+    {stop:'Assembly Line in the Garage (Ribosome)', image:'A conveyor belt reads a memo strip (mRNA) one 3-letter code at a time, and little delivery trucks (tRNA) dock in with matching puzzle-piece parts (amino acids) to snap onto a growing chain.', fact:'Translation at the ribosome: mRNA codons match tRNA anti-codons, building a protein chain.'},
+    {stop:'Costume Closet', image:'Identical twin mannequins (same DNA) are dressed in completely different outfits depending on which room of the house they stand in.', fact:'DNA Expression: cells with identical DNA can express different genes/produce different proteins depending on need.'}
+  ]},
+  {id:'gs11', title:'11. Plant Anatomy & Human Body Systems', content:[
+    {h:'Root Systems: Structure & Function', b:[
+      'Roots grow underground, anchor the plant firmly, and absorb water and nutrients.',
+      'Taproot: a primary root that grows deep into the soil, with smaller lateral roots branching off.',
+      'Fibrous Roots: a network of thin roots that spread out from the base of the stem, helping with anchoring.',
+      'Root Cap: the protective structure at the tip of the root that helps it penetrate the soil and lubricates its path through it.',
+      'Meristematic tissue/region: where rapid cell division happens; crucial for growth.'
+    ]},
+    {h:'The Shoot System: Stem & Leaves', b:[
+      'Most plants have two main systems: the root system (grows below ground) and the shoot system (grows above ground).',
+      'The shoot system includes the stem, leaves, flowers, and fruits.',
+      'The stem supports the plant and keeps it standing upright as it grows.'
+    ]},
+    {h:'Xylem Cell Types', b:[
+      'Xylem primarily transports water and mineral nutrients from the roots to the rest of the plant, and also provides physical support.',
+      'Mature xylem is dead tissue; the presence of lignin fibers keeps it waterproof and keeps it from collapsing under pressure. Fluid only moves upward, powered by negative pressure.',
+      'Tracheids: conducting cells; water does not flow continuously through a single cell — instead, roots and leaves are connected through a series of tracheid cells with pitted walls.',
+      'Vessel elements: long, wide, hollow tubes that connect continuously, stretching directly from the roots to the leaves.',
+      'Xylem fibers: supporting structures that add strength.',
+      'Xylem parenchyma: the only LIVING cells of the xylem; they help with food storage.'
+    ]},
+    {h:'Phloem Cell Types & Translocation', b:[
+      'Phloem transports manufactured substances (like sucrose and amino acids) from the green parts of the plant (like leaves) to other parts of the plant — a process called "translocation."',
+      'Phloem is living tissue overall, although sieve tube cells themselves lack nuclei and have little cytoplasm.',
+      'Sieve tube: a single row of elongated, thin-walled cells with walls perforated by minute pores; a mature sieve cell has a thin layer of cytoplasm which conducts manufactured food from one cell to another.',
+      'Companion cell: has everything the sieve tube cell lacks (abundant cytoplasm and a nucleus); has an extremely thin but flexible cell wall.',
+      'Fiber cell: helps give structural support to the phloem tissue.',
+      'Parenchyma cell: stores food and other substances.'
+    ]},
+    {h:'What Pulls Water Up a Tree?', b:[
+      'Root Pressure: pressure generated in the roots can contribute to water movement upward.',
+      'Cohesion: water molecules stick to one another, helping form a continuous column of water.',
+      'Transpirational Pull: water evaporating from the leaves creates tension that helps pull water upward through the xylem.'
+    ]},
+    {h:'The Circulatory & Respiratory Connection', b:[
+      'Arteries carry blood AWAY from the heart; Veins carry blood TOWARD the heart; Capillaries are tiny vessels where exchange occurs.',
+      'Important nuance: an artery is not ALWAYS oxygenated, and a vein is not ALWAYS deoxygenated (e.g., in the pulmonary circuit).',
+      'The circulatory system transports oxygen and nutrients to cells, removes carbon dioxide and waste, helps maintain body pH levels, and supports the immune system by distributing white blood cells and antibodies.',
+      'Respiratory + Circulatory connection: air (oxygen drawn from rich air) → travels down the trachea into the bronchi/lungs → alveoli (thin-walled, surrounded by a network of capillaries) → oxygen passes from the alveoli into the bloodstream → the heart pumps this blood efficiently throughout the body → blood returns to the lungs now carrying carbon dioxide, released back to the atmosphere.'
+    ]},
+    {h:'The Digestive System: A Closer Look', b:[
+      'Digestion involves mechanical digestion (chewing, swallowing, peristaltic mixing) and chemical digestion (enzymes), working together.',
+      'Esophagus: moves food via peristalsis (wave-like muscular movement); the ground-up food mass is called a "bolus."',
+      'Amylase, found in saliva, targets carbohydrates.',
+      'Small Intestine: very long, to maximize the absorption of nutrients. It has three parts:',
+      '1. Duodenum: receives pancreatic enzymes — amylase (converts carbs to simple sugars), lipase (breaks fats into fatty acids/glycerol), and proteases (break proteins into shorter peptides) — plus bile, which is produced by the liver, stored in the gallbladder, and used as an emulsifier for fats.',
+      '2. Jejunum: the main site of nutrient absorption; lined with microvilli to efficiently absorb small, already-digested molecules. Disaccharides are broken down into monosaccharides, and peptidases break down peptides into amino acids.',
+      '3. Ileum: handles final absorption/recycling, including Vitamin B12.',
+      'Absorption mechanisms used along the way include passive diffusion and facilitated diffusion.'
+    ]},
+    {h:'The Musculoskeletal System', b:[
+      'Support: the skeleton provides a framework that supports the body and cradles vital organs.',
+      'Movement: muscles are connected to bones via tendons, allowing for movement as muscles contract; joints enable flexibility and a range of motion.',
+      'Protection: the skeletal system protects vital organs, such as the skull protecting the brain and the ribcage protecting the heart and lungs.',
+      'Mineral Storage: bones store important minerals, particularly calcium and phosphorus, releasing them into the bloodstream as needed.',
+      'Blood Cell Production: bone marrow (found in certain bones) is responsible for producing red blood cells, white blood cells, and platelets.',
+      'Energy Storage: bone tissue can store lipids in adipocytes, serving as an energy reserve.'
+    ]}
+  ], quiz:[
+    {q:'What is the main function of the Root Cap?', c:['To perform photosynthesis','A protective structure at the root tip that helps it penetrate and lubricate its path through soil','To produce flowers','To store sugars for the whole plant'], a:1, e:'The root cap is the protective structure at the tip of the root, helping it penetrate the soil and lubricating its path.'},
+    {q:'Which root type is a single primary root that grows deep into the soil with smaller lateral roots?', c:['Fibrous roots','Taproot','Root cap','Rhizome'], a:1, e:'A taproot is a primary root that grows deep into the soil, with smaller lateral roots branching from it.'},
+    {q:'Fibrous roots are best described as:', c:['A single deep root with no branches','A network of thin roots spreading out from the base of the stem, aiding anchoring','Roots that grow only above ground','Roots found only in aquatic plants'], a:1, e:'Fibrous roots form a network of thin roots that spread out from the stem\'s base and help anchor the plant.'},
+    {q:'Where does rapid cell division occur in a root, which is crucial for growth?', c:['The root cap only','The meristematic region','The xylem','The phloem'], a:1, e:'The meristematic region/tissue is where rapid cell division happens, and it is crucial for plant growth.'},
+    {q:'The shoot system of a plant includes which structures?', c:['Only the roots','The stem, leaves, flowers, and fruits','Only the flowers','Only the root hairs'], a:1, e:'The shoot system grows above ground and includes the stem, leaves, flowers, and fruits.'},
+    {q:'What substance strengthens xylem cells and keeps them waterproof and resistant to collapsing under pressure?', c:['Cellulose','Lignin','Chlorophyll','Chitin'], a:1, e:'Lignin fibers strengthen xylem cells, keeping mature xylem waterproof and preventing it from collapsing under pressure.'},
+    {q:'Which xylem cell type consists of long, wide, hollow tubes that connect continuously from roots to leaves?', c:['Tracheids','Vessel elements','Xylem fibers','Xylem parenchyma'], a:1, e:'Vessel elements are long, wide, hollow tubes connected continuously, stretching from the roots all the way to the leaves.'},
+    {q:'Which xylem cell type is described as a conducting cell where water moves through a series of pitted-wall cells, rather than one continuous tube?', c:['Vessel elements','Tracheids','Fiber cells','Parenchyma cells'], a:1, e:'Tracheids are conducting cells; water moves continuously from roots to leaves through a series of tracheid cells connected via pitted walls.'},
+    {q:'Which xylem cell type is the ONLY living cell type in the xylem, and helps with food storage?', c:['Tracheids','Vessel elements','Xylem fibers','Xylem parenchyma'], a:3, e:'Xylem parenchyma cells are the only living cells of the xylem and help with food storage.'},
+    {q:'What is the process by which phloem transports manufactured sugars/amino acids to other parts of the plant called?', c:['Photosynthesis','Translocation','Transpiration','Fermentation'], a:1, e:'"Translocation" is the term for phloem transporting manufactured substances like sucrose and amino acids from leaves to other plant parts.'},
+    {q:'Which phloem cell type has abundant cytoplasm and a nucleus — everything the sieve tube cell lacks?', c:['Sieve tube','Companion cell','Fiber cell','Parenchyma cell'], a:1, e:'The companion cell has abundant cytoplasm and a nucleus, providing everything the neighboring sieve tube cell lacks.'},
+    {q:'Which phloem cell type conducts manufactured food from one cell to another through walls perforated by minute pores?', c:['Sieve tube','Companion cell','Fiber cell','Parenchyma cell'], a:0, e:'The sieve tube is a row of elongated, thin-walled cells with pore-perforated walls that conduct manufactured food between cells.'},
+    {q:'Which of the following is NOT one of the three forces described that pull water up a tree?', c:['Root Pressure','Cohesion','Transpirational Pull','Active phloem pumping'], a:3, e:'The three forces described are Root Pressure, Cohesion, and Transpirational Pull — active phloem pumping is not one of them.'},
+    {q:'Which statement about arteries and veins is CORRECT, per the notes?', c:['Arteries are always oxygenated and veins are always deoxygenated','An artery is not always oxygenated, and a vein is not always deoxygenated','Both always carry deoxygenated blood','Both always carry oxygenated blood'], a:1, e:'A key nuance from the notes: an artery is not always oxygenated, and a vein is not always deoxygenated (as in the pulmonary circuit).'},
+    {q:'In the respiratory-circulatory connection, where does oxygen pass from the air into the bloodstream?', c:['The trachea','The alveoli','The esophagus','The stomach'], a:1, e:'Oxygen passes from the alveoli — thin-walled sacs surrounded by capillaries — into the bloodstream.'},
+    {q:'What movement pattern moves the "bolus" (ground-up food) down the esophagus?', c:['Osmosis','Peristalsis','Facilitated diffusion','Translocation'], a:1, e:'Peristalsis is the wave-like muscular movement of the esophagus that moves the bolus toward the stomach.'},
+    {q:'Which digestive organ produces bile, which is then stored in the gallbladder and used to emulsify fats?', c:['Pancreas','Liver','Stomach','Small intestine'], a:1, e:'Bile is produced by the liver, then stored in the gallbladder, and used as an emulsifier for fats.'},
+    {q:'Which part of the small intestine is the MAIN site of nutrient absorption, lined with microvilli?', c:['Duodenum','Jejunum','Ileum','Esophagus'], a:1, e:'The jejunum is the main site of nutrient absorption, lined with microvilli to efficiently absorb digested nutrients.'},
+    {q:'Which part of the small intestine handles final absorption/recycling, including Vitamin B12?', c:['Duodenum','Jejunum','Ileum','Stomach'], a:2, e:'The ileum handles final absorption and recycling, including the absorption of Vitamin B12.'},
+    {q:'Which function of the musculoskeletal system involves bone marrow producing red blood cells, white blood cells, and platelets?', c:['Support','Movement','Blood Cell Production','Energy Storage'], a:2, e:'Blood Cell Production is the function where bone marrow, found in certain bones, produces red blood cells, white blood cells, and platelets.'}
+  ], glossary:[
+    {term:'Taproot / Fibrous roots', def:'a single deep primary root with laterals / a spreading network of thin roots for anchoring.'},
+    {term:'Root Cap', def:'protective structure at the root tip; helps penetrate and lubricate its path through soil.'},
+    {term:'Tracheid / Vessel element', def:'conducting xylem cells connected via pitted walls / continuous long hollow tubes, root to leaf.'},
+    {term:'Xylem parenchyma', def:'the only living cells of the xylem; helps with food storage.'},
+    {term:'Sieve tube / Companion cell', def:'thin-walled, pore-perforated food-conducting cell / cell with abundant cytoplasm & nucleus supporting it.'},
+    {term:'Translocation', def:'phloem transport of manufactured sucrose/amino acids from leaves to other plant parts.'},
+    {term:'Peristalsis', def:'wave-like muscular movement that moves the bolus through the esophagus.'},
+    {term:'Duodenum / Jejunum / Ileum', def:'small intestine sections: receives pancreatic enzymes & bile / main nutrient absorption via microvilli / final absorption (e.g. Vit B12).'}
+  ], palace:[
+    {stop:'Garden Bed (Underground)', image:'One long taproot drills straight down like a drill bit, while nearby a tangled net of fibrous roots spreads sideways to grip the topsoil, and a tiny helmet (root cap) sits on every root tip.', fact:'Taproot grows deep with laterals; fibrous roots spread and anchor; root cap protects the tip.'},
+    {stop:'Garden Hose Reel', image:'A stiff, waterproofed hose (xylem, strengthened by lignin) runs one-way uphill through a chain of pitted connector joints (tracheids) and one giant continuous pipe (vessel element).', fact:'Lignin waterproofs/strengthens xylem; tracheids connect via pitted walls, vessel elements form continuous tubes.'},
+    {stop:'Dining Room Table (Small Intestine)', image:'Three place settings are laid out in a row: a saucer catching pancreatic sauce and bile (Duodenum), a plate covered in tiny bristle-like microvilli (Jejunum), and a doggy bag labeled "B12 — last call" (Ileum).', fact:'Duodenum receives enzymes/bile; Jejunum absorbs via microvilli; Ileum handles final absorption incl. Vitamin B12.'},
+    {stop:'Garage Rafters (Skeleton)', image:'The rafters (skeleton) hold up the whole house, cables (tendons) pull beams at the joints to swing a garage door, a helmet vault stores spare calcium coins, and a hidden drawer stores extra fat for a rainy day.', fact:'Musculoskeletal system: support, movement (tendons/joints), mineral storage, blood cell production, energy storage.'}
   ]}
 ]},
 {id:'bionotes', name:'Biology (1st Sem)', lessons:[
@@ -3536,7 +3800,9 @@ const ICONS = {
   cross: '<svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
   bulb: '<svg class="icon" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.5.4.9 1 1 1.8V17h6v-.5c.1-.8.5-1.4 1-1.8A7 7 0 0 0 12 2z"/></svg>',
   flip: '<svg class="icon" viewBox="0 0 24 24"><path d="M17 2.1l4 4-4 4"/><path d="M3 12.2v-2a4 4 0 0 1 4-4h14"/><path d="M7 21.9l-4-4 4-4"/><path d="M21 11.8v2a4 4 0 0 1-4 4H3"/></svg>',
-  palace: '<svg class="icon" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01M12 6.5V4"/></svg>'
+  palace: '<svg class="icon" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/><path d="M9 10h.01M15 10h.01M12 6.5V4"/></svg>',
+  eye: '<svg class="icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>',
+  eyeOff: '<svg class="icon" viewBox="0 0 24 24"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a20.3 20.3 0 0 1 5.06-5.94M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a20.3 20.3 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>'
 };
 
 /* ============================= THEME ============================= */
@@ -3548,7 +3814,7 @@ function toggleTheme(){
 }
 
 /* ============================= APP LOGIC ============================= */
-let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null, weakSpots:false, undoHighlight:null };
+let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null, weakSpots:false, undoHighlight:null, revealHidden:{}, selectMode:{}, selectedForHide:{} };
 
 function getSubject(id){ return DATA.find(s=>s.id===id); }
 function getLesson(subId, lesId){ return getSubject(subId).lessons.find(l=>l.id===lesId); }
@@ -3605,6 +3871,38 @@ function exportAllHighlights(){
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+/* ============================= HIDDEN LESSONS ============================= */
+const HIDDEN_LESSONS_KEY = 'reviewer_hidden_lessons';
+
+function getHiddenLessonsMap(){
+  try{
+    const raw = localStorage.getItem(HIDDEN_LESSONS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){ /* ignore */ }
+  return {};
+}
+
+function saveHiddenLessonsMap(map){
+  try{ localStorage.setItem(HIDDEN_LESSONS_KEY, JSON.stringify(map)); }catch(e){ /* storage full/unavailable */ }
+}
+
+function hiddenLessonKey(subjectId, lessonId){
+  return subjectId + '::' + lessonId;
+}
+
+function isLessonHidden(subjectId, lessonId){
+  const map = getHiddenLessonsMap();
+  return !!map[hiddenLessonKey(subjectId, lessonId)];
+}
+
+function toggleLessonHidden(subjectId, lessonId){
+  const map = getHiddenLessonsMap();
+  const key = hiddenLessonKey(subjectId, lessonId);
+  if(map[key]) delete map[key];
+  else map[key] = true;
+  saveHiddenLessonsMap(map);
 }
 
 /* ============================= QUIZ STATS / MASTERY ============================= */
@@ -3835,8 +4133,36 @@ function renderSidebar(){
       ul.appendChild(weakLi);
     }
 
+    const revealed = !!state.revealHidden[subj.id];
+    const selectModeOn = !!state.selectMode[subj.id];
+    if(!state.selectedForHide[subj.id]) state.selectedForHide[subj.id] = new Set();
+    const selectedSet = state.selectedForHide[subj.id];
+
+    const visibleLessons = [];
+    const hiddenLessons = [];
     subj.lessons.forEach(les=>{
+      (isLessonHidden(subj.id, les.id) ? hiddenLessons : visibleLessons).push(les);
+    });
+
+    if(subj.lessons.length > 1){
+      const selectLi = document.createElement('li');
+      const selectBtn = document.createElement('button');
+      selectBtn.className = 'hidden-toggle-btn select-mode-btn' + (selectModeOn ? ' active' : '');
+      selectBtn.innerHTML = (selectModeOn ? ICONS.cross : ICONS.eyeOff) + (selectModeOn ? 'Cancel selecting' : 'Select lessons to hide');
+      selectBtn.onclick = ()=>{
+        state.selectMode[subj.id] = !selectModeOn;
+        state.selectedForHide[subj.id] = new Set();
+        renderSidebar();
+      };
+      selectLi.appendChild(selectBtn);
+      ul.appendChild(selectLi);
+    }
+
+    function buildLessonRow(les, hidden){
       const li = document.createElement('li');
+      const row = document.createElement('div');
+      row.className = 'lesson-row' + (hidden ? ' hidden-lesson-row' : '');
+
       const lbtn = document.createElement('button');
       lbtn.className = 'lesson-btn' + (state.lessonId===les.id && state.subjectId===subj.id && !state.mixedReview ? ' active' : '');
       const titleSpan = document.createElement('span');
@@ -3850,23 +4176,93 @@ function renderSidebar(){
         badge.textContent = badgeInfo.label;
         lbtn.appendChild(badge);
       }
-      lbtn.onclick = ()=>{
-        state.subjectId = subj.id;
-        state.lessonId = les.id;
-        state.mode = 'study';
-        state.quiz = null;
-        state.mixedReview = false;
-        state.mixedSetup = null;
-        state.weakSpots = false;
-        state.termsOrder = null;
-        state.termsPracticeMode = false;
-        state.practiceSession = null;
+
+      if(selectModeOn && !hidden){
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.className = 'lesson-select-checkbox';
+        cb.checked = selectedSet.has(les.id);
+        cb.onchange = ()=>{
+          if(cb.checked) selectedSet.add(les.id); else selectedSet.delete(les.id);
+          renderSidebar();
+        };
+        row.appendChild(cb);
+        lbtn.onclick = ()=>{
+          if(selectedSet.has(les.id)) selectedSet.delete(les.id); else selectedSet.add(les.id);
+          renderSidebar();
+        };
+      } else if(hidden){
+        const hideBtn = document.createElement('button');
+        hideBtn.className = 'hide-lesson-btn';
+        hideBtn.title = 'Unhide this lesson';
+        hideBtn.innerHTML = ICONS.eye;
+        hideBtn.onclick = (e)=>{
+          e.stopPropagation();
+          toggleLessonHidden(subj.id, les.id);
+          renderSidebar();
+        };
+        row.appendChild(hideBtn);
+        lbtn.onclick = (e)=>{ e.preventDefault(); };
+      } else {
+        lbtn.onclick = ()=>{
+          state.subjectId = subj.id;
+          state.lessonId = les.id;
+          state.mode = 'study';
+          state.quiz = null;
+          state.mixedReview = false;
+          state.mixedSetup = null;
+          state.weakSpots = false;
+          state.termsOrder = null;
+          state.termsPracticeMode = false;
+          state.practiceSession = null;
+          renderSidebar();
+          renderMain();
+        };
+      }
+
+      row.appendChild(lbtn);
+      li.appendChild(row);
+      return li;
+    }
+
+    visibleLessons.forEach(les=> ul.appendChild(buildLessonRow(les, false)));
+
+    if(selectModeOn){
+      const actionLi = document.createElement('li');
+      const actionBtn = document.createElement('button');
+      actionBtn.className = 'hidden-toggle-btn bulk-hide-btn';
+      actionBtn.disabled = selectedSet.size === 0;
+      actionBtn.innerHTML = ICONS.eyeOff + 'Hide ' + selectedSet.size + ' selected';
+      actionBtn.onclick = ()=>{
+        selectedSet.forEach(id=>{
+          toggleLessonHidden(subj.id, id);
+          if(state.lessonId===id && state.subjectId===subj.id) state.lessonId = null;
+        });
+        state.selectedForHide[subj.id] = new Set();
+        state.selectMode[subj.id] = false;
         renderSidebar();
-        renderMain();
       };
-      li.appendChild(lbtn);
-      ul.appendChild(li);
-    });
+      actionLi.appendChild(actionBtn);
+      ul.appendChild(actionLi);
+    }
+
+    if(hiddenLessons.length){
+      const toggleLi = document.createElement('li');
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'hidden-toggle-btn';
+      toggleBtn.innerHTML = (revealed ? ICONS.eyeOff : ICONS.eye) + (revealed ? 'Hide' : 'Show') + ' ' + hiddenLessons.length + ' hidden lesson' + (hiddenLessons.length===1 ? '' : 's');
+      toggleBtn.onclick = ()=>{
+        state.revealHidden[subj.id] = !revealed;
+        renderSidebar();
+      };
+      toggleLi.appendChild(toggleBtn);
+      ul.appendChild(toggleLi);
+
+      if(revealed){
+        hiddenLessons.forEach(les=> ul.appendChild(buildLessonRow(les, true)));
+      }
+    }
+
     sb.appendChild(ul);
   });
 }
