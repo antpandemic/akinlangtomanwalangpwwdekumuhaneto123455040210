@@ -35,6 +35,11 @@
   .header-actions{
     position:absolute;top:16px;right:18px;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;
   }
+  .streak-badge{
+    display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.35);color:#fff;border-radius:20px;
+    padding:5px 14px;font-size:0.8rem;font-weight:bold;margin-top:8px;
+  }
 
   .layout{display:flex;max-width:1200px;margin:0 auto;min-height:calc(100vh - 80px);}
   .sidebar{
@@ -72,7 +77,19 @@
     border:1px dashed var(--border);margin-bottom:4px;
   }
   .mixed-review-btn svg{width:14px;height:14px;}
+  .weak-spots-btn{
+    display:flex;align-items:center;gap:6px;font-weight:bold;color:var(--warn);
+    border:1px dashed var(--border);margin-bottom:8px;
+  }
   .mastery-line{font-size:0.82rem;color:var(--muted);margin-top:8px;}
+
+  .weak-item-row{
+    padding:12px 0;border-bottom:1px solid var(--border);
+  }
+  .weak-item-row:last-child{border-bottom:none;}
+  .weak-item-text{font-size:0.9rem;line-height:1.5;color:var(--ink);margin-bottom:6px;}
+  .weak-item-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+  .weak-item-score{font-size:0.78rem;color:var(--muted);font-weight:bold;}
 
   .mixed-setup-panel{max-width:560px;}
   .mixed-setup-section{
@@ -192,6 +209,48 @@
   .flashcard-hint{font-size:0.68rem;margin-top:8px;opacity:0.75;font-style:italic;}
   .flashcard-def{font-size:0.82rem;line-height:1.45;}
 
+  .terms-mode-toggle{display:flex;gap:8px;}
+  .practice-btn{
+    display:flex;align-items:center;padding:7px 14px;border-radius:20px;border:1px solid var(--accent);
+    background:#fff;color:var(--accent);font-size:0.8rem;font-weight:bold;cursor:pointer;
+  }
+  .practice-btn.active{background:var(--accent);color:#fff;}
+  body.dark .practice-btn{background:#1a1e28;}
+  .practice-session{max-width:480px;margin:0 auto;}
+  .practice-progress{display:flex;justify-content:space-between;font-size:0.8rem;color:var(--muted);margin-bottom:10px;}
+  .practice-tally{display:flex;gap:14px;font-size:0.78rem;margin-bottom:16px;}
+  .practice-tally span{display:flex;align-items:center;gap:4px;}
+  .practice-card{
+    perspective:1200px;height:240px;cursor:pointer;margin-bottom:18px;
+  }
+  .practice-card-inner{
+    position:relative;width:100%;height:100%;text-align:center;transition:transform .5s;
+    transform-style:preserve-3d;
+  }
+  .practice-card.flipped .practice-card-inner{transform:rotateY(180deg);}
+  .practice-face{
+    position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;
+    border-radius:14px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,0.12);
+  }
+  .practice-front{background:linear-gradient(150deg,var(--accent),var(--accent-dark,#12284d));color:#fff;}
+  .practice-back{background:#fff8ec;border:2px solid #d98c2b;color:var(--ink);transform:rotateY(180deg);overflow-y:auto;}
+  body.dark .practice-back{background:#241d10;color:#e8e8ea;}
+  .practice-term{font-weight:bold;font-size:1.3rem;line-height:1.35;}
+  .practice-def{font-size:0.95rem;line-height:1.5;}
+  .practice-rate-row{display:flex;gap:10px;}
+  .practice-rate-btn{
+    flex:1;padding:12px;border-radius:10px;border:none;font-size:0.88rem;font-weight:bold;cursor:pointer;
+  }
+  .practice-rate-learning{background:#fbeaea;color:#c0392b;}
+  .practice-rate-known{background:#e6f5ee;color:#1c8c7c;}
+  body.dark .practice-rate-learning{background:#3a2323;}
+  body.dark .practice-rate-known{background:#1c332c;}
+  .practice-nav{display:flex;justify-content:space-between;margin-top:14px;}
+  .practice-nav button{background:none;border:1px solid var(--border);border-radius:8px;padding:6px 14px;color:var(--muted);cursor:pointer;font-size:0.8rem;}
+  .practice-complete{text-align:center;padding:30px 20px;}
+  .practice-complete .big{font-size:2rem;font-weight:bold;color:var(--accent2);margin-bottom:8px;}
+
   .palace-intro{
     display:flex;align-items:flex-start;gap:10px;background:#fff8ec;border:1px dashed #d98c2b;
     border-radius:10px;padding:14px 16px;margin-bottom:18px;font-size:0.88rem;color:var(--ink);line-height:1.5;
@@ -302,6 +361,7 @@
 <header>
   <h1><svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Multi-Subject Reviewer</h1>
   <p>GenMath · PKLP1 · EffCom1 · GenSci · Biology Notes · FunFaith · LCS — with randomized per-lesson quizzes</p>
+  <div id="streakBadge" class="streak-badge" style="display:none;"></div>
   <div class="header-actions">
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Dark Mode</button>
     <button class="theme-toggle" id="exportHlBtn" onclick="exportAllHighlights()"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export Highlights</button>
@@ -851,7 +911,7 @@ const DATA = [
       'Iba\'t ibang wika/diyalekto = rehiyonalismo at sub-cultures; resulta: Oryentasyong Pandagat (kultura na may kinalaman sa pandagat).',
       'Dalawang paraan ng pagtingin sa heograpiya: Deterministic (hindi nagbabago, hal. lokasyon sa Ring of Fire) at Possibilism (kaya nating gawin upang magbago ang paligid).'
     ]},
-    {h:'Mga Teoryang Siyentipiko: Heolohikal at Heograpiyang Pundasyon ng Kapuluan', b:[
+    {h:'Mga Teoryang Siyentipiko: Heolohikal at Heograpiyang Pundasyon ng Kapuluan', svg:'<svg viewBox="0 0 900 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Continental Drift and Land Bridges theories diagram"> <defs> <marker id="arrG1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"> <path d="M0,0L10,5L0,10z" style="fill:var(--accent)"/> </marker> </defs> <g font-family="system-ui,sans-serif"> <text x="200" y="24" text-anchor="middle" font-size="13" font-weight="bold" style="fill:var(--ink)">Continental Drift (Wegener)</text> <ellipse cx="90" cy="120" rx="70" ry="60" style="fill:var(--card);stroke:var(--accent);stroke-width:2"/> <text x="90" y="124" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Pangea</text> <line x1="175" y1="120" x2="230" y2="120" style="stroke:var(--accent);stroke-width:3" marker-end="url(#arrG1)"/> <ellipse cx="270" cy="95" rx="26" ry="20" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <ellipse cx="325" cy="105" rx="20" ry="16" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <ellipse cx="295" cy="140" rx="18" ry="14" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <ellipse cx="250" cy="150" rx="16" ry="12" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <text x="200" y="235" text-anchor="middle" font-size="10" style="fill:var(--muted)">One landmass split into 7 continents</text> <line x1="420" y1="20" x2="420" y2="240" style="stroke:var(--border);stroke-width:1.5;stroke-dasharray:4,3"/> <text x="680" y="24" text-anchor="middle" font-size="13" font-weight="bold" style="fill:var(--ink)">Land Bridges (Suess)</text> <ellipse cx="530" cy="130" rx="65" ry="50" style="fill:var(--card);stroke:var(--accent);stroke-width:2"/> <text x="530" y="134" text-anchor="middle" font-size="10" font-weight="bold" style="fill:var(--ink)">Mainland Asia</text> <path d="M600,135 L790,135" style="stroke:var(--accent2);stroke-width:8;stroke-dasharray:10,6"/> <ellipse cx="850" cy="130" rx="55" ry="45" style="fill:var(--card);stroke:var(--accent);stroke-width:2"/> <text x="850" y="128" text-anchor="middle" font-size="10" font-weight="bold" style="fill:var(--ink)">Palawan/</text> <text x="850" y="141" text-anchor="middle" font-size="10" font-weight="bold" style="fill:var(--ink)">Pilipinas</text> <text x="690" y="235" text-anchor="middle" font-size="10" style="fill:var(--muted)">Bridge submerged ~25,000 yrs ago as ice melted</text> </g> </svg>', b:[
       'Continental Drift Theory (Alfred Wegener): malaking lupain na naghiwalay sa isa\'t isa; napatunayan sa pamamagitan ng iba\'t ibang gawain/earthquake; nabuo ang pitong kontinente.',
       'Land Bridges Theory (Edward Suess): Pilipinas konektado sa mainland Asia 25,000 taon nakalipas sa pamamagitan ng mga tulay-lupa na natunaw at lumubog; ang Palawan lamang ang direktang nakasama sa teoryang ito.',
       'Faulting at Folding: dalawang paraan kung paano gumagalaw ang lupa — Faulting (pagka-akma/pagbibitak ng lupa) at Folding (pagpapatupi/pagbabaluktot ng lupa); mga uri: Normal, Reverse, Strike-slip Fault.',
@@ -914,7 +974,7 @@ const DATA = [
       'Palayok: mahalagang imbensyon — ginamit sa pagluluto, pagtatago at pag-iimpok ng tubig at pagkain, at kalauna\'y sa paglilibing.',
       'Agrikultura: dumami ang ani, humantong sa ugnayang pangkalakalan sa Tsina, Arabo, at Islam.'
     ]},
-    {h:'Core Population Theory (Felipe Landa Jocano Sr.)', b:[
+    {h:'Core Population Theory (Felipe Landa Jocano Sr.)', svg:'<svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Core Population Theory timeline diagram"> <defs> <marker id="arrCP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"> <path d="M0,0L10,5L0,10z" style="fill:var(--accent)"/> </marker> </defs> <g font-family="system-ui,sans-serif"> <circle cx="120" cy="110" r="42" style="fill:var(--card);stroke:var(--accent);stroke-width:3"/> <text x="120" y="106" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Core</text> <text x="120" y="120" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Population</text> <line x1="170" y1="110" x2="235" y2="110" style="stroke:var(--accent);stroke-width:3" marker-end="url(#arrCP)"/> <circle cx="290" cy="110" r="58" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <text x="290" y="106" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Growing</text> <text x="290" y="120" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Community</text> <line x1="355" y1="110" x2="415" y2="110" style="stroke:var(--accent);stroke-width:3" marker-end="url(#arrCP)"/> <circle cx="480" cy="110" r="72" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <text x="480" y="105" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Lipunan/</text> <text x="480" y="120" text-anchor="middle" font-size="11" font-weight="bold" style="fill:var(--ink)">Rehiyon</text> <rect x="555" y="150" width="130" height="45" rx="8" style="fill:var(--card);stroke:var(--warn);stroke-width:2"/> <text x="620" y="168" text-anchor="middle" font-size="10" font-weight="bold" style="fill:var(--warn)">Tabon Cave</text> <text x="620" y="182" text-anchor="middle" font-size="9" style="fill:var(--muted)">(Palawan — Jocano)</text> <rect x="555" y="20" width="130" height="45" rx="8" style="fill:var(--card);stroke:var(--warn);stroke-width:2;stroke-dasharray:4,3"/> <text x="620" y="38" text-anchor="middle" font-size="10" font-weight="bold" style="fill:var(--warn)">Callao Cave</text> <text x="620" y="52" text-anchor="middle" font-size="9" style="fill:var(--muted)">(Cagayan — older!)</text> <text x="120" y="175" text-anchor="middle" font-size="10" font-style="italic" style="fill:var(--muted)">Felipe Landa Jocano Sr.</text> </g> </svg>', b:[
       'Pangunahing pangkat ng tao na unang nanirahan at nag-ugat sa isang lugar.',
       'Sila ang unang komunidad na bumuo ng kultura/tradisyon/paniniwalang naging pundasyon ng pagkakakilanlan ng isang lipunan.',
       'Lumalawak ang populasyon habang nadaragdagan ng bagong miyembro/impluwensya mula sa ibang grupo.',
@@ -1041,7 +1101,7 @@ const DATA = [
       'Tinutukoy nito kung paano isinusulat ang kasaysayan — kabilang ang mga pamamaraan, interpretasyon, at paggamit ng mga sanggunian.',
       'Sa madaling salita, sinasagot ng Historiograpiya ang: Ano ang nangyari? Bakit ito nangyari? Ano ang aral?'
     ]},
-    {h:'Zeus Salazar: Tatlong Pananaw sa Pagsulat ng Kasaysayan', b:[
+    {h:'Zeus Salazar: Tatlong Pananaw sa Pagsulat ng Kasaysayan', svg:'<svg viewBox="0 0 620 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Zeus Salazar\'s three pananaw diagram"> <g font-family="system-ui,sans-serif"> <text x="310" y="30" text-anchor="middle" font-size="14" font-weight="bold" style="fill:var(--ink)">Zeus Salazar: Tatlong Pananaw</text> <circle cx="310" cy="120" r="70" style="fill:var(--card);stroke:var(--accent);stroke-width:3"/> <text x="310" y="112" text-anchor="middle" font-size="13" font-weight="bold" style="fill:var(--ink)">Pantayong</text> <text x="310" y="130" text-anchor="middle" font-size="13" font-weight="bold" style="fill:var(--ink)">Pananaw</text> <text x="310" y="148" text-anchor="middle" font-size="9" style="fill:var(--muted)">lahat ng Pilipino</text> <circle cx="150" cy="290" r="60" style="fill:var(--card);stroke:var(--accent2);stroke-width:2"/> <text x="150" y="284" text-anchor="middle" font-size="12" font-weight="bold" style="fill:var(--ink)">Pangkaming</text> <text x="150" y="301" text-anchor="middle" font-size="12" font-weight="bold" style="fill:var(--ink)">Pananaw</text> <text x="150" y="317" text-anchor="middle" font-size="9" style="fill:var(--muted)">"kami, hindi kayo"</text> <circle cx="470" cy="290" r="60" style="fill:var(--card);stroke:var(--warn);stroke-width:2"/> <text x="470" y="284" text-anchor="middle" font-size="12" font-weight="bold" style="fill:var(--ink)">Pansilang</text> <text x="470" y="301" text-anchor="middle" font-size="12" font-weight="bold" style="fill:var(--ink)">Pananaw</text> <text x="470" y="317" text-anchor="middle" font-size="9" style="fill:var(--muted)">mga dayuhan</text> <line x1="270" y1="170" x2="190" y2="240" style="stroke:var(--border);stroke-width:2"/> <line x1="350" y1="170" x2="430" y2="240" style="stroke:var(--border);stroke-width:2"/> <line x1="210" y1="290" x2="410" y2="290" style="stroke:var(--border);stroke-width:2"/> </g> </svg>', b:[
       'Pantayong Pananaw: isinasangkot/isinasaalang-alang ang LAHAT ng Pilipino sa pagsulat ng kasaysayan — ito ang pinaka-nais na paraan ni Salazar; "para sa atin, ng atin, mula sa atin" (for us, by us, among us).',
       'Pangkaming Pananaw: iilan lamang ang kasama o isinasaalang-alang — "kami, hindi kayo."',
       'Pansilang Pananaw: mga dayuhan (outsiders) ang gumagawa/nagsusulat ng kasaysayan tungkol sa atin; kahit gamitin ito, dapat manatiling nasa loob ng pananaw na "Pansila" lamang (hindi ipinapalit sa Pantayo).'
@@ -1248,7 +1308,12 @@ const DATA = [
     {q:'Communication between a teacher and student, where one has more knowledge/authority, is classified as:', c:['Informative','Instructive','Aesthetic','Persuasion'], a:1, e:'Instructive communication occurs between people of unequal rank/status.'},
     {q:'Communication between classmates of equal status sharing information is classified as:', c:['Instructive','Informative','Therapeutic','Aesthetic'], a:1, e:'Informative communication is common between people of equal rank or status.'},
     {q:'Continuing to talk to your crush to build a deeper connection illustrates which named function?', c:['Therapeutic','Aesthetic','Instructive','Regulation/Control'], a:1, e:'Aesthetic communication is achieved when pursuing a deeper, more intimate connection.'},
-    {q:'Telling a tired friend "it\'s okay, it\'s gonna be worth it" to make them feel better illustrates which function?', c:['Emotional Expression','Therapeutic','Information','Persuasion'], a:1, e:'Therapeutic communication aims to make someone\'s feelings better, distinct from just expressing/appealing to emotion.'}
+    {q:'Telling a tired friend "it\'s okay, it\'s gonna be worth it" to make them feel better illustrates which function?', c:['Emotional Expression','Therapeutic','Information','Persuasion'], a:1, e:'Therapeutic communication aims to make someone\'s feelings better, distinct from just expressing/appealing to emotion.'},
+    {type:'dual', s1:'Regulation/Control is about wanting others to manage their behavior.', s2:'Social Interaction is about wanting to form bonds or connections with others.', a:0, e:'Both statements are true — these are the correct definitions of Regulation/Control and Social Interaction.'},
+    {type:'dual', s1:'A doctor requiring a nurse to monitor a patient\'s heartbeat is an example of Motivation.', s2:'A credit card agent encouraging people to avail of a promo is an example of Information.', a:1, e:'Both statements are false — the doctor/nurse example is Regulation/Control, and the credit card agent example is Motivation, not Information.'},
+    {type:'dual', s1:'Primary function refers to your real agenda in a conversation.', s2:'Secondary function is another function used to help achieve the primary one.', a:0, e:'Both statements are true — this is exactly the relationship between primary and secondary communication functions.'},
+    {type:'dual', s1:'Informative communication happens between people of unequal rank or status.', s2:'Instructive communication happens between people of equal rank or status.', a:1, e:'Both statements are false — it\'s the reverse: Informative is between equals, Instructive is between unequal ranks/status.'},
+    {type:'dual', s1:'The Information function involves sharing facts from verifiable sources.', s2:'Emotional Expression involves appealing to someone\'s sense of sympathy.', a:0, e:'Both statements are true — these are the correct definitions of the Information and Emotional Expression functions.'}
   ], glossary:[
     {term:'Regulation/Control', def:'wanting others to manage their behavior or do things as we please.'},
     {term:'Social Interaction', def:'wanting to form bonds or forge a deeper connection with others.'},
@@ -1332,7 +1397,12 @@ const DATA = [
     {q:'Which of these correctly pairs a stage with its role?', c:['Encoding — Receiver','Feedback — Sender','Decoding — Receiver','Transmission — Receiver'], a:2, e:'Decoding belongs to the Receiver\'s side of the process.'},
     {q:'Which of these correctly pairs a stage with its role?', c:['Idea Formulation — Receiver','Idea Formulation — Sender','Receiving — Sender','Feedback — Sender'], a:1, e:'Idea Formulation belongs to the Sender\'s side of the process.'},
     {q:'How many stages in total belong to the Receiver in the communication process?', c:['2','3','4','1'], a:1, e:'3 stages belong to the receiver: Receiving, Decoding, and Feedback.'},
-    {q:'Communication is considered to have "taken place" when:', c:['The sender has finished speaking','Both the sender and receiver have gone through all their respective stages','Only the message has been transmitted','Only feedback has been given'], a:1, e:'Communication is complete once both sender-side stages and receiver-side stages have occurred.'}
+    {q:'Communication is considered to have "taken place" when:', c:['The sender has finished speaking','Both the sender and receiver have gone through all their respective stages','Only the message has been transmitted','Only feedback has been given'], a:1, e:'Communication is complete once both sender-side stages and receiver-side stages have occurred.'},
+    {type:'dual', s1:'Idea Formulation is the first stage of the communication process.', s2:'Feedback is the last stage of the communication process.', a:0, e:'Both statements are true — Idea Formulation starts the process on the sender\'s side, and Feedback closes it on the receiver\'s side.'},
+    {type:'dual', s1:'Encoding belongs to the sender\'s side of the process.', s2:'Decoding belongs to the sender\'s side of the process as well.', a:2, e:'Statement 1 is true, but Statement 2 is false — Decoding belongs to the RECEIVER\'s side, not the sender\'s.'},
+    {type:'dual', s1:'The communication process has 6 stages total.', s2:'All 6 stages belong equally to the sender.', a:2, e:'Statement 1 is true, but Statement 2 is false — only 3 of the 6 stages belong to the sender; the other 3 belong to the receiver.'},
+    {type:'dual', s1:'Transmission is when the sender gives out the message.', s2:'Receiving is when the receiver gets the message.', a:0, e:'Both statements are true — these are the correct definitions of Transmission and Receiving.'},
+    {type:'dual', s1:'Poor encoding by the sender has no effect on communication.', s2:'Communication can fail if any of the six stages breaks down.', a:3, e:'Statement 2 is true, but Statement 1 is false — poor encoding CAN cause miscommunication, since it shapes how the message is understood.'}
   ], glossary:[
     {term:'Idea Formulation', def:'the sender thinks of a message to communicate and decides to share it.'},
     {term:'Encoding', def:'the sender transforms the message using verbal and non-verbal communication.'},
@@ -1434,7 +1504,12 @@ const DATA = [
     {q:'An example of INTERNAL noise (a communication barrier) is:', c:['Cars honking','Being hungry or stressed','A broken microphone','Heavy rain'], a:1, e:'Internal noise refers to barriers within the person, as opposed to external noise like honking cars or heavy rain.'},
     {q:'Which of Aristotle\'s three persuasive appeals refers to logical arguments?', c:['Ethos','Pathos','Logos','Kairos'], a:2, e:'Logos refers to logical arguments, while ethos is credibility and pathos is emotional appeal.'},
     {q:'Which elements are common across most communication models?', c:['Source/Sender, Message, Channel, Receiver','Speaker, Occasion, Effect, Noise only','Encoder, Decoder only','Feedback and Time only'], a:0, e:'Most communication models share these common elements: Source/Sender, Message, Channel, and Receiver.'},
-    {q:'Communication models generally try to answer which set of questions?', c:['If, Then, Else','5 W\'s and 1 H (Who, What, When, Where, Why, How)','True or False questions only','Cause and Effect only'], a:1, e:'Communication models are conceptual frameworks that try to answer the 5 W\'s and 1 H.'}
+    {q:'Communication models generally try to answer which set of questions?', c:['If, Then, Else','5 W\'s and 1 H (Who, What, When, Where, Why, How)','True or False questions only','Cause and Effect only'], a:1, e:'Communication models are conceptual frameworks that try to answer the 5 W\'s and 1 H.'},
+    {type:'dual', s1:'Aristotle\'s Model is considered linear.', s2:'The Shannon-Weaver Model was the first to introduce the concept of Noise.', a:0, e:'Both statements are true — Aristotle\'s Model is indeed linear, and Shannon-Weaver was the first to introduce Noise as a barrier.'},
+    {type:'dual', s1:'Berlo\'s Model is also known as the S-M-C-R Model.', s2:'In Berlo\'s Model, the Channel refers to the five human senses.', a:0, e:'Both statements are true — S-M-C-R stands for Source-Message-Channel-Receiver, and the Channel component covers the five senses.'},
+    {type:'dual', s1:'Schramm\'s Model describes communication as purely linear.', s2:'Barnlund\'s Model describes communication as transactional.', a:2, e:'Statement 2 is true, but Statement 1 is false — Schramm\'s Model is Interactive (turn-taking), not linear.'},
+    {type:'dual', s1:'The E-Mediated Communication Model includes a Context component covering environment, time, and situation.', s2:'Feedback in the E-Mediated Model often takes the form of emojis and reactions.', a:0, e:'Both statements are true — these are accurate parts of the E-Mediated Communication Model.'},
+    {type:'dual', s1:'Laswell\'s Model added the concept of Channel/Medium to Aristotle\'s framework.', s2:'Laswell\'s Model is considered a Transactional model.', a:2, e:'Statement 1 is true, but Statement 2 is false — Laswell\'s Model is Linear, not Transactional.'}
   ], glossary:[
     {term:'Noise', def:'communication barriers — internal (hungry, stressed) or external (honking, broken mic).'},
     {term:'Aristotle\'s Model', def:'Speaker → Speech → Occasion → Audience → Effect; linear, uses ethos/pathos/logos.'},
@@ -1515,7 +1590,12 @@ const DATA = [
     {q:'A Filipino speaker says the word "salamat" but pronounces it with an exaggerated American accent as if it were an English word. This demonstrates:', c:['Code Switching','Foreignizing','Code Shifting','Literal Translation'], a:1, e:'Foreignizing is pronouncing a native word as if it were part of the target language.'},
     {q:'When all other strategies fail, a speaker hands their phone to a friend and asks them to text the message instead. This demonstrates:', c:['Approximation','Appeal for Help','Topic Avoidance','Use of Non-Verbal Cues'], a:1, e:'Asking someone else to relay the message is Appeal for Help, which should only be used as a last resort.'},
     {q:'Which pair of strategies BOTH involve combining two languages, but differ in whether the mixing happens within or between sentences?', c:['Code Switching and Code Shifting','Foreignizing and Literal Translation','Circumlocution and Approximation','Word Coinage and Gap Fillers'], a:0, e:'Code Switching mixes languages within a sentence, while Code Shifting changes languages between whole sentences.'},
-    {q:'A speaker overusing words like "totally," "actually," and "definitely" throughout a conversation, without them adding real meaning, is demonstrating:', c:['Use of All-Purpose Words','Use of (Gap) Fillers','Circumlocution','Word Coinage'], a:1, e:'Excessive use of intensifiers/qualifiers like "totally," "actually," and "definitely" is the Use of (Gap) Fillers strategy.'}
+    {q:'A speaker overusing words like "totally," "actually," and "definitely" throughout a conversation, without them adding real meaning, is demonstrating:', c:['Use of All-Purpose Words','Use of (Gap) Fillers','Circumlocution','Word Coinage'], a:1, e:'Excessive use of intensifiers/qualifiers like "totally," "actually," and "definitely" is the Use of (Gap) Fillers strategy.'},
+    {type:'dual', s1:'Message Abandonment means the speaker stops talking mid-thought.', s2:'Topic Avoidance means the speaker changes the subject instead of stopping outright.', a:0, e:'Both statements are true — these are the correct definitions of Message Abandonment and Topic Avoidance.'},
+    {type:'dual', s1:'Code Switching mixes two languages within one sentence.', s2:'Code Shifting also mixes two languages within one sentence.', a:2, e:'Statement 1 is true, but Statement 2 is false — Code Shifting changes language BETWEEN whole sentences, without mixing within one.'},
+    {type:'dual', s1:'Circumlocution means describing an idea vividly instead of naming it directly.', s2:'Approximation means using a completely made-up word instead of the real one.', a:2, e:'Statement 1 is true, but Statement 2 is false — Approximation uses a closely related REAL word/synonym, not a made-up one (that\'s Word Coinage).'},
+    {type:'dual', s1:'Appeal for Help should be used as a first resort when communicating.', s2:'There are twelve total communication strategies discussed.', a:3, e:'Statement 2 is true, but Statement 1 is false — Appeal for Help should be a LAST resort, not a first one.'},
+    {type:'dual', s1:'Foreignizing is pronouncing a native word as if it were part of the target language.', s2:'Literal Translation is translating word-for-word in a way that can lose the intended meaning.', a:0, e:'Both statements are true — these are accurate descriptions of Foreignizing and Literal Translation.'}
   ], glossary:[
     {term:'Communication Strategies', def:'techniques a speaker resorts to in order to address difficulties expressing himself/herself in a particular language.'},
     {term:'Message Abandonment', def:'stopping mid-expression due to difficulty communicating.'},
@@ -2298,7 +2378,175 @@ const DATA = [
     {stop:'Lab Cabinet', image:'Two glowing electron guns sit side by side — one shoots straight THROUGH a thin dead bug (flat 2D shadow appears on the wall), the other bounces OFF a dead bug\'s surface (a glowing 3D shape appears).', fact:'TEM: electrons pass through, 2D image. SEM: electrons reflect off, 3D image.'},
     {stop:'Windowsill', image:'A tiny robotic finger (stylus) pokes gently at a live, wriggling specimen, tracing every bump without hurting it.', fact:'Atomic Force Microscope: uses a stylus, can observe live specimen movement.'},
     {stop:'Supply Drawer', image:'Two knobs sit on a control panel — a big chunky one that yanks the lens closer FAST, and a tiny delicate one that nudges it a hair\'s width for a crisper picture.', fact:'Coarse adjustment = magnification/focus. Fine adjustment = better resolution.'}
-  ]}
+  ]},
+{
+  id: 'bn4',
+  title: '4. The Cell Cycle',
+  content: [
+    {h:'Overview of the Cell Cycle', b:[
+      'The cell cycle is the ordered series of events a cell goes through as it grows and divides into two daughter cells.',
+      'It has two main phases: Interphase (the cell grows and copies its DNA) and the Mitotic (M) Phase (the cell divides its nucleus and cytoplasm).',
+      'Interphase makes up about 90% of the cell cycle\'s total time — most of a cell\'s "life" is actually spent NOT dividing.'
+    ]},
+    {h:'Interphase: G1, S, G2', b:[
+      'G1 (Gap 1): the cell grows in size, makes new proteins and organelles, and carries out its normal functions.',
+      'S (Synthesis): the cell replicates (copies) its entire DNA, so each chromosome now consists of two identical sister chromatids joined at the centromere.',
+      'G2 (Gap 2): the cell continues to grow and makes final preparations (proteins/organelles needed for division) before entering mitosis.',
+      'G0 (Gap 0): a resting phase some cells enter where they exit the cycle and stop dividing (e.g. most mature neurons and muscle cells stay in G0 permanently).'
+    ]},
+    {h:'Mitosis (M Phase): Prophase to Telophase', b:[
+      'Prophase: chromatin condenses into visible chromosomes (each with 2 sister chromatids); the nuclear envelope starts to break down; spindle fibers begin to form.',
+      'Metaphase: chromosomes line up along the metaphase plate (the cell\'s equator), attached to spindle fibers from opposite poles.',
+      'Anaphase: sister chromatids are pulled apart toward opposite poles of the cell — each chromatid is now considered its own full chromosome.',
+      'Telophase: two new nuclear envelopes form around each set of chromosomes; chromosomes decondense back into chromatin; the spindle breaks down.',
+      'Mnemonic: "PMAT" — Prophase, Metaphase, Anaphase, Telophase, in that order.'
+    ]},
+    {h:'Cytokinesis', b:[
+      'Cytokinesis is the division of the cytoplasm, producing two separate daughter cells; it usually overlaps with telophase.',
+      'In animal cells: a cleavage furrow pinches the cell membrane inward until it splits into two cells.',
+      'In plant cells: a cell plate forms in the middle of the cell (since the rigid cell wall can\'t pinch inward) and develops into a new cell wall separating the two cells.'
+    ]},
+    {h:'Cell Cycle Checkpoints and Cancer', b:[
+      'Checkpoints are control points where the cell "checks" if conditions are right to continue to the next phase — they prevent cells with damaged DNA from dividing.',
+      'G1 Checkpoint (Restriction Point): checks cell size, nutrients, and DNA integrity before committing to DNA replication (S phase).',
+      'G2 Checkpoint: checks that DNA replication was completed correctly and without damage before entering mitosis.',
+      'M (Spindle) Checkpoint: checks that all chromosomes are properly attached to spindle fibers before allowing anaphase to proceed.',
+      'Cancer occurs when checkpoint controls fail and cells divide uncontrollably despite DNA damage or other problems — this is why cell cycle regulation is critical to health.'
+    ]}
+  ],
+  quiz: [
+    {q:'What are the two main phases of the cell cycle?', c:['Mitosis and Meiosis','Interphase and the Mitotic (M) Phase','G1 and G2','Prophase and Telophase'], a:1, e:'The cell cycle consists of Interphase (growth and DNA replication) and the Mitotic (M) Phase (division of nucleus and cytoplasm).'},
+    {q:'Approximately what percentage of the cell cycle is spent in Interphase?', c:['10%','50%','90%','100%'], a:2, e:'Interphase makes up about 90% of the total cell cycle — most of a cell\'s time is spent growing, not dividing.'},
+    {q:'During which phase of Interphase does the cell replicate its DNA?', c:['G1','S (Synthesis)','G2','G0'], a:1, e:'DNA replication occurs during the S (Synthesis) phase of interphase.'},
+    {q:'After S phase, each chromosome consists of:', c:['A single strand of unreplicated DNA','Two identical sister chromatids joined at the centromere','Four chromatids','No DNA at all'], a:1, e:'After replication in S phase, each chromosome has two identical sister chromatids joined at a centromere.'},
+    {q:'Which phase involves the cell growing and making final preparations before mitosis?', c:['G1','S','G2','Cytokinesis'], a:2, e:'G2 (Gap 2) is when the cell makes final preparations — proteins and organelles needed for division — before entering mitosis.'},
+    {q:'A mature neuron that has permanently stopped dividing is said to be in:', c:['S phase','G0 phase','Anaphase','Cytokinesis'], a:1, e:'G0 is a resting phase where certain cells (like most mature neurons) exit the cell cycle and stop dividing.'},
+    {q:'What is the correct order of the phases of mitosis?', c:['Metaphase, Prophase, Anaphase, Telophase','Prophase, Metaphase, Anaphase, Telophase','Prophase, Anaphase, Metaphase, Telophase','Telophase, Anaphase, Metaphase, Prophase'], a:1, e:'The order is Prophase, Metaphase, Anaphase, Telophase — remembered with the mnemonic "PMAT."'},
+    {q:'During which phase of mitosis does the nuclear envelope begin to break down?', c:['Metaphase','Anaphase','Prophase','Telophase'], a:2, e:'During Prophase, chromatin condenses into chromosomes and the nuclear envelope starts breaking down.'},
+    {q:'During which phase do chromosomes line up along the metaphase plate?', c:['Prophase','Metaphase','Anaphase','Telophase'], a:1, e:'In Metaphase, chromosomes align along the metaphase plate (the cell\'s equator).'},
+    {q:'During which phase are sister chromatids pulled apart toward opposite poles?', c:['Prophase','Metaphase','Anaphase','Telophase'], a:2, e:'In Anaphase, sister chromatids are separated and pulled to opposite poles — each is now its own chromosome.'},
+    {q:'During which phase do two new nuclear envelopes re-form around the separated chromosomes?', c:['Prophase','Metaphase','Anaphase','Telophase'], a:3, e:'In Telophase, new nuclear envelopes form around each set of chromosomes, which then decondense back into chromatin.'},
+    {q:'What is cytokinesis?', c:['The replication of DNA','The division of the cytoplasm to form two daughter cells','The condensation of chromatin','The breakdown of the nuclear envelope'], a:1, e:'Cytokinesis is the division of the cytoplasm that produces two separate daughter cells, usually overlapping with telophase.'},
+    {q:'In animal cells, cytokinesis occurs through the formation of a:', c:['Cell plate','Cleavage furrow','Metaphase plate','Nuclear envelope'], a:1, e:'Animal cells divide via a cleavage furrow that pinches the cell membrane inward.'},
+    {q:'Why do plant cells use a cell plate instead of a cleavage furrow during cytokinesis?', c:['Plant cells don\'t undergo cytokinesis','The rigid cell wall prevents the membrane from pinching inward','Plant cells have no cytoplasm','Plant cells divide faster than animal cells'], a:1, e:'Because plant cells have a rigid cell wall, they can\'t pinch inward like animal cells — instead, a cell plate forms and develops into a new cell wall.'},
+    {q:'What is the purpose of cell cycle checkpoints?', c:['To speed up cell division', 'To check that conditions are right before the cell proceeds to the next phase, preventing damaged cells from dividing', 'To destroy healthy cells', 'To skip mitosis entirely'], a:1, e:'Checkpoints act as control points ensuring the cell is ready to safely proceed — they prevent cells with damaged DNA from continuing to divide.'},
+    {q:'The G1 checkpoint (Restriction Point) checks for all of these EXCEPT:', c:['Cell size','Nutrient availability','DNA integrity','Whether spindle fibers are attached'], a:3, e:'The G1 checkpoint checks cell size, nutrients, and DNA integrity — checking spindle fiber attachment is the job of the M (Spindle) checkpoint.'},
+    {q:'Which checkpoint ensures DNA replication was completed correctly before mitosis begins?', c:['G1 checkpoint','G2 checkpoint','M checkpoint','S checkpoint'], a:1, e:'The G2 checkpoint verifies that DNA replication was completed correctly and without damage before the cell enters mitosis.'},
+    {q:'Which checkpoint ensures all chromosomes are properly attached to spindle fibers before anaphase begins?', c:['G1 checkpoint','G2 checkpoint','M (Spindle) checkpoint','S checkpoint'], a:2, e:'The M (Spindle) checkpoint verifies proper chromosome attachment to spindle fibers before allowing anaphase to proceed.'},
+    {q:'What can happen when cell cycle checkpoints fail?', c:['The cell cycle simply stops permanently','Cells may divide uncontrollably despite DNA damage, potentially leading to cancer','The cell immediately dies','Nothing significant happens'], a:1, e:'When checkpoint controls fail, damaged cells may continue to divide uncontrollably — this uncontrolled division is a hallmark of cancer.'},
+    {q:'What does the mnemonic "PMAT" help you remember?', c:['The stages of interphase','The order of mitotic phases: Prophase, Metaphase, Anaphase, Telophase','The parts of a chromosome','The types of cell transport'], a:1, e:'"PMAT" is a mnemonic for the four phases of mitosis, in order: Prophase, Metaphase, Anaphase, Telophase.'},
+    {type:'dual', s1:'Interphase includes the G1, S, and G2 phases.', s2:'Most of a cell\'s time in the cell cycle is spent in the Mitotic (M) phase.', a:2, e:'Statement 1 is true, but Statement 2 is false — most of the cell cycle (about 90%) is actually spent in Interphase, not the M phase.'},
+    {type:'dual', s1:'DNA replication occurs during the S phase of interphase.', s2:'After S phase, each chromosome has two sister chromatids.', a:0, e:'Both statements are true — this is exactly what happens during and after S phase.'},
+    {type:'dual', s1:'Animal cells use a cell plate to divide during cytokinesis.', s2:'Plant cells use a cleavage furrow to divide during cytokinesis.', a:1, e:'Both statements are false — it\'s the reverse: animal cells use a cleavage furrow, and plant cells use a cell plate.'},
+    {type:'dual', s1:'The G2 checkpoint checks that DNA replication was completed correctly.', s2:'The M checkpoint checks that chromosomes are properly attached to spindle fibers.', a:0, e:'Both statements are true — these are the correct roles of the G2 and M checkpoints respectively.'},
+    {type:'dual', s1:'Cancer can result when cell cycle checkpoints fail to catch DNA damage.', s2:'Cells in G0 phase are actively dividing.', a:2, e:'Statement 1 is true, but Statement 2 is false — cells in G0 have exited the cycle and are NOT dividing; that\'s the defining feature of G0.'}
+  ],
+  glossary: [
+    {term:'Interphase', def:'the growth phase of the cell cycle (G1, S, G2), making up ~90% of the total cycle.'},
+    {term:'S Phase', def:'the phase of interphase where DNA replication occurs.'},
+    {term:'Mitosis', def:'division of the nucleus into two identical nuclei, via Prophase, Metaphase, Anaphase, Telophase.'},
+    {term:'Cytokinesis', def:'division of the cytoplasm, producing two separate daughter cells.'},
+    {term:'Checkpoint', def:'a control point in the cell cycle that verifies conditions are right before proceeding to the next phase.'},
+    {term:'G0 Phase', def:'a resting phase where some cells permanently exit the cell cycle.'},
+    {term:'Sister Chromatids', def:'two identical copies of a chromosome joined at the centromere after DNA replication.'}
+  ],
+  palace: [
+    {stop:'Front Yard', image:'A tiny sapling grows taller and taller in the yard, sprouting new leaves and roots (but not yet splitting).', fact:'G1 phase: the cell grows in size and makes new proteins/organelles.'},
+    {stop:'Photocopy Room', image:'A copy machine spits out an exact duplicate of every document in the room, stapled together in pairs.', fact:'S phase: DNA is replicated, forming sister chromatids joined at the centromere.'},
+    {stop:'Packing Station', image:'Boxes are being taped shut and labeled "FRAGILE — READY FOR SHIPPING" all around the room.', fact:'G2 phase: final preparations are made before mitosis begins.'},
+    {stop:'Hallway Mirror Row', image:'A row of thick, twisted ropes (chromosomes) appears in the hallway as the ceiling (nuclear envelope) starts crumbling.', fact:'Prophase: chromatin condenses into chromosomes, nuclear envelope breaks down.'},
+    {stop:'Center of the Room', image:'All the twisted ropes line up perfectly along a chalk line drawn across the middle of the floor.', fact:'Metaphase: chromosomes align along the metaphase plate.'},
+    {stop:'Tug-of-War Pit', image:'Two teams yank the twisted ropes apart, each half flying to opposite ends of the room.', fact:'Anaphase: sister chromatids are pulled apart to opposite poles.'},
+    {stop:'Two New Rooms', image:'A wall rebuilds itself around each pile of rope on either end, forming two separate rooms.', fact:'Telophase: new nuclear envelopes form around each set of chromosomes.'},
+    {stop:'Garage Divider', image:'A zipper pulls shut down the middle of the garage (animal), while next door a fresh drywall panel (plant) splits another garage cleanly in half.', fact:'Cytokinesis: cleavage furrow in animal cells, cell plate in plant cells.'},
+    {stop:'Security Checkpoint at the Door', image:'A guard stops everyone at three separate gates, checking ID (size/DNA), a stamped form (replication), and a rope harness (spindle attachment) before letting anyone through.', fact:'Cell cycle checkpoints (G1, G2, M) verify conditions before allowing the cycle to proceed — failure can lead to cancer.'}
+  ]
+},
+{
+  id: 'bn5',
+  title: '5. Cell Transport',
+  content: [
+    {h:'The Cell Membrane and Selective Permeability', b:[
+      'The cell membrane (plasma membrane) is selectively permeable — it allows some substances to pass through freely while restricting others.',
+      'It is built as a phospholipid bilayer: hydrophilic ("water-loving") heads face outward toward water on both sides, while hydrophobic ("water-fearing") tails face inward, away from water.',
+      'Small, nonpolar, or uncharged molecules (like O2 and CO2) can pass directly through the bilayer; large, polar, or charged molecules (like glucose and ions) need help from membrane proteins.'
+    ]},
+    {h:'Passive Transport (No Energy Required)', b:[
+      'Passive transport moves substances DOWN their concentration gradient (from high to low concentration) and does NOT require the cell to use energy (ATP).',
+      'Simple Diffusion: small or nonpolar molecules move directly across the lipid bilayer from high to low concentration (e.g. oxygen and carbon dioxide).',
+      'Facilitated Diffusion: larger or charged molecules move across the membrane through specific transport proteins (channel proteins or carrier proteins), still moving from high to low concentration.',
+      'Osmosis: the diffusion of WATER specifically, moving across a selectively permeable membrane from an area of low solute concentration to high solute concentration.'
+    ]},
+    {h:'Tonicity and Osmosis in Cells', b:[
+      'Hypotonic solution: lower solute concentration OUTSIDE the cell than inside — water moves INTO the cell, causing it to swell (and potentially lyse/burst in animal cells).',
+      'Hypertonic solution: higher solute concentration OUTSIDE the cell than inside — water moves OUT of the cell, causing it to shrink (crenation in animal cells, plasmolysis in plant cells).',
+      'Isotonic solution: equal solute concentration inside and outside the cell — no net movement of water, and the cell maintains its normal shape.',
+      'Plant cells in a hypotonic solution become turgid (firm, healthy) rather than bursting, because the rigid cell wall resists the swelling pressure.'
+    ]},
+    {h:'Active Transport (Energy Required)', b:[
+      'Active transport moves substances AGAINST their concentration gradient (from low to high concentration) and REQUIRES the cell to spend energy, usually in the form of ATP.',
+      'Carrier proteins called pumps bind to the substance and use energy from ATP to change shape and move it across the membrane.',
+      'The Sodium-Potassium Pump (Na+/K+ pump) is a classic example: it pumps 3 sodium ions OUT of the cell and 2 potassium ions INTO the cell, both against their gradients, using one ATP per cycle.'
+    ]},
+    {h:'Bulk Transport: Endocytosis and Exocytosis', b:[
+      'Bulk transport moves large molecules or particles that are too big to cross the membrane through channels or pumps — it requires energy and involves the membrane itself changing shape.',
+      'Endocytosis: the cell membrane engulfs material from OUTSIDE the cell, forming a vesicle that brings the material INTO the cell.',
+      'Phagocytosis ("cell eating"): endocytosis of large solid particles (e.g. white blood cells engulfing bacteria).',
+      'Pinocytosis ("cell drinking"): endocytosis of liquids/dissolved substances in small vesicles.',
+      'Exocytosis: a vesicle from INSIDE the cell fuses with the cell membrane, releasing its contents OUTSIDE the cell (e.g. secreting hormones or neurotransmitters).'
+    ]}
+  ],
+  quiz: [
+    {q:'What does it mean for the cell membrane to be "selectively permeable"?', c:['It blocks everything from passing through','It allows some substances through while restricting others','It allows all substances through equally','It has no effect on what enters or exits the cell'], a:1, e:'Selectively permeable means the membrane allows certain substances to pass freely while restricting others.'},
+    {q:'In the phospholipid bilayer, which part of the phospholipid faces the watery environment?', c:['The hydrophobic tails','The hydrophilic heads','Both equally','Neither — phospholipids avoid water entirely'], a:1, e:'The hydrophilic ("water-loving") heads face outward toward water on both sides of the membrane, while hydrophobic tails face inward.'},
+    {q:'Which type of transport requires NO cellular energy (ATP)?', c:['Active transport','Passive transport','Exocytosis','Phagocytosis'], a:1, e:'Passive transport moves substances down their concentration gradient and does not require energy.'},
+    {q:'Simple diffusion allows which type of molecules to cross the membrane directly?', c:['Large, charged ions','Small, nonpolar molecules like O2 and CO2','Whole bacteria','Large proteins'], a:1, e:'Small, nonpolar molecules like oxygen and carbon dioxide can diffuse directly across the lipid bilayer.'},
+    {q:'What is the key difference between simple diffusion and facilitated diffusion?', c:['Facilitated diffusion requires ATP, simple diffusion does not','Facilitated diffusion uses transport proteins to move larger/charged molecules, while simple diffusion does not need proteins','Simple diffusion moves substances against the gradient','There is no difference'], a:1, e:'Facilitated diffusion relies on channel or carrier proteins to move larger or charged molecules, while simple diffusion happens directly through the lipid bilayer.'},
+    {q:'Osmosis specifically refers to the diffusion of:', c:['Glucose','Water','Oxygen','Sodium ions'], a:1, e:'Osmosis is the diffusion of water across a selectively permeable membrane.'},
+    {q:'In osmosis, water moves from an area of:', c:['High solute concentration to low solute concentration','Low solute concentration to high solute concentration','Equal concentration only','No predictable direction'], a:1, e:'Water moves from an area of low solute concentration to an area of high solute concentration during osmosis.'},
+    {q:'A cell placed in a hypotonic solution will:', c:['Shrink','Swell (and possibly burst)','Stay exactly the same','Immediately die'], a:1, e:'In a hypotonic solution, water moves INTO the cell (since solute concentration is lower outside), causing it to swell.'},
+    {q:'A cell placed in a hypertonic solution will:', c:['Swell','Shrink (crenation in animal cells, plasmolysis in plant cells)','Stay exactly the same','Immediately divide'], a:1, e:'In a hypertonic solution, water moves OUT of the cell, causing it to shrink — called crenation in animal cells and plasmolysis in plant cells.'},
+    {q:'In an isotonic solution, what happens to a cell?', c:['It swells dramatically','It shrinks dramatically','There is no net movement of water, and the cell keeps its normal shape','It bursts immediately'], a:2, e:'In an isotonic solution, solute concentration is equal inside and outside, so there\'s no net water movement.'},
+    {q:'Why don\'t plant cells burst when placed in a hypotonic solution?', c:['They have no water inside them','The rigid cell wall resists the swelling pressure, making the cell turgid instead','They actively pump out all the water','Plant cells cannot absorb water'], a:1, e:'The rigid cell wall of plant cells resists the pressure of swelling, so the cell becomes turgid (firm) rather than bursting.'},
+    {q:'Active transport moves substances:', c:['Down their concentration gradient, using no energy','Against their concentration gradient, using energy (ATP)','Only through simple diffusion','Only during cell division'], a:1, e:'Active transport moves substances against their concentration gradient (low to high) and requires energy, usually ATP.'},
+    {q:'In the Sodium-Potassium Pump, how many sodium ions are pumped OUT and how many potassium ions are pumped IN per cycle?', c:['2 sodium out, 3 potassium in','3 sodium out, 2 potassium in','1 sodium out, 1 potassium in','3 sodium out, 3 potassium in'], a:1, e:'The Na+/K+ pump moves 3 sodium ions out of the cell and 2 potassium ions into the cell per cycle, using one ATP.'},
+    {q:'What type of protein performs active transport by changing shape to move substances across the membrane?', c:['Channel protein','Carrier protein (pump)','Structural protein','Enzyme only'], a:1, e:'Carrier proteins called pumps use energy from ATP to change shape and move substances against their gradient.'},
+    {q:'What is endocytosis?', c:['The cell membrane engulfing material from outside and bringing it into the cell via a vesicle','A vesicle releasing material outside the cell','Diffusion of water only','Passive movement of ions'], a:0, e:'Endocytosis is when the cell membrane engulfs external material, forming a vesicle that brings it into the cell.'},
+    {q:'What is exocytosis?', c:['The cell membrane engulfing material from outside', 'A vesicle from inside the cell fusing with the membrane to release its contents outside', 'Diffusion of gases only', 'The process of cell division'], a:1, e:'Exocytosis is when an internal vesicle fuses with the cell membrane to release its contents to the outside (e.g. secreting hormones).'},
+    {q:'"Cell eating," or the endocytosis of large solid particles, is called:', c:['Pinocytosis','Phagocytosis','Osmosis','Facilitated diffusion'], a:1, e:'Phagocytosis ("cell eating") is the endocytosis of large solid particles, such as white blood cells engulfing bacteria.'},
+    {q:'"Cell drinking," or the endocytosis of liquids/dissolved substances, is called:', c:['Phagocytosis','Pinocytosis','Exocytosis','Active transport'], a:1, e:'Pinocytosis ("cell drinking") is the endocytosis of liquids or dissolved substances in small vesicles.'},
+    {q:'Which of the following requires the cell to use energy?', c:['Simple diffusion','Osmosis','Active transport','Facilitated diffusion'], a:2, e:'Active transport (and bulk transport like endo-/exocytosis) require energy, unlike passive transport methods like diffusion and osmosis.'},
+    {q:'White blood cells engulfing bacteria is a specific example of:', c:['Pinocytosis','Phagocytosis','Simple diffusion','Osmosis'], a:1, e:'This is phagocytosis — the endocytosis of large solid particles, in this case bacteria.'},
+    {type:'dual', s1:'Simple diffusion requires the cell to use ATP.', s2:'Facilitated diffusion moves molecules against their concentration gradient.', a:1, e:'Both statements are false — simple diffusion does NOT require ATP, and facilitated diffusion (like simple diffusion) moves molecules WITH the gradient, not against it.'},
+    {type:'dual', s1:'Osmosis is the diffusion of water across a selectively permeable membrane.', s2:'Water moves from low solute concentration to high solute concentration during osmosis.', a:0, e:'Both statements are true — this is exactly how osmosis works.'},
+    {type:'dual', s1:'A cell in a hypertonic solution will swell.', s2:'A cell in a hypotonic solution will shrink.', a:1, e:'Both statements are false — it\'s the reverse: hypertonic solutions cause cells to shrink, and hypotonic solutions cause cells to swell.'},
+    {type:'dual', s1:'The Sodium-Potassium pump is an example of active transport.', s2:'It moves substances down their concentration gradient without using energy.', a:2, e:'Statement 1 is true, but Statement 2 is false — the Na+/K+ pump moves ions AGAINST their gradient and DOES require energy (ATP), which is what makes it active transport.'},
+    {type:'dual', s1:'Endocytosis brings material into the cell.', s2:'Exocytosis brings material into the cell as well.', a:2, e:'Statement 1 is true, but Statement 2 is false — exocytosis RELEASES material out of the cell, not into it.'}
+  ],
+  glossary: [
+    {term:'Selectively Permeable', def:'a membrane property that allows some substances through while restricting others.'},
+    {term:'Passive Transport', def:'movement of substances down their concentration gradient, requiring no energy.'},
+    {term:'Active Transport', def:'movement of substances against their concentration gradient, requiring energy (ATP).'},
+    {term:'Osmosis', def:'diffusion of water across a selectively permeable membrane, from low to high solute concentration.'},
+    {term:'Hypotonic', def:'a solution with lower solute concentration outside the cell — water moves in, cell swells.'},
+    {term:'Hypertonic', def:'a solution with higher solute concentration outside the cell — water moves out, cell shrinks.'},
+    {term:'Isotonic', def:'a solution with equal solute concentration inside and outside — no net water movement.'},
+    {term:'Endocytosis', def:'the cell membrane engulfing material to bring it into the cell.'},
+    {term:'Exocytosis', def:'a vesicle fusing with the membrane to release material out of the cell.'}
+  ],
+  palace: [
+    {stop:'Front Gate', image:'A picky bouncer at the gate lets small, quiet guests slide right in but stops large or rowdy guests unless they show a special pass (protein).', fact:'Selectively permeable membrane: small/nonpolar molecules pass freely; large/charged ones need help.'},
+    {stop:'Swimming Pool Deck', image:'People happily lounge with their heads poking out of the water on both sides of a floating pool noodle, while their feet (tails) stay hidden underwater.', fact:'Phospholipid bilayer: hydrophilic heads face water, hydrophobic tails face inward.'},
+    {stop:'Open Field', image:'A crowd casually strolls downhill from a packed stadium into an empty field, no ushers needed.', fact:'Passive transport (diffusion): movement down the concentration gradient, no energy required.'},
+    {stop:'Turnstile Gate', image:'A special turnstile only lets people wearing a certain badge (protein) through, still moving from the packed side to the empty side.', fact:'Facilitated diffusion: uses transport proteins, still moves down the gradient.'},
+    {stop:'Sponge in the Sink', image:'A dry sponge placed in a salty bowl of water visibly shrivels up, while one in plain water puffs up like a balloon.', fact:'Hypertonic solution shrinks a cell; hypotonic solution makes it swell.'},
+    {stop:'Greenhouse Window', image:'A wilted plant perks up and stands firm and tall after its pot is watered, thanks to its sturdy stems (cell walls).', fact:'Plant cells become turgid, not burst, in a hypotonic solution because of the rigid cell wall.'},
+    {stop:'Escalator Going Up', image:'A tired worker pushes a cart of heavy boxes UP a downward-moving escalator, sweating and burning calories with every step.', fact:'Active transport: moves substances against the gradient, using energy (ATP).'},
+    {stop:'Revolving Door (3-in, 2-out)', image:'A revolving door only ever lets exactly 3 people out one side and 2 people in the other side, over and over, powered by a hidden motor.', fact:'Sodium-Potassium Pump: 3 Na+ out, 2 K+ in, per cycle, using ATP.'},
+    {stop:'Loading Dock', image:'A giant crane arm reaches out, scoops up an entire shipping container from outside, and hauls it into the warehouse.', fact:'Endocytosis: the membrane engulfs material and brings it into the cell.'},
+    {stop:'Delivery Truck Departing', image:'A sealed delivery truck backs up to a warehouse door, opens its back doors, and dumps its whole shipment out onto the street.', fact:'Exocytosis: a vesicle fuses with the membrane and releases contents outside the cell.'}
+  ]
+}
 ]},
 {id:'funfaith', name:'FunFaith: Religion', lessons:[
   {id:'ff1', title:'1. Divine Revelation', content:[
@@ -3078,7 +3326,7 @@ function toggleTheme(){
 }
 
 /* ============================= APP LOGIC ============================= */
-let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null };
+let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null, weakSpots:false, undoHighlight:null };
 
 function getSubject(id){ return DATA.find(s=>s.id===id); }
 function getLesson(subId, lesId){ return getSubject(subId).lessons.find(l=>l.id===lesId); }
@@ -3172,6 +3420,50 @@ function recordAttempt(subjectId, lessonId, score, total){
   stats.attempts.push({ ts: Date.now(), score, total, pct: total ? Math.round((score/total)*100) : 0 });
   if(stats.attempts.length > 20) stats.attempts = stats.attempts.slice(-20);
   saveStats(subjectId, lessonId, stats);
+  touchStreak();
+}
+
+/* ============================= STUDY STREAK ============================= */
+function dateStr(d){
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+}
+function getStreakData(){
+  try{
+    const raw = localStorage.getItem('reviewer_streak');
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return { lastDate: null, current: 0, longest: 0 };
+}
+function saveStreakData(data){
+  try{ localStorage.setItem('reviewer_streak', JSON.stringify(data)); }catch(e){}
+}
+// Call whenever the person does a meaningful study action (finishes a quiz, rates a flashcard).
+// Increments the streak once per calendar day, resets it if a day was skipped.
+function touchStreak(){
+  const data = getStreakData();
+  const today = dateStr(new Date());
+  if(data.lastDate === today) { renderStreakBadge(); return; } // already counted today
+  const yesterday = dateStr(new Date(Date.now() - 86400000));
+  if(data.lastDate === yesterday){
+    data.current += 1;
+  } else {
+    data.current = 1; // streak broken (or first-ever study action)
+  }
+  data.lastDate = today;
+  if(data.current > data.longest) data.longest = data.current;
+  saveStreakData(data);
+  renderStreakBadge();
+}
+function renderStreakBadge(){
+  const el = document.getElementById('streakBadge');
+  if(!el) return;
+  const data = getStreakData();
+  if(!data.lastDate || data.current <= 0){
+    el.style.display = 'none';
+    return;
+  }
+  el.style.display = 'inline-flex';
+  el.innerHTML = `🔥 ${data.current}-day streak` + (data.longest > data.current ? ` <span style="opacity:0.75;font-weight:normal;">(best: ${data.longest})</span>` : '');
 }
 
 // Returns a rounded mastery % based on the average of the last up to 3 attempts, or null if never attempted.
@@ -3217,13 +3509,14 @@ const DUAL_CHOICES = [
 
 function buildQuizQuestion(q){
   const statKey = qKey(q);
+  const statsLessonId = q._statsLessonId || null; // per-question override, used by Weak Spots drilling
   if(q.type === 'dual'){
-    return { type:'dual', s1:q.s1, s2:q.s2, choices: DUAL_CHOICES.slice(), answer: q.a, explanation: q.e || null, source: q._src || null, statKey };
+    return { type:'dual', s1:q.s1, s2:q.s2, choices: DUAL_CHOICES.slice(), answer: q.a, explanation: q.e || null, source: q._src || null, statKey, statsLessonId };
   }
   const idxs = shuffle(q.c.map((_,i)=>i));
   const choices = idxs.map(i=>q.c[i]);
   const answer = idxs.indexOf(q.a);
-  return { type:'mc', q:q.q, choices, answer, explanation: q.e || null, source: q._src || null, statKey };
+  return { type:'mc', q:q.q, choices, answer, explanation: q.e || null, source: q._src || null, statKey, statsLessonId };
 }
 
 // Picks a weighted subset from a lesson's pool and starts a fresh quiz attempt in state.quiz.
@@ -3274,6 +3567,7 @@ function renderSidebar(){
         state.subjectId = null;
         state.mixedReview = false;
         state.mixedSetup = null;
+        state.weakSpots = false;
       } else {
         state.subjectId = subj.id;
       }
@@ -3294,12 +3588,29 @@ function renderSidebar(){
         state.lessonId = null;
         state.mixedReview = true;
         state.mixedSetup = null;
+        state.weakSpots = false;
         state.quiz = null;
         renderSidebar();
         renderMain();
       };
       mixLi.appendChild(mixBtn);
       ul.appendChild(mixLi);
+
+      const weakLi = document.createElement('li');
+      const weakBtn = document.createElement('button');
+      weakBtn.className = 'lesson-btn weak-spots-btn' + (state.subjectId===subj.id && state.weakSpots ? ' active' : '');
+      weakBtn.innerHTML = '⚠️ Weak Spots';
+      weakBtn.onclick = ()=>{
+        state.subjectId = subj.id;
+        state.lessonId = null;
+        state.mixedReview = false;
+        state.weakSpots = true;
+        state.quiz = null;
+        renderSidebar();
+        renderMain();
+      };
+      weakLi.appendChild(weakBtn);
+      ul.appendChild(weakLi);
     }
 
     subj.lessons.forEach(les=>{
@@ -3324,7 +3635,10 @@ function renderSidebar(){
         state.quiz = null;
         state.mixedReview = false;
         state.mixedSetup = null;
+        state.weakSpots = false;
         state.termsOrder = null;
+        state.termsPracticeMode = false;
+        state.practiceSession = null;
         renderSidebar();
         renderMain();
       };
@@ -3339,6 +3653,10 @@ function renderMain(){
   const main = document.getElementById('main');
   if(state.subjectId && state.mixedReview){
     renderMixedReview(main);
+    return;
+  }
+  if(state.subjectId && state.weakSpots){
+    renderWeakSpots(main);
     return;
   }
   if(!state.subjectId || !state.lessonId){
@@ -3403,15 +3721,31 @@ function renderHighlightableContent(lesson, main, mode, sections, extraCardClass
 
   const toolbar = document.createElement('div');
   toolbar.className = 'hl-hint';
-  toolbar.innerHTML = `<span>${ICONS.bulb} Select any text below to highlight it.</span>`;
-  const clearBtn = document.createElement('button');
-  clearBtn.className = 'hl-clear-btn';
-  clearBtn.textContent = 'Clear Highlights';
-  clearBtn.onclick = ()=>{
-    localStorage.removeItem(key);
-    renderMain();
-  };
-  toolbar.appendChild(clearBtn);
+
+  if(state.undoHighlight && state.undoHighlight.key === key){
+    toolbar.innerHTML = `<span>${ICONS.bulb} Highlights cleared.</span>`;
+    const undoBtn = document.createElement('button');
+    undoBtn.className = 'hl-clear-btn';
+    undoBtn.textContent = 'Undo';
+    undoBtn.onclick = ()=>{
+      try{ localStorage.setItem(key, state.undoHighlight.value); }catch(e){}
+      state.undoHighlight = null;
+      renderMain();
+    };
+    toolbar.appendChild(undoBtn);
+  } else {
+    toolbar.innerHTML = `<span>${ICONS.bulb} Select any text below to highlight it.</span>`;
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'hl-clear-btn';
+    clearBtn.textContent = 'Clear Highlights';
+    clearBtn.onclick = ()=>{
+      const prevValue = localStorage.getItem(key);
+      localStorage.removeItem(key);
+      state.undoHighlight = prevValue ? { key, value: prevValue } : null;
+      renderMain();
+    };
+    toolbar.appendChild(clearBtn);
+  }
   main.appendChild(toolbar);
 
   const container = document.createElement('div');
@@ -3546,6 +3880,24 @@ function renderPalace(lesson, main){
   main.appendChild(track);
 }
 
+/* ============================= FLASHCARD PRACTICE (TERMS) ============================= */
+function termStatsKey(subjectId, lessonId){
+  return 'reviewer_termstats__' + subjectId + '__' + lessonId;
+}
+function getTermStats(subjectId, lessonId){
+  try{
+    const raw = localStorage.getItem(termStatsKey(subjectId, lessonId));
+    if(raw) return JSON.parse(raw);
+  }catch(e){ /* ignore */ }
+  return {};
+}
+function setTermRating(subjectId, lessonId, term, rating){
+  const stats = getTermStats(subjectId, lessonId);
+  stats[term] = rating; // 'known' | 'learning'
+  try{ localStorage.setItem(termStatsKey(subjectId, lessonId), JSON.stringify(stats)); }catch(e){}
+  touchStreak();
+}
+
 function renderTerms(lesson, main){
   const terms = lesson.glossary || [];
   if(terms.length===0){
@@ -3557,13 +3909,42 @@ function renderTerms(lesson, main){
   }
   const headerRow = document.createElement('div');
   headerRow.className = 'terms-header-row';
-  headerRow.innerHTML = `<h3>${ICONS.key}Key Terms (${terms.length}) — tap a card to flip it</h3>`;
-  const shuffleBtn = document.createElement('button');
-  shuffleBtn.className = 'shuffle-terms-btn';
-  shuffleBtn.innerHTML = ICONS.flip + 'Shuffle order';
-  shuffleBtn.onclick = ()=>{ state.termsOrder = shuffle(terms.map((_,i)=>i)); renderMain(); };
-  headerRow.appendChild(shuffleBtn);
+  headerRow.innerHTML = `<h3>${ICONS.key}Key Terms (${terms.length})</h3>`;
+
+  const toggleWrap = document.createElement('div');
+  toggleWrap.className = 'terms-mode-toggle';
+
+  const gridBtn = document.createElement('button');
+  gridBtn.className = 'practice-btn' + (!state.termsPracticeMode ? ' active' : '');
+  gridBtn.textContent = 'Grid';
+  gridBtn.onclick = ()=>{ state.termsPracticeMode = false; renderMain(); };
+
+  const practiceBtn = document.createElement('button');
+  practiceBtn.className = 'practice-btn' + (state.termsPracticeMode ? ' active' : '');
+  practiceBtn.innerHTML = ICONS.dice + 'Practice Mode';
+  practiceBtn.onclick = ()=>{
+    state.termsPracticeMode = true;
+    state.practiceSession = { order: shuffle(terms.map((_,i)=>i)), pos: 0, flipped: false, known: 0, learning: 0 };
+    renderMain();
+  };
+
+  toggleWrap.appendChild(gridBtn);
+  toggleWrap.appendChild(practiceBtn);
+
+  if(!state.termsPracticeMode){
+    const shuffleBtn = document.createElement('button');
+    shuffleBtn.className = 'shuffle-terms-btn';
+    shuffleBtn.innerHTML = ICONS.flip + 'Shuffle order';
+    shuffleBtn.onclick = ()=>{ state.termsOrder = shuffle(terms.map((_,i)=>i)); renderMain(); };
+    toggleWrap.appendChild(shuffleBtn);
+  }
+  headerRow.appendChild(toggleWrap);
   main.appendChild(headerRow);
+
+  if(state.termsPracticeMode){
+    renderTermsPractice(lesson, terms, main);
+    return;
+  }
 
   if(!state.termsOrder || state.termsOrder.length !== terms.length){
     state.termsOrder = terms.map((_,i)=>i);
@@ -3591,6 +3972,180 @@ function renderTerms(lesson, main){
     grid.appendChild(card);
   });
   main.appendChild(grid);
+}
+
+function renderTermsPractice(lesson, terms, main){
+  if(!state.practiceSession){
+    state.practiceSession = { order: shuffle(terms.map((_,i)=>i)), pos: 0, flipped: false, known: 0, learning: 0 };
+  }
+  const sess = state.practiceSession;
+
+  if(sess.pos >= sess.order.length){
+    const box = document.createElement('div');
+    box.className = 'practice-complete';
+    box.innerHTML = `
+      <div class="big">${sess.known} / ${sess.order.length}</div>
+      <p>Marked as known this round. ${sess.learning} still need review.</p>
+    `;
+    const restart = document.createElement('button');
+    restart.className = 'retry-btn';
+    restart.innerHTML = ICONS.refresh + 'Practice Again';
+    restart.onclick = ()=>{
+      state.practiceSession = { order: shuffle(terms.map((_,i)=>i)), pos: 0, flipped: false, known: 0, learning: 0 };
+      renderMain();
+    };
+    box.appendChild(restart);
+    main.appendChild(box);
+    return;
+  }
+
+  const wrap = document.createElement('div');
+  wrap.className = 'practice-session';
+
+  const progress = document.createElement('div');
+  progress.className = 'practice-progress';
+  progress.innerHTML = `<span>Card ${sess.pos+1} of ${sess.order.length}</span>`;
+  wrap.appendChild(progress);
+
+  const tally = document.createElement('div');
+  tally.className = 'practice-tally';
+  tally.innerHTML = `<span>✅ Known: ${sess.known}</span><span>🔁 Learning: ${sess.learning}</span>`;
+  wrap.appendChild(tally);
+
+  const t = terms[sess.order[sess.pos]];
+  const card = document.createElement('div');
+  card.className = 'practice-card' + (sess.flipped ? ' flipped' : '');
+  card.innerHTML = `
+    <div class="practice-card-inner">
+      <div class="practice-face practice-front">
+        <span class="flashcard-tag">TERM</span>
+        <div class="practice-term">${t.term}</div>
+        <span class="flashcard-hint">tap to reveal definition</span>
+      </div>
+      <div class="practice-face practice-back">
+        <span class="flashcard-tag">DEFINITION</span>
+        <div class="practice-def">${t.def}</div>
+      </div>
+    </div>`;
+  card.onclick = ()=>{ sess.flipped = !sess.flipped; renderMain(); };
+  wrap.appendChild(card);
+
+  const rateRow = document.createElement('div');
+  rateRow.className = 'practice-rate-row';
+  const learningBtn = document.createElement('button');
+  learningBtn.className = 'practice-rate-btn practice-rate-learning';
+  learningBtn.textContent = '🔁 Still Learning';
+  learningBtn.onclick = ()=>{
+    setTermRating(state.subjectId, lesson.id, t.term, 'learning');
+    sess.learning++;
+    sess.pos++;
+    sess.flipped = false;
+    renderMain();
+  };
+  const knownBtn = document.createElement('button');
+  knownBtn.className = 'practice-rate-btn practice-rate-known';
+  knownBtn.textContent = '✅ Got It';
+  knownBtn.onclick = ()=>{
+    setTermRating(state.subjectId, lesson.id, t.term, 'known');
+    sess.known++;
+    sess.pos++;
+    sess.flipped = false;
+    renderMain();
+  };
+  rateRow.appendChild(learningBtn);
+  rateRow.appendChild(knownBtn);
+  wrap.appendChild(rateRow);
+
+  const nav = document.createElement('div');
+  nav.className = 'practice-nav';
+  const skipBtn = document.createElement('button');
+  skipBtn.textContent = 'Skip without rating →';
+  skipBtn.onclick = ()=>{ sess.pos++; sess.flipped = false; renderMain(); };
+  nav.appendChild(document.createElement('span'));
+  nav.appendChild(skipBtn);
+  wrap.appendChild(nav);
+
+  main.appendChild(wrap);
+}
+
+function renderWeakSpots(main){
+  const subj = getSubject(state.subjectId);
+  main.innerHTML = '';
+
+  const headerDiv = document.createElement('div');
+  headerDiv.className = 'lesson-header';
+  headerDiv.innerHTML = `<h2>⚠️ Weak Spots — ${subj.name}</h2>`;
+  const exitBtn = document.createElement('button');
+  exitBtn.className = 'hl-clear-btn';
+  exitBtn.textContent = 'Back to Lessons';
+  exitBtn.onclick = ()=>{ state.weakSpots = false; renderSidebar(); renderMain(); };
+  headerDiv.appendChild(exitBtn);
+  main.appendChild(headerDiv);
+
+  // Gather every question across every lesson in this subject, along with its per-question stats.
+  const weakItems = [];
+  subj.lessons.forEach(les=>{
+    const stats = getStats(subj.id, les.id);
+    (les.quiz||[]).forEach(q=>{
+      const key = qKey(q);
+      const s = stats.questions && stats.questions[key];
+      if(s && s.wrong > 0 && s.wrong >= s.correct){
+        weakItems.push({
+          q, lessonTitle: les.title, lessonId: les.id,
+          correct: s.correct, wrong: s.wrong
+        });
+      }
+    });
+  });
+
+  weakItems.sort((a,b)=> (b.wrong - b.correct) - (a.wrong - a.correct));
+
+  if(weakItems.length===0){
+    const empty = document.createElement('div');
+    empty.className = 'welcome';
+    empty.innerHTML = `No weak spots found yet in ${subj.name}.<br><br>Take some quizzes first — any question you miss more than you get right will show up here so you can drill it specifically.`;
+    main.appendChild(empty);
+    return;
+  }
+
+  const intro = document.createElement('div');
+  intro.className = 'hl-hint';
+  intro.innerHTML = `<span>${ICONS.bulb} ${weakItems.length} question${weakItems.length===1?'':'s'} you\'ve missed more than you\'ve gotten right, across ${subj.name}.</span>`;
+  main.appendChild(intro);
+
+  const drillBtn = document.createElement('button');
+  drillBtn.className = 'start-mixed-btn';
+  drillBtn.innerHTML = ICONS.dice + `Drill These ${weakItems.length} Weak Questions`;
+  drillBtn.style.marginBottom = '18px';
+  drillBtn.onclick = ()=>{
+    const pool = weakItems.map(item => Object.assign({}, item.q, { _src: item.lessonTitle, _statsLessonId: item.lessonId }));
+    const virtualLesson = { id:'weakdrill', title:'Weak Spots Drill — ' + subj.name, quiz: pool };
+    startQuiz(virtualLesson, pool.length, subj.id, 'weakdrill');
+    state.weakSpots = false;
+    state.mixedReview = true;   // reuse the mixed-review quiz display shell
+    state.mixedSetup = { selected: new Set(), count: pool.length }; // not used since state.quiz already set
+    renderSidebar();
+    renderMain();
+  };
+  main.appendChild(drillBtn);
+
+  const list = document.createElement('div');
+  list.className = 'content-card';
+  weakItems.forEach(item=>{
+    const row = document.createElement('div');
+    row.className = 'weak-item-row';
+    const qText = item.q.type === 'dual'
+      ? `S1: ${item.q.s1} — S2: ${item.q.s2}`
+      : item.q.q;
+    row.innerHTML = `
+      <div class="weak-item-text">${qText}</div>
+      <div class="weak-item-meta">
+        <span class="source-tag">${item.lessonTitle}</span>
+        <span class="weak-item-score">✅ ${item.correct} · ❌ ${item.wrong}</span>
+      </div>`;
+    list.appendChild(row);
+  });
+  main.appendChild(list);
 }
 
 function renderMixedReview(main){
@@ -3774,7 +4329,7 @@ function renderQuiz(lesson, main, opts){
     const masteryLine = mastery===null
       ? ''
       : `<div class="mastery-line">Your recent average on this ${opts.isMixed ? 'mixed review' : 'quiz'}: <strong>${mastery}%</strong></div>`;
-    panel.innerHTML = `<div>This ${opts.isMixed ? 'review pulls from' : 'lesson has'} a pool of ${poolSize} question${poolSize===1?'':'s'}. Each attempt serves ${served} of them — weighted so questions you've missed before show up more often, and ones you've mastered show up less. Freshly shuffled every time you start.</div>${masteryLine}`;
+    panel.innerHTML = `<div>This ${opts.isMixed ? 'review pulls from' : 'lesson has'} a pool of ${poolSize} question${poolSize===1?'':'s'}. Each attempt serves ${served} of them — weighted so questions you've missed before show up more often, and ones you've mastered show up less. Freshly shuffled every time you start.</div>${masteryLine}<div class="mastery-line">⌨️ Tip: press 1-4 to pick an answer, Enter to confirm/continue, Esc to change your pick.</div>`;
     const btn = document.createElement('button');
     btn.innerHTML = ICONS.dice + (opts.isMixed ? 'Start Mixed Review' : 'Start Quiz');
     btn.onclick = ()=>{
@@ -3905,7 +4460,8 @@ function renderQuiz(lesson, main, opts){
       quiz.confirming = false;
       const wasCorrect = quiz.selected===q.answer;
       if(wasCorrect) quiz.score++;
-      recordAnswer(quiz.statsSubjectId, quiz.statsLessonId, q.statKey, wasCorrect);
+      recordAnswer(quiz.statsSubjectId, q.statsLessonId || quiz.statsLessonId, q.statKey, wasCorrect);
+      if(q.statsLessonId) renderSidebar(); // weak-spot drills can touch several lessons' badges mid-session
       renderMain();
     };
     const noBtn = document.createElement('button');
@@ -3960,4 +4516,43 @@ function renderQuiz(lesson, main, opts){
 
 renderSidebar();
 renderMain();
+renderStreakBadge();
+
+/* ============================= QUIZ KEYBOARD SHORTCUTS ============================= */
+// Number keys pick an answer, Enter confirms/advances, Escape backs out of the confirm step.
+// Self-guards on current DOM/state each keypress, so it's safe to attach just once.
+function handleQuizKeydown(e){
+  if(!state.quiz) return;
+  if(e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+  const quiz = state.quiz;
+  if(quiz.current >= quiz.questions.length) return; // score screen — no shortcuts there
+  const choiceButtons = Array.from(document.querySelectorAll('.quiz-box .choice'));
+  if(!choiceButtons.length) return;
+
+  if(e.key >= '1' && e.key <= '9'){
+    const idx = parseInt(e.key, 10) - 1;
+    if(idx < choiceButtons.length && !quiz.locked && !quiz.confirming){
+      e.preventDefault();
+      choiceButtons[idx].click();
+    }
+  } else if(e.key === 'Enter'){
+    if(quiz.confirming && !quiz.locked){
+      e.preventDefault();
+      const yesBtn = document.querySelector('.confirm-yes');
+      if(yesBtn) yesBtn.click();
+    } else if(quiz.locked){
+      e.preventDefault();
+      const nextBtn = Array.from(document.querySelectorAll('.quiz-box button'))
+        .find(b => b.textContent.includes('Next Question') || b.textContent.includes('See Results'));
+      if(nextBtn) nextBtn.click();
+    }
+  } else if(e.key === 'Escape'){
+    if(quiz.confirming && !quiz.locked){
+      e.preventDefault();
+      const noBtn = document.querySelector('.confirm-no');
+      if(noBtn) noBtn.click();
+    }
+  }
+}
+document.addEventListener('keydown', handleQuizKeydown);
 </script>
