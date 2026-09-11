@@ -746,6 +746,7 @@ const DATA = [
   {id:'pk1', title:'1. Kasaysayan: Kahulugan at Kahalagahan', content:[
     {h:'Kasaysayan', b:[
       'Kasaysayan: isang sanaysay na isinasalaysay na may saysay na magpapabago sa lipunan ngayon.',
+      'Etimolohiya ng "Kasaysayan": mula sa "Salaysay" (kwento ng nakaraan) at "Saysay" (may kahulugan/sense) — kaya\'t ang kasaysayan ay isang kwento ng nakaraan na may kahulugan.',
       'Historia/Historie: mula sa salitang Griyego, nangangahulugang pagkatuto, pagtatanong sa pag-aaral o pag-iimbestiga (pinakamahalaga).',
       'Herodotus ng Gresya: tinaguriang "Ama ng Kasaysayan"; nagpasimula ng pamamaraan ng pag-aaral ng nakalipas na pangyayari, tinawag itong "historiya" (imbestigasyon).'
     ]},
@@ -757,7 +758,7 @@ const DATA = [
       'Tamang interpretasyon at pagbuhay muli sa nakalipas sa pamamagitan ng artifacts sa maayos at sistematikong paraan.',
       'Historical Revisionism: pagbabago/pag-rerevise ng kasaysayan para maging mas accurate.',
       'Historical Distortion: MALI — intensyonal na pagbabago ng tala sa personal na antas.',
-      'Leopold Von Ranke: Ama ng kasaysayang siyentipiko.'
+      'Leopold Von Ranke: Ama ng kasaysayang siyentipiko; ika-19 na siglo; naimpluwensyahan ng Positivism (scientific method, masusing pag-aaral) at Empiricism, kaya naging isang agham ang kasaysayan sa panahong ito.'
     ]},
     {h:'Kahalagahan ng Kasaysayan', b:[
       'Gabay at tulay sa pagitan ng kasalukuyan at nakaraan.',
@@ -790,12 +791,17 @@ const DATA = [
     {type:'dual', s1:'Ang Historical Revisionism ay palaging negatibo o mali.', s2:'Ang Historical Distortion ay ginagawa para sa layuning maging mas accurate.', a:1, e:'Parehong mali — ang Revisionism ay maaaring positibo (para sa accuracy), samantalang ang Distortion ay HINDI para sa accuracy kundi para sa personal na interes.'},
     {type:'dual', s1:'Ang tradisyunal na kahulugan ng kasaysayan ay batay lamang sa nakasulat na dokumento.', s2:'Ang makabagong kahulugan ay sumasali rin ng oral history at cultural artifacts.', a:0, e:'Parehong totoo — ito nga ang pangunahing pagkakaiba ng tradisyunal at makabagong kahulugan ng kasaysayan.'},
     {type:'dual', s1:'Walang kaugnayan ang kasaysayan sa nasyonalismo.', s2:'Ang kasaysayan ay nakakatulong lamang sa pag-aaral ng ibang bansa.', a:1, e:'Parehong mali — nakakatulong ang kasaysayan sa nasyonalismo, at hindi lamang ito tungkol sa ibang bansa kundi pati na rin sa sariling bansa.'},
-    {type:'dual', s1:'Si Herodotus ay taga-Gresya.', s2:'Ang salitang "Historia" ay nagmula sa wikang Latin.', a:2, e:'Tama ang Statement 1 (Griyego/Gresya si Herodotus), pero mali ang Statement 2 — ang "Historia" ay mula sa Griyego, hindi Latin.'}
+    {type:'dual', s1:'Si Herodotus ay taga-Gresya.', s2:'Ang salitang "Historia" ay nagmula sa wikang Latin.', a:2, e:'Tama ang Statement 1 (Griyego/Gresya si Herodotus), pero mali ang Statement 2 — ang "Historia" ay mula sa Griyego, hindi Latin.'},
+    {q:'Ang salitang "Kasaysayan" ay nagmula sa dalawang salita: "Salaysay" at "Saysay." Ano ang ibig sabihin ng "Saysay"?', c:['Kwento ng nakaraan', 'May kahulugan/sense', 'Ang mananaliksik', 'Ang mismong dokumento'], a:1, e:'Ang "Saysay" ay nangangahulugang may kahulugan/sense, samantalang ang "Salaysay" ay ang kwento ng nakaraan.'},
+    {q:'Anong pilosopiya ang nag-impluwensya kay Leopold Von Ranke, na nagpaging agham sa kasaysayan?', c:['Idealism at Rationalism', 'Positivism at Empiricism', 'Existentialism', 'Nihilism'], a:1, e:'Naimpluwensyahan si Von Ranke ng Positivism (scientific method) at Empiricism, kaya naging isang agham ang kasaysayan sa ika-19 na siglo.'}
   
   ], glossary:[
     {term:'Historia/Historie', def:'salitang Griyego na nangangahulugang pagkatuto/pagtatanong sa pag-aaral o pag-iimbestiga.'},
     {term:'Historical Revisionism', def:'pagbabago/pag-rerevise ng kasaysayan para maging mas accurate.'},
-    {term:'Historical Distortion', def:'MALI — intensyonal na pagbabago ng tala sa personal na antas.'}
+    {term:'Historical Distortion', def:'MALI — intensyonal na pagbabago ng tala sa personal na antas.'},
+    {term:'Salaysay / Saysay', def:'salitang-ugat ng "Kasaysayan" — kwento ng nakaraan (salaysay) na may kahulugan/sense (saysay).'},
+    {term:'Positivism / Empiricism', def:'mga pilosopiyang naimpluwensya kay Von Ranke — diin sa scientific method at masusing pag-aaral, ginawang agham ang kasaysayan.'},
+    {term:'Gottschalk', def:'"Ang kasaysayan ay isang masusing pag-aaral ng mga salaysay ng nakaraan ng sangkatauhan na puno ng saysay" — kanyang depinisyon ng kasaysayan.'}
   ], palace:[
     {stop:'Bahay-Bahayan sa Harap ng Bakuran', image:'Isang matandang lalaking may sumbrero ang nakaupo sa harap, nagtatanong-tanong sa lahat ng dumadaan — siya\'y si Herodotus.', fact:'Si Herodotus ay ang "Ama ng Kasaysayan," na tumawag sa kanyang pamamaraan na "historiya" (imbestigasyon).'},
     {stop:'Aparador ng mga Dokumento', image:'Isang aparador na puno ng lumang papel, pero may nakasabit na malaking krus sa ibabaw — nagpapahiwatig na "walang dokumento, walang kasaysayan."', fact:'Ang tradisyunal na kahulugan ng kasaysayan ay batay lamang sa nakasulat na dokumento.'},
@@ -897,7 +903,8 @@ const DATA = [
       'Kakulangan ng batis para irepresenta ang buong bansa; kakulangan ng sanay/tunay na historyador.'
     ]},
     {h:'Heograpiya ng Pilipinas', b:[
-      'Ang heograpiya ay pag-aaral ng mga pisikal na katangian ng daigdig at atmospera nito, at ng aktibidad ng tao habang ito ay nakakaapekto at apektado ng mga ito.',
+      'Ang heograpiya ay pag-aaral ng mga pisikal na katangian ng daigdig at atmospera nito, at ng aktibidad ng tao habang ito ay nakakaapekto at apektado ng mga ito. Kabilang dito ang pamamahagi ng populasyon at mapagkukunan, paggamit ng lupa, at mga industriya.',
+      'Kahalagahan ng Heograpiya: tumutulong ito sa pag-unawa ng ating mundo (pisikal na sistema, natural na penomenon, pagkakaiba-iba ng kultura, at pandaigdigang isyu); tumutulong din itong saliksikin ang mga komplikadong isyu tulad ng pagbabago ng klima, heopolitikal na tensyon, at pagkakaiba-iba ng ekonomiya, habang pinalalakas ang pagpapahalaga sa mundo at sa mga naninirahan dito.',
       'Matatagpuan sa Timog-Silangang Asya; bahagi ng Pacific Ring of Fire (Seismic/Earthquake Belt) at Pacific Typhoon Belt.',
       'Nasa itaas ng ekwador (tropikal); may 7,641 na isla (archipelagic state).',
       'Iba\'t ibang wika/diyalekto = rehiyonalismo at sub-cultures; resulta: Oryentasyong Pandagat (kultura na may kinalaman sa pandagat).',
@@ -934,14 +941,16 @@ const DATA = [
     {type:'dual', s1:'Napatunayang totoo ang Land Bridges Theory bilang pinagmulan ng lahat ng sinaunang Pilipino.', s2:'Ang Land Bridges Theory ay iminungkahi ni Edward Suess.', a:3, e:'Mali ang Statement 1 (may ebidensyang mas matanda pang paninirahan sa Pilipinas kaysa sa teoryang ito), pero tama ang Statement 2 — si Edward Suess nga ang nagmungkahi nito.'},
     {type:'dual', s1:'Ang Deterministic na pananaw ay naniniwalang hindi nagbabago ang heograpiya.', s2:'Ang Possibilism ay naniniwalang may magagawa tayo upang baguhin ang paligid.', a:0, e:'Parehong totoo — ito ang pangunahing pagkakaiba ng Deterministic at Possibilism na pananaw sa heograpiya.'},
     {type:'dual', s1:'Ang Pilipinas ay matatagpuan sa Hilagang Asya.', s2:'Ang Pilipinas ay may 7,641 na isla.', a:3, e:'Mali ang Statement 1 (Timog-Silangang Asya ang Pilipinas), pero tama ang Statement 2 — mayroon nga itong 7,641 na isla.'},
-    {type:'dual', s1:'Ang Taal Volcano ay binanggit bilang halimbawa ng Volcanic Origin Theory.', s2:'Ito rin ay binanggit bilang unang malaking suliraning pangklima ng Pilipinas bago ang pandemya.', a:0, e:'Parehong totoo — bahagi ang Taal Volcano ng talakayan sa Volcanic Origin Theory, at binanggit din ito bilang unang malaking suliraning pangklima.'}
+    {type:'dual', s1:'Ang Taal Volcano ay binanggit bilang halimbawa ng Volcanic Origin Theory.', s2:'Ito rin ay binanggit bilang unang malaking suliraning pangklima ng Pilipinas bago ang pandemya.', a:0, e:'Parehong totoo — bahagi ang Taal Volcano ng talakayan sa Volcanic Origin Theory, at binanggit din ito bilang unang malaking suliraning pangklima.'},
+    {q:'Alin sa mga sumusunod ang bahagi ng Kahalagahan ng Heograpiya?', c:['Tumutulong ito sa pag-unawa ng climate change at heopolitikal na tensyon', 'Wala itong kaugnayan sa kultura', 'Tanging ang mapa lamang ang pinag-aaralan nito', 'Hindi ito kaugnay sa ekonomiya'], a:0, e:'Ang heograpiya ay tumutulong sa pag-unawa ng mundo, kultura, at pandaigdigang isyu tulad ng climate change at heopolitikal na tensyon.'}
   ],
   glossary: [
     {term:'Batis', def:'sources — mga nakasulat na tala (birth/death certificate, census) at artifacts (larawan, kasangkapan, armas).'},
     {term:'Deterministic', def:'pananaw na hindi nagbabago ang heograpiya (hal. lokasyon sa Ring of Fire).'},
     {term:'Possibilism', def:'pananaw na may magagawa tayo upang baguhin ang ating kapaligiran.'},
     {term:'Continental Drift Theory', def:'ni Alfred Wegener — malaking lupain na naghiwalay patungong pitong kontinente.'},
-    {term:'Land Bridges Theory', def:'ni Edward Suess — konektado umano ang Pilipinas sa mainland Asia sa pamamagitan ng tulay-lupa.'}
+    {term:'Land Bridges Theory', def:'ni Edward Suess — konektado umano ang Pilipinas sa mainland Asia sa pamamagitan ng tulay-lupa.'},
+    {term:'Kahalagahan ng Heograpiya', def:'tumutulong sa pag-unawa ng mundo, kultura, at pandaigdigang isyu tulad ng climate change at heopolitikal na tensyon.'}
   ],
   palace: [
     {stop:'Bintana', image:'May malaking tao na nakatayo sa gitna ng kwarto, mas malaki kaysa lahat ng gamit — siya ang bida ng bawat kwento.', fact:'Ang Tao ang pinaka-importanteng elemento ng kasaysayan.'},
@@ -1167,15 +1176,16 @@ const DATA = [
       'Verbal: as long as you use words — speaking, writing, texting. Rule-specific (grammar) and almost always planned.',
       '4 macroskills of language (verbal): Speaking, Writing, Listening, Reading.',
       'Non-verbal: the total opposite of verbal — spontaneous and unstructured.',
-      'Examples of non-verbal: Facial Expressions, Gestures, Body Language, Proxemics, Paralinguistics, Eye gaze, Haptics, Appearance.',
+      'Examples of non-verbal: Facial Expressions, Gestures, Body Language, Proxemics, Paralinguistics, Eye gaze, Haptics, Appearance, and Chronemics.',
       'Proxemics zones: Intimate (1-1.5 ft), Personal (1.5-4 ft), Social (4-12 ft), Public (12+ ft).',
-      'Paralinguistics: pitch, volume, tone, intonation, rhythm, silence — "it\'s not what you say, it\'s how you say it."'
+      'Paralinguistics: pitch, volume, tone, intonation, rhythm, silence — "it\'s not what you say, it\'s how you say it."',
+      'Chronemics: how a culture uses time. Monochronic (M-time): time is linear/limited, punctuality = respect (e.g. US, Germany, Switzerland). Polychronic (P-time): time is fluid, relationships matter more than the clock, being "late" can be acceptable (e.g. Philippines, Latin America, Middle East).'
     ]},
     {h:'Improving Verbal Communication', b:[
       'Appropriateness — right term at the right time, context is everything.',
       'Brevity — keep it short and simple.',
       'Clarity — be understandable.',
-      'Ethics — apply G.R.E.P.S: Gender, Roles, Ethnicity, Preferences, Status.',
+      'Ethics — apply G.R.E.E.P.S: Gender, Roles, Ethnicity, Experience, Preferences, Status.',
       'Vividness — try to use the exact/concrete words.'
     ]},
     {h:'The 9 C\'s of Communication', b:[
@@ -1183,11 +1193,11 @@ const DATA = [
       'Conciseness: brief but meaningful, remove unnecessary words.',
       'Clarity: avoid vagueness, make the message specific and direct.',
       'Consistency: repeat important messages the same way each time.',
-      'Considering your Audience: know their background, adjust tone/vocabulary.',
-      'Content: value the substance of your message.',
-      'Checking for Understanding: verify the audience grasped the message.',
-      'Choosing the Right Medium: select the best channel for the situation.',
-      'Common Language: use language your audience understands, avoid unnecessary jargon.'
+      'Considering your Audience: know their background/needs, adjust tone/vocabulary; ideally through Audience Analysis — gathering as much information as possible about your intended receivers.',
+      'Content: value the substance of your message; be well-equipped with all the information needed for it to be complete, accurate, and substantial.',
+      'Checking for Understanding: specifically the sender\'s job — verify the audience grasped the message, via clarifying questions or feedback.',
+      'Choosing the Right Medium: select the best channel/medium for the situation and audience; can be evaluated using the Media Richness Theory — 5 criteria: (1) Permanence (how long the medium stores the exchange), (2) Urgency of Feedback (how fast the receiver can respond), (3) Privacy (how well it keeps the exchange private), (4) Formality (how seriously the message will be taken), (5) Cost (how expensive the medium is to use — the MORE expensive, the LESS effective it\'s perceived to be).',
+      'Common Language: use language your audience understands, avoid unnecessary jargon — "express, not impress."'
     ]}
   ], quiz:[
     {q:'Communication is best defined as a two-way process between a:', c:['Teacher and student only','Sender and a receiver','Writer and editor only','Boss and employee only'], a:1, e:'Communication is fundamentally a two-way process between a sender and a receiver (or speaker/listener, writer/reader).'},
@@ -1195,21 +1205,30 @@ const DATA = [
     {q:'Which of the 4 macroskills of language is NOT typically classified as verbal in the notes?', c:['Speaking','Writing','Listening','Facial expression'], a:3, e:'The 4 macroskills of verbal language are Speaking, Writing, Listening, and Reading — facial expression is a non-verbal cue.'},
     {q:'Which proxemics zone covers 4 to 12 feet?', c:['Intimate','Personal','Social','Public'], a:2, e:'The Social Zone covers roughly 4 to 12 feet of distance.'},
     {q:'"It\'s not what you say, it\'s how you say it" best describes:', c:['Proxemics','Paralinguistics','Haptics','Appearance'], a:1, e:'Paralinguistics deals with pitch, volume, tone, intonation, rhythm, and silence — the "how" of spoken communication.'},
-    {q:'The G.R.E.P.S. framework under Ethics in verbal communication stands for Gender, Roles, Ethnicity, Preferences, and:', c:['Status','Speed','Style','Structure'], a:0, e:'G.R.E.P.S. stands for Gender, Roles, Ethnicity, Preferences, and Status.'},
+    {q:'The G.R.E.E.P.S. framework under Ethics in verbal communication stands for Gender, Roles, Ethnicity, Experience, Preferences, and:', c:['Status','Speed','Style','Structure'], a:0, e:'G.R.E.E.P.S. stands for Gender, Roles, Ethnicity, Experience, Preferences, and Status.'},
     {q:'Which of the 9 C\'s emphasizes that verbal and non-verbal cues should align?', c:['Congruency','Conciseness','Consistency','Content'], a:0, e:'Congruency specifically ensures verbal and non-verbal cues align, avoiding mixed signals.'},
-    {q:'Which of the 9 C\'s involves verifying that the audience actually grasped your message?', c:['Clarity','Checking for Understanding','Considering your Audience','Common Language'], a:1, e:'Checking for Understanding involves verifying comprehension, often via clarifying questions or feedback.'}
+    {q:'Which of the 9 C\'s involves verifying that the audience actually grasped your message?', c:['Clarity','Checking for Understanding','Considering your Audience','Common Language'], a:1, e:'Checking for Understanding involves verifying comprehension, often via clarifying questions or feedback.'},
+    {q:'Gathering as much information as possible about your intended receivers, to inform how you communicate, is called:', c:['Media Richness Theory','Audience Analysis','G.R.E.E.P.S.','Common Language'], a:1, e:'Audience Analysis is the act of gathering information about your intended audience/target receivers, supporting the "Considering your Audience" principle.'},
+    {q:'A culture where time is seen as fluid, and relationships matter more than the clock (being "late" can be acceptable), reflects which time orientation?', c:['Monochronic (M-time)','Polychronic (P-time)','Chronological time','Paralinguistic time'], a:1, e:'Polychronic (P-time) cultures, like the Philippines, Latin America, and the Middle East, view time as fluid, prioritizing relationships over strict punctuality.'},
+    {q:'A culture where time is seen as linear, limited, and punctuality is a sign of respect, reflects which time orientation, studied under Chronemics?', c:['Polychronic (P-time)','Monochronic (M-time)','Proxemic time','Haptic time'], a:1, e:'Monochronic (M-time) cultures, like the US, Germany, and Switzerland, see time as linear and non-renewable, so punctuality signals respect.'},
+    {q:'According to Media Richness Theory, which of the following is one of the 5 criteria for judging a communication medium\'s effectiveness?', c:['Vocabulary size','Permanence','Font style','Number of words'], a:1, e:'Media Richness Theory\'s 5 criteria are Permanence, Urgency of Feedback, Privacy, Formality, and Cost.'},
+    {q:'Under Media Richness Theory, how does COST affect a medium\'s perceived effectiveness?', c:['The more expensive it is, the MORE effective it\'s perceived to be','The more expensive it is, the LESS effective it\'s perceived to be','Cost has no effect at all','Only free media are ever considered effective'], a:1, e:'Under Media Richness Theory, the more expensive a medium is to use, the LESS effective it is perceived to be.'}
   ], glossary:[
     {term:'Verbal Communication', def:'rule-specific, almost always planned; uses words (speaking, writing, texting).'},
     {term:'Non-verbal Communication', def:'spontaneous and unstructured; facial expressions, gestures, proxemics, paralinguistics, etc.'},
-    {term:'G.R.E.P.S.', def:'Gender, Roles, Ethnicity, Preferences, Status — framework for ethical verbal communication.'},
-    {term:'9 C\'s of Communication', def:'Congruency, Conciseness, Clarity, Consistency, Considering your Audience, Content, Checking for Understanding, Choosing the Right Medium, Common Language.'}
+    {term:'G.R.E.E.P.S.', def:'Gender, Roles, Ethnicity, Experience, Preferences, Status — framework for ethical verbal communication.'},
+    {term:'9 C\'s of Communication', def:'Congruency, Conciseness, Clarity, Consistency, Considering your Audience, Content, Checking for Understanding, Choosing the Right Medium, Common Language.'},
+    {term:'Audience Analysis', def:'gathering information about your intended audience/receivers, to adjust tone, vocabulary, and examples.'},
+    {term:'Media Richness Theory', def:'judges a medium\'s effectiveness on 5 criteria: Permanence, Urgency of Feedback, Privacy, Formality, and Cost.'},
+    {term:'Chronemics', def:'the use of time as a non-verbal cue; Monochronic (linear, punctual) vs. Polychronic (fluid, relationship-first) time orientations.'}
   ], palace:[
     {stop:'Front Porch', image:'Two people stand at your porch, one talking (sender), one nodding (receiver), passing a ball of yarn labeled "meaning" back and forth.', fact:'Communication is a two-way process between a sender and receiver.'},
     {stop:'Coat Closet', image:'A rigid mannequin in a suit (Verbal) stands next to a wild, gesturing puppet with no strings (Non-verbal).', fact:'Verbal = rule-specific, planned. Non-verbal = spontaneous, unstructured.'},
     {stop:'Living Room Rug', image:'Four concentric circles are painted on the rug, labeled Intimate, Personal, Social, Public, like archery target rings.', fact:'Proxemics zones: Intimate (1-1.5ft), Personal (1.5-4ft), Social (4-12ft), Public (12ft+).'},
-    {stop:'Bathroom Mirror', image:'Five letters — G, R, E, P, S — are written in soap on the mirror, spelling out a code only visible when you breathe on the glass.', fact:'G.R.E.P.S.: Gender, Roles, Ethnicity, Preferences, Status.'}
+    {stop:'Bathroom Mirror', image:'Six letters — G, R, E, E, P, S — are written in soap on the mirror, spelling out a code only visible when you breathe on the glass.', fact:'G.R.E.E.P.S.: Gender, Roles, Ethnicity, Experience, Preferences, Status.'},
+    {stop:'Grandfather Clock in the Hallway', image:'One clock hand ticks forward in strict, rigid steps (Monochronic), while a second, looping hand drifts lazily wherever the conversation takes it (Polychronic).', fact:'Chronemics: Monochronic time is linear/punctual; Polychronic time is fluid/relationship-first.'}
   ]},
-  {id:'ec2', title:'2. Speech Styles', content:[
+  {id:'ec2', title:'2. Speech Styles & Communication Styles', content:[
     {h:'The 5 Speech Styles (I Can Count Five Fingers)', b:[
       'Intimate: private relationship; interlocutors have their own way of communicating only they understand (e.g. pet names, code names for crushes).',
       'Casual: friends/acquaintances; relaxed grammar, possibly incomplete sentences (e.g. chatting with besties).',
@@ -1226,27 +1245,44 @@ const DATA = [
       'Practicality: humans shorten words to make communication easier (e.g. refrigerator → fridge, television → TV).',
       'Imperfect learning: misinterpretation/misuse of a word that becomes standard (e.g. "salvage" in the Philippines during Martial Law came to mean "to kill," opposite of its dictionary meaning "to save").',
       'Language is forever fluid — the speech styles used today could change in the future.'
+    ]},
+    {h:'Communication Styles: How We Express Ourselves', b:[
+      'Communication Styles are distinct from Speech Styles — they describe the WAY individuals express their thoughts, feelings, and intentions during interaction (what is said AND how it\'s delivered), rather than a level of formality.',
+      'Assertive: clearly expresses opinions while remaining considerate of others; widely considered the MOST effective style. Mindset: "I win, you win."',
+      'Passive: does not express one\'s own opinions, puts others first, to avoid conflict or maintain harmony. Mindset: "I lose, you win."',
+      'Aggressive: direct in expressing opinions, but gives no thought to other people, often with a loud/forceful tone. Mindset: "I win, you lose."',
+      'Passive-Aggressive: indirectly expresses opinions, shows no real respect for others; avoids direct confrontation but still communicates dissatisfaction (e.g. sarcasm, the silent treatment). Mindset: "I win (indirectly), you lose."'
     ]}
   ], quiz:[
     {q:'Which speech style is used when interlocutors have developed their own private way of communicating that only they understand?', c:['Casual','Intimate','Consultative','Formal'], a:1, e:'The Intimate style is used in private relationships where the interlocutors have devised their own exclusive way of communicating.'},
     {q:'Which speech style is most rigid, non-negotiable, and often seen in rituals or legal ceremonies?', c:['Formal','Consultative','Frozen','Casual'], a:2, e:'The Frozen style is the most formal and rigid, used in contexts like religious rituals, oaths, and the Miranda Rights, where the message is non-negotiable.'},
     {q:'A doctor giving a diagnosis to a patient is an example of which speech style?', c:['Intimate','Casual','Consultative','Frozen'], a:2, e:'The Consultative style applies when one party (the doctor) is considered an expert that the other party seeks for advice.'},
-    {q:'Which mnemonic is used to remember the 5 speech styles?', c:['CAVE B','I Can Count Five Fingers','G.R.E.P.S.','P-R-I-R'], a:1, e:'"I Can Count Five Fingers" stands for Intimate, Casual, Consultative, Formal, and Frozen.'},
+    {q:'Which mnemonic is used to remember the 5 speech styles?', c:['CAVE B','I Can Count Five Fingers','G.R.E.E.P.S.','R-P-I-R'], a:1, e:'"I Can Count Five Fingers" stands for Intimate, Casual, Consultative, Formal, and Frozen.'},
     {q:'The word "salvage" taking on the meaning "to kill" in the Philippines during Martial Law is an example of language change through:', c:['Social prestige','Inventions','Imperfect learning','Practicality'], a:2, e:'This is a classic example of imperfect learning — a misuse/misinterpretation of a word (opposite of its dictionary meaning) that became standard usage.'},
     {q:'Shortening "refrigerator" to "fridge" is an example of language change through:', c:['Social prestige','Practicality','Imperfect learning','Inventions'], a:1, e:'Practicality drives humans to shorten words to make communication easier and faster.'},
-    {q:'Adopting a new slang word because a favorite influencer uses it is an example of language change through:', c:['Social prestige','Practicality','Inventions','Imperfect learning'], a:0, e:'Social prestige reflects the human tendency to associate with and imitate people we admire, including their word choices.'}
+    {q:'Adopting a new slang word because a favorite influencer uses it is an example of language change through:', c:['Social prestige','Practicality','Inventions','Imperfect learning'], a:0, e:'Social prestige reflects the human tendency to associate with and imitate people we admire, including their word choices.'},
+    {q:'Which of the following is different from a "Speech Style" in that it describes the WAY a person expresses thoughts/feelings, rather than a level of formality?', c:['Frozen Style','Communication Style','Consultative Style','Formal Style'], a:1, e:'Communication Styles (Assertive, Passive, Aggressive, Passive-Aggressive) describe HOW a person expresses themselves, distinct from the formality-based Speech Styles.'},
+    {q:'Which communication style clearly expresses opinions while still being considerate of others, and is considered the MOST effective style ("I win, you win")?', c:['Passive','Aggressive','Assertive','Passive-Aggressive'], a:2, e:'The Assertive style clearly communicates opinions while remaining considerate of others — a "win-win" approach, and the most effective of the four styles.'},
+    {q:'Which communication style avoids expressing one\'s own opinions and puts others first to avoid conflict ("I lose, you win")?', c:['Assertive','Passive','Aggressive','Passive-Aggressive'], a:1, e:'The Passive style avoids expressing personal opinions, prioritizing others\' needs to maintain harmony, even at one\'s own expense.'},
+    {q:'Which communication style is direct but gives no thought to other people, often using a loud or forceful tone ("I win, you lose")?', c:['Assertive','Passive','Aggressive','Passive-Aggressive'], a:2, e:'The Aggressive style is direct in expressing opinions but disregards others\' feelings, often communicated forcefully.'},
+    {q:'Indirectly expressing dissatisfaction while avoiding direct confrontation (e.g. sarcasm or the silent treatment) describes which communication style?', c:['Assertive','Aggressive','Passive','Passive-Aggressive'], a:3, e:'The Passive-Aggressive style indirectly expresses opinions/dissatisfaction, avoiding direct confrontation while still showing little respect for the other person.'}
   ], glossary:[
     {term:'Intimate Style', def:'private relationship; own exclusive way of communicating.'},
     {term:'Casual Style', def:'friends/acquaintances; relaxed grammar, possibly incomplete sentences.'},
     {term:'Consultative Style', def:'professional transaction; one party is the expert.'},
     {term:'Formal Style', def:'follows conventions, grammar rules, and politeness.'},
-    {term:'Frozen Style', def:'most rigid; non-negotiable message, lacks personal interaction.'}
+    {term:'Frozen Style', def:'most rigid; non-negotiable message, lacks personal interaction.'},
+    {term:'Assertive Style', def:'clearly expresses opinions while remaining considerate of others; the most effective style ("I win, you win").'},
+    {term:'Passive Style', def:'does not express one\'s opinions, puts others first to avoid conflict ("I lose, you win").'},
+    {term:'Aggressive Style', def:'directly expresses opinions with no regard for others, often forcefully ("I win, you lose").'},
+    {term:'Passive-Aggressive Style', def:'indirectly expresses dissatisfaction while avoiding direct confrontation ("I win indirectly, you lose").'}
   ], palace:[
     {stop:'Bedroom', image:'A couple whispers a secret nickname only they understand, tucked under a blanket fort.', fact:'Intimate style: private relationship, own exclusive way of communicating.'},
     {stop:'Kitchen', image:'Friends lounge on the counter, talking in half-sentences and slang while snacking.', fact:'Casual style: friends/acquaintances, relaxed grammar.'},
     {stop:'Home Office', image:'A doctor in a white coat sits across a desk from a patient, giving expert advice with a clipboard.', fact:'Consultative style: professional transaction, one party is the expert.'},
     {stop:'Front Hall Coat Rack', image:'A judge\'s black robe hangs stiffly on the rack, perfectly pressed, following an unbendable dress code.', fact:'Formal style: follows conventions, grammar rules, politeness.'},
-    {stop:'Safe in the Wall', image:'A locked safe holds the Miranda Rights carved in stone — nothing about the wording can ever be changed.', fact:'Frozen style: most rigid, non-negotiable message.'}
+    {stop:'Safe in the Wall', image:'A locked safe holds the Miranda Rights carved in stone — nothing about the wording can ever be changed.', fact:'Frozen style: most rigid, non-negotiable message.'},
+    {stop:'Family Meeting Table', image:'Four chairs sit around the table: one person calmly states their view and listens back (Assertive), one nods along saying nothing (Passive), one slams a fist and shouts (Aggressive), and one mutters under their breath while smiling (Passive-Aggressive).', fact:'4 Communication Styles: Assertive (win-win), Passive (lose-win), Aggressive (win-lose), Passive-Aggressive (indirect win-lose).'}
   ]},
   {id:'ec3', title:'3. Communication Functions', content:[
     {h:'The 5 Communication Functions', b:[
@@ -1268,7 +1304,9 @@ const DATA = [
       'Instructive: used when the people involved are of UNEQUAL rank/status (e.g. teacher to student, doctor to patient).',
       'Persuasion: goal is to change the opinion of the other person.',
       'Aesthetic: achieved when there is a deeper connection between sender and receiver (e.g. pursuing a crush).',
-      'Therapeutic: end goal is to make the other person\'s feelings much better (giving comfort/encouragement) — distinct from Emotional Expression, which is about appealing to feelings rather than soothing them.'
+      'Therapeutic: end goal is to make the other person\'s feelings much better (giving comfort/encouragement) — distinct from Emotional Expression, which is about appealing to feelings rather than soothing them.',
+      'Discussion/Argumentation: a healthy exchange of ideas, working toward a solution (e.g. a debate, a group brainstorming session).',
+      'Cultural Promotion: communicating in order to understand a person from a different cultural background.'
     ]}
   ], quiz:[
     {q:'A teacher giving students instructions on what to do in a performance task illustrates which communication function?', c:['Regulation/Control','Social Interaction','Motivation','Information'], a:0, e:'This is Regulation/Control — the teacher wants students to manage their behavior and follow instructions.'},
@@ -1305,7 +1343,10 @@ const DATA = [
     {type:'dual', s1:'A doctor requiring a nurse to monitor a patient\'s heartbeat is an example of Motivation.', s2:'A credit card agent encouraging people to avail of a promo is an example of Information.', a:1, e:'Both statements are false — the doctor/nurse example is Regulation/Control, and the credit card agent example is Motivation, not Information.'},
     {type:'dual', s1:'Primary function refers to your real agenda in a conversation.', s2:'Secondary function is another function used to help achieve the primary one.', a:0, e:'Both statements are true — this is exactly the relationship between primary and secondary communication functions.'},
     {type:'dual', s1:'Informative communication happens between people of unequal rank or status.', s2:'Instructive communication happens between people of equal rank or status.', a:1, e:'Both statements are false — it\'s the reverse: Informative is between equals, Instructive is between unequal ranks/status.'},
-    {type:'dual', s1:'The Information function involves sharing facts from verifiable sources.', s2:'Emotional Expression involves appealing to someone\'s sense of sympathy.', a:0, e:'Both statements are true — these are the correct definitions of the Information and Emotional Expression functions.'}
+    {type:'dual', s1:'The Information function involves sharing facts from verifiable sources.', s2:'Emotional Expression involves appealing to someone\'s sense of sympathy.', a:0, e:'Both statements are true — these are the correct definitions of the Information and Emotional Expression functions.'},
+    {q:'A group brainstorming session working toward a healthy exchange of ideas and a solution best illustrates which function?', c:['Cultural Promotion','Discussion/Argumentation','Aesthetic','Instructive'], a:1, e:'Discussion/Argumentation involves a healthy exchange of ideas, typically working toward finding a solution.'},
+    {q:'Talking with someone from a different cultural background specifically to understand their perspective illustrates which function?', c:['Cultural Promotion','Persuasion','Therapeutic','Regulation/Control'], a:0, e:'Cultural Promotion is communicating in order to understand a person from a different cultural background.'},
+    {q:'A political ad trying to change your opinion about a candidate is an example of which named function?', c:['Aesthetic','Persuasion','Informative','Therapeutic'], a:1, e:'Persuasion has the specific goal of changing the opinion of the other person.'}
   ], glossary:[
     {term:'Regulation/Control', def:'wanting others to manage their behavior or do things as we please.'},
     {term:'Social Interaction', def:'wanting to form bonds or forge a deeper connection with others.'},
@@ -1316,7 +1357,11 @@ const DATA = [
     {term:'Secondary Communication Function', def:'another function used to help achieve the primary function.'},
     {term:'Informative', def:'common function between people of equal rank/status.'},
     {term:'Instructive', def:'function used between people of unequal rank/status.'},
-    {term:'Therapeutic', def:'goal is to make the other person\'s feelings much better.'}
+    {term:'Persuasion', def:'goal is to change the opinion of the other person.'},
+    {term:'Aesthetic', def:'achieved when there is a deeper connection between sender and receiver.'},
+    {term:'Therapeutic', def:'goal is to make the other person\'s feelings much better.'},
+    {term:'Discussion/Argumentation', def:'a healthy exchange of ideas, working toward a solution.'},
+    {term:'Cultural Promotion', def:'communicating in order to understand a person from a different cultural background.'}
   ], palace:[
     {stop:'Garage', image:'A referee whistle hangs on a hook, blasting every time someone walks by without permission, right next to a doctor\'s clipboard ordering a nurse around.', fact:'Regulation/Control: wanting others to manage their behavior or do what you want.'},
     {stop:'Backyard Table', image:'Two strangers forced to share one umbrella in the rain end up laughing and swapping stories, while teachers nearby giggle over lounge gossip.', fact:'Social Interaction: forming bonds/friendship.'},
@@ -1464,9 +1509,21 @@ const DATA = [
       'Feedback: the receiver\'s response, often in the form of emojis, emoticons, reactions, or written replies.',
       'Context: includes the environment, time, and situation of both sender and receiver (e.g. being aware of different time zones or emotional states).',
       'The model adapts depending on the platform: it behaves more like an Interactive model on turn-taking platforms like email, chat, or blogs (where users wait for a response before continuing), and more like a Transactional model on real-time platforms like video calls (where sending, receiving, and feedback happen almost simultaneously).'
+    ]},
+    {h:'Generalization: 5 Characteristics of Communication', b:[
+      'Since different experts interpret the communication process differently, their models end up reflecting 5 broad characteristics that communication can have:',
+      'Linear: a one-way process (e.g. Aristotle\'s and Laswell\'s models).',
+      'Interactive: a two-way process, but participants take turns (e.g. Schramm\'s model).',
+      'Transactional: sending and receiving happen simultaneously (e.g. Barnlund\'s model).',
+      'Recursive: the sender and receiver might find themselves going back to a previous stage to correct or clarify something.',
+      'Cyclical: communication is a never-ending process — it doesn\'t simply stop once a message is sent and received.'
     ]}
   
   ], quiz:[
+    {q:'Which characteristic describes communication as a one-way process, like Aristotle\'s or Laswell\'s models?', c:['Interactive','Linear','Transactional','Cyclical'], a:1, e:'Linear communication is a one-way process, as seen in the earliest models (Aristotle, Laswell).'},
+    {q:'Which characteristic describes communication where sending and receiving happen at the exact same time?', c:['Linear','Interactive','Transactional','Recursive'], a:2, e:'Transactional communication, like in Barnlund\'s model, has sending and receiving occurring simultaneously.'},
+    {q:'Which characteristic describes a sender/receiver going back to a previous stage to correct or clarify a message?', c:['Cyclical','Recursive','Interactive','Linear'], a:1, e:'Recursive communication involves participants returning to a previous stage of the process to fix or clarify something.'},
+    {q:'Which characteristic emphasizes that communication is a never-ending process?', c:['Linear','Transactional','Cyclical','Interactive'], a:2, e:'Cyclical communication reflects the idea that communication doesn\'t just stop — it\'s a continuous, never-ending process.'},
     {q:'Who is considered the "father of communication models"?', c:['Shannon-Weaver','Aristotle','Berlo','Schramm'], a:1, e:'Aristotle is considered the father of communication models, with the oldest and simplest model (before 300 BC).'},
     {q:'Which model uses the sequence: Speaker → Speech → Occasion → Audience → Effect?', c:['Laswell\'s Model','Aristotle\'s Model','Berlo\'s Model','Schramm\'s Model'], a:1, e:'Aristotle\'s Model uses this exact sequence, alongside ethos, pathos, and logos.'},
     {q:'Aristotle\'s Model is broadly divided into how many primary elements?', c:['3','4','5','6'], a:2, e:'Aristotle\'s Model has 5 primary elements: speaker, speech, occasion, audience, and effect.'},
@@ -1510,7 +1567,8 @@ const DATA = [
     {term:'S-M-C-R Model (Berlo\'s Model)', def:'Source, Message, Channel, Receiver — each with its own detailed set of factors; linear.'},
     {term:'Field of Common Experience', def:'the overlapping commonalities shared by sender and receiver in Schramm\'s Model.'},
     {term:'Barnlund\'s Model', def:'Transactional — sending/receiving happens simultaneously, with noise throughout.'},
-    {term:'E-Mediated Communication Model', def:'explains communication through cyberspace platforms; components: Sender/Receiver, Message, Medium/Channel, Feedback, Context.'}
+    {term:'E-Mediated Communication Model', def:'explains communication through cyberspace platforms; components: Sender/Receiver, Message, Medium/Channel, Feedback, Context.'},
+    {term:'5 Characteristics of Communication', def:'Linear (one-way), Interactive (two-way, turn-taking), Transactional (simultaneous), Recursive (revisits earlier stages), Cyclical (never-ending).'}
   ], palace:[
     {stop:'Ancient Statue in the Garden', image:'A toga-wearing statue of Aristotle points a marble finger along a straight arrow painted on the ground: Speaker → Speech → Occasion → Audience → Effect.', fact:'Aristotle\'s Model: the oldest, simplest, linear model.'},
     {stop:'Old Radio on the Shelf', image:'A crackling antique radio has a hand-drawn diagram taped to it: sender-encoder-channel-decoder-receiver, with static labeled "NOISE" buzzing around it.', fact:'Shannon-Weaver Model: "mother of communication models," first to introduce noise.'},
@@ -1597,7 +1655,12 @@ const DATA = [
     {term:'Code Shifting', def:'changing from one language to another BETWEEN sentences, without mixing within a sentence.'},
     {term:'Circumlocution', def:'describing an idea vividly instead of naming it directly.'},
     {term:'Approximation', def:'using a closely related word/synonym to refer to something.'},
-    {term:'Appeal for Help', def:'asking someone else to relay your message — a last resort.'}
+    {term:'Appeal for Help', def:'asking someone else to relay your message — a last resort.'},
+    {term:'Use of All-Purpose Words', def:'using vague general expressions ("etcetera," "and so on") instead of the specific word.'},
+    {term:'Literal Translation', def:'translating word-for-word from the native language, even if the essence/meaning is compromised.'},
+    {term:'Foreignizing', def:'pronouncing a native-language word as if it were a word in the target language.'},
+    {term:'Use of (Gap) Fillers', def:'excessive intensifiers/qualifiers ("totally," "actually") that stall the message; removable without changing meaning.'},
+    {term:'Use of Non-Verbal Cues', def:'using gestures or other non-verbal actions in place of the words you can\'t find.'}
   ], palace:[
     {stop:'Hallway Light Switch', image:'You reach for the switch, start to say something, then just shrug and walk away mid-sentence.', fact:'Message Abandonment: stopping mid-expression due to difficulty communicating.'},
     {stop:'Dinner Table', image:'Every time someone asks about your grades, you loudly point out the window and yell "look, a bird!"', fact:'Topic Avoidance: changing the topic instead of discussing the issue.'},
@@ -1623,53 +1686,80 @@ const DATA = [
     ]}
   ]},
   {id:'ec6', title:'7. Listening', content:[
-    {h:'The Listening Process (P-R-I-R)', b:[
-      'Perceiving: hearing sounds/words with your ears.',
-      'Receiving: noticing and deliberately paying attention to what is heard.',
+    {h:'Listening vs. Hearing', b:[
+      'Listening is often wrongly assumed to be automatic just because your ears work — but Hearing and Listening are NOT the same thing.',
+      'Hearing only involves the ear — the physical/biological act of sound entering it.',
+      'Listening is making sense of the message being given — an active mental process, not just a passive biological one.'
+    ]},
+    {h:'The Listening Process (R-P-I-R)', b:[
+      'Receiving: recognizing the fact that you are hearing sounds (this is also "Stage 4" of the overall communication process).',
+      'Perceiving: understanding/perceiving that those sounds are actually communicating something.',
       'Interpreting: understanding the meaning of what you heard.',
       'Responding: reacting based on what you understood.',
       'Listening is taught for 0 to a few hours yet used 45% of our lives — it is the LEAST developed macroskill.'
     ]},
     {h:'Different Types of Listening', b:[
-      'Biased: taking in only what confirms your own opinion.',
-      'Appreciative: listening for enjoyment (e.g. favorite band/podcast).',
-      'Dialogic: learning through open conversation where both sides learn.',
-      'Sympathetic: knowing what the speaker feels.',
-      'Empathic: understanding what the speaker feels (putting yourself in their shoes).',
-      'Therapeutic: doing something about the speaker\'s feelings (giving advice).',
-      'Relationship: listening to build trust/connection with the speaker.',
-      'Discriminative: identifying sound differences (e.g. paralinguistics, distinguishing instruments).',
+      'Discriminative: the very first type of listening we learn; identifying and recognizing what a sound is and where it comes from (e.g. a crying baby stops when they recognize their mom\'s voice).',
       'Comprehension: making sense of what is heard.',
-      'Critical: identifying truths from fallacies, assessing validity.',
-      'Evaluative: choosing a stand after critical listening.'
+      'Informative: listening specifically to learn something new.',
+      'Critical: identifying truths from fallacies.',
+      'Evaluative: choosing a stand/decision after critical listening.',
+      'Biased: a BAD example of listening — taking in only what the listener already agrees with; close-mindedness.',
+      'Appreciative: listening for enjoyment (e.g. favorite band/podcast) — anything that appeals to the listener\'s sense of beauty.',
+      'Sympathetic: knowing what the speaker feels (simply acknowledging).',
+      'Empathic: understanding what the speaker feels (putting yourself in their shoes) — a deeper level than sympathetic.',
+      'Therapeutic: doing something about the speaker\'s feelings (giving advice/help), not just appealing to or acknowledging them.',
+      'Dialogic: learning through open, casual conversation, listening to each other\'s point of view to formulate shared meaning.',
+      'Relationship: listening specifically to form a deeper connection with another person.'
     ]},
     {h:'Keys to Effective (Active) Listening', b:[
       'Stop talking, control your surroundings, keep an open mind, listen for main points.',
       'Provide feedback, capitalize on lag time, listen between the lines.',
       'Judge ideas not appearances, hold your fire, take selective notes.'
     ]},
+    {h:'Irritating Listener Behaviors to Avoid', b:[
+      'Interrupting the speaker; not looking at the speaker; rushing the speaker.',
+      'Showing interest in something other than the conversation; finishing the speaker\'s thoughts for them.',
+      'Not responding to the speaker\'s requests; saying "Yes, but..."; topping the speaker\'s story with your own.',
+      'Forgetting what was talked about previously; asking too many questions about minor details.'
+    ]},
     {h:'Importance of Feedback When Listening', b:[
       'Clarity and confirmation, active engagement, encouragement.',
       'Resolving misunderstandings, building rapport, enhancing problem-solving skills, encouraging empathic listening.'
+    ]},
+    {h:'Benefits of Being a Good Listener', b:[
+      'You are better able to help others, and you can understand things on a deeper level.',
+      'You can understand more about different cultures, and gain more resources to make informed, rational decisions.',
+      'You have the tools to avoid conflicts and reduce problems.',
+      'You can participate more fully in life because you know more, and you can become a more effective leader.'
     ]}
   ], quiz:[
-    {q:'What does the "P" in the P-R-I-R listening process stand for?', c:['Processing','Perceiving','Prioritizing','Practicing'], a:1, e:'P stands for Perceiving — the act of hearing sounds or words with your ears.'},
-    {q:'What does the "I" in the P-R-I-R listening process stand for?', c:['Informing','Interpreting','Investigating','Ignoring'], a:1, e:'I stands for Interpreting — understanding the meaning of what you heard.'},
+    {q:'What is the key difference between Hearing and Listening?', c:['They are the same thing','Hearing only involves the ear; Listening is actively making sense of the message','Listening only involves the ear; Hearing is making sense of the message','Hearing requires more effort than Listening'], a:1, e:'Hearing is the passive, physical act of sound entering the ear, while Listening is the active process of making sense of the message.'},
+    {q:'What does the "R" (first letter) in the R-P-I-R listening process stand for?', c:['Responding','Receiving','Reflecting','Reacting'], a:1, e:'The first R stands for Receiving — simply recognizing that you are hearing sounds, which is also Stage 4 of the communication process.'},
+    {q:'What does the "P" in the R-P-I-R listening process stand for?', c:['Processing','Perceiving','Prioritizing','Practicing'], a:1, e:'P stands for Perceiving — understanding/realizing that the sounds you\'re receiving are actually communicating something.'},
+    {q:'What does the "I" in the R-P-I-R listening process stand for?', c:['Informing','Interpreting','Investigating','Ignoring'], a:1, e:'I stands for Interpreting — understanding the meaning of what you heard.'},
     {q:'According to the notes, listening is used approximately what percentage of our lives, despite being the least taught skill?', c:['9%','25%','45%','75%'], a:2, e:'Listening is used approximately 45% of our lives, yet it is taught for 0 to a few hours — making it the least developed macroskill.'},
-    {q:'Taking in only what confirms your own opinion describes which type of listening?', c:['Appreciative','Biased','Dialogic','Critical'], a:1, e:'Biased listening involves only hearing what you agree with or want to hear.'},
+    {q:'The very FIRST type of listening a person learns, used to identify and recognize sounds and where they come from, is:', c:['Comprehension','Discriminative','Critical','Informative'], a:1, e:'Discriminative listening is the very first type of listening we develop — e.g. a crying baby recognizing and calming down at their mom\'s voice.'},
+    {q:'Listening specifically to learn something new describes which type of listening?', c:['Informative','Appreciative','Biased','Relationship'], a:0, e:'Informative listening is listening with the specific goal of learning something new.'},
+    {q:'Taking in only what confirms your own opinion describes which type of listening?', c:['Appreciative','Biased','Dialogic','Critical'], a:1, e:'Biased listening involves only hearing what you agree with or want to hear — considered a BAD listening habit.'},
     {q:'Listening for pure enjoyment, like to your favorite band, describes which type of listening?', c:['Appreciative','Sympathetic','Discriminative','Therapeutic'], a:0, e:'Appreciative listening involves taking in anything that appeals to the listener\'s sense of beauty/enjoyment.'},
     {q:'Putting yourself in the speaker\'s shoes to understand how they feel describes which type of listening?', c:['Sympathetic','Empathic','Relationship','Comprehension'], a:1, e:'Empathic listening involves understanding what the speaker feels by putting yourself in their position — beyond just knowing (sympathetic).'},
     {q:'Giving sound advice to help improve the speaker\'s situation describes which type of listening?', c:['Empathic','Sympathetic','Therapeutic','Discriminative'], a:2, e:'Therapeutic listening involves doing something about the speaker\'s feelings, such as giving advice.'},
     {q:'Distinguishing between the sounds of different musical instruments describes which type of listening?', c:['Discriminative','Comprehension','Critical','Evaluative'], a:0, e:'Discriminative listening involves identifying sound differences, such as distinguishing instruments or detecting paralinguistic cues.'},
     {q:'Choosing a stand or making a decision after assessing information describes which type of listening?', c:['Critical','Evaluative','Biased','Dialogic'], a:1, e:'Evaluative listening involves choosing a stand or decision after critical listening has assessed the validity of information.'},
-    {q:'"Capitalize on lag time" as a key to effective listening refers to using the time between:', c:['Speaking speed and thinking speed to process the message','Two separate conversations','Sleep cycles','Class periods'], a:0, e:'Capitalizing on lag time means using the gap between how fast someone speaks and how fast you can think to actively process their message.'}
+    {q:'"Capitalize on lag time" as a key to effective listening refers to using the time between:', c:['Speaking speed and thinking speed to process the message','Two separate conversations','Sleep cycles','Class periods'], a:0, e:'Capitalizing on lag time means using the gap between how fast someone speaks and how fast you can think to actively process their message.'},
+    {q:'Which of the following is considered an IRRITATING listener behavior to avoid?', c:['Providing feedback','Finishing the speaker\'s thoughts for them','Keeping an open mind','Listening for main points'], a:1, e:'Finishing the speaker\'s thoughts for them is a classic irritating listener behavior — it interrupts and can misrepresent what they meant to say.'},
+    {q:'Which is a BENEFIT of being a good listener, according to the notes?', c:['You become a more effective leader','You lose track of important details','You become more close-minded','You avoid learning about other cultures'], a:0, e:'Good listening skills help you become a more effective leader, among other benefits like better decisions and fewer conflicts.'}
   ], glossary:[
-    {term:'P-R-I-R', def:'Perceiving, Receiving, Interpreting, Responding — the listening process.'},
+    {term:'R-P-I-R', def:'Receiving, Perceiving, Interpreting, Responding — the listening process.'},
+    {term:'Hearing vs. Listening', def:'Hearing = passive, ear-only reception of sound; Listening = actively making sense of the message.'},
+    {term:'Discriminative listening', def:'the first type of listening learned; identifying/recognizing sounds and their source.'},
+    {term:'Informative listening', def:'listening specifically to learn something new.'},
     {term:'Empathic listening', def:'understanding what the speaker feels by putting yourself in their shoes.'},
     {term:'Critical listening', def:'identifying truths from fallacies, assessing validity.'},
-    {term:'Discriminative listening', def:'identifying sound differences (e.g. paralinguistics, instruments).'}
+    {term:'Biased listening', def:'a bad listening habit — only taking in what you already agree with; close-mindedness.'}
   ], palace:[
-    {stop:'Front Door Buzzer', image:'A giant ear is glued above the doorbell, and every time it buzzes, four letters light up in sequence: P-R-I-R.', fact:'P-R-I-R: Perceiving, Receiving, Interpreting, Responding — the listening process.'},
+    {stop:'Front Door Buzzer', image:'A giant ear is glued above the doorbell, and every time it buzzes, four letters light up in sequence: R-P-I-R.', fact:'R-P-I-R: Receiving, Perceiving, Interpreting, Responding — the listening process.'},
     {stop:'Clock in the Hallway', image:'The clock hands are stuck, but a caption underneath reads "45% of your life," with a tiny mouth icon crossed out.', fact:'Listening is used ~45% of our lives, yet the least taught macroskill.'},
     {stop:'Cozy Armchair', image:'You sink into the armchair wearing someone else\'s shoes, feeling exactly what they feel.', fact:'Empathic listening: putting yourself in the speaker\'s shoes.'},
     {stop:'Music Room', image:'A row of instruments each play a different note, and you can tell them all apart with your eyes closed.', fact:'Discriminative listening: identifying sound differences.'}
@@ -1695,7 +1785,8 @@ const DATA = [
     ]},
     {h:'World Englishes', b:[
       'A relatively new branch in linguistics; suggests any nation using English "owns" it.',
-      'Proverbs reflect culture (e.g. Philippine proverbs/sayings).'
+      'Philippine English: a recognized variety of English shaped by Filipino culture; e.g. Filipinos are often noted as weak in prepositions compared to other English varieties, since Filipino languages structure location/direction differently.',
+      'Proverbs reflect culture: "The squeaky wheel gets the grease" (US — value on being vocal); "The nail that sticks up gets pounded down" (Japan — value on staying humble/blending in); "A man who waits for a roast duck to fly into his mouth must wait a very long time" (China — value on taking initiative/risks); plus Philippine proverbs/sayings reflecting local values.'
     ]},
     {h:'Developmental Model of Intercultural Sensitivity', b:[
       'Denial: does not recognize/acknowledge other cultures.',
@@ -1714,12 +1805,16 @@ const DATA = [
     {q:'In the Developmental Model of Intercultural Sensitivity, which stage involves NOT recognizing another culture at all?', c:['Defense','Denial','Minimization','Acceptance'], a:1, e:'Denial is the stage where a person does not acknowledge or recognize other people\'s culture.'},
     {q:'In the Developmental Model of Intercultural Sensitivity, which stage involves a person starting to IMITATE another culture?', c:['Acceptance','Adaptation','Integration','Defense'], a:1, e:'Adaptation is when a person starts to imitate or mimic aspects of another culture.'},
     {q:'In the Developmental Model of Intercultural Sensitivity, which is the FINAL stage, involving reflection?', c:['Denial','Minimization','Adaptation','Integration'], a:3, e:'Integration is the final stage, where a person reflects on and incorporates cultural understanding into their identity.'},
-    {q:'The idea that "any nation that uses the English language owns it" is associated with:', c:['World Englishes','Ethnocentrism','High-context culture','G.R.E.P.S.'], a:0, e:'World Englishes is a branch of linguistics suggesting that any nation using English has ownership/legitimacy over its own variety of the language.'}
+    {q:'The idea that "any nation that uses the English language owns it" is associated with:', c:['World Englishes','Ethnocentrism','High-context culture','G.R.E.E.P.S.'], a:0, e:'World Englishes is a branch of linguistics suggesting that any nation using English has ownership/legitimacy over its own variety of the language.'},
+    {q:'Filipino English speakers are often noted as weak in which grammatical element, compared to other English varieties?', c:['Adjectives','Prepositions','Conjunctions','Pronouns'], a:1, e:'Philippine English is often noted for weakness in prepositions, since Filipino languages structure location/direction differently.'},
+    {q:'The Japanese proverb "The nail that sticks up gets pounded down" reflects a cultural value on:', c:['Being vocal and outspoken','Staying humble and blending in','Taking bold risks','Innocent until proven guilty'], a:1, e:'This Japanese proverb reflects a cultural value on humility and blending in rather than standing out.'}
   ], glossary:[
     {term:'Ethnocentrism', def:'thinking your race/ethnicity is superior to others.'},
     {term:'Stereotyping', def:'generalizing people based on group identity.'},
     {term:'High-context / Low-context culture', def:'High relies on non-verbal/shared meaning; Low relies on explicit spoken/written words.'},
-    {term:'Developmental Model of Intercultural Sensitivity', def:'Denial → Defense → Minimization → Acceptance → Adaptation → Integration.'}
+    {term:'Developmental Model of Intercultural Sensitivity', def:'Denial → Defense → Minimization → Acceptance → Adaptation → Integration.'},
+    {term:'World Englishes', def:'branch of linguistics suggesting any nation using English "owns" its own variety of it.'},
+    {term:'Philippine English', def:'a recognized variety of English shaped by Filipino culture; often noted as weak in prepositions.'}
   ], palace:[
     {stop:'World Map on the Wall', image:'A flag from your own country is pinned proudly in the center, dwarfing all the tiny flags of other nations around it.', fact:'Ethnocentrism: thinking your race/ethnicity is superior to others.'},
     {stop:'Suitcase by the Door', image:'The suitcase is packed with labeled boxes: "Singaporeans = math," each box sealed shut without ever being opened.', fact:'Stereotyping: generalizing people based on group identity.'},
@@ -1764,7 +1859,7 @@ const DATA = [
       'Accuracy + Fluency = Proficiency.'
     ]},
     {h:'Characteristics of a Good Reader', b:[
-      'Strategic in monitoring the interactive processes that assist comprehension — like a soldier going into battle, the more strategies (e.g. annotating) you have, the better prepared you are.',
+      'Strategic in monitoring the interactive processes that assist comprehension — like a soldier going into battle, the more strategies you have, the better prepared you are. Effective readers don\'t rely on just one method, using a range of strategies such as Skimming (quickly reading to get the general idea/gist), Scanning (quickly searching for a specific piece of information), finding context clues, making inferences, summarizing, and monitoring their own understanding.',
       'Motivated to read and learn — always has an objective in mind before reading, which helps sustain them when they feel like stopping.',
       'Socially active around reading tasks — finds the relevance of what is read to daily life and shares insights with others.',
       'Mentally engaged — constantly asks themselves questions that help them understand the text as they read.'
@@ -1784,7 +1879,9 @@ const DATA = [
     {q:'Comparing reading to leveling up in an online game illustrates which characteristic of reading?', c:['Reading is Situationally Bound','Reading is Not Just a Basic Skill','Reading is a Complex Process','Reading is Problem Solving'], a:1, e:'This analogy illustrates that reading is not just a basic skill — like a game, you must master basic skills first before unlocking more advanced ones.'},
     {q:'According to the notes, "proficiency" in reading requires the combination of:', c:['Speed and volume','Accuracy and Fluency','Memory and Vocabulary','Grammar and Spelling'], a:1, e:'Proficiency = Accuracy (understanding what is read) + Fluency (reading smoothly).'},
     {q:'"Being good at reading social media posts doesn\'t mean you\'ll be good at reading textbooks" illustrates which characteristic of reading?', c:['Not the Same as Decoding','Situationally Bound','A Complex Process','Not Just a Basic Skill'], a:1, e:'This illustrates that reading is Situationally Bound — skill in one type of text doesn\'t guarantee skill in another.'},
-    {q:'Which characteristic of a good reader involves using two or more strategies (like annotating) to comprehend a text?', c:['Motivated to read','Strategic in monitoring comprehension processes','Mentally engaged','Socially active'], a:1, e:'Being strategic in monitoring the interactive processes that assist comprehension means using varied strategies like annotating to understand better.'},
+    {q:'Which characteristic of a good reader involves using varied strategies (like skimming, scanning, or summarizing) to comprehend a text?', c:['Motivated to read','Strategic in monitoring comprehension processes','Mentally engaged','Socially active'], a:1, e:'Being strategic in monitoring the interactive processes that assist comprehension means using varied strategies like skimming, scanning, and summarizing to understand better.'},
+    {q:'Quickly reading a text to get its general idea or gist, without reading every word, is called:', c:['Scanning','Skimming','Decoding','Schemata activation'], a:1, e:'Skimming is quickly reading a text to grasp its general idea/gist.'},
+    {q:'Quickly searching through a text to find one specific piece of information (like a date or name) is called:', c:['Skimming','Scanning','Top-Down reading','Bottom-Up reading'], a:1, e:'Scanning is quickly searching through a text for a specific piece of information, rather than reading for overall understanding.'},
     {q:'"Schemata" in the psychological process of reading refers to:', c:['The physical structure of the brain','Background knowledge','A type of reading disorder','The speed of reading'], a:1, e:'Schemata refers to a reader\'s background knowledge, which connects to new ideas being read.'},
     {q:'Reading Harry Potter for the first time with no prior knowledge, relying heavily on the text itself, illustrates which theory?', c:['Top-Down Theory','Bottom-Up Theory','Interactive Theory','Schema Theory'], a:1, e:'Bottom-Up Theory involves relying heavily on the text because there is no relevant schema/background knowledge yet.'},
     {q:'Constructing meaning primarily based on your existing background knowledge describes which theory?', c:['Bottom-Up Theory','Top-Down Theory','Interactive Theory','Discriminative Theory'], a:1, e:'Top-Down Theory relies heavily on the reader\'s schema/background knowledge to construct meaning.'},
@@ -1807,7 +1904,9 @@ const DATA = [
     {term:'Top-Down Theory', def:'relying heavily on schema/background knowledge (reader > text).'},
     {term:'Interactive Theory', def:'using both schema and information in the text (reader = text).'},
     {term:'Decoding', def:'making sense of the text; part of reading but not the same as full understanding.'},
-    {term:'Reading as Problem Solving', def:'treating reading like a jigsaw puzzle — every detail contributes to the big picture.'}
+    {term:'Reading as Problem Solving', def:'treating reading like a jigsaw puzzle — every detail contributes to the big picture.'},
+    {term:'Skimming', def:'quickly reading a text to get its general idea/gist, without reading every word.'},
+    {term:'Scanning', def:'quickly searching through a text for one specific piece of information.'}
   ], palace:[
     {stop:'Study Desk', image:'A math equation floats above the desk: Accuracy + Fluency = a glowing trophy labeled "Proficiency."', fact:'Reading Proficiency = Accuracy (understanding) + Fluency (smoothness).'},
     {stop:'Filing Cabinet', image:'Drawers labeled "Schemata" are stuffed with everything you already know, and a new folder keeps trying to find a matching drawer.', fact:'Schemata = background knowledge, connected to new ideas while reading.'},
@@ -2049,7 +2148,9 @@ const DATA = [
     ]},
     {h:'Heredity & Evolution', b:[
       'Heredity: passing of traits from parents to offspring; explains why organisms are both different and similar.',
-      'Evolution: change of heritable traits within a species to enhance survival/reproduction in an environment; crucial for survival and diversification of life.',
+      'Evolution: change of heritable traits within a species to enhance survival/reproduction in an environment; a gradual, permanent process that favors/benefits the environment; crucial for survival and diversification of life.',
+      'Adaptation: an organism\'s ability to adjust to changes in its environment; a fundamental process, especially in evolution, since it helps identify what counts as "life."',
+      'Comparing traits across species: Analogous structures are the same in FUNCTION (but not origin); Homologous structures are the same in STRUCTURE (shared origin, even if the function differs); Vestigial organs are structures that once had a function but are now minimized or no longer present.',
       'Theory of Use and Disuse: the less a trait is used, the less prominent it becomes over generations; the more it\'s used, the bigger it becomes (e.g. the wrist ligament humans no longer strongly need).'
     ]}
   ], quiz:[
@@ -2059,12 +2160,24 @@ const DATA = [
     {q:'Gametogenesis uses which process to halve the 46 chromosomes in humans?', c:['Mitosis','Meiosis','Binary fission','Budding'], a:1, e:'Gametogenesis creates gametes (sperm/ovum) using meiosis, which halves the chromosome number.'},
     {q:'Sweating to cool down the body when it\'s hot is an example of which characteristic of life?', c:['Metabolism','Homeostasis','Growth','Heredity'], a:1, e:'This is Homeostasis — maintaining a stable internal environment (temperature) despite external changes.'},
     {q:'A sunflower turning to follow the direction of the sun illustrates which characteristic of life?', c:['Movement','Metabolism','Reproduction','Heredity'], a:0, e:'This illustrates Movement — the ability to change position/form, including plant responses to stimuli.'},
-    {q:'The "Theory of Use and Disuse" explains that:', c:['Traits used more become bigger, traits used less fade over generations','All traits stay exactly the same forever','Only new traits can evolve','Traits are inherited randomly with no pattern'], a:0, e:'The Theory of Use and Disuse states that frequently used traits become more prominent, while rarely used ones diminish over generations.'}
+    {q:'The "Theory of Use and Disuse" explains that:', c:['Traits used more become bigger, traits used less fade over generations','All traits stay exactly the same forever','Only new traits can evolve','Traits are inherited randomly with no pattern'], a:0, e:'The Theory of Use and Disuse states that frequently used traits become more prominent, while rarely used ones diminish over generations.'},
+    {q:'A bird\'s wing and an insect\'s wing serve the same flying function but evolved separately — this is an example of:', c:['Homologous structures','Analogous structures','Vestigial organs','Binary fission'], a:1, e:'Analogous structures perform the same FUNCTION but do not share the same origin/structure — like a bird wing and an insect wing.'},
+    {q:'A human arm and a whale\'s flipper share the same underlying bone structure despite different uses — this is an example of:', c:['Analogous structures','Homologous structures','Vestigial organs','Theory of Use and Disuse'], a:1, e:'Homologous structures share the same underlying STRUCTURE (common origin), even when their function differs across species.'},
+    {q:'A structure that once had a clear function but is now minimized or no longer present is called:', c:['A homologous structure','An analogous structure','A vestigial organ','A gamete'], a:2, e:'Vestigial organs are structures that had a function in an ancestor species but have become reduced or nonfunctional over time.'},
+    {q:'Which term describes an organism\'s ability to adjust to changes in its environment, a process fundamental to evolution?', c:['Adaptation','Metabolism','Fertilization','Vestigiality'], a:0, e:'Adaptation is the ability to adjust to environmental changes, and it is fundamental to the process of evolution.'}
   ], glossary:[
     {term:'Metabolism', def:'all chemical reactions necessary for life; converts food into energy and building blocks.'},
+    {term:'Reproduction', def:'passing of genetic material to offspring, for the continuation of a species.'},
     {term:'Budding', def:'a "bud" grows on the parent, matures, and may detach to live independently.'},
     {term:'Binary fission', def:'DNA duplicates, undergoes mitosis, splits into 2 genetically identical organisms.'},
     {term:'Gametogenesis', def:'creates sperm/ovum via meiosis, halving chromosome number.'},
+    {term:'Homeostasis', def:'maintaining a constant, stable internal environment despite external change.'},
+    {term:'Growth / Development', def:'increase in physical size / progression through life stages, capabilities, and a final stage.'},
+    {term:'Heredity', def:'passing of traits from parents to offspring; how organisms acquire genetic information.'},
+    {term:'Evolution', def:'gradual, permanent change of heritable traits within a species that favors the environment.'},
+    {term:'Adaptation', def:'an organism\'s ability to adjust to changes in its environment; fundamental to evolution.'},
+    {term:'Analogous / Homologous', def:'structures that are the same in FUNCTION (analogous) vs. the same in STRUCTURE/origin (homologous).'},
+    {term:'Vestigial Organs', def:'organs that once had functions but are now minimized or no longer present.'},
     {term:'Theory of Use and Disuse', def:'traits used more become more prominent; traits used less fade over generations.'}
   ], palace:[
     {stop:'Front Gate', image:'A checklist with 7 icons swings on the gate: a gear, a baby, a thermostat, a growth chart, a running shoe, a family tree, a fossil.', fact:'7 characteristics of life: Metabolism, Reproduction, Homeostasis, Growth & Development, Movement, Heredity, Evolution.'},
@@ -2111,7 +2224,8 @@ const DATA = [
     {h:'How Cells Harness Power', b:[
       'Cells are the basic units of life; energy is a fundamental requirement to carry out cellular functions and ensure organism survival.',
       'Food consists of organic (carbon-containing) molecules storing energy in chemical bonds. Cells break these bonds to release energy and build new compounds; both energy and materials pass from producer to consumer.',
-      'Two of the most important energy-carrying molecules: Glucose and ATP (adenosine triphosphate).'
+      'Two of the most important energy-carrying molecules: Glucose and ATP (adenosine triphosphate).',
+      'Bioenergetics — all energy ultimately comes from the sun: Autotrophs (producers/photosynthetic cells) make their own food; Heterotrophs (consumers) acquire free energy from nutrient molecules instead of making their own; Chemoautotrophs are a special group that use inorganic compounds (not sunlight) to get energy.'
     ]},
     {h:'Glucose vs. ATP', b:[
       'Glucose: the energy-rich product of photosynthesis, a universal food for life; the primary form your bloodstream uses to deliver energy to all cells ("blood sugar").',
@@ -2124,7 +2238,7 @@ const DATA = [
       'Enzymes act like a "can opener": they help start/change a reaction, do NOT change themselves, and can be reused again and again.',
       'Enzymes are reusable helpers for chemical reactions in cells; they can also cause molecules to JOIN, not just come apart.',
       'Without the right enzyme, a chemical reaction in a cell cannot take place — each reaction requires a SPECIFIC enzyme (like a can opener only works on cans, not bottles).',
-      'Enzymes help in both catabolism (breaking down) and anabolism (building up).'
+      'Enzymes help in both Catabolism (large molecules broken down into small ones, RELEASING energy stored in their chemical bonds) and Anabolism (small molecules built into a bigger one, which REQUIRES energy — the ATP\'s energy goes into forming the new bonds).'
     ]}
   ], quiz:[
     {q:'Which two molecules are described as the most important energy-carrying molecules in the notes?', c:['DNA and RNA','Glucose and ATP','Protein and Fat','Oxygen and Carbon Dioxide'], a:1, e:'Glucose and ATP (adenosine triphosphate) are highlighted as the two most important energy-carrying molecules.'},
@@ -2134,12 +2248,18 @@ const DATA = [
     {q:'When ATP loses a phosphate group, it becomes:', c:['ADP, releasing energy','Glucose','A new enzyme','Water'], a:0, e:'When a high-energy bond in ATP breaks, it loses a phosphate and becomes ADP, releasing energy for cell use.'},
     {q:'The analogy of a "can opener" is used in the notes to explain:', c:['ATP','Glucose','Enzymes','Metabolism'], a:2, e:'Enzymes are compared to a can opener — they help a reaction happen without being changed or used up themselves, and can be reused.'},
     {q:'Why can\'t a "can opener" (enzyme) open a bottle, according to the analogy?', c:['Enzymes have no real specificity','Enzymes are specific — each one only works on certain substances/reactions','Enzymes only work once','Enzymes destroy themselves after use'], a:1, e:'This analogy illustrates enzyme specificity — each enzyme is specific to certain substances/reactions, just as a can opener only works on cans.'},
-    {q:'Enzymes assist in which two general types of metabolic reactions?', c:['Catabolism and Anabolism','Photosynthesis and Respiration only','Glycolysis and Fermentation only','Mitosis and Meiosis'], a:0, e:'Enzymes help in both catabolism (breaking down) and anabolism (building up) reactions.'}
+    {q:'Enzymes assist in which two general types of metabolic reactions?', c:['Catabolism and Anabolism','Photosynthesis and Respiration only','Glycolysis and Fermentation only','Mitosis and Meiosis'], a:0, e:'Enzymes help in both catabolism (breaking down) and anabolism (building up) reactions.'},
+    {q:'Breaking down large molecules into smaller ones, RELEASING energy, is called:', c:['Anabolism','Catabolism','Photosynthesis','Homeostasis'], a:1, e:'Catabolism breaks large molecules into small ones and releases the energy stored in their chemical bonds.'},
+    {q:'Building small molecules into a larger one, which REQUIRES energy, is called:', c:['Catabolism','Anabolism','Fermentation','Osmosis'], a:1, e:'Anabolism uses energy (from ATP) to connect smaller molecules together into a bigger one.'},
+    {q:'Which organisms get their energy from INORGANIC compounds rather than sunlight?', c:['Heterotrophs','Autotrophs (photosynthetic)','Chemoautotrophs','Consumers'], a:2, e:'Chemoautotrophs are a special group of producers that use inorganic compounds (not sunlight) as their energy source.'}
   ], glossary:[
     {term:'Glucose', def:'energy-rich product of photosynthesis, universal food for life, delivers energy via blood.'},
     {term:'ATP (adenosine triphosphate)', def:'releases just the right amount of usable energy for cellular work.'},
     {term:'Hyperglycemia / Hypoglycemia', def:'high / low blood sugar levels.'},
-    {term:'Enzyme', def:'a reusable, specific "helper" that speeds up a chemical reaction without being changed itself.'}
+    {term:'Enzyme', def:'a reusable, specific "helper" that speeds up a chemical reaction without being changed itself.'},
+    {term:'Anabolism', def:'building small molecules into a bigger one; REQUIRES energy (stored in new chemical bonds).'},
+    {term:'Catabolism', def:'breaking large molecules into smaller ones; RELEASES energy from broken chemical bonds.'},
+    {term:'Chemoautotroph', def:'an organism that uses inorganic compounds, rather than sunlight, to get energy.'}
   ], palace:[
     {stop:'Pantry Shelf', image:'A big glass jar labeled "GLUCOSE" sits next to a tiny battery labeled "ATP" — the jar is heavy and dense, the battery is small but always fully charged.', fact:'Glucose = stable, energy-dense storage; ATP = small, immediately usable energy.'},
     {stop:'Kitchen Counter', image:'A blood pressure cuff reads "HYPER" in red when the sugar bowl overflows, and "HYPO" in blue when it\'s nearly empty.', fact:'Hyperglycemia = high blood sugar; Hypoglycemia = low blood sugar.'},
@@ -2187,13 +2307,18 @@ const DATA = [
     {q:'Which enzyme fixes carbon dioxide into organic compounds during the Calvin Cycle?', c:['ATP synthase','RuBisCo','Chlorophyll','Pyruvate kinase'], a:1, e:'RuBisCo is the enzyme that fixes CO2 by attaching it to RuBP (Ribulose-1,5-bisphosphate) during carbon fixation.'},
     {q:'What is the main output of the light-independent reactions (Calvin Cycle)?', c:['Oxygen','Glucose','Water','Light energy'], a:1, e:'The main output of the Calvin Cycle is glucose, built using CO2 and the energy from ATP and NADPH.'},
     {q:'Which group of photosynthetic organisms produces the MOST oxygen on Earth, according to the notes?', c:['Plants','Macroalgae','Microalgae','Bacteria'], a:2, e:'Microalgae are noted as the primary producers of oxygen, producing the most among all photosynthetic organism groups.'},
-    {q:'Which molecules produced in Stage 1 (light-dependent reactions) are used as inputs for Stage 2 (Calvin Cycle)?', c:['Glucose and Oxygen','ATP and NADPH','CO2 and Water','RuBP and Chlorophyll'], a:1, e:'ATP and NADPH, produced in the light-dependent reactions, are used as energy carriers to power the Calvin Cycle in Stage 2.'}
+    {q:'Which molecules produced in Stage 1 (light-dependent reactions) are used as inputs for Stage 2 (Calvin Cycle)?', c:['Glucose and Oxygen','ATP and NADPH','CO2 and Water','RuBP and Chlorophyll'], a:1, e:'ATP and NADPH, produced in the light-dependent reactions, are used as energy carriers to power the Calvin Cycle in Stage 2.'},
+    {q:'The splitting of a water molecule during the light-dependent reactions is specifically called:', c:['Glycolysis','Photolysis','Fermentation','Translocation'], a:1, e:'Photolysis is the splitting of water during the light-dependent reactions, which releases oxygen and provides electrons.'},
+    {q:'Which group of bacteria performs photosynthesis and is essential to Earth\'s carbon and oxygen cycle?', c:['Lactobacillus','Cyanobacteria','E. coli','Salmonella'], a:1, e:'Cyanobacteria are photosynthetic bacteria that play an essential role in the carbon and oxygen cycle.'}
   ], glossary:[
     {term:'Photosynthesis equation', def:'6CO2 + 6H2O + Light energy → C6H12O6 + 6O2.'},
     {term:'Light-dependent reactions', def:'in the thylakoid; light + water → O2 + ATP + NADPH.'},
     {term:'Calvin Cycle (light-independent)', def:'in the stroma; uses ATP/NADPH + CO2 → glucose.'},
     {term:'RuBisCo', def:'enzyme that fixes CO2 onto RuBP during carbon fixation.'},
-    {term:'Producers / Consumers', def:'organisms that make their own food (via photosynthesis) vs. those that rely on others for food.'}
+    {term:'Producers / Consumers', def:'organisms that make their own food (via photosynthesis) vs. those that rely on others for food.'},
+    {term:'Photolysis', def:'the splitting of a water molecule during the light-dependent reactions, releasing oxygen.'},
+    {term:'Microalgae / Macroalgae', def:'aquatic photosynthetic organisms; microalgae are the top oxygen producers on Earth, macroalgae provide marine habitat/food.'},
+    {term:'Cyanobacteria', def:'photosynthetic bacteria essential to the carbon and oxygen cycle.'}
   ], palace:[
     {stop:'Sunroom Window', image:'Green curtains (thylakoid membranes) glow as sunlight hits them, and water droplets on the glass split apart, hissing out little oxygen bubbles.', fact:'Light-dependent reactions: in the thylakoid; water splits, releasing O2, producing ATP + NADPH.'},
     {stop:'Sunroom Floor (Stroma)', image:'A carbon dioxide cloud drifts down to the floor where a machine labeled "RuBisCo" grabs it and welds it onto a spinning wheel of sugar.', fact:'Calvin Cycle: in the stroma, RuBisCo fixes CO2 onto RuBP to build glucose.'},
@@ -2248,11 +2373,13 @@ const DATA = [
     {q:'In human muscle cells, fermentation produces which waste product that causes muscle soreness?', c:['Alcohol','Lactic acid','Carbon dioxide only','Glucose'], a:1, e:'Human muscle cells undergo lactic acid fermentation when oxygen is low, and the buildup of lactic acid causes muscle soreness.'},
     {q:'In yeast, fermentation produces which products, useful in baking and brewing?', c:['Lactic acid only','Alcohol and CO2','Water and oxygen','Glucose and ATP only'], a:1, e:'Yeast fermentation produces alcohol and CO2, which is why it\'s used in baking (CO2 makes bread rise) and brewing (alcohol).'},
     {q:'Plants store their food primarily in the form of:', c:['Glycogen','Starch','Protein','Fat'], a:1, e:'Plants store food as starch, while animals store food as glycogen — both made of glucose, though glycogen is more complex.'},
-    {q:'Which of the following is TRUE about plants compared to animals, according to the comparison table?', c:['Plants are heterotrophs; animals are autotrophs','Plants are autotrophs and prepare their own food; animals are heterotrophs','Both are exactly the same in nutrition','Plants have a well-developed digestive system'], a:1, e:'Plants are autotrophs, preparing their own food via photosynthesis, while animals are heterotrophs, depending on plants/other animals for food.'}
+    {q:'Which of the following is TRUE about plants compared to animals, according to the comparison table?', c:['Plants are heterotrophs; animals are autotrophs','Plants are autotrophs and prepare their own food; animals are heterotrophs','Both are exactly the same in nutrition','Plants have a well-developed digestive system'], a:1, e:'Plants are autotrophs, preparing their own food via photosynthesis, while animals are heterotrophs, depending on plants/other animals for food.'},
+    {q:'The overall process where the proton gradient created by the ETC drives ATP synthase to produce ATP is called:', c:['Glycolysis','Fermentation','Oxidative Phosphorylation','Photolysis'], a:2, e:'Oxidative Phosphorylation is the process where the H+ (proton) gradient built by the ETC passes through ATP synthase to generate ATP — the final, highest-yield step of aerobic respiration.'}
   ], glossary:[
     {term:'Glycolysis', def:'Glucose → 2 pyruvate, in the cytoplasm; anaerobic; net 2 ATP + 2 NADH.'},
     {term:'Krebs Cycle (Citric Acid Cycle)', def:'Pyruvate → CO2 + electron carriers (NADH, FADH2), in the mitochondrial matrix.'},
     {term:'Electron Transport Chain (ETC)', def:'electrons → ATP production (~34 ATP), in the inner mitochondrial membrane; oxygen is the final electron acceptor.'},
+    {term:'Oxidative Phosphorylation', def:'the H+ gradient from the ETC drives ATP synthase to generate ATP; the final, highest-yield step of aerobic respiration.'},
     {term:'Fermentation', def:'anaerobic energy release when oxygen is low; produces lactic acid (humans/bacteria) or alcohol+CO2 (yeast).'}
   ], palace:[
     {stop:'Kitchen Sink', image:'A glucose molecule splits in half right at the drain, and two tiny "2 ATP" coins fall in while two "NADH" tokens float on top.', fact:'Glycolysis: Glucose → 2 pyruvate, in the cytoplasm, net 2 ATP + 2 NADH.'},
@@ -2264,7 +2391,7 @@ const DATA = [
     {h:'Plant & Animal Systems: Distinctions & Shared Principles', b:[
       'Plants (Autotrophs): produce their own food via photosynthesis; rigid cellulose cell walls; generally sessile (fixed in place).',
       'Animals (Heterotrophs): consume other organisms for energy; lack cell walls (allows flexibility/movement); typically motile.',
-      'Shared: Homeostasis (both maintain stable internal conditions); Material Transport (plants: xylem/phloem; animals: circulatory/respiratory systems); Response to Stimuli via receptors (plants: pattern response/immunity, e.g. makahiya adapting to repeated stimuli; animals: nervous system + white blood cells destroying pathogens).'
+      'Shared: Homeostasis (both maintain stable internal conditions); Material Transport (plants: xylem/phloem; animals: circulatory/respiratory systems); Response to Stimuli via receptors — Plants: bending toward light (Phototropism) and roots growing downward in response to gravity (Gravitropism), plus pattern response/immunity (e.g. makahiya adapting to repeated stimuli); Animals: nervous system + white blood cells destroying pathogens.'
     ]},
     {h:'Plant System: Transporting Essential Materials', b:[
       'Roots (Absorption): anchor the plant; absorb water/minerals through root hairs (increase surface area) via osmosis and active transport.',
@@ -2299,12 +2426,23 @@ const DATA = [
     {q:'Which body system provides LONG-TERM control of body temperature through metabolic regulation (e.g. thyroid hormones)?', c:['Nervous system','Endocrine system','Skeletal system','Muscular system'], a:1, e:'The endocrine system provides long-term control via hormones like thyroid hormones (T3/T4), which regulate metabolic rate and heat generation.'},
     {q:'A vaccine works primarily by:', c:['Curing an existing infection instantly','Introducing a harmless antigen to trigger an immune response and create memory cells','Removing the need for an immune system','Directly killing all pathogens in the body'], a:1, e:'Vaccines introduce a harmless piece of a pathogen (antigen), triggering a primary immune response and creating memory cells for future protection.'},
     {q:'"Community immunity" (herd immunity) occurs when:', c:['No one in a population is vaccinated','A high percentage of the population is vaccinated, reducing pathogen spread','Only children are vaccinated','Vaccines are banned'], a:1, e:'Community immunity occurs when a high percentage of a population is vaccinated, reducing overall pathogen spread and protecting those who can\'t be vaccinated.'},
-    {q:'Which organs act as filters in the lymphatic system, removing pathogens?', c:['Lungs and heart','Lymph nodes and the spleen','Kidneys and liver only','Stomach and intestines'], a:1, e:'Lymph nodes and the spleen act as filters in the lymphatic system, removing pathogens and allowing immune cells to respond.'}
+    {q:'Which organs act as filters in the lymphatic system, removing pathogens?', c:['Lungs and heart','Lymph nodes and the spleen','Kidneys and liver only','Stomach and intestines'], a:1, e:'Lymph nodes and the spleen act as filters in the lymphatic system, removing pathogens and allowing immune cells to respond.'},
+    {q:'A plant bending its stem toward a light source is an example of:', c:['Gravitropism','Phototropism','Transpiration','Thermoregulation'], a:1, e:'Phototropism is a plant\'s growth response that bends it toward a light source.'},
+    {q:'Roots growing downward in response to gravity is an example of:', c:['Phototropism','Gravitropism','Osmosis','Cohesion'], a:1, e:'Gravitropism is a plant\'s growth response to gravity, causing roots to grow downward.'},
+    {q:'In vaccination, the harmless piece of a pathogen that is introduced to trigger an immune response is called a/an:', c:['Antibody','Antigen','Enzyme','Hormone'], a:1, e:'An antigen is the harmless piece of a pathogen introduced by a vaccine, which the immune system learns to recognize.'},
+    {q:'The long-lived cells that "remember" a pathogen after a first exposure, enabling a fast secondary immune response, are called:', c:['Memory cells','Thermoreceptors','Companion cells','Chemoautotrophs'], a:0, e:'Memory cells are long-lived immune cells created after a primary immune response; they enable a fast, powerful secondary response if the same pathogen returns.'},
+    {q:'Specialized sensory neurons in the skin and brain that detect temperature changes are called:', c:['Thermoreceptors','Photoreceptors','Osmoreceptors','Chemoreceptors'], a:0, e:'Thermoreceptors are specialized sensory neurons that detect temperature changes, feeding into the body\'s thermoregulation response.'}
   ], glossary:[
     {term:'Xylem', def:'transports water/minerals unidirectionally, roots to leaves.'},
     {term:'Phloem', def:'transports sugars bidirectionally to all parts of the plant.'},
+    {term:'Phototropism / Gravitropism', def:'a plant bending toward light / roots growing downward in response to gravity.'},
     {term:'Thermoregulation', def:'maintaining stable core body temperature (~37°C) via homeostasis.'},
-    {term:'Herd/Community immunity', def:'when a high % of a population is vaccinated, reducing pathogen spread and protecting the unvaccinated.'}
+    {term:'Thermoreceptors', def:'specialized sensory neurons in the skin/brain that detect temperature changes.'},
+    {term:'Antigen', def:'a harmless piece of a pathogen, introduced by a vaccine, that triggers an immune response.'},
+    {term:'Memory cells', def:'long-lived immune cells created after a primary response; enable a fast secondary response later.'},
+    {term:'Herd/Community immunity', def:'when a high % of a population is vaccinated, reducing pathogen spread and protecting the unvaccinated.'},
+    {term:'Bronchoconstriction', def:'sudden tightening of the muscles around the airways, narrowing them (occurs in asthma attacks).'},
+    {term:'ACL (Anterior Cruciate Ligament)', def:'connects femur to tibia; prevents the tibia sliding forward; heals slowly due to poor blood flow.'}
   ], palace:[
     {stop:'Front Yard Sprinkler System', image:'Pipes run only ONE direction uphill (xylem, roots to leaves) while a second set of pipes flows freely BOTH ways (phloem, sugars everywhere).', fact:'Xylem: unidirectional water transport. Phloem: bidirectional sugar transport.'},
     {stop:'Knee-High Fence Post', image:'A wobbly fence post is labeled "ACL," barely holding together, with a sign reading "poor blood flow — 6 months to heal."', fact:'ACL connects femur to tibia; heals slowly due to poor blood flow.'},
@@ -2392,7 +2530,8 @@ const DATA = [
       'The cell membrane (plasma membrane) surrounds the cell and acts as a selective barrier between the interior and exterior.',
       'Composed of phospholipids (arranged in a bilayer, hydrophilic heads facing out/in and hydrophobic tails facing each other), proteins, and cholesterol.',
       'Proteins act as transport channels and are highly selective about what passes through; specialized proteins also enable cellular communication.',
-      'Cholesterol provides stability and helps maintain the cell\'s shape.'
+      'Cholesterol provides stability and helps maintain the cell\'s shape.',
+      'Cell Wall: a rigid, protective layer composed of carbohydrates, found OUTSIDE the cell membrane in some organisms (like plants, fungi, and bacteria) — NOT all organisms have one (animal cells, for example, don\'t).'
     ]},
     {h:'Passive vs. Active Transport', b:[
       'Any movement of particles is broadly called diffusion; when water is the substance moving, it\'s specifically called osmosis.',
@@ -2445,7 +2584,8 @@ const DATA = [
     {q:'In an ISOTONIC solution, a cell will:', c:['Swell until it bursts','Shrink until it withers','Stay at equilibrium, with no net water movement','Immediately undergo phagocytosis'], a:2, e:'An isotonic solution has balanced solute concentrations inside and outside the cell, so the cell stays at equilibrium.'},
     {q:'After swimming, skin can feel dehydrated because pool water (with fewer solutes than skin cells) draws moisture OUT — this is an example of skin cells being in a:', c:['Hypotonic environment','Isotonic environment','Hypertonic environment','Neutral environment with no tonicity'], a:2, e:'When more solute is outside the cells (relative to the surrounding water), water is drawn out, dehydrating the skin — a hypertonic-type effect described in the notes.'},
     {q:'What is the main function of nephrons in the kidney?', c:['To produce red blood cells','To filter waste out of the blood and reabsorb what the body needs','To store bile for digestion','To synthesize proteins from mRNA'], a:1, e:'Nephrons are the kidney\'s functional filtering units — they filter waste out of the blood and use concentration gradients to reabsorb needed substances like water.'},
-    {q:'If the kidneys are not functioning properly, what can happen to red blood cells, according to the notes?', c:['They shrink and disappear','Solute is left inside them, causing them to swell and eventually get damaged','They immediately turn into white blood cells','They stop carrying oxygen entirely'], a:1, e:'Poor kidney function can leave excess solute inside red blood cells, causing them to swell and eventually sustain damage — diet changes can help manage this.'}
+    {q:'If the kidneys are not functioning properly, what can happen to red blood cells, according to the notes?', c:['They shrink and disappear','Solute is left inside them, causing them to swell and eventually get damaged','They immediately turn into white blood cells','They stop carrying oxygen entirely'], a:1, e:'Poor kidney function can leave excess solute inside red blood cells, causing them to swell and eventually sustain damage — diet changes can help manage this.'},
+    {q:'The rigid, protective, carbohydrate-based layer found OUTSIDE the cell membrane in plants, fungi, and bacteria (but not animal cells) is called the:', c:['Cell wall','Cytoskeleton','Nuclear envelope','Golgi apparatus'], a:0, e:'The cell wall is a protective layer made of carbohydrates, found outside the cell membrane in organisms like plants, fungi, and bacteria — not all organisms (e.g. animals) have one.'}
   ], glossary:[
     {term:'Phospholipid bilayer', def:'two layers of phospholipids (hydrophilic heads out, hydrophobic tails in) forming the cell membrane.'},
     {term:'Passive transport', def:'movement of substances requiring no energy (diffusion, facilitated diffusion, osmosis).'},
@@ -2453,7 +2593,8 @@ const DATA = [
     {term:'Osmosis', def:'diffusion specifically of water, always toward the area with more solute.'},
     {term:'Phagocytosis / Pinocytosis', def:'"cell eating" of larger particles / "cell drinking" of fluids, both forms of endocytosis.'},
     {term:'Hypotonic / Isotonic / Hypertonic', def:'more solute inside cell (water in, may lyse) / balanced (equilibrium) / more solute outside cell (water out, crenation).'},
-    {term:'Nephron', def:'the kidney\'s functional filtering unit; uses concentration gradients to reabsorb water.'}
+    {term:'Nephron', def:'the kidney\'s functional filtering unit; uses concentration gradients to reabsorb water.'},
+    {term:'Cell Wall', def:'a rigid, protective, carbohydrate-based layer outside the cell membrane in plants/fungi/bacteria; not present in animal cells.'}
   ], palace:[
     {stop:'Front Door (Bilayer Curtain)', image:'A two-layer curtain hangs at the door, with little "heads" pointing outward toward the rain and "tails" tucked safely inside, dry.', fact:'Phospholipid bilayer: hydrophilic heads face out, hydrophobic tails face in.'},
     {stop:'Turnstile in the Hallway', image:'One turnstile spins freely with no effort (passive transport), while another needs a coin (ATP) dropped in before it will turn (active transport).', fact:'Passive transport needs no energy; active transport requires ATP.'},
@@ -2510,7 +2651,8 @@ const DATA = [
     {q:'Which molecule carries the genetic code OUT of the nucleus to the ribosomes?', c:['tRNA','mRNA','rRNA only','DNA polymerase'], a:1, e:'Messenger RNA (mRNA) is transcribed from DNA in the nucleus and carries the genetic code out to the ribosomes in the cytoplasm.'},
     {q:'A codon on the mRNA is matched by which complementary structure during Translation?', c:['A helicase enzyme','An anti-codon on tRNA','Another codon on mRNA','A phospholipid'], a:1, e:'During translation, codons on the mRNA pair with complementary anti-codons carried by tRNA molecules.'},
     {q:'Which of the following correctly lists the 3 main steps of protein synthesis, in order?', c:['Translation, Transcription, Replication','DNA Replication, Transcription, Translation','Transcription, Replication, Translation','Translation, Replication, Transcription'], a:1, e:'The correct order is: 1. DNA Replication, 2. Transcription (DNA → mRNA), 3. Translation (RNA → Protein).'},
-    {q:'The final product of protein synthesis — a chain of linked amino acids — is called a:', c:['Nucleotide','Polypeptide/protein molecule','Ribosome','Codon'], a:1, e:'The chain of amino acids linked together during translation forms a polypeptide, or protein molecule.'}
+    {q:'The final product of protein synthesis — a chain of linked amino acids — is called a:', c:['Nucleotide','Polypeptide/protein molecule','Ribosome','Codon'], a:1, e:'The chain of amino acids linked together during translation forms a polypeptide, or protein molecule.'},
+    {q:'DNA\'s twisted, two-strand structure that splits apart to form base pairs during replication is called the:', c:['Central Dogma','Double Helix','Golgi apparatus','Calvin Cycle'], a:1, e:'DNA\'s double helix is its twisted two-strand structure; it splits and forms new base pairs during replication.'}
   ], glossary:[
     {term:'Central Dogma', def:'DNA → mRNA → Ribosomes → Proteins.'},
     {term:'Helicase', def:'enzyme that unwinds the DNA double helix during replication.'},
@@ -2518,7 +2660,9 @@ const DATA = [
     {term:'Transcription', def:'DNA → mRNA; same base-pairing as replication, but Thymine is replaced by Uracil.'},
     {term:'Translation', def:'mRNA → Protein; uses codons/anti-codons and tRNA to link amino acids into a protein.'},
     {term:'Ribosome', def:'main organelle for protein production; located in the cytoplasm and on the rough ER.'},
-    {term:'DNA Expression', def:'each cell may express its identical DNA differently / produce different proteins depending on need.'}
+    {term:'DNA Expression', def:'each cell may express its identical DNA differently / produce different proteins depending on need.'},
+    {term:'DNA Double Helix', def:'DNA\'s twisted two-strand structure; splits and base-pairs (A-T, G-C) during replication.'},
+    {term:'Codon / Anti-codon', def:'a 3-base sequence on mRNA (codon) that pairs with a matching sequence on tRNA (anti-codon) during translation.'}
   ], palace:[
     {stop:'Front Hallway (Copy Machine)', image:'A copy machine unzips a long scroll (DNA), then two little robot arms — one labeled Helicase, one labeled Polymerase — unwind it and print a fresh matching copy.', fact:'DNA Replication: Helicase unwinds, Polymerase adds nucleotides to build a new strand.'},
     {stop:'Mailroom', image:'A DNA scroll gets photocopied onto thinner "memo" paper, except every "T" stamp is swapped for a "U" stamp before it\'s mailed out of the building (nucleus).', fact:'Transcription: DNA → mRNA, Thymine replaced by Uracil.'},
@@ -2544,15 +2688,16 @@ const DATA = [
       'Tracheids: conducting cells; water does not flow continuously through a single cell — instead, roots and leaves are connected through a series of tracheid cells with pitted walls.',
       'Vessel elements: long, wide, hollow tubes that connect continuously, stretching directly from the roots to the leaves.',
       'Xylem fibers: supporting structures that add strength.',
-      'Xylem parenchyma: the only LIVING cells of the xylem; they help with food storage.'
+      'Xylem parenchyma: the only LIVING cells of the xylem; they help with food storage.',
+      'Xylem sclerenchyma: another type of supporting cell in mature xylem tissue, adding rigidity alongside the fibers.'
     ]},
     {h:'Phloem Cell Types & Translocation', b:[
       'Phloem transports manufactured substances (like sucrose and amino acids) from the green parts of the plant (like leaves) to other parts of the plant — a process called "translocation."',
       'Phloem is living tissue overall, although sieve tube cells themselves lack nuclei and have little cytoplasm.',
       'Sieve tube: a single row of elongated, thin-walled cells with walls perforated by minute pores; a mature sieve cell has a thin layer of cytoplasm which conducts manufactured food from one cell to another.',
       'Companion cell: has everything the sieve tube cell lacks (abundant cytoplasm and a nucleus); has an extremely thin but flexible cell wall.',
-      'Fiber cell: helps give structural support to the phloem tissue.',
-      'Parenchyma cell: stores food and other substances.'
+      'Fiber cell (also called a bast fiber): helps give structural support to the phloem tissue.',
+      'Parenchyma cell: stores food and other substances. Intermediary cells are a specialized type of phloem parenchyma involved in loading sugars into the sieve tubes.'
     ]},
     {h:'What Pulls Water Up a Tree?', b:[
       'Root Pressure: pressure generated in the roots can contribute to water movement upward.',
@@ -2603,7 +2748,8 @@ const DATA = [
     {q:'Which digestive organ produces bile, which is then stored in the gallbladder and used to emulsify fats?', c:['Pancreas','Liver','Stomach','Small intestine'], a:1, e:'Bile is produced by the liver, then stored in the gallbladder, and used as an emulsifier for fats.'},
     {q:'Which part of the small intestine is the MAIN site of nutrient absorption, lined with microvilli?', c:['Duodenum','Jejunum','Ileum','Esophagus'], a:1, e:'The jejunum is the main site of nutrient absorption, lined with microvilli to efficiently absorb digested nutrients.'},
     {q:'Which part of the small intestine handles final absorption/recycling, including Vitamin B12?', c:['Duodenum','Jejunum','Ileum','Stomach'], a:2, e:'The ileum handles final absorption and recycling, including the absorption of Vitamin B12.'},
-    {q:'Which function of the musculoskeletal system involves bone marrow producing red blood cells, white blood cells, and platelets?', c:['Support','Movement','Blood Cell Production','Energy Storage'], a:2, e:'Blood Cell Production is the function where bone marrow, found in certain bones, produces red blood cells, white blood cells, and platelets.'}
+    {q:'Which function of the musculoskeletal system involves bone marrow producing red blood cells, white blood cells, and platelets?', c:['Support','Movement','Blood Cell Production','Energy Storage'], a:2, e:'Blood Cell Production is the function where bone marrow, found in certain bones, produces red blood cells, white blood cells, and platelets.'},
+    {q:'A phloem fiber cell providing structural support is also known by which alternate name?', c:['Tracheid','Bast fiber','Vessel element','Sclerenchyma of the xylem'], a:1, e:'A phloem fiber cell is also called a bast fiber, and it helps give structural support to phloem tissue.'}
   ], glossary:[
     {term:'Taproot / Fibrous roots', def:'a single deep primary root with laterals / a spreading network of thin roots for anchoring.'},
     {term:'Root Cap', def:'protective structure at the root tip; helps penetrate and lubricate its path through soil.'},
@@ -2612,7 +2758,9 @@ const DATA = [
     {term:'Sieve tube / Companion cell', def:'thin-walled, pore-perforated food-conducting cell / cell with abundant cytoplasm & nucleus supporting it.'},
     {term:'Translocation', def:'phloem transport of manufactured sucrose/amino acids from leaves to other plant parts.'},
     {term:'Peristalsis', def:'wave-like muscular movement that moves the bolus through the esophagus.'},
-    {term:'Duodenum / Jejunum / Ileum', def:'small intestine sections: receives pancreatic enzymes & bile / main nutrient absorption via microvilli / final absorption (e.g. Vit B12).'}
+    {term:'Duodenum / Jejunum / Ileum', def:'small intestine sections: receives pancreatic enzymes & bile / main nutrient absorption via microvilli / final absorption (e.g. Vit B12).'},
+    {term:'Xylem sclerenchyma', def:'a supporting cell type in mature xylem tissue, adding rigidity alongside xylem fibers.'},
+    {term:'Bast fiber / Intermediary cell', def:'another name for a supportive phloem fiber cell / a specialized phloem parenchyma cell that loads sugar into sieve tubes.'}
   ], palace:[
     {stop:'Garden Bed (Underground)', image:'One long taproot drills straight down like a drill bit, while nearby a tangled net of fibrous roots spreads sideways to grip the topsoil, and a tiny helmet (root cap) sits on every root tip.', fact:'Taproot grows deep with laterals; fibrous roots spread and anchor; root cap protects the tip.'},
     {stop:'Garden Hose Reel', image:'A stiff, waterproofed hose (xylem, strengthened by lignin) runs one-way uphill through a chain of pitted connector joints (tracheids) and one giant continuous pipe (vessel element).', fact:'Lignin waterproofs/strengthens xylem; tracheids connect via pitted walls, vessel elements form continuous tubes.'},
@@ -2697,7 +2845,10 @@ const DATA = [
     {q:'Which type of enzyme inhibitor binds to a different part of the enzyme, altering the active site\'s shape indirectly?', c:['Competitive inhibitor','Noncompetitive inhibitor','Cofactor','Substrate'], a:1, e:'Noncompetitive inhibitors bind to a part of the enzyme OTHER than the active site, changing the enzyme\'s shape and altering the active site.'},
     {q:'Which nitrogenous base is found in RNA but NOT in DNA?', c:['Adenine','Guanine','Cytosine','Uracil'], a:3, e:'RNA uses Uracil in place of Thymine, which is found only in DNA.'},
     {q:'The flow of genetic information, as described in the notes, follows which order?', c:['Protein → RNA → DNA','DNA → RNA → Protein','RNA → DNA → Protein','Protein → DNA → RNA'], a:1, e:'DNA contains the instructions for producing RNA, and RNA contains the instructions for producing proteins: DNA → RNA → Proteins.'},
-    {q:'Which of the 3 parts of a nucleotide carries genetic information?', c:['Pentose Sugar','Phosphate Group','Nitrogenous Base','None of these'], a:2, e:'The Nitrogenous Base is the nitrogen-containing molecule that carries genetic information within a nucleotide.'}
+    {q:'Which of the 3 parts of a nucleotide carries genetic information?', c:['Pentose Sugar','Phosphate Group','Nitrogenous Base','None of these'], a:2, e:'The Nitrogenous Base is the nitrogen-containing molecule that carries genetic information within a nucleotide.'},
+    {q:'A long molecule made of many repeated smaller building-block units is called a:', c:['Monomer','Polymer','Nucleotide','Enzyme'], a:1, e:'A polymer is a long molecule built from many repeated smaller units, called monomers.'},
+    {q:'The covalent bond that joins two monosaccharides together to form a disaccharide is called a:', c:['Peptide bond','Glycosidic linkage','Phosphodiester bond','Ester bond'], a:1, e:'A glycosidic linkage is the bond that joins monosaccharides together via dehydration synthesis, forming disaccharides or polysaccharides.'},
+    {q:'The covalent bond joining the carboxyl end of one amino acid to the amino end of the next is called a:', c:['Glycosidic linkage','Ester bond','Peptide bond','Phosphodiester bond'], a:2, e:'A peptide bond joins amino acids together into chains (polypeptides), forming between the carboxyl end of one amino acid and the amino end of the next.'}
   ], glossary:[
     {term:'Dehydration Reaction (Condensation)', def:'the process of synthesis/building of macromolecules.'},
     {term:'Hydrolysis', def:'water molecules added to a polymer, breaking covalent bonds.'},
@@ -2712,7 +2863,10 @@ const DATA = [
     {term:'Enzyme', def:'a protein catalyst that speeds up reactions without being permanently changed.'},
     {term:'Induced Fit', def:'a change in the configuration of an enzyme\'s active site.'},
     {term:'Competitive / Noncompetitive Inhibitor', def:'competes for the active site / binds elsewhere, altering the active site shape.'},
-    {term:'Nucleotide', def:'monomer of nucleic acids: nitrogenous base + pentose sugar + phosphate group.'}
+    {term:'Nucleotide', def:'monomer of nucleic acids: nitrogenous base + pentose sugar + phosphate group.'},
+    {term:'Polymer / Monomer', def:'a long molecule of repeated similar units (polymer) built from its smaller single building-block units (monomers).'},
+    {term:'Glycosidic Linkage', def:'the covalent bond joining two monosaccharides together (forms disaccharides/polysaccharides) via dehydration synthesis.'},
+    {term:'Peptide Bond', def:'the covalent bond joining the carboxyl end of one amino acid to the amino end of the next.'}
   ], palace:[
     {stop:'Pantry', image:'Four labeled bins line the shelf: CHO (sugar cubes), CHO again (oil bottles), CHON (protein powder), CHONP (a glowing DNA strand).', fact:'Elemental memory aid: CHO=Carbs, CHO=Lipids, CHON=Proteins, CHONP=Nucleic Acids.'},
     {stop:'Sugar Bowl on the Counter', image:'Three sugar cubes labeled Sucrose, Maltose, Lactose sit stuck together in pairs — each pair a different combo of glucose, fructose, galactose.', fact:'Disaccharides: Sucrose=Glu+Fru, Maltose=Glu+Glu, Lactose=Glu+Gal.'},
@@ -2790,10 +2944,14 @@ const DATA = [
     {q:'Which cytoskeleton component is described as the THICKEST, consisting of tiny hollow tubes?', c:['Microfilaments','Microtubules','Intermediate filaments','Cristae'], a:1, e:'Microtubules are the thickest cytoskeletal components, consisting of tiny hollow tubes.'},
     {q:'Which cytoskeleton component is described as the THINNEST, consisting of thin solid fibers?', c:['Microtubules','Intermediate filaments','Microfilaments','Cisternae'], a:2, e:'Microfilaments are the thinnest cytoskeletal components, made of thin solid fibers.'},
     {q:'Centrioles, used for microtubule assembly, are typically found in which type of cell?', c:['Plant cells only','Animal cells (plants usually lack centrioles)','Neither plant nor animal cells','Bacteria only'], a:1, e:'Centrioles are found in animal cells; plant cells have centrosome-like MTOCs but usually lack centrioles.'},
-    {q:'Which structure for locomotion is LONGER and typically limited to just one or a few per cell, compared to the other?', c:['Cilia','Flagella','Microvilli','Fimbriae'], a:1, e:'Flagella are longer than cilia and are usually limited to just one or a few per cell, while cilia occur in large numbers.'}
+    {q:'Which structure for locomotion is LONGER and typically limited to just one or a few per cell, compared to the other?', c:['Cilia','Flagella','Microvilli','Fimbriae'], a:1, e:'Flagella are longer than cilia and are usually limited to just one or a few per cell, while cilia occur in large numbers.'},
+    {q:'Which group of prokaryotes is known for living in extreme environments?', c:['Eubacteria','Archaebacteria','Eukaryotes','Protozoa'], a:1, e:'Archaebacteria are prokaryotes known for living in extreme environments, as opposed to Eubacteria which live under normal conditions.'},
+    {q:'Fimbriae, which help a cell stick to surfaces and host cells, are made of small protein subunits called:', c:['Pilin','Keratin','Cristae','Chlorophyll'], a:0, e:'Fimbriae are bristle-like protein structures made of small protein subunits called pilin.'}
   ], glossary:[
     {term:'Cell Theory (key figures)', def:'Hooke (named "cell"), Leeuwenhoek (animacules), Schwann & Schleiden (cells = basic unit), Virchow (cells from pre-existing cells).'},
     {term:'Nucleoid', def:'unenclosed region in prokaryotes where DNA is concentrated.'},
+    {term:'Archaebacteria / Eubacteria', def:'the two prokaryote groups — Archaebacteria live in extreme environments; Eubacteria live under normal conditions (both unicellular).'},
+    {term:'Pilin', def:'the small protein subunit that makes up fimbriae, the bristle-like structures helping cells stick to surfaces/host cells.'},
     {term:'Selective permeability', def:'the membrane allows some substances to cross more easily than others.'},
     {term:'Free vs. Bound Ribosomes', def:'Free — suspended in cytosol; Bound — attached to ER/nuclear envelope.'},
     {term:'Smooth ER / Rough ER', def:'Smooth: lipid synthesis, detoxification; Rough: studded with ribosomes, makes secretory proteins.'},
@@ -2850,7 +3008,9 @@ const DATA = [
     {q:'Which illuminating part allows the user to adjust the amount of light passing through the specimen?', c:['Light source','Iris diaphragm/mirror','Objective lens','Revolving nosepiece'], a:1, e:'The iris diaphragm/mirror is used to adjust the amount of light that passes through the specimen.'},
     {q:'When caring for a microscope, how should it be held?', c:['With one hand only, on the base','With both hands, one on the arm and one on the base','By the ocular lens only','By the stage clip only'], a:1, e:'Proper microscope handling requires both hands — one supporting the arm and one supporting the base.'},
     {q:'How should a microscope be stored when not in use?', c:['Uncovered, in direct sunlight','Covered with a dust bag, in a cool dry place','Submerged in immersion oil','Left on the stage with a slide in place'], a:1, e:'A microscope should be covered with a dust bag and stored in a cool, dry place to protect it from damage.'},
-    {q:'What is the correct order of steps for making a wet mount?', c:['Place cover slip → Collect sample → Add to slide','Collect sample → Add to slide → Place cover slip on sample','Add to slide → Collect sample → Place cover slip','Place cover slip → Add to slide → Collect sample'], a:1, e:'The correct order for a wet mount is: Collect sample, Add to slide, then Place cover slip on sample.'}
+    {q:'What is the correct order of steps for making a wet mount?', c:['Place cover slip → Collect sample → Add to slide','Collect sample → Add to slide → Place cover slip on sample','Add to slide → Collect sample → Place cover slip','Place cover slip → Add to slide → Collect sample'], a:1, e:'The correct order for a wet mount is: Collect sample, Add to slide, then Place cover slip on sample.'},
+    {q:'Which objective lens provides 40x magnification?', c:['Scanner','LPO (Low Power)','HPO (High Power)','OIO (Oil Immersion)'], a:2, e:'The HPO (High Power Objective) provides 40x magnification, between LPO (10x) and OIO (100x).'},
+    {q:'If the ocular lens is 10x and you switch to the HPO objective (40x), what is the total magnification?', c:['50x','400x','4x','4000x'], a:1, e:'Total magnification = ocular lens power × objective lens power = 10x × 40x = 400x.'}
   ], glossary:[
     {term:'Compound Light Microscope', def:'ocular + objective lenses; max 1000x magnification.'},
     {term:'Stereoscope (Dissecting Microscope)', def:'for dissection; can use the actual specimen; max 100x.'},
@@ -2858,7 +3018,9 @@ const DATA = [
     {term:'SEM', def:'Scanning Electron Microscope — detects reflected electrons; 3D image.'},
     {term:'Atomic Force Microscope', def:'uses a stylus; sees actual specimen movement; live or preserved.'},
     {term:'Confocal Microscope', def:'laser + fluorescent microscope; images thin planes of thick specimens.'},
-    {term:'Coarse vs. Fine adjustment knob', def:'Coarse — for magnification/focus; Fine — for better resolution.'}
+    {term:'Coarse vs. Fine adjustment knob', def:'Coarse — for magnification/focus; Fine — for better resolution.'},
+    {term:'Objective Lens Magnifications', def:'Scanner = 4x, LPO (Low Power) = 10x, HPO (High Power) = 40x, OIO (Oil Immersion) = 100x.'},
+    {term:'Total Magnification Formula', def:'Ocular lens power × Objective lens power (e.g. 10x ocular × 40x HPO = 400x total).'}
   ], palace:[
     {stop:'Study Desk', image:'A microscope sits with a sticky note reading "1000x MAX" taped to the eyepiece, right next to a bulkier dissecting scope labeled "100x MAX — but you can cut things."', fact:'Compound Light Microscope: max 1000x. Stereoscope: max 100x, allows dissection.'},
     {stop:'Lab Cabinet', image:'Two glowing electron guns sit side by side — one shoots straight THROUGH a thin dead bug (flat 2D shadow appears on the wall), the other bounces OFF a dead bug\'s surface (a glowing 3D shape appears).', fact:'TEM: electrons pass through, 2D image. SEM: electrons reflect off, 3D image.'},
@@ -2925,7 +3087,9 @@ const DATA = [
     {type:'dual', s1:'DNA replication occurs during the S phase of interphase.', s2:'After S phase, each chromosome has two sister chromatids.', a:0, e:'Both statements are true — this is exactly what happens during and after S phase.'},
     {type:'dual', s1:'Animal cells use a cell plate to divide during cytokinesis.', s2:'Plant cells use a cleavage furrow to divide during cytokinesis.', a:1, e:'Both statements are false — it\'s the reverse: animal cells use a cleavage furrow, and plant cells use a cell plate.'},
     {type:'dual', s1:'The G2 checkpoint checks that DNA replication was completed correctly.', s2:'The M checkpoint checks that chromosomes are properly attached to spindle fibers.', a:0, e:'Both statements are true — these are the correct roles of the G2 and M checkpoints respectively.'},
-    {type:'dual', s1:'Cancer can result when cell cycle checkpoints fail to catch DNA damage.', s2:'Cells in G0 phase are actively dividing.', a:2, e:'Statement 1 is true, but Statement 2 is false — cells in G0 have exited the cycle and are NOT dividing; that\'s the defining feature of G0.'}
+    {type:'dual', s1:'Cancer can result when cell cycle checkpoints fail to catch DNA damage.', s2:'Cells in G0 phase are actively dividing.', a:2, e:'Statement 1 is true, but Statement 2 is false — cells in G0 have exited the cycle and are NOT dividing; that\'s the defining feature of G0.'},
+    {q:'The protective cap at the ends of a chromosome, which carries no genetic information itself, is called the:', c:['Centromere','Telomere','Nucleoid','Sister chromatid'], a:1, e:'The telomere is the protective cap at each end of a chromosome; it doesn\'t carry genetic information but protects the chromosome.'},
+    {q:'If DNA damage isn\'t repaired by the G2 checkpoint, one possible outcome is:', c:['Apoptosis (programmed cell death), to avoid passing on damaged DNA','The cell skips mitosis entirely and lives forever','The cell automatically becomes cancerous','Nothing — checkpoints have no effect on this'], a:0, e:'If a problem at the G2 checkpoint can\'t be fixed, the cell may undergo apoptosis (programmed cell death) rather than pass on damaged DNA.'}
   ],
   glossary: [
     {term:'Interphase', def:'the growth phase of the cell cycle (G1, S, G2), making up ~90% of the total cycle.'},
@@ -2934,7 +3098,11 @@ const DATA = [
     {term:'Cytokinesis', def:'division of the cytoplasm, producing two separate daughter cells.'},
     {term:'Checkpoint', def:'a control point in the cell cycle that verifies conditions are right before proceeding to the next phase.'},
     {term:'G0 Phase', def:'a resting phase where some cells permanently exit the cell cycle.'},
-    {term:'Sister Chromatids', def:'two identical copies of a chromosome joined at the centromere after DNA replication.'}
+    {term:'Sister Chromatids', def:'two identical copies of a chromosome joined at the centromere after DNA replication.'},
+    {term:'Centromere', def:'the constricted region of a chromosome that joins two sister chromatids together.'},
+    {term:'Telomere', def:'the protective cap at each end (top/bottom) of a chromosome; carries no genetic information, only protects it.'},
+    {term:'Chromosome Arms (p/q)', def:'the short arm (p) and long arm (q) of a chromosome, extending out from the centromere.'},
+    {term:'Apoptosis', def:'programmed cell death; can be triggered if DNA damage isn\'t fixed by G2, preventing damaged DNA from passing to daughter cells.'}
   ],
   palace: [
     {stop:'Front Yard', image:'A tiny sapling grows taller and taller in the yard, sprouting new leaves and roots (but not yet splitting).', fact:'G1 phase: the cell grows in size and makes new proteins/organelles.'},
@@ -3048,7 +3216,9 @@ const DATA = [
       '1 John 4:12: "No one has ever seen God..." — God is a Spirit, a Mystery, and cannot be perceived by the senses.',
       'God\'s love can be seen/experienced through the love shown between believers (love as reflection of God, evidence of His presence).',
       'Language about God is analogical and symbolic, since language is a product of human sensory experience.',
-      'Anthropomorphism: Anthropos (man) + morphe (form) — attribution of human qualities to non-human beings, including God.'
+      'Anthropomorphism: Anthropos (man) + morphe (form) — attribution of human qualities to non-human beings, including God.',
+      'Example — Creation of Man: God took soil and breathed on it, and it became a person; "breathing" is the anthropomorphic detail here, since breathing is a physical human attribute being linked to God.',
+      'Limitation of Anthropomorphism: since it\'s our own creation, we tend to attribute only POSITIVE qualities to God through it, which can give an incomplete picture.'
     ]},
     {h:'Image of God', b:[
       'Images are signs that point to a greater reality; they have both strengths and limitations, and can be misleading or manipulated.',
@@ -3070,6 +3240,8 @@ const DATA = [
     {q:'The apparition of the Virgin Mary at Fatima in 1917 is an example of which type of revelation?', c:['Natural','Special','Private','Public'], a:2, e:'The Fatima apparition to three shepherd children is a classic example of Private Revelation, examined by the Magisterium.'},
     {q:'Which type of revelation is described as "final and complete in the person of Jesus" and imposes an obligation of faith?', c:['Natural','Special','Private','Public'], a:3, e:'Public Revelation, through Jesus Christ, is final and complete, and imposes the obligation of faith on all believers.'},
     {q:'Attributing human qualities to non-human beings, including God, is called:', c:['Anthropomorphism','Theomorphism','Iconography','Personification only'], a:0, e:'Anthropomorphism (Anthropos = man, morphe = form) is the attribution of human qualities to non-human beings, including God.'},
+    {q:'In the account of God creating man from soil and breathing on it, what is the anthropomorphic detail?', c:['The soil itself','God breathing on it','The color of the soil','The location of creation'], a:1, e:'"Breathing" is a physical human attribute, so attributing it to God in this account is the anthropomorphic detail.'},
+    {q:'What is a key LIMITATION of using anthropomorphism to describe God?', c:['It makes God seem too distant','It tends to attribute only POSITIVE human qualities to God, giving an incomplete picture','It is only used in the Old Testament','It removes all mystery from God'], a:1, e:'Because anthropomorphic images are human-made, they tend to highlight only positive qualities, which can give an incomplete picture of God.'},
     {q:'The "Positive" aspect of the "God is a Mother" image is that it:', c:['Makes God more approachable, caring, and loving','Weakens God\'s image entirely','Has no positive aspect','Only applies to non-Christians'], a:0, e:'Describing God as a Mother positively makes Him more approachable and presents Him as caring and loving.'},
     {q:'A potential negative of the "God is a Friend" image is that it may lead to:', c:['Increased reverence','Over-familiarity and a lack of reverence','Complete rejection of God','Better understanding of the Trinity'], a:1, e:'Describing God as a Friend can risk over-familiarity, potentially leading to a lack of reverence.'},
     {q:'The three-part challenge from Divine Revelation is to KNOW, LOVE, and:', c:['Fear Him','Worship Him more sincerely','Avoid Him','Question Him'], a:1, e:'The three challenges are to KNOW God more clearly, LOVE Him more deeply, and WORSHIP Him more sincerely.'},
@@ -3077,6 +3249,7 @@ const DATA = [
   ], glossary:[
     {term:'Revelare', def:'Latin: to lift the veil, to disclose, to uncover.'},
     {term:'Anthropomorphism', def:'Anthropos (man) + morphe (form) — attribution of human qualities to non-human beings, including God.'},
+    {term:'Limitation of Anthropomorphism', def:'since it\'s a human-made image, it tends to attribute only POSITIVE human qualities to God, giving an incomplete picture.'},
     {term:'Natural Revelation', def:'knowing God through the created world.'},
     {term:'Special Revelation', def:'"supernatural revelation," equated with the Bible.'},
     {term:'Private Revelation', def:'apparitions/mystical experiences, examined by the Magisterium.'},
@@ -3102,6 +3275,8 @@ const DATA = [
     ]},
     {h:'Sacred Tradition: Deposit of Faith', b:[
       'Doctrinal Traditions: the LIVING and LIVED faith of the Church — can NEVER be changed/modified without harming the integrity of the Christian Faith.',
+      'Cultural Tradition: by contrast, CAN be changed or modified without harming the integrity of the Christian faith (e.g. customs/practices tied to a specific time or culture, unlike core doctrine).',
+      'Apostolic Succession: the unbroken chain of ordination and teaching authority passed down from Jesus Christ, to St. Peter (the first Pope), all the way down to the current Pope — safeguarding the Magisterium\'s authority.',
       'Dei Verbum: Sacred Tradition and Sacred Scripture form ONE sacred deposit of the Word of God, committed to the Church — they are inseparable.',
       'Sola Scriptura (Reformers): "scripture only" — the Bible, not tradition or the Church, is the final authority; the Bible itself (John 20:30) shows this is incomplete, since not everything Jesus did was recorded.',
       'Sacred Scripture originated from Oral Tradition; not all Tradition was written down — the Bible does not contain the entire revelation, and Tradition continues in the life of the Church.'
@@ -3122,12 +3297,16 @@ const DATA = [
     {q:'"Sola Scriptura" is the belief of the Reformers that:', c:['Only the Bible, not tradition or the Church, is the final authority','Tradition is more important than Scripture','The Church has no authority at all','The Bible was written entirely by one apostle'], a:0, e:'Sola Scriptura is the belief that the Bible alone is the final authority, not Tradition or the Church.'},
     {q:'Which of the following is NOT one of the "Tripod of Catholic Faith"?', c:['Sacred Tradition','Sacred Scripture','Magisterium','Sola Scriptura'], a:3, e:'The Tripod consists of Sacred Tradition, Sacred Scripture, and the Magisterium — Sola Scriptura is the Reformers\' opposing position.'},
     {q:'Which teaching authority is entrusted to the Pope and bishops to interpret and safeguard revealed truth?', c:['Sacred Tradition','Sacred Scripture','The Magisterium','Sola Scriptura'], a:2, e:'The Magisterium is the Church\'s teaching authority, entrusted to the Pope and bishops in communion with him.'},
-    {q:'Which doctrines are given as examples of teachings most clearly taught through Tradition, though only implicit in the Bible?', c:['The Trinity, infant baptism, Bible inerrancy, purgatory, Mary\'s perpetual virginity','Only the Ten Commandments','Only the Beatitudes','None — everything is explicit in the Bible'], a:0, e:'The notes give the Trinity, infant baptism, biblical inerrancy, purgatory, and Mary\'s perpetual virginity as apostolic teachings most clearly taught through Tradition, though only implicitly present in Scripture.'}
+    {q:'Which doctrines are given as examples of teachings most clearly taught through Tradition, though only implicit in the Bible?', c:['The Trinity, infant baptism, Bible inerrancy, purgatory, Mary\'s perpetual virginity','Only the Ten Commandments','Only the Beatitudes','None — everything is explicit in the Bible'], a:0, e:'The notes give the Trinity, infant baptism, biblical inerrancy, purgatory, and Mary\'s perpetual virginity as apostolic teachings most clearly taught through Tradition, though only implicitly present in Scripture.'},
+    {q:'Unlike Doctrinal Tradition, Cultural Tradition:', c:['Can never be changed under any circumstance','CAN be changed or modified without harming the integrity of the faith','Is identical to Sacred Scripture','Was written down by St. Peter'], a:1, e:'Cultural Tradition (customs tied to a particular time/culture) can be changed without harming the integrity of the Christian faith, unlike Doctrinal Tradition.'},
+    {q:'The unbroken chain of teaching authority passed from Jesus Christ, to St. Peter, down to the current Pope, is called:', c:['Sola Scriptura','Apostolic Succession','Cultural Tradition','Dei Verbum'], a:1, e:'Apostolic Succession is the unbroken chain of ordination/teaching authority from Christ, through St. Peter, down to the current Pope.'}
   ], glossary:[
     {term:'Fides', def:'Latin for trust, loyalty — root of "faith."'},
     {term:'Tradare', def:'Latin: to pass on; to hand over — root of "tradition."'},
     {term:'Sola Scriptura', def:'Reformers\' belief that Scripture alone is the final authority.'},
-    {term:'Tripod of Catholic Faith', def:'Sacred Tradition, Sacred Scripture, and the Magisterium — working together.'}
+    {term:'Tripod of Catholic Faith', def:'Sacred Tradition, Sacred Scripture, and the Magisterium — working together.'},
+    {term:'Cultural Tradition', def:'customs/practices that CAN be changed without harming the integrity of the faith, unlike Doctrinal Tradition.'},
+    {term:'Apostolic Succession', def:'the unbroken chain of teaching authority from Jesus Christ, to St. Peter, down to the current Pope.'}
   ], palace:[
     {stop:'Handshake at the Door', image:'Two hands clasp firmly, one labeled "Fides" (trust/loyalty), the other whispering "ob-audire" (to listen).', fact:'Fides = trust, loyalty. Ob-Audire = obedience, to hear/listen.'},
     {stop:'Keys on the Hook', image:'A giant set of keys hangs labeled "PETER," with a cornerstone behind it reading "on this rock I will build my Church."', fact:'St. Peter, the first Pope, was commissioned by Christ.'},
@@ -3140,13 +3319,23 @@ const DATA = [
       'Fides Qua ("the faith BY WHICH one believes") — the act of believing: Worship (going to Mass), Morals (charities), Doctrine (Bible study).',
       'Fides Quae ("the faith WHICH is believed") — the content of faith: Worship (Liturgical Creed), Morals (Decalogue and Beatitudes), Doctrine (Trinitarian and Christological Dogmas).'
     ]},
+    {h:'The Paralyses of Faith', b:[
+      'A "paralysis" of faith happens when one or two of the three dimensions (Believing/Doctrine, Doing/Morality, Trusting/Worship) is left out of a person\'s lived faith.',
+      'Ideological Activism: believes the right things and does what is good, but hardly prays or goes to Church — missing Worship.',
+      'Pious Dogmatism: believes the right things and always goes to church, but lives a questionable Christian life — missing Morality.',
+      'Idealistic Activism: does good to others and goes to church often, but doesn\'t really know what he/she believes in — missing Doctrine.',
+      'Missing 2 dimensions at once results in an even more extreme imbalance: Ritualism (only Worship remains — no doctrine, no morals), Activism (only Morality remains — no worship, no doctrine), Idealism (only Doctrine remains — no worship, no morals).'
+    ]},
     {h:'Creed', b:[
       '"Credo" (Latin): I believe.',
       'Catholic beliefs (CFC 233): communicating the Christian message, grounding insight into Christ\'s truth, uniting Catholics in commitment to Christ, inter-religious dialogue.',
-      'Apostles\' Creed: no single author, developed over time; an ancient Roman baptismal symbol; the oldest authoritative doctrinal formulation of belief in the Holy Trinity.'
+      'Apostles\' Creed: no single author, developed over time; an ancient Roman baptismal symbol; the oldest authoritative doctrinal formulation of belief in the Holy Trinity.',
+      'Nicene Creed: arose out of a defensive struggle against the heresy of Arianism (which denied the full divinity of Jesus and the Holy Spirit); it affirms that the Holy Spirit is divine, together with the Son and the Father.',
+      'Dogmas themselves do not change — rather, the Church\'s understanding of them deepens over time. The Nicene Creed doesn\'t contradict the Apostles\' Creed; it simply gives a deeper explanation to address the Arian heresy.'
     ]},
     {h:'The Most Holy Trinity', b:[
       'God the Father, God the Son (Jesus Christ), and God the Holy Spirit — the most fundamental mystery of the Catholic faith, revealed by Jesus Christ.',
+      'The Trinity is a mystery that goes beyond our human capacity to fully understand — even St. Augustine, a great Doctor of the Church, could not fully comprehend it: legend tells of him seeing a boy on the beach trying to pour the entire ocean into a small hole in the sand, symbolizing how impossible it is to fully contain/comprehend the mystery of the Trinity with a finite human mind. We embrace it through faith rather than full comprehension.',
       'In Sacred Scripture: Creation, The Annunciation, The Baptism of Jesus, The Advocate, The Great Commission, Peter\'s Epistle, Paul\'s Epistle.',
       'Dogma: truths revealed by God Himself, expressed by the Church\'s teaching authority — the Trinity is One, the divine persons are really distinct, the divine persons are relative to one another.'
     ]},
@@ -3158,6 +3347,12 @@ const DATA = [
   ], quiz:[
     {q:'"Fides Qua" refers to:', c:['The content of what is believed','The act of believing','A type of dogma','A Church council'], a:1, e:'Fides Qua ("the faith by which one believes") refers to the act of believing itself.'},
     {q:'"Fides Quae" refers to:', c:['The act of believing','The content of what is believed (creeds, dogmas)','A type of Mass','The Magisterium'], a:1, e:'Fides Quae ("the faith which is believed") refers to the actual content of belief — such as the Liturgical Creed and Trinitarian Dogmas.'},
+    {q:'A person who believes the right things and does good works, but hardly prays or attends Church, exhibits which paralysis of faith?', c:['Pious Dogmatism','Ideological Activism','Idealistic Activism','Ritualism'], a:1, e:'Ideological Activism is missing the Worship/Trusting dimension — the person believes and acts well, but neglects prayer and church attendance.'},
+    {q:'A person who believes correctly and always attends church, but lives a morally questionable life, exhibits which paralysis of faith?', c:['Ideological Activism','Idealistic Activism','Pious Dogmatism','Activism'], a:2, e:'Pious Dogmatism is missing the Doing/Morality dimension — correct belief and worship, but a life that doesn\'t match it.'},
+    {q:'A person who does good deeds and worships often, but doesn\'t really know what they believe in, exhibits which paralysis of faith?', c:['Pious Dogmatism','Ideological Activism','Idealistic Activism','Idealism'], a:2, e:'Idealistic Activism is missing the Believing/Doctrine dimension — good actions and worship without a clear grasp of belief.'},
+    {q:'If a person has ONLY the Worship dimension of faith — no doctrine and no morals — this extreme imbalance is called:', c:['Activism','Idealism','Ritualism','Ideological Activism'], a:2, e:'Ritualism describes having only Worship, with no doctrine or morality grounding it.'},
+    {q:'The Nicene Creed arose specifically as a defense against which heresy?', c:['Gnosticism','Arianism','Pelagianism','Donatism'], a:1, e:'The Nicene Creed arose out of a defensive struggle against Arianism, which denied the full divinity of Jesus and the Holy Spirit.'},
+    {q:'Which statement about Dogma is TRUE?', c:['Dogmas change frequently as culture changes','Dogmas themselves don\'t change, but the Church\'s understanding of them deepens over time','Dogmas were all created in the 21st century','The Nicene Creed contradicts the Apostles\' Creed'], a:1, e:'Dogmas do not change; rather, the Church\'s understanding of them deepens over time — the Nicene Creed adds depth to, rather than contradicts, the Apostles\' Creed.'},
     {q:'Under Fides Qua, "Worship" is exemplified by:', c:['The Liturgical Creed','Going to Mass','The Decalogue','Trinitarian Dogmas'], a:1, e:'Under Fides Qua (the act of believing), Worship is exemplified by the act of going to Mass.'},
     {q:'Under Fides Quae, "Doctrine" is exemplified by:', c:['Bible study','Charities','Trinitarian and Christological Dogmas','Going to Mass'], a:2, e:'Under Fides Quae (the content believed), Doctrine is exemplified by Trinitarian and Christological Dogmas.'},
     {q:'What does the Latin word "Credo" mean?', c:['I doubt','I believe','I worship','I obey'], a:1, e:'"Credo" is Latin for "I believe" — the root of the word "creed."'},
@@ -3165,12 +3360,15 @@ const DATA = [
     {q:'The doctrine of the Trinity refers to:', c:['Three separate gods','God the Father, God the Son, and God the Holy Spirit as one God','Only Jesus Christ','A concept unrelated to Christianity'], a:1, e:'The Trinity is the Christian doctrine of God the Father, God the Son (Jesus), and God the Holy Spirit — three persons, one God.'},
     {q:'Which Trinitarian person is described as "the origin without an origin"?', c:['The Father','The Son','The Holy Spirit','None of these'], a:0, e:'The Father is described as the origin without an origin — not begotten or proceeding from anyone else.'},
     {q:'Which Trinitarian person is described as "begotten by the Father"?', c:['The Father','The Son','The Holy Spirit','All three equally'], a:1, e:'The Son is described as begotten by the Father.'},
-    {q:'The Trinity being "co-equal, co-eternal, and consubstantial" reflects their unity by:', c:['Relation of origin','Nature','Physical appearance','Historical timeline'], a:1, e:'By nature, the three Persons of the Trinity are co-equal, co-eternal, and consubstantial (sharing the same substance).'}
+    {q:'The Trinity being "co-equal, co-eternal, and consubstantial" reflects their unity by:', c:['Relation of origin','Nature','Physical appearance','Historical timeline'], a:1, e:'By nature, the three Persons of the Trinity are co-equal, co-eternal, and consubstantial (sharing the same substance).'},
+    {q:'The legend of a boy trying to pour the ocean into a small hole in the sand illustrates:', c:['The vastness of God\'s creation','The incomprehensibility of the Trinity to the finite human mind','The story of Noah\'s Ark','The parable of the mustard seed'], a:1, e:'This story, associated with St. Augustine, illustrates how impossible it is to fully comprehend the mystery of the Trinity with our finite human minds — we embrace it through faith.'}
   ], glossary:[
     {term:'Fides Qua', def:'the act of believing (Worship, Morals, Doctrine as lived practice).'},
     {term:'Fides Quae', def:'the content of what is believed (Creed, Decalogue, Dogmas).'},
     {term:'Credo', def:'Latin: "I believe" — root of "creed."'},
-    {term:'Consubstantial', def:'sharing the same divine substance — describes the unity of the Trinity by nature.'}
+    {term:'Consubstantial', def:'sharing the same divine substance — describes the unity of the Trinity by nature.'},
+    {term:'Paralyses of Faith', def:'Ideological Activism (no worship), Pious Dogmatism (no morality), Idealistic Activism (no doctrine) — imbalances when a dimension of faith is missing.'},
+    {term:'Nicene Creed', def:'arose against the heresy of Arianism; affirms the Holy Spirit is divine, together with the Son and Father.'}
   ], palace:[
     {stop:'Twin Mirrors in the Hallway', image:'One mirror shows you actively doing something (going to Mass), the other shows the reflection\'s written content (the Creed itself) — same moment, two different views.', fact:'Fides Qua = the act of believing. Fides Quae = the content believed.'},
     {stop:'Baptismal Font by the Entrance', image:'An ancient stone basin has "CREDO" carved deep into its rim, with no signature — nobody knows who first wrote it.', fact:'Credo = "I believe"; the Apostles\' Creed has no single author.'},
@@ -3282,6 +3480,7 @@ const DATA = [
     {h:'Middle Childhood & Adolescence', b:[
       'Middle Childhood (6-12 yrs): physical growth slows; improvement in BOTH gross motor skills (e.g. biking) and fine motor skills (e.g. nail clipping).',
       'Early Adolescence (12-18 yrs): growth spurts, secondary sexual characteristics, hormonal fluctuations; peer relationships become more important than family time; puberty usually begins ages 8-12.',
+      'Sexual Maturation in Early Adolescence: maturation of the reproductive system (ovaries/testes) — a female\'s first menstruation is called Menarche, a male\'s first ejaculation is called Spermarche. Primary sex characteristics = the reproductive organs/functions themselves; Secondary sex characteristics = visible physical features that signal sexual maturation (e.g. voice change, breast development, facial/body hair) but aren\'t reproductive organs themselves. Note: puberty does not follow one exact timeline — timing, sequence, and pace vary among individuals.',
       'Late Adolescence: physical development mostly complete; relationships become more stable; better impulse control; more mature cognitive abilities (abstract thinking, planning); focus shifts to solidifying sense of self/identity.',
       'Late Adolescence Risk Factors: substance use, sexual risk behavior, aggressiveness/violence, self-harm, depressive/suicidal behavior.',
       'Risk-Prevention Factors: supportive family/peers/school/community, healthcare, healthy sleep, regular exercise, developing coping/problem-solving skills, building resilience.'
@@ -3301,11 +3500,16 @@ const DATA = [
     {q:'What is the key distinction between "adolescence" and "puberty" according to the notes?', c:['They are exactly the same thing','Adolescence is the broader developmental stage; puberty is the specific physical change','Puberty is the broader stage; adolescence is the specific change','Neither term is related to development'], a:1, e:'Adolescence is the broader developmental stage encompassing this period of life, while puberty specifically refers to the physical/hormonal changes.'},
     {q:'Which life stage is described as the PEAK of physical health, strength, and stamina?', c:['Early Adolescence','Early Adulthood (18-40)','Middle Adulthood','Late Adulthood'], a:1, e:'Early Adulthood (18-40) is described as the peak of physical health, strength, and stamina.'},
     {q:'Menopause and Andropause are associated with which life stage?', c:['Early Adulthood','Middle Adulthood (40-65)','Late Adulthood','Early Adolescence'], a:1, e:'Middle Adulthood (40-65) is marked by Menopause and Andropause, along with gradual decline of physical abilities.'},
-    {q:'Which life stage is described as having "pronounced decline, frailty, and health vulnerabilities"?', c:['Early Adulthood','Middle Adulthood','Late Adulthood (65+)','Early Adolescence'], a:2, e:'Late Adulthood (65+) is characterized by pronounced physical decline, frailty, and health vulnerabilities.'}
+    {q:'Which life stage is described as having "pronounced decline, frailty, and health vulnerabilities"?', c:['Early Adulthood','Middle Adulthood','Late Adulthood (65+)','Early Adolescence'], a:2, e:'Late Adulthood (65+) is characterized by pronounced physical decline, frailty, and health vulnerabilities.'},
+    {q:'A female\'s FIRST menstruation is specifically called:', c:['Spermarche','Menarche','Puberty','Menopause'], a:1, e:'Menarche refers specifically to a female\'s first menstruation, a marker of sexual maturation in early adolescence.'},
+    {q:'A male\'s FIRST ejaculation is specifically called:', c:['Menarche','Spermarche','Andropause','Menopause'], a:1, e:'Spermarche refers specifically to a male\'s first ejaculation, a marker of sexual maturation in early adolescence.'},
+    {q:'Visible physical features that signal sexual maturation, like voice change or facial hair, but are NOT the reproductive organs themselves, are called:', c:['Primary sex characteristics','Secondary sex characteristics','Gross motor skills','Teratogens'], a:1, e:'Secondary sex characteristics are visible physical features (like voice change, body hair) that signal sexual maturation without being reproductive organs themselves — unlike primary sex characteristics.'}
   ], glossary:[
     {term:'Teratogens', def:'harmful substances (alcohol, smoke, chemicals) that can affect embryo development.'},
     {term:'Root / Suck / Moro Reflex', def:'baby instincts: finding food, taking in food, startle response.'},
-    {term:'Gross motor skills', def:'larger movements like biking. Fine motor skills — more intricate movements like nail clipping.'}
+    {term:'Gross motor skills', def:'larger movements like biking. Fine motor skills — more intricate movements like nail clipping.'},
+    {term:'Menarche / Spermarche', def:'a female\'s first menstruation / a male\'s first ejaculation — markers of sexual maturation in early adolescence.'},
+    {term:'Primary / Secondary sex characteristics', def:'reproductive organs/functions themselves / visible physical features signaling sexual maturation (not reproductive organs).'}
   ], palace:[
     {stop:'Nursery Crib', image:'A newborn instinctively turns its head toward a feather brushing its cheek, then suddenly flings its arms out at a loud clap.', fact:'Root Reflex (finding food) and Moro Reflex (startle response).'},
     {stop:'Toddler Play Mat', image:'A wobbling toddler kicks a ball, twists a doorknob, and flips book pages all at once, giggling the whole time.', fact:'Toddler milestones: kicking, running, twisting knobs, page-turning.'},
@@ -3329,6 +3533,10 @@ const DATA = [
       'Stage 6 — Intimacy vs. Isolation (20-40 yrs): "Can I love and be loved?" Virtue: Love. Intimacy isn\'t only romantic — includes friends/family. A little isolation/"me time" prepares a person for healthier intimacy.',
       'Stage 7 — Generativity vs. Stagnation (40-65 yrs): "What can I contribute to the world?" Virtue: Care. Contributing to the world builds a sense of accomplishment; some stagnation can still lead to finding new purpose/redirection.',
       'Stage 8 — Integrity vs. Despair (65-death): "Was my life a good one?" Virtue: Wisdom. Looking back with satisfaction (integrity) vs. regret/sorrow/bitterness (despair).'
+    ]},
+    {h:'A Modern Addition: Jeffrey Arnett\'s Emerging Adulthood (19-25)', b:[
+      'Developmental psychologist Jeffrey Arnett proposed "Emerging Adulthood" as a distinct stage between adolescence and young adulthood, roughly ages 19-25.',
+      'This stage is dedicated to exploration — of identity, career, relationships, and worldviews — before fully settling into the long-term roles/commitments typically associated with young adulthood.'
     ]}
   ], quiz:[
     {q:'Who proposed the 8 stages of psychosocial development?', c:['Jean Piaget','Erik Erikson','Lawrence Kohlberg','Robert Havighurst'], a:1, e:'Erik Erikson proposed the Lifespan Model of Personality Development, consisting of 8 stages of social virtues and conflict.'},
@@ -3340,7 +3548,8 @@ const DATA = [
     {q:'According to the notes, intimacy in the "Intimacy vs. Isolation" stage refers to:', c:['Only romantic relationships','Loving relationships broadly, including friends and family, not just romantic partners','Only family relationships','Isolation from all relationships'], a:1, e:'The notes clarify that intimacy isn\'t just about romantic relationships — it includes friends, family, and people around you.'},
     {q:'Which stage asks "What can I contribute to the world?" with the virtue of Care?', c:['Intimacy vs. Isolation','Generativity vs. Stagnation','Integrity vs. Despair','Industry vs. Inferiority'], a:1, e:'Generativity vs. Stagnation (ages 40-65) centers on contributing to the world, with the virtue of Care.'},
     {q:'The final stage, "Integrity vs. Despair" (65-death), has which virtue?', c:['Hope','Fidelity','Wisdom','Love'], a:2, e:'Integrity vs. Despair has the virtue of Wisdom, reflecting on whether one\'s life was lived well.'},
-    {q:'The "epigenetic principle" in Erikson\'s theory means:', c:['Stages can be skipped freely','Each stage must be gone through, and unresolved conflicts can affect the future adult self','Only genetics matter, not experience','Development stops after childhood'], a:1, e:'The epigenetic principle states that each stage is like a blueprint that must be resolved — failing to do so can affect one\'s future adult self.'}
+    {q:'The "epigenetic principle" in Erikson\'s theory means:', c:['Stages can be skipped freely','Each stage must be gone through, and unresolved conflicts can affect the future adult self','Only genetics matter, not experience','Development stops after childhood'], a:1, e:'The epigenetic principle states that each stage is like a blueprint that must be resolved — failing to do so can affect one\'s future adult self.'},
+    {q:'Which psychologist proposed "Emerging Adulthood" as a distinct developmental stage (ages 19-25) dedicated to exploration?', c:['Erik Erikson','Jeffrey Arnett','Lawrence Kohlberg','Jean Piaget'], a:1, e:'Jeffrey Arnett proposed Emerging Adulthood, a modern stage between adolescence and young adulthood dedicated to exploring identity, career, and relationships.'}
   ], glossary:[
     {term:'Epigenetic principle', def:'each psychosocial stage must be resolved; unresolved conflicts affect the future adult self.'},
     {term:'Trust vs. Mistrust', def:'0-2 yrs, virtue: Hope.'},
@@ -3350,7 +3559,8 @@ const DATA = [
     {term:'Identity vs. Role Confusion', def:'12-19 yrs, virtue: Fidelity.'},
     {term:'Intimacy vs. Isolation', def:'20-40 yrs, virtue: Love.'},
     {term:'Generativity vs. Stagnation', def:'40-65 yrs, virtue: Care.'},
-    {term:'Integrity vs. Despair', def:'65-death, virtue: Wisdom.'}
+    {term:'Integrity vs. Despair', def:'65-death, virtue: Wisdom.'},
+    {term:'Emerging Adulthood (Arnett)', def:'a modern stage (19-25) between adolescence and young adulthood, dedicated to exploring identity, career, and relationships.'}
   ], palace:[
     {stop:'8-Room Hallway', image:'Eight numbered doors line a long hallway, each with a two-word plaque nailed above it, from a baby crib room to a rocking chair room at the very end.', fact:'Erikson\'s 8 stages, Trust vs. Mistrust through Integrity vs. Despair.'},
     {stop:'Room 1: Nursery', image:'A baby reaches trustingly for a bottle offered by a caregiver, glowing with a tiny halo labeled "Hope."', fact:'Trust vs. Mistrust (0-2), virtue: Hope.'},
@@ -3365,7 +3575,8 @@ const DATA = [
       'Stage 2 — Preoperational (2-7 yrs): symbolic thinking emerges (language, pretend play — main milestone); egocentric. Key traits: Egocentrism, Animism, Centration, Lack of Conservation, Lack of Reversibility, Transductive Reasoning.',
       'Conservation example: a child chooses the "bigger-looking" flattened clay over the ball shape, even though both have equal amounts — reflecting a LACK of conservation understanding.',
       'Stage 3 — Concrete Operational (7-11 yrs): logical operations on concrete objects. Key traits: Decentring (egocentrism fades), Reversibility (e.g. knowing a Labrador is a dog, a dog is an animal), Conservation, Classification, Seriation. Still struggles with abstract/hypothetical thinking.',
-      'Stage 4 — Formal Operational (12+ yrs): capable of abstract reasoning, hypothetical/deductive thinking. Key traits: Abstract reasoning (main milestone), Deductive reasoning, Working memory, Metacognition (thinking about thinking). Some individuals may never fully reach this stage.'
+      'Stage 4 — Formal Operational (12+ yrs): capable of abstract reasoning, hypothetical/deductive thinking. Key traits: Abstract reasoning (main milestone), Deductive reasoning, Working memory, Metacognition (thinking about thinking). Some individuals may never fully reach this stage.',
+      'Limitations of Formal Operational Thinking: not everyone develops it at the same pace; emotions can affect reasoning; peer pressure can influence decisions; limited life experience can affect reasoning.'
     ]},
     {h:'Piaget: Key Cognitive Concepts', b:[
       'Schema: mental "file folder" — categories of knowledge that help interpret/understand the world; building blocks of knowledge.',
@@ -3378,6 +3589,12 @@ const DATA = [
       'Pre-Conventional Level (Childhood): Obedience and Punishment Orientation (avoiding punishment, deference to power) → Individualism and Exchange (self-interest, personal benefit/fairness for oneself).',
       'Conventional Level (Adolescence/Adulthood): Good Interpersonal Relationships (being seen as "good," maintaining social approval) → Maintaining Social Order (obeying laws, fulfilling duties, respecting authority).',
       'Post-Conventional Level (Advanced Moral Reasoning): Social Contract and Individual Rights (laws are beneficial but can be changed if they violate fundamental rights) → Universal Principles (justice, equality, human dignity/rights).'
+    ]},
+    {h:'Gilligan: Ethics of Care', b:[
+      'Proposed by Carol Gilligan as an alternative perspective on moral development, centered on relationships and care rather than abstract rules of justice — 3 stages of the "Ethics of Care."',
+      'Stage 1 — Pre-conventional (individual survival): the focus is only on caring for YOURSELF ("You only").',
+      'Stage 2 — Conventional (self-sacrifice): the focus shifts to caring for OTHERS before yourself ("Others before you").',
+      'Stage 3 — Post-conventional (integrated care): a balanced focus on caring for BOTH yourself and others ("You and others").'
     ]}
   ], quiz:[
     {q:'Who proposed the theory of Cognitive Development in stages?', c:['Erik Erikson','Jean Piaget','Lawrence Kohlberg','Robert Havighurst'], a:1, e:'Jean Piaget proposed the theory of cognitive development, viewing development as children\'s efforts to understand and act on their world.'},
@@ -3392,7 +3609,11 @@ const DATA = [
     {q:'"Avoiding punishment" as a basis for moral decisions belongs to which level?', c:['Pre-Conventional','Conventional','Post-Conventional','None of these'], a:0, e:'"Obedience and Punishment Orientation" — avoiding punishment and deferring to power — belongs to the Pre-Conventional level (childhood).'},
     {q:'Moral reasoning based on maintaining social order, obeying laws, and respecting authority belongs to which level?', c:['Pre-Conventional','Conventional','Post-Conventional','None of these'], a:1, e:'"Maintaining Social Order" belongs to the Conventional level (adolescence/adulthood).'},
     {q:'Moral reasoning based on universal principles like justice, equality, and human dignity belongs to which level?', c:['Pre-Conventional','Conventional','Post-Conventional','None of these'], a:2, e:'"Universal Principles" is the most advanced stage, belonging to the Post-Conventional level.'},
-    {q:'According to the notes, is it absolutely true that moral development automatically improves simply with age?', c:['Yes, always','No — moral development is highly dependent on cognitive development, not just age','Only for men','Only for people who study'], a:1, e:'The notes explicitly state that it is not absolute that aging alone makes someone morally upright — moral development depends heavily on cognitive development.'}
+    {q:'According to the notes, is it absolutely true that moral development automatically improves simply with age?', c:['Yes, always','No — moral development is highly dependent on cognitive development, not just age','Only for men','Only for people who study'], a:1, e:'The notes explicitly state that it is not absolute that aging alone makes someone morally upright — moral development depends heavily on cognitive development.'},
+    {q:'Which of the following is a LIMITATION of Formal Operational Thinking?', c:['It always develops at exactly age 12 for everyone','Peer pressure and emotions can still influence/affect reasoning','It cannot be affected by life experience','Everyone reaches it at the exact same pace'], a:1, e:'Limitations of Formal Operational Thinking include that not everyone develops it at the same pace, and emotions, peer pressure, and limited experience can all affect reasoning.'},
+    {q:'Who proposed the "Ethics of Care" as an alternative theory of moral development?', c:['Lawrence Kohlberg','Jean Piaget','Carol Gilligan','Erik Erikson'], a:2, e:'Carol Gilligan proposed the Ethics of Care, an alternative perspective on moral development centered on relationships and care.'},
+    {q:'In Gilligan\'s Ethics of Care, the Pre-conventional stage focuses on:', c:['Caring for others before yourself','Caring only for yourself (individual survival)','A balance of caring for yourself and others','Following strict social rules'], a:1, e:'The Pre-conventional stage in Gilligan\'s theory focuses on individual survival — caring only for yourself.'},
+    {q:'In Gilligan\'s Ethics of Care, which stage reflects a BALANCED focus on caring for both yourself and others?', c:['Pre-conventional','Conventional','Post-conventional (integrated care)','None of these'], a:2, e:'The Post-conventional stage reflects integrated care — a balance of caring for both yourself and others.'}
   ], glossary:[
     {term:'Sensorimotor (0-2)', def:'object permanence is the main milestone.'},
     {term:'Preoperational (2-7)', def:'symbolic thinking; egocentrism, animism, lack of conservation/reversibility.'},
@@ -3401,7 +3622,12 @@ const DATA = [
     {term:'Schema', def:'mental "file folder" — category of knowledge that helps interpret the world.'},
     {term:'Assimilation', def:'integrating new information into an existing schema.'},
     {term:'Accommodation', def:'modifying/creating a schema to fit new information.'},
-    {term:'Pre-Conventional / Conventional / Post-Conventional', def:'Kohlberg\'s 3 levels of moral development, from punishment-avoidance to universal ethical principles.'}
+    {term:'Pre-Conventional / Conventional / Post-Conventional', def:'Kohlberg\'s 3 levels of moral development, from punishment-avoidance to universal ethical principles.'},
+    {term:'Equilibration', def:'the balancing process between assimilation and accommodation as understanding develops.'},
+    {term:'Limitations of Formal Operational Thinking', def:'pace of development varies; emotions, peer pressure, and limited experience can all affect reasoning.'},
+    {term:'Gilligan\'s Ethics of Care', def:'alternative moral development theory centered on care/relationships: caring for self only → others before self → integrated care for both.'},
+    {term:'Gilligan\'s Ethics of Care', def:'Carol Gilligan\'s alternative moral development theory: individual survival (self only) → self-sacrifice (others before self) → integrated care (self and others).'},
+    {term:'Limitations of Formal Operational Thinking', def:'not everyone develops it at the same pace; emotions, peer pressure, and limited experience can all affect reasoning.'}
   ], palace:[
     {stop:'Baby\'s Crib', image:'A baby plays peek-a-boo, gasping in genuine surprise every single time your face reappears — object permanence hasn\'t clicked yet.', fact:'Sensorimotor stage (0-2): object permanence is the main milestone.'},
     {stop:'Playroom Floor', image:'A child insists a flattened blob of clay is "more" than a round ball of the exact same clay, pointing proudly at the flat one.', fact:'Preoperational stage: lack of conservation.'},
