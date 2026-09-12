@@ -228,6 +228,12 @@
   .diagram-wrap svg{display:block;width:100%;height:auto;min-width:340px;}
 
   .hl-hint{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;font-size:0.8rem;color:var(--muted);}
+  .auto-summary-note{
+    display:flex;align-items:flex-start;gap:8px;background:var(--active-lesson-bg);
+    border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:14px;
+    font-size:0.82rem;color:var(--muted);line-height:1.4;
+  }
+  .auto-summary-note svg{width:16px;height:16px;flex-shrink:0;margin-top:1px;color:var(--accent2);}
   .hl-hint span{display:flex;align-items:center;gap:6px;}
   .hl-hint svg{width:16px;height:16px;}
   .hl-clear-btn{
@@ -499,6 +505,9 @@ const DATA = [
     {q:'As of July 18, 2025, what is the minimum daily wage for non-agricultural workers in NCR?', c:['₱610','₱658','₱695','₱745'], a:2, e:'The non-agriculture minimum wage in NCR is ₱695/day, following the ₱50 increase under Wage Order No. NCR-26.'},
     {q:'Salary earners are usually paid on which schedule?', c:['Daily','Weekly','Every 15 days (bi-monthly)','Only at year-end'], a:2, e:'Salary earners are typically paid every 15 days (bi-monthly).'},
     {q:'Which of the following BEST illustrates "income" rather than a salary or wage?', c:['A teacher receiving a fixed monthly pay from her school','A store clerk paid per hour','An individual earning money from an online selling business','An office worker paid every 15 days'], a:2, e:'Income refers to cash received in exchange for providing a good/service or through investing capital — such as earnings from a personal online selling business.'}
+  ,
+    {type:'dual', s1:'Gross Pay refers to total earnings before deductions.', s2:'A wage typically follows a \'no work, no pay\' policy.', a:0, e:'Both true — accurate definitions of Gross Pay and Wage.'},
+    {type:'dual', s1:'Salary is usually fixed regardless of hours worked or overtime.', s2:'Net Pay refers to earnings BEFORE any deductions are made.', a:2, e:'Statement 1 is true. Statement 2 is false — Net Pay is AFTER deductions; Gross Pay is the one calculated before deductions.'}
   ], glossary:[
     {term:'Compensation', def:'monetary value provided to employees in exchange for work/service, including salary/wages, incentives, benefits, and bonuses.'},
     {term:'Payroll', def:'the total amount required to pay workers/employees during a given period.'},
@@ -558,6 +567,9 @@ const DATA = [
     {q:'Ben, a daily wage earner in Manila, has a daily wage of ₱695 (8-hour workday). What is his approximate hourly rate?', c:['₱68.86','₱86.88','₱79.38','₱97.30'], a:1, e:'Hourly Rate = ₱695 ÷ 8 hrs ≈ ₱86.88/hr.'},
     {q:'Which of the following benefits are considered legally mandatory, not just optional perks?', c:['SSS, PhilHealth, Pag-IBIG contributions/benefits','Birthday leave','Signing bonus','Christmas gift'], a:0, e:'Many core benefits — like SSS, PhilHealth, and Pag-IBIG — are mandated by Philippine labor law to protect employee welfare.'},
     {q:'Under the "no work, no pay" policy, which type of earner is most directly affected?', c:['Salary earners','Wage earners','Both equally','Neither'], a:1, e:'Wage earners are paid only for actual hours/days worked, following the "no work, no pay" policy.'}
+  ,
+    {type:'dual', s1:'Overtime pay is typically less than 100% of the regular hourly rate.', s2:'De-Minimis benefits are large-value benefits included in gross income.', a:1, e:'Both false — overtime pay is at least 125% of the hourly rate, and De-Minimis benefits are SMALL-value benefits EXCLUDED from gross income.'},
+    {type:'dual', s1:'A Regular Holiday pays only 100% of the basic daily wage.', s2:'A Special Non-Working Day pays 130% of the basic wage for the first 8 hours.', a:3, e:'Statement 1 is false — a Regular Holiday pays 200% of the basic wage for the first 8 hours. Statement 2 is true.'}
   ], glossary:[
     {term:'Overtime Pay', def:'additional pay (at least 125% of the hourly rate) for work beyond 8 hours on an ordinary day.'},
     {term:'De-Minimis Benefits', def:'small-value benefits (e.g. rice subsidy, uniform allowance) excluded from an employee\'s gross income.'},
@@ -604,6 +616,9 @@ const DATA = [
     {q:'Which of the following are MANDATORY government deductions in the Philippines?', c:['SSS/GSIS, PhilHealth, Pag-IBIG','Christmas bonus, 13th month pay','Signing bonus, transportation allowance','Meal allowance, rice subsidy'], a:0, e:'SSS/GSIS, PhilHealth, and Pag-IBIG contributions are mandatory government deductions.'},
     {q:'Mandatory government contributions (SSS, PhilHealth, Pag-IBIG) are typically:', c:['Paid entirely by the employee','Paid entirely by the employer','Shared by both employee and employer','Voluntary and optional'], a:2, e:'These contributions are shared by both the employee and the employer.'},
     {q:'A research assistant earning ₱9,900/month (₱450 × 22 days) is exempt from which of the following, based on the 2025 BIR withholding tax schedule?', c:['SSS contribution','PhilHealth contribution','Pag-IBIG contribution','Income tax (withholding tax)'], a:3, e:'At this income level, the employee is exempted from paying income tax (withholding tax), though SSS, PhilHealth, and Pag-IBIG contributions still apply.'}
+  ,
+    {type:'dual', s1:'Net Income equals Gross Income minus Deductions.', s2:'SSS is a mandatory contribution shared between employee and employer.', a:0, e:'Both true — accurate definitions of Net Income and SSS.'},
+    {type:'dual', s1:'PhilHealth is an optional, not mandatory, deduction.', s2:'Withholding tax is calculated with no reference to any official schedule.', a:1, e:'Both false — PhilHealth is a MANDATORY deduction, and withholding tax IS based on the official BIR withholding tax schedule.'}
   ], glossary:[
     {term:'Gross Income', def:'= Basic Pay + Benefits, before any deductions.'},
     {term:'Net Income', def:'= Gross Income − Deductions.'},
@@ -650,6 +665,9 @@ const DATA = [
     {q:'A piecework system pays workers based on:', c:['Hours worked','A fixed monthly salary','The number of items/pieces produced','A percentage of company profit'], a:2, e:'Piecework pays workers according to the number of items/pieces they produce.'},
     {q:'Yen earns 3% on the first ₱150,000, 4% on the excess up to ₱250,000, and 5% beyond ₱250,000 of sales. On exactly ₱250,000 in sales, what is her commission?', c:['₱7,500','₱8,500','₱10,000','₱12,500'], a:1, e:'Commission = (3%×₱150,000) + (4%×₱100,000) = ₱4,500 + ₱4,000 = ₱8,500.'},
     {q:'Which of the following BEST describes a "Salary Plus Commission" scheme?', c:['A flat percentage on all sales, with no base pay','A fixed base salary combined with a commission on sales (often above a threshold)','Pay based purely on the number of items produced','Pay based only on hours worked'], a:1, e:'Salary Plus Commission combines a fixed base salary with a commission earned on sales, often only above a set threshold.'}
+  ,
+    {type:'dual', s1:'Straight Commission applies a flat percentage rate to all sales.', s2:'Piecework pays employees purely based on the number of hours worked, not items produced.', a:2, e:'Statement 1 is true. Statement 2 is false — Piecework pays based on the NUMBER OF ITEMS/PIECES produced, not hours worked.'},
+    {type:'dual', s1:'Graduated Commission applies the exact same rate to every sales bracket.', s2:'Salary Plus Commission combines a fixed base salary with a commission.', a:3, e:'Statement 1 is false — Graduated Commission applies DIFFERENT rates to different sales brackets/tiers. Statement 2 is true.'}
   ], glossary:[
     {term:'Commission', def:'= Commission Rate × Amount of Sales.'},
     {term:'Straight Commission', def:'a flat percentage rate applied to all sales.'},
@@ -699,6 +717,9 @@ const DATA = [
     {q:'A Japanese mechanical watch is priced at ₱22,400 (VAT-Inclusive). What is the base price (VAT-Exclusive)?', c:['₱18,400','₱19,600','₱20,000','₱21,000'], a:2, e:'VAT-Exclusive = ₱22,400 ÷ 1.12 = ₱20,000.'},
     {q:'Which formula correctly computes the VAT Amount directly from a VAT-Inclusive price?', c:['VAT-I × (12/112)','VAT-I × 0.12','VAT-I ÷ 1.12','VAT-I − 1.12'], a:0, e:'VAT Amount = VAT-Inclusive Amount × (12/112).'},
     {q:'Which Philippine law governs VAT?', c:['The Labor Code (P.D. No. 442)','The National Internal Revenue Code (NIRC)','The Anti-Red Tape Act','The Data Privacy Act'], a:1, e:'VAT is governed under the National Internal Revenue Code (NIRC), Title IV (Sections 105–115).'}
+  ,
+    {type:'dual', s1:'Mark-up equals Selling Price minus Cost.', s2:'VAT in the Philippines is a 12% indirect tax on goods and services.', a:0, e:'Both true — accurate definitions of Mark-up and VAT.'},
+    {type:'dual', s1:'A VAT-Inclusive Amount already includes the VAT amount in the total cost.', s2:'A VAT-Exclusive Amount also already includes VAT in its total.', a:2, e:'Statement 1 is true. Statement 2 is false — a VAT-Exclusive Amount means the VAT is NOT yet included in the total.'}
   ], glossary:[
     {term:'Inflation', def:'the percentage rise in prices over time; Future Price = Present Price × (1+rate)ᵗ.'},
     {term:'Mark-up', def:'= Selling Price − Cost.'},
@@ -766,6 +787,9 @@ const DATA = [
     {q:'Which formula correctly gives the sum of an infinite geometric series (|r| < 1)?', c:['S = a₁ × n','S = a₁ / (1 − r)','S = a₁ × (1 − r)','S = a₁ × r / n'], a:1, e:'The sum of an infinite geometric series (|r|<1) is S = a₁ / (1 − r).'},
     {q:'A sequence whose reciprocals form an arithmetic sequence is called a:', c:['Geometric sequence','Harmonic sequence','Triangular sequence','Fibonacci sequence'], a:1, e:'This describes a Harmonic Sequence.'},
     {q:'If a geometric sequence has a common ratio |r| > 1, the sequence is:', c:['Decreasing/decaying','Growing','Constant','Undefined'], a:1, e:'When |r| > 1, each term becomes larger than the last, so the sequence grows.'}
+  ,
+    {type:'dual', s1:'In a geometric sequence, each term ADDS a constant common difference.', s2:'A harmonic sequence\'s terms directly form an arithmetic sequence, without needing reciprocals.', a:1, e:'Both false — adding a constant difference describes an ARITHMETIC sequence (geometric sequences MULTIPLY by a common ratio), and it\'s the RECIPROCALS of a harmonic sequence that form an arithmetic sequence.'},
+    {type:'dual', s1:'The Fibonacci Sequence is defined by multiplying the two preceding terms.', s2:'An arithmetic series is the sum of an arithmetic sequence.', a:3, e:'Statement 1 is false — the Fibonacci Sequence is defined by ADDING the two preceding terms, not multiplying. Statement 2 is true.'}
   ], glossary:[
     {term:'Sequence', def:'an ordered list of terms following a specific pattern or rule.'},
     {term:'Arithmetic Sequence', def:'each term adds a constant common difference (d); aₙ = a₁ + (n−1)d.'},
@@ -1254,6 +1278,12 @@ const DATA = [
     {q:'A culture where time is seen as linear, limited, and punctuality is a sign of respect, reflects which time orientation, studied under Chronemics?', c:['Polychronic (P-time)','Monochronic (M-time)','Proxemic time','Haptic time'], a:1, e:'Monochronic (M-time) cultures, like the US, Germany, and Switzerland, see time as linear and non-renewable, so punctuality signals respect.'},
     {q:'According to Media Richness Theory, which of the following is one of the 5 criteria for judging a communication medium\'s effectiveness?', c:['Vocabulary size','Permanence','Font style','Number of words'], a:1, e:'Media Richness Theory\'s 5 criteria are Permanence, Urgency of Feedback, Privacy, Formality, and Cost.'},
     {q:'Under Media Richness Theory, how does COST affect a medium\'s perceived effectiveness?', c:['The more expensive it is, the MORE effective it\'s perceived to be','The more expensive it is, the LESS effective it\'s perceived to be','Cost has no effect at all','Only free media are ever considered effective'], a:1, e:'Under Media Richness Theory, the more expensive a medium is to use, the LESS effective it is perceived to be.'}
+  ,
+    {type:'dual', s1:'Verbal communication is almost always planned and rule-specific.', s2:'G.R.E.E.P.S. includes \'Experience\' as one of its components.', a:0, e:'Both true — verbal communication follows grammar rules and is usually planned, and Experience is indeed part of G.R.E.E.P.S.'},
+    {type:'dual', s1:'Non-verbal communication is rule-specific and heavily planned, just like verbal communication.', s2:'Monochronic time orientation views time as fluid and relationship-first.', a:1, e:'Both false — non-verbal communication is spontaneous and UNSTRUCTURED, and that fluid/relationship-first description is POLYCHRONIC, not Monochronic.'}
+  ,
+    {type:'dual', s1:'The 9 C\'s of Communication include \'Considering your Audience\' as one principle.', s2:'Audience Analysis is unrelated to the 9 C\'s of Communication.', a:2, e:'Statement 1 is true. Statement 2 is false — Audience Analysis directly supports the \'Considering your Audience\' principle.'},
+    {type:'dual', s1:'Chronemics refers to the use of gestures as a non-verbal cue.', s2:'Media Richness Theory includes Cost as one of its 5 criteria.', a:3, e:'Statement 1 is false — Chronemics is about the use of TIME as a cue, not gestures. Statement 2 is true.'}
   ], glossary:[
     {term:'Verbal Communication', def:'rule-specific, almost always planned; uses words (speaking, writing, texting).'},
     {term:'Non-verbal Communication', def:'spontaneous and unstructured; facial expressions, gestures, proxemics, paralinguistics, etc.'},
@@ -1307,6 +1337,12 @@ const DATA = [
     {q:'Which communication style avoids expressing one\'s own opinions and puts others first to avoid conflict ("I lose, you win")?', c:['Assertive','Passive','Aggressive','Passive-Aggressive'], a:1, e:'The Passive style avoids expressing personal opinions, prioritizing others\' needs to maintain harmony, even at one\'s own expense.'},
     {q:'Which communication style is direct but gives no thought to other people, often using a loud or forceful tone ("I win, you lose")?', c:['Assertive','Passive','Aggressive','Passive-Aggressive'], a:2, e:'The Aggressive style is direct in expressing opinions but disregards others\' feelings, often communicated forcefully.'},
     {q:'Indirectly expressing dissatisfaction while avoiding direct confrontation (e.g. sarcasm or the silent treatment) describes which communication style?', c:['Assertive','Aggressive','Passive','Passive-Aggressive'], a:3, e:'The Passive-Aggressive style indirectly expresses opinions/dissatisfaction, avoiding direct confrontation while still showing little respect for the other person.'}
+  ,
+    {type:'dual', s1:'The Frozen speech style is the most rigid and non-negotiable.', s2:'The Intimate style is used in professional, expert-based transactions.', a:2, e:'Statement 1 is true. Statement 2 is false — that describes the CONSULTATIVE style; Intimate is for private relationships.'},
+    {type:'dual', s1:'The Assertive communication style disregards the other person\'s feelings entirely.', s2:'The Passive-Aggressive style avoids direct confrontation while still expressing dissatisfaction.', a:3, e:'Statement 1 is false — Assertive considers BOTH parties ("I win, you win"); disregarding others describes Aggressive. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'The Casual speech style is used among friends and involves relaxed grammar.', s2:'The Aggressive communication style expresses opinions with no regard for others\' feelings.', a:0, e:'Both true — accurate descriptions of the Casual style and the Aggressive communication style.'},
+    {type:'dual', s1:'The Consultative style is used in intimate, private relationships.', s2:'The Passive communication style prioritizes one\'s own needs over others\'.', a:1, e:'Both false — intimate/private relationships describe the INTIMATE style (Consultative is professional/expert-based), and Passive puts OTHERS first, at the expense of one\'s own needs.'}
   ], glossary:[
     {term:'Intimate Style', def:'private relationship; own exclusive way of communicating.'},
     {term:'Casual Style', def:'friends/acquaintances; relaxed grammar, possibly incomplete sentences.'},
@@ -1388,6 +1424,12 @@ const DATA = [
     {q:'A group brainstorming session working toward a healthy exchange of ideas and a solution best illustrates which function?', c:['Cultural Promotion','Discussion/Argumentation','Aesthetic','Instructive'], a:1, e:'Discussion/Argumentation involves a healthy exchange of ideas, typically working toward finding a solution.'},
     {q:'Talking with someone from a different cultural background specifically to understand their perspective illustrates which function?', c:['Cultural Promotion','Persuasion','Therapeutic','Regulation/Control'], a:0, e:'Cultural Promotion is communicating in order to understand a person from a different cultural background.'},
     {q:'A political ad trying to change your opinion about a candidate is an example of which named function?', c:['Aesthetic','Persuasion','Informative','Therapeutic'], a:1, e:'Persuasion has the specific goal of changing the opinion of the other person.'}
+  ,
+    {type:'dual', s1:'The Informative function is common between people of equal rank/status.', s2:'Persuasion aims to change the opinion of another person.', a:0, e:'Both true — accurate descriptions of the Informative function and Persuasion.'},
+    {type:'dual', s1:'The Instructive function is used between people of unequal rank/status.', s2:'A Primary Communication Function is less important than a Secondary one.', a:2, e:'Statement 1 is true. Statement 2 is false — the PRIMARY function is your real/main agenda; the secondary one just helps achieve it.'}
+  ,
+    {type:'dual', s1:'The Instructive function is common between people of EQUAL rank.', s2:'The Aesthetic function is achieved when there\'s no real connection between sender and receiver.', a:1, e:'Both false — Instructive is used between people of UNEQUAL rank (Informative is for equal rank), and Aesthetic requires a DEEPER connection, not an absent one.'},
+    {type:'dual', s1:'Cultural Promotion means dismissing a different culture\'s perspective.', s2:'The Therapeutic function aims to make the other person\'s feelings much better.', a:3, e:'Statement 1 is false — Cultural Promotion means seeking to UNDERSTAND a different culture, not dismiss it. Statement 2 is true.'}
   ], glossary:[
     {term:'Regulation/Control', def:'wanting others to manage their behavior or do things as we please.'},
     {term:'Social Interaction', def:'wanting to form bonds or forge a deeper connection with others.'},
@@ -1481,6 +1523,12 @@ const DATA = [
     {type:'dual', s1:'The communication process has 6 stages total.', s2:'All 6 stages belong equally to the sender.', a:2, e:'Statement 1 is true, but Statement 2 is false — only 3 of the 6 stages belong to the sender; the other 3 belong to the receiver.'},
     {type:'dual', s1:'Transmission is when the sender gives out the message.', s2:'Receiving is when the receiver gets the message.', a:0, e:'Both statements are true — these are the correct definitions of Transmission and Receiving.'},
     {type:'dual', s1:'Poor encoding by the sender has no effect on communication.', s2:'Communication can fail if any of the six stages breaks down.', a:3, e:'Statement 2 is true, but Statement 1 is false — poor encoding CAN cause miscommunication, since it shapes how the message is understood.'}
+  ,
+    {type:'dual', s1:'Decoding is performed by the sender, not the receiver.', s2:'Feedback happens before the message is even transmitted.', a:1, e:'Both false — decoding is done by the RECEIVER, and feedback happens AFTER the message is received/decoded, not before transmission.'},
+    {type:'dual', s1:'Encoding is the final stage of the communication process.', s2:'Idea Formulation is the very first stage of the communication process.', a:3, e:'Statement 1 is false — Encoding happens early, before transmission; Feedback is typically the final stage. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Transmission is the stage where the sender gives or sends the message.', s2:'Receiving is the stage where the receiver gets the message.', a:0, e:'Both true — accurate descriptions of these two stages of the communication process.'},
+    {type:'dual', s1:'Encoding involves transforming a message using verbal and non-verbal communication.', s2:'Idea Formulation happens AFTER the message has already been transmitted.', a:2, e:'Statement 1 is true. Statement 2 is false — Idea Formulation is the very FIRST stage, happening before encoding and transmission.'}
   ], glossary:[
     {term:'Idea Formulation', def:'the sender thinks of a message to communicate and decides to share it.'},
     {term:'Encoding', def:'the sender transforms the message using verbal and non-verbal communication.'},
@@ -1600,6 +1648,12 @@ const DATA = [
     {type:'dual', s1:'Schramm\'s Model describes communication as purely linear.', s2:'Barnlund\'s Model describes communication as transactional.', a:2, e:'Statement 2 is true, but Statement 1 is false — Schramm\'s Model is Interactive (turn-taking), not linear.'},
     {type:'dual', s1:'The E-Mediated Communication Model includes a Context component covering environment, time, and situation.', s2:'Feedback in the E-Mediated Model often takes the form of emojis and reactions.', a:0, e:'Both statements are true — these are accurate parts of the E-Mediated Communication Model.'},
     {type:'dual', s1:'Laswell\'s Model added the concept of Channel/Medium to Aristotle\'s framework.', s2:'Laswell\'s Model is considered a Transactional model.', a:2, e:'Statement 1 is true, but Statement 2 is false — Laswell\'s Model is Linear, not Transactional.'}
+  ,
+    {type:'dual', s1:'The Shannon-Weaver Model was the first to introduce the concept of noise.', s2:'Barnlund\'s Model has sending and receiving happening simultaneously.', a:0, e:'Both true — Shannon-Weaver introduced noise, and Barnlund\'s Model is Transactional (simultaneous sending/receiving).'},
+    {type:'dual', s1:'Aristotle\'s Model is considered a Transactional model.', s2:'Cyclical communication reflects the idea that communication never truly stops.', a:3, e:'Statement 1 is false — Aristotle\'s Model is LINEAR, one of the earliest and simplest models. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Berlo\'s Model (S-M-C-R) is considered a Transactional model.', s2:'Noise can only be internal, never external.', a:1, e:'Both false — Berlo\'s Model is LINEAR, and noise can be BOTH internal (hunger, stress) and external (honking, a broken mic).'},
+    {type:'dual', s1:'Laswell\'s Model added the concept of Channel to Aristotle\'s original elements.', s2:'Schramm\'s Model has no concept of shared experience between sender and receiver.', a:2, e:'Statement 1 is true. Statement 2 is false — Schramm\'s Model specifically includes the \'Field of Common Experience\' shared between sender and receiver.'}
   ], glossary:[
     {term:'Noise', def:'communication barriers — internal (hungry, stressed) or external (honking, broken mic).'},
     {term:'Aristotle\'s Model', def:'Speaker → Speech → Occasion → Audience → Effect; linear, uses ethos/pathos/logos.'},
@@ -1687,6 +1741,12 @@ const DATA = [
     {type:'dual', s1:'Circumlocution means describing an idea vividly instead of naming it directly.', s2:'Approximation means using a completely made-up word instead of the real one.', a:2, e:'Statement 1 is true, but Statement 2 is false — Approximation uses a closely related REAL word/synonym, not a made-up one (that\'s Word Coinage).'},
     {type:'dual', s1:'Appeal for Help should be used as a first resort when communicating.', s2:'There are twelve total communication strategies discussed.', a:3, e:'Statement 2 is true, but Statement 1 is false — Appeal for Help should be a LAST resort, not a first one.'},
     {type:'dual', s1:'Foreignizing is pronouncing a native word as if it were part of the target language.', s2:'Literal Translation is translating word-for-word in a way that can lose the intended meaning.', a:0, e:'Both statements are true — these are accurate descriptions of Foreignizing and Literal Translation.'}
+  ,
+    {type:'dual', s1:'Code Shifting mixes two languages within a single sentence.', s2:'Circumlocution means directly naming the exact word you\'re looking for.', a:1, e:'Both false — mixing languages within one sentence is CODE SWITCHING (Code Shifting changes language BETWEEN sentences); Circumlocution means describing an idea INSTEAD OF naming it directly.'},
+    {type:'dual', s1:'Code Switching involves combining two languages within the same sentence.', s2:'Appeal for Help is typically the very FIRST strategy a speaker should try.', a:2, e:'Statement 1 is true. Statement 2 is false — Appeal for Help is a LAST-resort strategy, not the first one to try.'}
+  ,
+    {type:'dual', s1:'Word Coinage means inventing a new term based on word-formation rules.', s2:'Topic Avoidance means changing the subject instead of addressing the issue at hand.', a:0, e:'Both true — accurate definitions of Word Coinage and Topic Avoidance.'},
+    {type:'dual', s1:'Approximation means giving up on communicating entirely.', s2:'Use of (Gap) Fillers involves excessive words like \'totally\' or \'actually\' that can be removed without changing meaning.', a:3, e:'Statement 1 is false — Approximation means using a closely related word or synonym, not giving up entirely (that\'s closer to Message Abandonment). Statement 2 is true.'}
   ], glossary:[
     {term:'Communication Strategies', def:'techniques a speaker resorts to in order to address difficulties expressing himself/herself in a particular language.'},
     {term:'Message Abandonment', def:'stopping mid-expression due to difficulty communicating.'},
@@ -1791,6 +1851,12 @@ const DATA = [
     {q:'"Capitalize on lag time" as a key to effective listening refers to using the time between:', c:['Speaking speed and thinking speed to process the message','Two separate conversations','Sleep cycles','Class periods'], a:0, e:'Capitalizing on lag time means using the gap between how fast someone speaks and how fast you can think to actively process their message.'},
     {q:'Which of the following is considered an IRRITATING listener behavior to avoid?', c:['Providing feedback','Finishing the speaker\'s thoughts for them','Keeping an open mind','Listening for main points'], a:1, e:'Finishing the speaker\'s thoughts for them is a classic irritating listener behavior — it interrupts and can misrepresent what they meant to say.'},
     {q:'Which is a BENEFIT of being a good listener, according to the notes?', c:['You become a more effective leader','You lose track of important details','You become more close-minded','You avoid learning about other cultures'], a:0, e:'Good listening skills help you become a more effective leader, among other benefits like better decisions and fewer conflicts.'}
+  ,
+    {type:'dual', s1:'In the R-P-I-R process, \'Receiving\' comes before \'Perceiving.\'', s2:'Discriminative listening is the very first type of listening a person learns.', a:0, e:'Both true — Receiving (recognizing you\'re hearing sounds) comes before Perceiving, and Discriminative listening develops first in life.'},
+    {type:'dual', s1:'Hearing and Listening mean exactly the same thing.', s2:'Biased listening is considered a good listening habit to practice.', a:1, e:'Both false — Hearing is passive/ear-only while Listening is active, and Biased listening is a BAD habit (close-mindedness), not a good one.'}
+  ,
+    {type:'dual', s1:'Critical listening involves identifying truths from fallacies.', s2:'Empathic listening is the exact same thing as sympathetic listening.', a:2, e:'Statement 1 is true. Statement 2 is false — empathic listening goes deeper, putting yourself in the speaker\'s shoes, beyond just sympathetic acknowledgment.'},
+    {type:'dual', s1:'Informative listening means only listening to information you already agree with.', s2:'The \'I\' in R-P-I-R stands for Interpreting.', a:3, e:'Statement 1 is false — that describes BIASED listening; Informative listening is for learning something NEW. Statement 2 is true.'}
   ], glossary:[
     {term:'R-P-I-R', def:'Receiving, Perceiving, Interpreting, Responding — the listening process.'},
     {term:'Hearing vs. Listening', def:'Hearing = passive, ear-only reception of sound; Listening = actively making sense of the message.'},
@@ -1849,6 +1915,12 @@ const DATA = [
     {q:'The idea that "any nation that uses the English language owns it" is associated with:', c:['World Englishes','Ethnocentrism','High-context culture','G.R.E.E.P.S.'], a:0, e:'World Englishes is a branch of linguistics suggesting that any nation using English has ownership/legitimacy over its own variety of the language.'},
     {q:'Filipino English speakers are often noted as weak in which grammatical element, compared to other English varieties?', c:['Adjectives','Prepositions','Conjunctions','Pronouns'], a:1, e:'Philippine English is often noted for weakness in prepositions, since Filipino languages structure location/direction differently.'},
     {q:'The Japanese proverb "The nail that sticks up gets pounded down" reflects a cultural value on:', c:['Being vocal and outspoken','Staying humble and blending in','Taking bold risks','Innocent until proven guilty'], a:1, e:'This Japanese proverb reflects a cultural value on humility and blending in rather than standing out.'}
+  ,
+    {type:'dual', s1:'Ethnocentrism means believing your own race/ethnicity is superior to others.', s2:'High-context cultures rely mainly on explicit spoken or written words.', a:2, e:'Statement 1 is true. Statement 2 is false — that describes LOW-context cultures; high-context cultures rely on non-verbal/shared meaning.'},
+    {type:'dual', s1:'World Englishes suggests only one country can rightfully \'own\' the English language.', s2:'Philippine English is often noted as weak in prepositions.', a:3, e:'Statement 1 is false — World Englishes suggests ANY nation using English owns its own variety. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Stereotyping means treating every individual as completely unique, with no generalizations.', s2:'Low-context cultures rely mainly on shared, unspoken meaning.', a:1, e:'Both false — stereotyping is the OPPOSITE, generalizing people based on group identity, and shared/unspoken meaning describes HIGH-context cultures, not low-context.'},
+    {type:'dual', s1:'The Developmental Model of Intercultural Sensitivity starts with Denial and ends with Integration.', s2:'World Englishes is considered a relatively new branch of linguistics.', a:0, e:'Both true — accurate facts about the Developmental Model and World Englishes.'}
   ], glossary:[
     {term:'Ethnocentrism', def:'thinking your race/ethnicity is superior to others.'},
     {term:'Stereotyping', def:'generalizing people based on group identity.'},
@@ -1937,6 +2009,12 @@ const DATA = [
     {q:'Why is it important for readers to build up their schemata?', c:['It makes reading faster regardless of the text','The wider the schemata, the higher the chances of understanding a text','It removes the need to read the text at all','It guarantees 100% comprehension of any text'], a:1, e:'The wider a reader\'s schemata, the higher their chances of understanding a text, since new information is connected to background knowledge.'},
     {q:'Being "socially active around reading tasks" as a characteristic of a good reader means:', c:['Only reading with other people present','Finding the relevance of what is read to daily life and sharing insights with others','Reading only social media content','Avoiding discussion of what was read'], a:1, e:'Being socially active around reading tasks means finding the relevance of a text to daily life and sharing insights gained from it with others.'},
     {q:'Which reading theory is most likely used when a six-paragraph text contains information that requires both relying on the text and relying on background knowledge?', c:['Bottom-Up Theory','Top-Down Theory','Interactive Theory','Schema Theory'], a:2, e:'When a text lends itself to needing both approaches — details from the text and background knowledge — the approach used is Interactive Theory.'}
+  ,
+    {type:'dual', s1:'The Interactive Theory uses both schema and the information in the text.', s2:'Schemata is the summation of background knowledge from experiences and other sources.', a:0, e:'Both true — accurate definitions of the Interactive Theory and Schemata.'},
+    {type:'dual', s1:'Skimming is used to quickly get the general idea or gist of a text.', s2:'Scanning is the same as skimming, just a different name for it.', a:2, e:'Statement 1 is true. Statement 2 is false — Scanning searches for ONE specific piece of information, which is different from skimming for the general gist.'}
+  ,
+    {type:'dual', s1:'The Bottom-Up Theory relies heavily on schema rather than the text.', s2:'Decoding by itself is the same as full reading comprehension.', a:1, e:'Both false — relying heavily on schema describes TOP-DOWN theory (Bottom-Up relies on the TEXT), and decoding is only PART of reading, not full comprehension.'},
+    {type:'dual', s1:'Reading as Problem Solving means ignoring small details in favor of just the big picture.', s2:'Accuracy plus Fluency together make up Proficiency in reading.', a:3, e:'Statement 1 is false — EVERY detail contributes to the big picture, like a jigsaw puzzle. Statement 2 is true.'}
   ], glossary:[
     {term:'Reading (as Communication)', def:'participating in the communication process; the reader is the receiver of the writer\'s (sender\'s) message.'},
     {term:'Schemata', def:'the summation of background knowledge acquired through experiences and other sources of information; made up of individual schemas.'},
@@ -2035,6 +2113,12 @@ const DATA = [
     {q:'Which type of claim strikes the ideal balance in academic writing — using hedging to express caution without undermining the argument\'s validity?', c:['Strong claim','Weak claim','Soft claim','Absolute claim'], a:2, e:'Soft claims strike a balance between confidence and caution, making them the ideal type of claim in academic writing.'},
     {q:'Spelling out "as soon as possible" instead of using "ASAP" in an academic text (until the acronym is first introduced properly) reflects which characteristic?', c:['Academic Grammar & Vocabulary','Cited Sources','Engineered Structure','Cautious Expressions'], a:0, e:'Avoiding abbreviations, and spelling out terms fully before using their acronym, falls under Academic Grammar & Vocabulary.'},
     {q:'A paragraph that identifies challenges brought about by a phenomenon and then systematically discusses solutions is using which pattern of paragraph development?', c:['Sequence','Description','Comparison','Problem-Solution'], a:3, e:'The Problem-Solution pattern identifies challenges and systematically discusses solutions, often overlapping with cause-and-effect cues.'}
+  ,
+    {type:'dual', s1:'Nominalization means transforming nouns into verbs.', s2:'Academic Grammar encourages frequent use of contractions.', a:1, e:'Both false — Nominalization is the opposite (transforming VERBS into NOUNS), and Academic Grammar AVOIDS contractions in favor of formal language.'},
+    {type:'dual', s1:'Academic texts rarely state their thesis explicitly.', s2:'Cautious Expressions use hedging words like \'might\' or \'perhaps\' to avoid overly definitive claims.', a:3, e:'Statement 1 is false — academic texts ALWAYS explicitly state a thesis, usually in the introduction. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Cited Sources help establish credibility and avoid plagiarism in academic texts.', s2:'Passivization means changing sentences from active to passive voice for formality.', a:0, e:'Both true — accurate definitions of Cited Sources and Passivization.'},
+    {type:'dual', s1:'Measured Tone is achieved by avoiding personal pronouns and emotive language.', s2:'Intelligible Transitions refer to leaving out all connecting words between ideas.', a:2, e:'Statement 1 is true. Statement 2 is false — Intelligible Transitions mean using CLEAR transitional devices to connect ideas, not leaving them out.'}
   ], glossary:[
     {term:'Assumption', def:'academic texts begin with a clear thesis statement, always explicitly stated, usually in the introduction.'},
     {term:'Cited Sources', def:'in-text citations and a reference list used to establish credibility and avoid plagiarism.'},
@@ -2144,6 +2228,12 @@ const DATA = [
     {q:'"Do as I say, or I will report this to your adviser!" is an example of:', c:['Argumentum ad baculum','Fallacy of Advantage','Fallacy of Amphiboly','Fallacy of Accident'], a:1, e:'The Fallacy of Advantage presses an issue in exchange for something — here, a threatened consequence used as leverage.'},
     {q:'Assuming that since a family has produced several doctors, every member of that family must also be a doctor illustrates:', c:['Fallacy of Composition','Fallacy of Division','Fallacy of Accident','Fallacy of Converse Accident'], a:1, e:'Fallacy of Division assumes that what is true of the whole (a family of doctors) is also true of each individual part (every family member).'},
     {q:'Telling someone never to scream even if their house is on fire, based on the general rule that "noise can be damaging," illustrates:', c:['Fallacy of Converse Accident','Fallacy of Accident','Fallacy of Amphiboly','Fallacy of Equivocation'], a:1, e:'Fallacy of Accident wrongly applies a general rule ("noise can be damaging") to a specific circumstantial situation (a life-threatening fire) where the rule shouldn\'t apply.'}
+  ,
+    {type:'dual', s1:'Pre-Reading involves activating prior knowledge through skimming and scanning.', s2:'Post hoc, ergo propter hoc wrongly assumes one event caused another just because it happened first.', a:0, e:'Both true — accurate descriptions of Pre-Reading and the post hoc fallacy.'},
+    {type:'dual', s1:'Argumentum ad hominem means attacking the argument itself rather than the person.', s2:'Post-Reading is the phase focused on evaluating and applying information.', a:3, e:'Statement 1 is false — it\'s the opposite: attacking the PERSON instead of the argument. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'While-Reading is the phase focused on gaining an overview before you start reading.', s2:'Argumentum ad populum means only one person\'s opinion matters, not the majority\'s.', a:1, e:'Both false — gaining an overview beforehand is PRE-Reading (While-Reading is for understanding/organizing DURING reading), and ad populum is the \'bandwagon\' fallacy — believing the MAJORITY is always right.'},
+    {type:'dual', s1:'Annotating means writing comments and reactions in the margins of a text.', s2:'The Fallacy of Composition/Division assumes parts and the whole must always have DIFFERENT traits.', a:2, e:'Statement 1 is true. Statement 2 is false — the fallacy wrongly assumes parts and the whole must share the SAME traits, not different ones.'}
   ], glossary:[
     {term:'Pre-Reading', def:'phase to gain an overview and activate prior knowledge — via skimming/scanning.'},
     {term:'While-Reading', def:'phase to understand and organize ideas — via highlighting, note-taking, graphic organizers.'},
@@ -2206,6 +2296,12 @@ const DATA = [
     {q:'A human arm and a whale\'s flipper share the same underlying bone structure despite different uses — this is an example of:', c:['Analogous structures','Homologous structures','Vestigial organs','Theory of Use and Disuse'], a:1, e:'Homologous structures share the same underlying STRUCTURE (common origin), even when their function differs across species.'},
     {q:'A structure that once had a clear function but is now minimized or no longer present is called:', c:['A homologous structure','An analogous structure','A vestigial organ','A gamete'], a:2, e:'Vestigial organs are structures that had a function in an ancestor species but have become reduced or nonfunctional over time.'},
     {q:'Which term describes an organism\'s ability to adjust to changes in its environment, a process fundamental to evolution?', c:['Adaptation','Metabolism','Fertilization','Vestigiality'], a:0, e:'Adaptation is the ability to adjust to environmental changes, and it is fundamental to the process of evolution.'}
+  ,
+    {type:'dual', s1:'Binary fission produces two genetically identical organisms via DNA duplication and mitosis.', s2:'Gametogenesis uses meiosis to halve the chromosome number when creating gametes.', a:0, e:'Both true — binary fission (mitosis) produces identical copies, while gametogenesis (meiosis) halves the chromosome number to make gametes.'},
+    {type:'dual', s1:'Vestigial organs are structures that once had a function but are now reduced or absent.', s2:'Homologous structures are the same in function but not in structure or origin.', a:2, e:'Statement 1 is true. Statement 2 is false — that describes ANALOGOUS structures; homologous structures share the same structure/origin, even if function differs.'}
+  ,
+    {type:'dual', s1:'The Theory of Use and Disuse states that traits used more often become more prominent over generations.', s2:'Growth refers only to gaining new abilities, not an increase in physical size.', a:2, e:'Statement 1 is true. Statement 2 is false — Growth specifically means an increase in physical SIZE; gaining new abilities describes Development.'},
+    {type:'dual', s1:'Heredity refers to the gradual change of traits across an entire species over time.', s2:'Adaptation is fundamental to the process of evolution.', a:3, e:'Statement 1 is false — that describes EVOLUTION; Heredity is the passing of traits from parent to offspring. Statement 2 is true.'}
   ], glossary:[
     {term:'Metabolism', def:'all chemical reactions necessary for life; converts food into energy and building blocks.'},
     {term:'Reproduction', def:'passing of genetic material to offspring, for the continuation of a species.'},
@@ -2253,6 +2349,12 @@ const DATA = [
     {q:'What comes immediately after "Tissues" in the hierarchy of biological organization?', c:['Cells','Organs','Organ Systems','Organisms'], a:1, e:'The hierarchy proceeds: Tissues → Organs (tissues working together for specific functions).'},
     {q:'What is the correct order of levels ABOVE the organism in biological organization?', c:['Population → Community → Ecosystem → Biosphere','Community → Population → Biosphere → Ecosystem','Ecosystem → Population → Community → Biosphere','Biosphere → Ecosystem → Community → Population'], a:0, e:'Beyond the organism, the hierarchy proceeds: Population → Community → Ecosystem → Biosphere.'},
     {q:'A group of organs working together, like the digestive system, is classified as a(n):', c:['Tissue','Organ','Organ System','Organism'], a:2, e:'An Organ System is a group of organs working together, such as the digestive or nervous system.'}
+  ,
+    {type:'dual', s1:'The biological hierarchy places Organisms below Cells in complexity.', s2:'"Form Follows Function" means a structure\'s form has no relationship to its function.', a:1, e:'Both false — organisms are a HIGHER, more complex level than cells (Atoms→Cells→Tissues→Organs→Organisms), and Form Follows Function means form IS directly related to function.'},
+    {type:'dual', s1:'Tissues are a lower level of organization than atoms.', s2:'Organ systems are groups of organs working together, like the digestive system.', a:3, e:'Statement 1 is false — tissues are a HIGHER level than atoms (Atoms→Cells→Tissues). Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Chemical Level involves atoms and molecules as the simplest building blocks of life.', s2:'Beyond the organism, the hierarchy continues to Population, Community, Ecosystem, and Biosphere.', a:0, e:'Both true — accurate descriptions of the Chemical Level and the levels beyond an organism.'},
+    {type:'dual', s1:'Cells are considered the basic unit of life at the Cellular Level.', s2:'Organs are considered a simpler/lower level of organization than tissues.', a:2, e:'Statement 1 is true. Statement 2 is false — organs are a HIGHER level than tissues (Tissues → Organs).'}
   ], glossary:[
     {term:'Form Follows Function', def:'the structure of a biological component is directly related to its function.'},
     {term:'Biological organization hierarchy', def:'Atoms → Cells → Tissues → Organs → Organ Systems → Organisms → Population → Community → Ecosystem → Biosphere.'}
@@ -2293,6 +2395,12 @@ const DATA = [
     {q:'Breaking down large molecules into smaller ones, RELEASING energy, is called:', c:['Anabolism','Catabolism','Photosynthesis','Homeostasis'], a:1, e:'Catabolism breaks large molecules into small ones and releases the energy stored in their chemical bonds.'},
     {q:'Building small molecules into a larger one, which REQUIRES energy, is called:', c:['Catabolism','Anabolism','Fermentation','Osmosis'], a:1, e:'Anabolism uses energy (from ATP) to connect smaller molecules together into a bigger one.'},
     {q:'Which organisms get their energy from INORGANIC compounds rather than sunlight?', c:['Heterotrophs','Autotrophs (photosynthetic)','Chemoautotrophs','Consumers'], a:2, e:'Chemoautotrophs are a special group of producers that use inorganic compounds (not sunlight) as their energy source.'}
+  ,
+    {type:'dual', s1:'ATP releases just the right amount of usable energy for cellular work.', s2:'Enzymes are reusable and are not permanently changed by the reactions they help.', a:0, e:'Both true — these are core properties of ATP and enzymes described in the notes.'},
+    {type:'dual', s1:'Anabolism releases energy by breaking chemical bonds.', s2:'Chemoautotrophs get their energy from inorganic compounds rather than sunlight.', a:3, e:'Statement 1 is false — that describes CATABOLISM; anabolism REQUIRES energy to build new bonds. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Glucose is considered less stable for storage and transport than ATP.', s2:'Hypoglycemia refers to high blood sugar.', a:1, e:'Both false — glucose is actually MORE stable/energy-dense for storage than ATP (that\'s why cells need both), and hypoglycemia means LOW blood sugar, not high.'},
+    {type:'dual', s1:'An enzyme can be reused again and again for the same type of reaction.', s2:'Enzymes are permanently changed or used up after helping a reaction.', a:2, e:'Statement 1 is true. Statement 2 is false — enzymes are NOT changed or used up; that\'s exactly what makes them reusable.'}
   ], glossary:[
     {term:'Glucose', def:'energy-rich product of photosynthesis, universal food for life, delivers energy via blood.'},
     {term:'ATP (adenosine triphosphate)', def:'releases just the right amount of usable energy for cellular work.'},
@@ -2351,6 +2459,12 @@ const DATA = [
     {q:'Which molecules produced in Stage 1 (light-dependent reactions) are used as inputs for Stage 2 (Calvin Cycle)?', c:['Glucose and Oxygen','ATP and NADPH','CO2 and Water','RuBP and Chlorophyll'], a:1, e:'ATP and NADPH, produced in the light-dependent reactions, are used as energy carriers to power the Calvin Cycle in Stage 2.'},
     {q:'The splitting of a water molecule during the light-dependent reactions is specifically called:', c:['Glycolysis','Photolysis','Fermentation','Translocation'], a:1, e:'Photolysis is the splitting of water during the light-dependent reactions, which releases oxygen and provides electrons.'},
     {q:'Which group of bacteria performs photosynthesis and is essential to Earth\'s carbon and oxygen cycle?', c:['Lactobacillus','Cyanobacteria','E. coli','Salmonella'], a:1, e:'Cyanobacteria are photosynthetic bacteria that play an essential role in the carbon and oxygen cycle.'}
+  ,
+    {type:'dual', s1:'The Calvin Cycle takes place in the thylakoid.', s2:'Cyanobacteria are a type of plant, not bacteria.', a:1, e:'Both false — the Calvin Cycle occurs in the STROMA, and Cyanobacteria are photosynthetic BACTERIA, not plants.'},
+    {type:'dual', s1:'Photolysis is the splitting of a water molecule during the light-dependent reactions.', s2:'Macroalgae are the top oxygen producers on Earth, more than microalgae.', a:2, e:'Statement 1 is true. Statement 2 is false — MICROALGAE are the top oxygen producers, not macroalgae.'}
+  ,
+    {type:'dual', s1:'RuBisCo is the enzyme that fixes CO2 onto RuBP during carbon fixation.', s2:'Producers make their own food, typically through photosynthesis.', a:0, e:'Both true — accurate definitions of RuBisCo and Producers.'},
+    {type:'dual', s1:'The Calvin Cycle uses only water and light directly, without needing ATP or NADPH.', s2:'Cyanobacteria are essential to the carbon and oxygen cycle.', a:3, e:'Statement 1 is false — the Calvin Cycle specifically NEEDS the ATP and NADPH produced by the light-dependent reactions. Statement 2 is true.'}
   ], glossary:[
     {term:'Photosynthesis equation', def:'6CO2 + 6H2O + Light energy → C6H12O6 + 6O2.'},
     {term:'Light-dependent reactions', def:'in the thylakoid; light + water → O2 + ATP + NADPH.'},
@@ -2416,6 +2530,12 @@ const DATA = [
     {q:'Plants store their food primarily in the form of:', c:['Glycogen','Starch','Protein','Fat'], a:1, e:'Plants store food as starch, while animals store food as glycogen — both made of glucose, though glycogen is more complex.'},
     {q:'Which of the following is TRUE about plants compared to animals, according to the comparison table?', c:['Plants are heterotrophs; animals are autotrophs','Plants are autotrophs and prepare their own food; animals are heterotrophs','Both are exactly the same in nutrition','Plants have a well-developed digestive system'], a:1, e:'Plants are autotrophs, preparing their own food via photosynthesis, while animals are heterotrophs, depending on plants/other animals for food.'},
     {q:'The overall process where the proton gradient created by the ETC drives ATP synthase to produce ATP is called:', c:['Glycolysis','Fermentation','Oxidative Phosphorylation','Photolysis'], a:2, e:'Oxidative Phosphorylation is the process where the H+ (proton) gradient built by the ETC passes through ATP synthase to generate ATP — the final, highest-yield step of aerobic respiration.'}
+  ,
+    {type:'dual', s1:'Glycolysis occurs in the cytoplasm and produces a net gain of 2 ATP.', s2:'Oxygen serves as the final electron acceptor in the Electron Transport Chain.', a:0, e:'Both true — these are accurate descriptions of glycolysis and the ETC.'},
+    {type:'dual', s1:'The Krebs Cycle takes place in the cytoplasm.', s2:'Fermentation requires oxygen to occur.', a:1, e:'Both false — the Krebs Cycle happens in the MITOCHONDRIAL MATRIX, and fermentation happens specifically when oxygen is LOW or absent.'}
+  ,
+    {type:'dual', s1:'Fermentation produces the maximum possible amount of ATP from glucose.', s2:'Oxidative phosphorylation is the step where the H+ gradient drives ATP synthase to generate ATP.', a:3, e:'Statement 1 is false — aerobic respiration yields far MORE ATP than fermentation, which only nets a small amount. Statement 2 is true.'},
+    {type:'dual', s1:'The Krebs Cycle needs the ABSENCE of oxygen to begin.', s2:'Glycolysis takes place inside the mitochondria.', a:1, e:'Both false — the Krebs Cycle requires aerobic (oxygen-present) conditions, and glycolysis happens in the CYTOPLASM, not the mitochondria.'}
   ], glossary:[
     {term:'Glycolysis', def:'Glucose → 2 pyruvate, in the cytoplasm; anaerobic; net 2 ATP + 2 NADH.'},
     {term:'Krebs Cycle (Citric Acid Cycle)', def:'Pyruvate → CO2 + electron carriers (NADH, FADH2), in the mitochondrial matrix.'},
@@ -2473,6 +2593,12 @@ const DATA = [
     {q:'In vaccination, the harmless piece of a pathogen that is introduced to trigger an immune response is called a/an:', c:['Antibody','Antigen','Enzyme','Hormone'], a:1, e:'An antigen is the harmless piece of a pathogen introduced by a vaccine, which the immune system learns to recognize.'},
     {q:'The long-lived cells that "remember" a pathogen after a first exposure, enabling a fast secondary immune response, are called:', c:['Memory cells','Thermoreceptors','Companion cells','Chemoautotrophs'], a:0, e:'Memory cells are long-lived immune cells created after a primary immune response; they enable a fast, powerful secondary response if the same pathogen returns.'},
     {q:'Specialized sensory neurons in the skin and brain that detect temperature changes are called:', c:['Thermoreceptors','Photoreceptors','Osmoreceptors','Chemoreceptors'], a:0, e:'Thermoreceptors are specialized sensory neurons that detect temperature changes, feeding into the body\'s thermoregulation response.'}
+  ,
+    {type:'dual', s1:'Xylem transports water and minerals in only one direction, from roots to leaves.', s2:'Phloem transports water and minerals in only one direction as well.', a:2, e:'Statement 1 is true. Statement 2 is false — phloem transports sugars BIDIRECTIONALLY throughout the plant.'},
+    {type:'dual', s1:'Gravitropism refers to a plant bending toward light.', s2:'Memory cells enable a fast secondary immune response if the same pathogen returns.', a:3, e:'Statement 1 is false — that\'s PHOTOTROPISM; Gravitropism is roots growing downward due to gravity. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Thermoreceptors are specialized sensory neurons that detect temperature changes.', s2:'Herd/community immunity protects even unvaccinated individuals when enough of the population is vaccinated.', a:0, e:'Both true — accurate descriptions of thermoreceptors and herd immunity.'},
+    {type:'dual', s1:'Bronchoconstriction refers to the airways widening during an asthma attack.', s2:'The ACL heals quickly because of its excellent blood supply.', a:1, e:'Both false — bronchoconstriction is the TIGHTENING/narrowing of airways, and the ACL heals SLOWLY due to poor blood flow.'}
   ], glossary:[
     {term:'Xylem', def:'transports water/minerals unidirectionally, roots to leaves.'},
     {term:'Phloem', def:'transports sugars bidirectionally to all parts of the plant.'},
@@ -2514,6 +2640,12 @@ const DATA = [
     {q:'What percentage of the world\'s coral reefs does the Philippines own, according to the notes?', c:['1%','5%','25%','50%'], a:1, e:'The Philippines owns about 5% of the world\'s total coral reefs and is part of the "Coral Triangle."'},
     {q:'Which coral reef location is a UNESCO World Heritage Site and a nesting ground for sea turtles?', c:['Verde Island Passage','Tubbataha Reef, Sulu Sea','Laguna de Bay','Candaba Swamp'], a:1, e:'Tubbataha Reef in the Sulu Sea is a UNESCO World Heritage Site and serves as a nesting ground for the critically endangered sea turtle.'},
     {q:'Verde Island Passage in Batangas is known as the:', c:['"Coral Triangle" itself','"Center of the Center of Marine Shorefish Biodiversity"','Largest lake in the Philippines','Site of the Sierra Madre'], a:1, e:'Verde Island Passage, Batangas is known as the "Center of the Center of Marine Shorefish Biodiversity."'}
+  ,
+    {type:'dual', s1:'An estuary is where freshwater rivers meet the salty ocean, creating brackish water.', s2:'The Philippines is part of the Coral Triangle, home to a large share of the world\'s coral reefs.', a:0, e:'Both true — accurate descriptions of estuaries and the Philippines\' place in the Coral Triangle.'},
+    {type:'dual', s1:'Biotic factors refer to the living components of an ecosystem.', s2:'Abiotic factors also refer to living components of an ecosystem.', a:2, e:'Statement 1 is true. Statement 2 is false — abiotic factors are the NONLIVING components.'}
+  ,
+    {type:'dual', s1:'The Coral Triangle is located far from the Philippines, in the Atlantic Ocean.', s2:'Estuaries contain purely freshwater, with no ocean influence at all.', a:1, e:'Both false — the Coral Triangle includes the Philippines in the Pacific/Southeast Asia region, and estuaries are BRACKISH — a mix of fresh and salt water.'},
+    {type:'dual', s1:'Abiotic factors include living organisms like plants and animals.', s2:'Biotic factors include the living components of an ecosystem.', a:3, e:'Statement 1 is false — abiotic factors are the NONLIVING components. Statement 2 is true.'}
   ], glossary:[
     {term:'Biotic / Abiotic', def:'living factors / nonliving factors in an ecosystem.'},
     {term:'Estuary', def:'area where freshwater rivers meet the salty ocean, creating brackish water (mangroves).'},
@@ -2555,6 +2687,12 @@ const DATA = [
     {q:'The Philippine National Climate Change Action Plan is aligned with which law?', c:['RA 9729 (Climate Change Act of 2009)','RA 11036','RA 7877','RA 9003'], a:0, e:'The National Climate Change Action Plan (2011-2028) is aligned with the Climate Change Act of 2009 (RA 9729).'},
     {q:'How many Key Priorities are outlined in the Philippine National Climate Change Action Plan?', c:['5','7','10','12'], a:1, e:'There are 7 Key Priorities: Water Sufficiency, Food Security, Ecological and Environmental Stability, Sustainable Energy, Climate-smart Industries and Services, Human Security, and Knowledge and Capacity Development.'},
     {q:'Which Key Priority specifically focuses on increasing the resilience of natural ecosystems?', c:['Water Sufficiency','Food Security','Ecological and Environmental Stability','Human Security'], a:2, e:'Ecological and Environmental Stability is the priority focused specifically on increasing the resilience of natural ecosystems to climate change.'}
+  ,
+    {type:'dual', s1:'Mitigation refers to helping people cope with the effects of climate change that have already happened.', s2:'RA 9729 was passed in the 1990s.', a:1, e:'Both false — that description is ADAPTATION, not Mitigation (which reduces emissions); and RA 9729 was passed in 2009, not the 1990s.'},
+    {type:'dual', s1:'The 7 Key Priorities of the Philippine climate action plan exclude any focus on food.', s2:'Water Sufficiency is one of the 7 Key Priorities.', a:3, e:'Statement 1 is false — Food Security IS one of the 7 Key Priorities. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'RA 9729 serves as the basis for the Philippine National Climate Change Action Plan.', s2:'Adaptation and Mitigation mean exactly the same thing in climate policy.', a:2, e:'Statement 1 is true. Statement 2 is false — Adaptation copes with existing effects, while Mitigation reduces emissions; they are distinct strategies.'},
+    {type:'dual', s1:'Sustainable Energy is one of the 7 Key Priorities in the national climate plan.', s2:'Knowledge and Capacity Development is also one of the 7 Key Priorities.', a:0, e:'Both true — both are among the 7 Key Priorities of the Philippine climate action plan.'}
   ], glossary:[
     {term:'Adaptation', def:'actions helping people/species/ecosystems cope with climate change effects.'},
     {term:'Mitigation', def:'actions that reduce man-made climate change (reduce emissions or increase sequestration).'},
@@ -2627,6 +2765,12 @@ const DATA = [
     {q:'What is the main function of nephrons in the kidney?', c:['To produce red blood cells','To filter waste out of the blood and reabsorb what the body needs','To store bile for digestion','To synthesize proteins from mRNA'], a:1, e:'Nephrons are the kidney\'s functional filtering units — they filter waste out of the blood and use concentration gradients to reabsorb needed substances like water.'},
     {q:'If the kidneys are not functioning properly, what can happen to red blood cells, according to the notes?', c:['They shrink and disappear','Solute is left inside them, causing them to swell and eventually get damaged','They immediately turn into white blood cells','They stop carrying oxygen entirely'], a:1, e:'Poor kidney function can leave excess solute inside red blood cells, causing them to swell and eventually sustain damage — diet changes can help manage this.'},
     {q:'The rigid, protective, carbohydrate-based layer found OUTSIDE the cell membrane in plants, fungi, and bacteria (but not animal cells) is called the:', c:['Cell wall','Cytoskeleton','Nuclear envelope','Golgi apparatus'], a:0, e:'The cell wall is a protective layer made of carbohydrates, found outside the cell membrane in organisms like plants, fungi, and bacteria — not all organisms (e.g. animals) have one.'}
+  ,
+    {type:'dual', s1:'Osmosis specifically refers to the diffusion of water.', s2:'Active transport requires ATP because it moves substances against their gradient.', a:0, e:'Both true — accurate definitions of osmosis and active transport.'},
+    {type:'dual', s1:'A cell in a hypertonic solution will swell and may burst.', s2:'Phagocytosis is a form of endocytosis involving engulfing larger particles.', a:3, e:'Statement 1 is false — a hypertonic solution causes a cell to SHRINK (crenation), not swell. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Pinocytosis refers to a cell \'eating\' large particles like bacteria.', s2:'Isotonic solutions cause a cell to significantly swell or shrink.', a:1, e:'Both false — \'cell eating\' of large particles is PHAGOCYTOSIS (pinocytosis is \'cell drinking\' of fluids), and isotonic solutions cause NO net change (equilibrium).'},
+    {type:'dual', s1:'The cell wall is found in plants, fungi, and bacteria, but not in animal cells.', s2:'Nephrons use concentration gradients to help reabsorb water in the kidney.', a:0, e:'Both true — accurate facts about the cell wall and nephrons.'}
   ], glossary:[
     {term:'Phospholipid bilayer', def:'two layers of phospholipids (hydrophilic heads out, hydrophobic tails in) forming the cell membrane.'},
     {term:'Passive transport', def:'movement of substances requiring no energy (diffusion, facilitated diffusion, osmosis).'},
@@ -2694,6 +2838,12 @@ const DATA = [
     {q:'Which of the following correctly lists the 3 main steps of protein synthesis, in order?', c:['Translation, Transcription, Replication','DNA Replication, Transcription, Translation','Transcription, Replication, Translation','Translation, Replication, Transcription'], a:1, e:'The correct order is: 1. DNA Replication, 2. Transcription (DNA → mRNA), 3. Translation (RNA → Protein).'},
     {q:'The final product of protein synthesis — a chain of linked amino acids — is called a:', c:['Nucleotide','Polypeptide/protein molecule','Ribosome','Codon'], a:1, e:'The chain of amino acids linked together during translation forms a polypeptide, or protein molecule.'},
     {q:'DNA\'s twisted, two-strand structure that splits apart to form base pairs during replication is called the:', c:['Central Dogma','Double Helix','Golgi apparatus','Calvin Cycle'], a:1, e:'DNA\'s double helix is its twisted two-strand structure; it splits and forms new base pairs during replication.'}
+  ,
+    {type:'dual', s1:'Translation converts DNA directly into a protein without using mRNA.', s2:'Ribosomes are found only inside the cell nucleus.', a:1, e:'Both false — translation uses mRNA as a template (not DNA directly), and ribosomes are in the cytoplasm and on the rough ER, not only the nucleus.'},
+    {type:'dual', s1:'During transcription, Uracil replaces Thymine in the resulting RNA strand.', s2:'Helicase is the enzyme that adds new nucleotides to build a DNA strand.', a:2, e:'Statement 1 is true. Statement 2 is false — that\'s DNA POLYMERASE\'s job; Helicase unwinds the double helix.'}
+  ,
+    {type:'dual', s1:'A codon is found on tRNA, while an anti-codon is found on mRNA.', s2:'The Central Dogma flows from DNA to mRNA to Ribosomes to Proteins.', a:3, e:'Statement 1 is false — it\'s the reverse: the codon is on mRNA, and the anti-codon is on tRNA. Statement 2 is true.'},
+    {type:'dual', s1:'DNA Polymerase adds nucleotides to build a new DNA strand.', s2:'DNA Expression explains why identical DNA can still produce different proteins in different cells.', a:0, e:'Both true — accurate descriptions of DNA Polymerase and DNA Expression.'}
   ], glossary:[
     {term:'Central Dogma', def:'DNA → mRNA → Ribosomes → Proteins.'},
     {term:'Helicase', def:'enzyme that unwinds the DNA double helix during replication.'},
@@ -2791,6 +2941,12 @@ const DATA = [
     {q:'Which part of the small intestine handles final absorption/recycling, including Vitamin B12?', c:['Duodenum','Jejunum','Ileum','Stomach'], a:2, e:'The ileum handles final absorption and recycling, including the absorption of Vitamin B12.'},
     {q:'Which function of the musculoskeletal system involves bone marrow producing red blood cells, white blood cells, and platelets?', c:['Support','Movement','Blood Cell Production','Energy Storage'], a:2, e:'Blood Cell Production is the function where bone marrow, found in certain bones, produces red blood cells, white blood cells, and platelets.'},
     {q:'A phloem fiber cell providing structural support is also known by which alternate name?', c:['Tracheid','Bast fiber','Vessel element','Sclerenchyma of the xylem'], a:1, e:'A phloem fiber cell is also called a bast fiber, and it helps give structural support to phloem tissue.'}
+  ,
+    {type:'dual', s1:'Tracheids and vessel elements are both xylem conducting cell types.', s2:'Peristalsis is the wave-like muscular movement that pushes the bolus through the esophagus.', a:0, e:'Both true — accurate descriptions from the plant anatomy and digestive system sections.'},
+    {type:'dual', s1:'The companion cell is a type of xylem cell, not phloem.', s2:'The duodenum is the site of final Vitamin B12 absorption.', a:1, e:'Both false — the companion cell is a PHLOEM cell, and final Vitamin B12 absorption happens in the ILEUM, not the duodenum.'}
+  ,
+    {type:'dual', s1:'Xylem parenchyma cells are the only living cells found in the xylem.', s2:'Xylem sclerenchyma is a type of living, food-storing cell.', a:2, e:'Statement 1 is true. Statement 2 is false — sclerenchyma is a SUPPORTING cell type, similar to fibers; xylem parenchyma is the one responsible for food storage.'},
+    {type:'dual', s1:'Taproots spread out thinly from the base of the stem with no central root.', s2:'The root cap protects the root tip and helps it penetrate the soil.', a:3, e:'Statement 1 is false — that describes FIBROUS roots; a taproot is a single deep primary root. Statement 2 is true.'}
   ], glossary:[
     {term:'Taproot / Fibrous roots', def:'a single deep primary root with laterals / a spreading network of thin roots for anchoring.'},
     {term:'Root Cap', def:'protective structure at the root tip; helps penetrate and lubricate its path through soil.'},
@@ -2890,6 +3046,12 @@ const DATA = [
     {q:'A long molecule made of many repeated smaller building-block units is called a:', c:['Monomer','Polymer','Nucleotide','Enzyme'], a:1, e:'A polymer is a long molecule built from many repeated smaller units, called monomers.'},
     {q:'The covalent bond that joins two monosaccharides together to form a disaccharide is called a:', c:['Peptide bond','Glycosidic linkage','Phosphodiester bond','Ester bond'], a:1, e:'A glycosidic linkage is the bond that joins monosaccharides together via dehydration synthesis, forming disaccharides or polysaccharides.'},
     {q:'The covalent bond joining the carboxyl end of one amino acid to the amino end of the next is called a:', c:['Glycosidic linkage','Ester bond','Peptide bond','Phosphodiester bond'], a:2, e:'A peptide bond joins amino acids together into chains (polypeptides), forming between the carboxyl end of one amino acid and the amino end of the next.'}
+  ,
+    {type:'dual', s1:'Dehydration synthesis builds macromolecules by removing a water molecule.', s2:'Hydrolysis also builds macromolecules by removing water.', a:2, e:'Statement 1 is true. Statement 2 is false — hydrolysis BREAKS DOWN macromolecules by ADDING water, the opposite of dehydration synthesis.'},
+    {type:'dual', s1:'A peptide bond joins two monosaccharides together.', s2:'A triglyceride consists of glycerol plus three fatty acids.', a:3, e:'Statement 1 is false — that describes a GLYCOSIDIC LINKAGE; peptide bonds join amino acids. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'A nucleotide is composed of a nitrogenous base, a pentose sugar, and a phosphate group.', s2:'The four levels of protein structure are Primary, Secondary, Tertiary, and Quaternary.', a:0, e:'Both true — accurate facts about nucleotides and protein structure.'},
+    {type:'dual', s1:'A competitive inhibitor binds somewhere other than the enzyme\'s active site.', s2:'Glycogen is the storage polysaccharide found in plants.', a:1, e:'Both false — that describes a NONcompetitive inhibitor (competitive inhibitors compete for the active site), and glycogen is found in ANIMALS/fungi, not plants (starch is the plant version).'}
   ], glossary:[
     {term:'Dehydration Reaction (Condensation)', def:'the process of synthesis/building of macromolecules.'},
     {term:'Hydrolysis', def:'water molecules added to a polymer, breaking covalent bonds.'},
@@ -2988,6 +3150,12 @@ const DATA = [
     {q:'Which structure for locomotion is LONGER and typically limited to just one or a few per cell, compared to the other?', c:['Cilia','Flagella','Microvilli','Fimbriae'], a:1, e:'Flagella are longer than cilia and are usually limited to just one or a few per cell, while cilia occur in large numbers.'},
     {q:'Which group of prokaryotes is known for living in extreme environments?', c:['Eubacteria','Archaebacteria','Eukaryotes','Protozoa'], a:1, e:'Archaebacteria are prokaryotes known for living in extreme environments, as opposed to Eubacteria which live under normal conditions.'},
     {q:'Fimbriae, which help a cell stick to surfaces and host cells, are made of small protein subunits called:', c:['Pilin','Keratin','Cristae','Chlorophyll'], a:0, e:'Fimbriae are bristle-like protein structures made of small protein subunits called pilin.'}
+  ,
+    {type:'dual', s1:'Robert Hooke was the first to name the "cell."', s2:'Rudolf Virchow proposed that cells come only from pre-existing cells.', a:0, e:'Both true — key facts from the Cell Theory timeline.'},
+    {type:'dual', s1:'Archaebacteria are known for living in extreme environments.', s2:'Flagella are typically shorter and more numerous per cell than cilia.', a:2, e:'Statement 1 is true. Statement 2 is false — it\'s the reverse: flagella are LONGER and FEWER, while cilia are shorter and more numerous.'}
+  ,
+    {type:'dual', s1:'Smooth ER is studded with ribosomes and makes secretory proteins.', s2:'The cis face of the Golgi apparatus is the dispatching (sending) side.', a:1, e:'Both false — that description is of ROUGH ER (smooth ER handles lipid synthesis/detoxification), and the cis face is the RECEIVING side (trans is dispatching).'},
+    {type:'dual', s1:'Free ribosomes are attached to the ER or nuclear envelope.', s2:'Cristae are the folds of the inner mitochondrial membrane that increase surface area.', a:3, e:'Statement 1 is false — that describes BOUND ribosomes; free ribosomes are suspended in the cytosol. Statement 2 is true.'}
   ], glossary:[
     {term:'Cell Theory (key figures)', def:'Hooke (named "cell"), Leeuwenhoek (animacules), Schwann & Schleiden (cells = basic unit), Virchow (cells from pre-existing cells).'},
     {term:'Nucleoid', def:'unenclosed region in prokaryotes where DNA is concentrated.'},
@@ -3052,6 +3220,12 @@ const DATA = [
     {q:'What is the correct order of steps for making a wet mount?', c:['Place cover slip → Collect sample → Add to slide','Collect sample → Add to slide → Place cover slip on sample','Add to slide → Collect sample → Place cover slip','Place cover slip → Add to slide → Collect sample'], a:1, e:'The correct order for a wet mount is: Collect sample, Add to slide, then Place cover slip on sample.'},
     {q:'Which objective lens provides 40x magnification?', c:['Scanner','LPO (Low Power)','HPO (High Power)','OIO (Oil Immersion)'], a:2, e:'The HPO (High Power Objective) provides 40x magnification, between LPO (10x) and OIO (100x).'},
     {q:'If the ocular lens is 10x and you switch to the HPO objective (40x), what is the total magnification?', c:['50x','400x','4x','4000x'], a:1, e:'Total magnification = ocular lens power × objective lens power = 10x × 40x = 400x.'}
+  ,
+    {type:'dual', s1:'The stereoscope typically achieves higher magnification than the compound light microscope.', s2:'TEM produces a 3D image of a specimen.', a:1, e:'Both false — the stereoscope maxes out around 100x (much lower than the compound microscope\'s 1000x), and TEM produces a 2D image (SEM produces 3D).'},
+    {type:'dual', s1:'The Scanner objective lens provides 40x magnification.', s2:'Total magnification equals the ocular lens power multiplied by the objective lens power.', a:3, e:'Statement 1 is false — Scanner is 4x; HPO is the one that provides 40x. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'The Atomic Force Microscope can see actual specimen movement, live or preserved.', s2:'A Confocal Microscope uses lasers and fluorescence to image thin planes of thick specimens.', a:0, e:'Both true — accurate descriptions of these two microscope types.'},
+    {type:'dual', s1:'The coarse adjustment knob is mainly used for initial magnification/focus.', s2:'The fine adjustment knob serves the exact same purpose as the coarse knob.', a:2, e:'Statement 1 is true. Statement 2 is false — the fine adjustment knob refines RESOLUTION/sharpness, a different purpose from the coarse knob.'}
   ], glossary:[
     {term:'Compound Light Microscope', def:'ocular + objective lenses; max 1000x magnification.'},
     {term:'Stereoscope (Dissecting Microscope)', def:'for dissection; can use the actual specimen; max 100x.'},
@@ -3287,6 +3461,21 @@ const DATA = [
     {q:'A potential negative of the "God is a Friend" image is that it may lead to:', c:['Increased reverence','Over-familiarity and a lack of reverence','Complete rejection of God','Better understanding of the Trinity'], a:1, e:'Describing God as a Friend can risk over-familiarity, potentially leading to a lack of reverence.'},
     {q:'The three-part challenge from Divine Revelation is to KNOW, LOVE, and:', c:['Fear Him','Worship Him more sincerely','Avoid Him','Question Him'], a:1, e:'The three challenges are to KNOW God more clearly, LOVE Him more deeply, and WORSHIP Him more sincerely.'},
     {q:'"KNOW" as part of the 3-part challenge specifically entails:', c:['Practicing Charity','Reading the Bible','Attending daily Mass only','Avoiding Church teaching'], a:1, e:'KNOW entails reading the Bible to grow in clearer knowledge of God.'}
+  ,
+    {type:'dual', s1:'Interphase makes up about 90% of the entire cell cycle.', s2:'DNA replication occurs during the S phase of interphase.', a:0, e:'Both true — accurate facts about interphase and DNA replication timing.'},
+    {type:'dual', s1:'Telomeres carry important genetic information for the cell.', s2:'Apoptosis can be triggered when DNA damage isn\'t fixed by the G2 checkpoint.', a:3, e:'Statement 1 is false — telomeres carry NO genetic information, they only protect the chromosome ends. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'Active transport requires no energy from the cell.', s2:'A hypotonic solution has a higher solute concentration outside the cell than inside.', a:1, e:'Both false — active transport REQUIRES ATP, and a hypotonic solution has LOWER solute concentration outside the cell, not higher.'},
+    {type:'dual', s1:'In a hypertonic solution, water moves out of the cell, causing it to shrink.', s2:'Exocytosis is the process of engulfing material to bring it into the cell.', a:2, e:'Statement 1 is true. Statement 2 is false — that describes ENDOCYTOSIS; exocytosis releases material OUT of the cell.'}
+  ,
+    {type:'dual', s1:'Cytokinesis refers to the division of the nucleus into two identical nuclei.', s2:'G0 phase is when a cell is actively dividing at its fastest rate.', a:1, e:'Both false — dividing the nucleus is MITOSIS (cytokinesis divides the cytoplasm), and G0 is a RESTING phase where cells exit the cycle entirely.'},
+    {type:'dual', s1:'A checkpoint verifies that conditions are right before the cell proceeds to the next phase.', s2:'Sister chromatids are two completely different chromosomes joined together.', a:2, e:'Statement 1 is true. Statement 2 is false — sister chromatids are two IDENTICAL COPIES of the same chromosome, not different chromosomes.'}
+  ,
+    {type:'dual', s1:'Selectively permeable means a membrane allows some substances through more easily than others.', s2:'Endocytosis is the process of the cell membrane engulfing material to bring it inside.', a:0, e:'Both true — accurate definitions of selective permeability and endocytosis.'},
+    {type:'dual', s1:'Osmosis refers to the diffusion of solutes, not water.', s2:'An isotonic solution causes no net water movement into or out of the cell.', a:3, e:'Statement 1 is false — osmosis is specifically about the diffusion of WATER. Statement 2 is true.'}
+  ,
+    {type:'dual', s1:'\'Revelare\' is Latin for \'to lift the veil\' or \'to disclose.\'', s2:'Public Revelation, through Jesus Christ, is considered final and complete.', a:0, e:'Both true — accurate facts about the Latin root \'Revelare\' and Public Revelation.'},
+    {type:'dual', s1:'Natural Revelation refers to knowing God through the created world.', s2:'Private Revelation is automatically considered equal in authority to Public Revelation.', a:2, e:'Statement 1 is true. Statement 2 is false — Private Revelation is examined by the Magisterium and does NOT carry the same binding authority as Public Revelation.'}
   ], glossary:[
     {term:'Revelare', def:'Latin: to lift the veil, to disclose, to uncover.'},
     {term:'Anthropomorphism', def:'Anthropos (man) + morphe (form) — attribution of human qualities to non-human beings, including God.'},
@@ -3341,6 +3530,9 @@ const DATA = [
     {q:'Which doctrines are given as examples of teachings most clearly taught through Tradition, though only implicit in the Bible?', c:['The Trinity, infant baptism, Bible inerrancy, purgatory, Mary\'s perpetual virginity','Only the Ten Commandments','Only the Beatitudes','None — everything is explicit in the Bible'], a:0, e:'The notes give the Trinity, infant baptism, biblical inerrancy, purgatory, and Mary\'s perpetual virginity as apostolic teachings most clearly taught through Tradition, though only implicitly present in Scripture.'},
     {q:'Unlike Doctrinal Tradition, Cultural Tradition:', c:['Can never be changed under any circumstance','CAN be changed or modified without harming the integrity of the faith','Is identical to Sacred Scripture','Was written down by St. Peter'], a:1, e:'Cultural Tradition (customs tied to a particular time/culture) can be changed without harming the integrity of the Christian faith, unlike Doctrinal Tradition.'},
     {q:'The unbroken chain of teaching authority passed from Jesus Christ, to St. Peter, down to the current Pope, is called:', c:['Sola Scriptura','Apostolic Succession','Cultural Tradition','Dei Verbum'], a:1, e:'Apostolic Succession is the unbroken chain of ordination/teaching authority from Christ, through St. Peter, down to the current Pope.'}
+  ,
+    {type:'dual', s1:'\'Sola Scriptura\' is a Catholic teaching that Tradition alone is the final authority.', s2:'Cultural Tradition can never be changed without harming the integrity of the faith.', a:1, e:'Both false — Sola Scriptura is a REFORMER belief that SCRIPTURE alone is the final authority, and Cultural Tradition (unlike Doctrinal Tradition) CAN be changed without harming the faith\'s integrity.'},
+    {type:'dual', s1:'\'Tradare\' means \'to keep secret,\' the Latin root of \'tradition.\'', s2:'Apostolic Succession is the unbroken chain of teaching authority from Christ, through St. Peter, to the current Pope.', a:3, e:'Statement 1 is false — \'Tradare\' means \'to pass on/hand over,\' not \'to keep secret.\' Statement 2 is true.'}
   ], glossary:[
     {term:'Fides', def:'Latin for trust, loyalty — root of "faith."'},
     {term:'Tradare', def:'Latin: to pass on; to hand over — root of "tradition."'},
@@ -3403,6 +3595,9 @@ const DATA = [
     {q:'Which Trinitarian person is described as "begotten by the Father"?', c:['The Father','The Son','The Holy Spirit','All three equally'], a:1, e:'The Son is described as begotten by the Father.'},
     {q:'The Trinity being "co-equal, co-eternal, and consubstantial" reflects their unity by:', c:['Relation of origin','Nature','Physical appearance','Historical timeline'], a:1, e:'By nature, the three Persons of the Trinity are co-equal, co-eternal, and consubstantial (sharing the same substance).'},
     {q:'The legend of a boy trying to pour the ocean into a small hole in the sand illustrates:', c:['The vastness of God\'s creation','The incomprehensibility of the Trinity to the finite human mind','The story of Noah\'s Ark','The parable of the mustard seed'], a:1, e:'This story, associated with St. Augustine, illustrates how impossible it is to fully comprehend the mystery of the Trinity with our finite human minds — we embrace it through faith.'}
+  ,
+    {type:'dual', s1:'\'Credo\' is Latin for \'I believe,\' the root of the word \'creed.\'', s2:'The Nicene Creed arose as a defense against the heresy of Arianism.', a:0, e:'Both true — accurate facts about \'Credo\' and the Nicene Creed.'},
+    {type:'dual', s1:'\'Fides Quae\' refers to the act of believing itself.', s2:'Pious Dogmatism describes a person who believes and worships correctly but lives a questionable moral life.', a:3, e:'Statement 1 is false — that\'s FIDES QUA; Fides Quae is the CONTENT of what\'s believed. Statement 2 is true.'}
   ], glossary:[
     {term:'Fides Qua', def:'the act of believing (Worship, Morals, Doctrine as lived practice).'},
     {term:'Fides Quae', def:'the content of what is believed (Creed, Decalogue, Dogmas).'},
@@ -3454,6 +3649,9 @@ const DATA = [
     {q:'Which council formally closed the Canon of the Bible, meaning no other books would be added?', c:['Council of Nicaea','Council of Trent','Second Vatican Council','Council of Jerusalem'], a:1, e:'The Council of Trent finalized and closed the Canon of Scripture, after which no further books would be added.'},
     {q:'What symbolic sacrifice is associated with the Old Testament?', c:['Jesus','A lamb','Bread and wine','Incense'], a:1, e:'The Old Testament\'s symbolic sacrifice is the lamb, later fulfilled by Jesus\' sacrifice in the New Testament.'},
     {q:'The New Testament was written primarily in which language?', c:['Hebrew','Greek','Latin','Aramaic'], a:1, e:'The New Testament was written primarily in Greek, with some parts in Aramaic.'}
+  ,
+    {type:'dual', s1:'\'Imprimatur\' is granted by a Censor Librorum.', s2:'Deuterocanonical books were rejected entirely by the Council of Trent.', a:1, e:'Both false — Imprimatur is granted by the bishop (Nihil Obstat is granted by a Censor Librorum), and the Deuterocanonical books were AFFIRMED/finalized as equally inspired at Trent.'},
+    {type:'dual', s1:'\'Canon of Scripture\' means the official list of inspired books, from a word meaning \'measuring stick.\'', s2:'The Deuterocanonical books were completely rejected by Catholics as uninspired.', a:2, e:'Statement 1 is true. Statement 2 is false — Catholics consider the Deuterocanonical books EQUALLY inspired, finalized at the Council of Trent.'}
   ], glossary:[
     {term:'Nihil Obstat', def:'"nothing hinders" — given by a Censor Librorum.'},
     {term:'Imprimatur', def:'"let it be printed" — given by the author\'s diocesan bishop.'},
@@ -3494,6 +3692,9 @@ const DATA = [
     {q:'Growing up exposed to secondhand smoke is an example of:', c:['Nature','Nurture','Neither nature nor nurture','A cognitive stage'], a:1, e:'This is an example of Nurture — the influence of environment and learning/exposure.'},
     {q:'Friends who encourage you to study are functioning as a:', c:['Risk factor','Protective factor','Nature factor','Individual difference'], a:1, e:'Friends who positively influence your development, like encouraging studying, act as a protective factor.'},
     {q:'Which of the following is NOT one of the 4 domains of developmental stages listed?', c:['Physical Development','Psycho-social Development','Financial Development','Moral Development'], a:2, e:'The 4 domains are Physical, Psycho-social, Cognitive, and Moral Development — "Financial Development" is not one of them.'}
+  ,
+    {type:'dual', s1:'Nature refers to biological/genetic predispositions.', s2:'Protective factors are conditions that positively affect development.', a:0, e:'Both true — accurate definitions of Nature and Protective Factors.'},
+    {type:'dual', s1:'Nurture refers to influences of learning and environment.', s2:'Risk factors are conditions that positively affect a person\'s development.', a:2, e:'Statement 1 is true. Statement 2 is false — risk factors NEGATIVELY affect development; protective factors are the ones that help positively.'}
   ], glossary:[
     {term:'Self-Concept', def:'our cognition of ourselves — what we think/know about our identity, personality, individuality.'},
     {term:'Nature', def:'biological/genetic predispositions.'},
@@ -3545,6 +3746,9 @@ const DATA = [
     {q:'A female\'s FIRST menstruation is specifically called:', c:['Spermarche','Menarche','Puberty','Menopause'], a:1, e:'Menarche refers specifically to a female\'s first menstruation, a marker of sexual maturation in early adolescence.'},
     {q:'A male\'s FIRST ejaculation is specifically called:', c:['Menarche','Spermarche','Andropause','Menopause'], a:1, e:'Spermarche refers specifically to a male\'s first ejaculation, a marker of sexual maturation in early adolescence.'},
     {q:'Visible physical features that signal sexual maturation, like voice change or facial hair, but are NOT the reproductive organs themselves, are called:', c:['Primary sex characteristics','Secondary sex characteristics','Gross motor skills','Teratogens'], a:1, e:'Secondary sex characteristics are visible physical features (like voice change, body hair) that signal sexual maturation without being reproductive organs themselves — unlike primary sex characteristics.'}
+  ,
+    {type:'dual', s1:'Teratogens are substances that protect an embryo from harm during development.', s2:'The Moro reflex is a baby\'s instinct for finding food.', a:1, e:'Both false — teratogens actually HARM embryo development, and finding food describes the ROOT reflex (Moro is the startle response).'},
+    {type:'dual', s1:'Menarche refers to a male\'s first ejaculation.', s2:'Secondary sex characteristics are visible features that signal maturation, without being reproductive organs themselves.', a:3, e:'Statement 1 is false — Menarche is a FEMALE\'s first menstruation (Spermarche is the male equivalent). Statement 2 is true.'}
   ], glossary:[
     {term:'Teratogens', def:'harmful substances (alcohol, smoke, chemicals) that can affect embryo development.'},
     {term:'Root / Suck / Moro Reflex', def:'baby instincts: finding food, taking in food, startle response.'},
@@ -3591,6 +3795,9 @@ const DATA = [
     {q:'The final stage, "Integrity vs. Despair" (65-death), has which virtue?', c:['Hope','Fidelity','Wisdom','Love'], a:2, e:'Integrity vs. Despair has the virtue of Wisdom, reflecting on whether one\'s life was lived well.'},
     {q:'The "epigenetic principle" in Erikson\'s theory means:', c:['Stages can be skipped freely','Each stage must be gone through, and unresolved conflicts can affect the future adult self','Only genetics matter, not experience','Development stops after childhood'], a:1, e:'The epigenetic principle states that each stage is like a blueprint that must be resolved — failing to do so can affect one\'s future adult self.'},
     {q:'Which psychologist proposed "Emerging Adulthood" as a distinct developmental stage (ages 19-25) dedicated to exploration?', c:['Erik Erikson','Jeffrey Arnett','Lawrence Kohlberg','Jean Piaget'], a:1, e:'Jeffrey Arnett proposed Emerging Adulthood, a modern stage between adolescence and young adulthood dedicated to exploring identity, career, and relationships.'}
+  ,
+    {type:'dual', s1:'Erikson\'s Trust vs. Mistrust stage occurs from 0-2 years old, with the virtue of Hope.', s2:'Emerging Adulthood, per Arnett, spans roughly ages 19-25.', a:0, e:'Both true — accurate facts about Erikson\'s first stage and Arnett\'s Emerging Adulthood.'},
+    {type:'dual', s1:'Industry vs. Inferiority is the LAST of Erikson\'s 8 stages.', s2:'Generativity vs. Stagnation occurs roughly between ages 40-65, with the virtue of Care.', a:3, e:'Statement 1 is false — Integrity vs. Despair is the last stage; Industry vs. Inferiority is the 4th. Statement 2 is true.'}
   ], glossary:[
     {term:'Epigenetic principle', def:'each psychosocial stage must be resolved; unresolved conflicts affect the future adult self.'},
     {term:'Trust vs. Mistrust', def:'0-2 yrs, virtue: Hope.'},
@@ -3655,6 +3862,9 @@ const DATA = [
     {q:'Who proposed the "Ethics of Care" as an alternative theory of moral development?', c:['Lawrence Kohlberg','Jean Piaget','Carol Gilligan','Erik Erikson'], a:2, e:'Carol Gilligan proposed the Ethics of Care, an alternative perspective on moral development centered on relationships and care.'},
     {q:'In Gilligan\'s Ethics of Care, the Pre-conventional stage focuses on:', c:['Caring for others before yourself','Caring only for yourself (individual survival)','A balance of caring for yourself and others','Following strict social rules'], a:1, e:'The Pre-conventional stage in Gilligan\'s theory focuses on individual survival — caring only for yourself.'},
     {q:'In Gilligan\'s Ethics of Care, which stage reflects a BALANCED focus on caring for both yourself and others?', c:['Pre-conventional','Conventional','Post-conventional (integrated care)','None of these'], a:2, e:'The Post-conventional stage reflects integrated care — a balance of caring for both yourself and others.'}
+  ,
+    {type:'dual', s1:'Object permanence is the main milestone of the Preoperational stage.', s2:'Assimilation means creating a brand new schema to fit new information.', a:1, e:'Both false — object permanence is the milestone of the SENSORIMOTOR stage, and creating a new schema describes ACCOMMODATION, not assimilation.'},
+    {type:'dual', s1:'Kohlberg\'s Pre-Conventional level is centered on avoiding punishment.', s2:'Gilligan\'s Ethics of Care ends with a stage of only caring for yourself.', a:2, e:'Statement 1 is true. Statement 2 is false — Gilligan\'s theory ENDS with integrated care for both self and others, starting FROM caring for self only.'}
   ], glossary:[
     {term:'Sensorimotor (0-2)', def:'object permanence is the main milestone.'},
     {term:'Preoperational (2-7)', def:'symbolic thinking; egocentrism, animism, lack of conservation/reversibility.'},
@@ -3711,6 +3921,9 @@ const DATA = [
     {q:'Which identity status involves BOTH exploration AND commitment, associated with maturity and better decision-making?', c:['Identity Diffusion','Identity Foreclosure','Identity Moratorium','Identity Achievement'], a:3, e:'Identity Achievement involves having explored options AND made a commitment — associated with maturity and better decision-making skills.'},
     {q:'What does the "MAMA cycle" stand for?', c:['Mistrust → Autonomy → Mistrust → Autonomy','Moratorium → Achievement → Moratorium → Achievement','Mother → Adolescent → Mother → Adolescent','Motivation → Ambition → Motivation → Achievement'], a:1, e:'The MAMA cycle stands for Moratorium → Achievement → Moratorium → Achievement, showing identity development cycles rather than a one-time path.'},
     {q:'According to the MAMA cycle concept, going back into moratorium after having achieved an identity commitment is:', c:['Always a sign of a serious problem','Normal and adaptive, part of healthy identity growth','Impossible according to the theory','Only relevant to teenagers'], a:1, e:'The MAMA cycle shows that returning to moratorium after achievement can be normal and adaptive — a healthy part of adjusting identity over a lifetime.'}
+  ,
+    {type:'dual', s1:'Identity Achievement involves both exploration and commitment.', s2:'Identity Diffusion involves neither exploration nor commitment.', a:0, e:'Both true — accurate definitions of Identity Achievement and Identity Diffusion.'},
+    {type:'dual', s1:'Identity Foreclosure involves exploration but no commitment.', s2:'The Ideal Self refers to who I believe I am right now.', a:1, e:'Both false — Foreclosure is NO exploration, YES commitment (exploration-without-commitment describes Moratorium), and the Ideal Self is who I WANT TO BECOME (the Actual Self is who I am now).'}
   ], glossary:[
     {term:'Self-Concept', def:'subjective, mostly informational description of who we think we are.'},
     {term:'Actual Self / Ideal Self', def:'who I believe I am now / who I want to become.'},
@@ -3761,6 +3974,9 @@ const DATA = [
     {q:'Fragile, inflated self-esteem being threatened may lead to which outcome, according to the notes?', c:['Increased humility','Directing anger outward (aggression/violence) to protect the ego','Immediate self-improvement','No effect at all'], a:1, e:'Inflated or unstable self-esteem, when threatened, may lead to directing anger outward as a way of avoiding a downward revision of self-concept.'},
     {q:'Which of the following best distinguishes self-concept from self-esteem?', c:['Self-concept is evaluative; self-esteem is informative','Self-concept is informative/cognitive (what you know); self-esteem is evaluative/emotional (how you feel about it)','They are identical concepts','Self-esteem is only relevant to adults'], a:1, e:'Self-concept is informative and cognitive — knowledge about yourself. Self-esteem is evaluative and emotional — how you feel about that knowledge.'},
     {q:'Which of the following is listed as a way to boost self-esteem?', c:['Compare yourself constantly to others','Strive for perfection at all times','Positive self-talk and celebrating small wins','Isolate yourself from supportive people'], a:2, e:'Positive self-talk and celebrating small wins are both listed as healthy ways to boost self-esteem — comparing to others and striving for perfection are discouraged.'}
+  ,
+    {type:'dual', s1:'Self-esteem is more emotional/evaluative, while self-concept is more cognitive/informative.', s2:'Self-esteem is a fixed trait that never changes based on situations.', a:2, e:'Statement 1 is true. Statement 2 is false — self-esteem is described as SITUATIONAL, not a fixed, unchanging trait.'},
+    {type:'dual', s1:'Fragile or inflated self-esteem, when threatened, typically leads to calm, peaceful reactions.', s2:'Threatened high self-esteem can lead to setting unrealistic, risky goals.', a:3, e:'Statement 1 is false — it can lead to AGGRESSION when threatened, per \'#PeaceOverPride.\' Statement 2 is true.'}
   ], glossary:[
     {term:'Self-Esteem', def:'our attitude toward ourselves; situational, emotionally inclined.'},
     {term:'Self-Concept vs. Self-Esteem', def:'Self-concept = informative/cognitive (what you know); Self-esteem = evaluative/emotional (how you feel about it).'},
@@ -3805,6 +4021,9 @@ const DATA = [
     {q:'Which EI component is also referred to as "people skills"?', c:['Self-Awareness','Motivation','Empathy','Social Skills'], a:3, e:'Social Skills, or "people skills," involve working well with others through collaboration and cooperation.'},
     {q:'The statement "I feel my teacher is unfair" is actually an example of a:', c:['True feeling','Thought disguised as a feeling','Type of self-regulation','Type of empathy'], a:1, e:'This is a THOUGHT, not a true feeling — when "feel" is followed by "that" or a noun, it usually indicates a judgment/thought rather than a genuine emotion.'},
     {q:'Which of the following is a clue that "feel" is being followed by a THOUGHT rather than a true feeling?', c:['Being followed by "that," "like," or a noun/pronoun','Being a single simple word like "happy" or "sad"','Being expressed through body language','Being written down'], a:0, e:'When "feel" is followed by words like "that," "like," "as if," pronouns, or nouns/names, it usually signals a thought rather than a clear feeling.'}
+  ,
+    {type:'dual', s1:'Emotional Intelligence involves understanding, using, and managing our emotions well.', s2:'Empathy is one of Goleman\'s 5 components of Emotional Intelligence.', a:0, e:'Both true — accurate facts about Emotional Intelligence and its components.'},
+    {type:'dual', s1:'Self-Regulation includes traits like trustworthiness and adaptability.', s2:'Saying \'I feel that you\'re wrong\' is a clear example of a TRUE feeling statement.', a:2, e:'Statement 1 is true. Statement 2 is false — \'feel that\' typically signals a THOUGHT, not a true feeling.'}
   ], glossary:[
     {term:'Emotional Intelligence (EI)', def:'the ability to understand, use, and manage our emotions well.'},
     {term:'5 Components of EI', def:'Self-Awareness, Self-Regulation, Motivation, Empathy, Social Skills (Goleman).'},
@@ -3848,6 +4067,9 @@ const DATA = [
     {q:'In the Traffic Light Model, which color signals to STOP and calm down before acting, since reacting immediately may cause problems?', c:['Green','Yellow','Red','There is no such signal'], a:2, e:'Red Light (STOP) represents intense emotions like anger or panic, signaling a need to stop and calm down before acting.'},
     {q:'Which of the following is a recommended technique specifically for the RED LIGHT stage?', c:['Continue your actions normally','Walking away, talking to a trusted person, journaling, or practicing mindfulness','Ignoring the emotion completely','Reacting immediately to resolve it'], a:1, e:'For Red Light emotions, the notes recommend strong calming techniques: walking away, talking to a trusted person, journaling, or practicing mindfulness.'},
     {q:'Which of the following is listed as a way to improve emotional intelligence?', c:['Avoid all self-reflection','Practice self-reflection and manage stress through deep breathing/meditation/exercise','Suppress all emotions','Never listen to others'], a:1, e:'Practicing self-reflection and managing stress (deep breathing, meditation, exercise) are both listed as ways to improve emotional intelligence.'}
+  ,
+    {type:'dual', s1:'An assertive response is disrespectful to either yourself or others.', s2:'In the Traffic Light Model, \'Red\' means it\'s safe to act immediately without pausing.', a:1, e:'Both false — an assertive response is respectful to BOTH self and others, and \'Red\' in the Traffic Light Model means STOP and calm down BEFORE acting.'},
+    {type:'dual', s1:'A passive response clearly and confidently expresses your needs.', s2:'An aggressive response expresses needs in a threatening or humiliating way.', a:3, e:'Statement 1 is false — passive responses FAIL to express needs/feelings clearly. Statement 2 is true.'}
   ], glossary:[
     {term:'Passive response', def:'not expressing needs/feelings clearly; disrespectful to yourself.'},
     {term:'Aggressive response', def:'expressing needs/feelings in a threatening/humiliating way; disrespectful to others.'},
@@ -3895,6 +4117,9 @@ const DATA = [
     {q:'Which Havighurst task involves exploring interests, talents, and forming long-term career plans?', c:['Establish adult vocational goals','Manage sexuality','Adjust to new intellectual abilities','Develop impulse control'], a:0, e:'Establishing adult vocational goals involves exploring interests/talents and beginning to form long-term career plans.'},
     {q:'Which of the following is a Havighurst task specific to Early Adulthood, not Adolescence?', c:['Adjust to a new physical sense of self','Selecting a Mate','Develop expanded verbal skills','Adjust to increased cognitive demands at school'], a:1, e:'"Selecting a Mate" is one of Havighurst\'s developmental tasks for Early Adulthood, distinct from the adolescent tasks.'},
     {q:'For adolescents, the notes recommend aiming for how many hours of sleep per night?', c:['4-5 hours','6-7 hours','8-10 hours','12+ hours'], a:2, e:'The notes recommend adolescents aim for 8-10 hours of sleep per night for healthy physiological development.'}
+  ,
+    {type:'dual', s1:'Imaginary Audience is the belief that others are as interested in you as you are in yourself.', s2:'Personal Fable is the belief that one is uniquely special or invulnerable.', a:0, e:'Both true — accurate definitions of Imaginary Audience and Personal Fable.'},
+    {type:'dual', s1:'Havighurst\'s Developmental Tasks suggest that timing doesn\'t matter for happiness.', s2:'Tact means bluntly saying whatever you think, regardless of the impact.', a:1, e:'Both false — completing tasks at the \'correct\' time IS linked to happiness/acceptance in Havighurst\'s theory, and Tact means making a point WITHOUT making an enemy — the opposite of bluntness.'}
   ], glossary:[
     {term:'Imaginary Audience', def:'adolescents\' belief that others are as interested in them as they are in themselves.'},
     {term:'Personal Fable', def:'belief that one is uniquely special/invulnerable, unlike anyone else.'},
@@ -3943,6 +4168,9 @@ const DATA = [
     {q:'What is a common cause of stress specifically noted for children in the notes?', c:['Work deadlines','Excessive screen time','Marriage problems','Retirement planning'], a:1, e:'The notes specifically mention that children are prone to stress because of screen time.'},
     {q:'Which health category, unique to the adolescent list (not children or adults), focuses on learning about body changes, consent, and safe practices?', c:['Healthy Eating','Reproductive Health Awareness','Stress Management','Regular Health Checkups'], a:1, e:'Reproductive Health Awareness is a specific category listed for adolescents, covering body changes, consent, and safe practices.'},
     {q:'Which recommendation is unique to the adult list (not specifically listed for adolescents), involving professional checkups?', c:['Adequate Sleep','Regular Health Checkups','Healthy Eating','Avoiding Harmful Substances'], a:1, e:'Regular Health Checkups with professionals is specifically listed as a recommendation for adults.'}
+  ,
+    {type:'dual', s1:'Adolescents are recommended to get 8-10 hours of sleep per night.', s2:'Adults need less exercise than adolescents, with a recommendation of only a few minutes per week.', a:2, e:'Statement 1 is true. Statement 2 is false — adults need at least 30 minutes of moderate exercise, not just a few minutes per week.'},
+    {type:'dual', s1:'\'Go, Grow, Glow\' is a classic nutrition framework for healthy eating in children.', s2:'Adolescents are recommended at least 60 minutes of exercise per day.', a:0, e:'Both true — accurate facts about nutrition guidance and adolescent exercise recommendations.'}
   ], glossary:[
     {term:'Go, Grow, Glow foods', def:'classic nutrition framework for healthy eating in children.'},
     {term:'Recommended sleep (adolescents)', def:'8-10 hours per night.'},
@@ -3995,6 +4223,9 @@ const DATA = [
     {q:'In the Philippines Physical Activity Pyramid, which level advises "cutting down" on sedentary behavior/screen time?', c:['Base Level','Second Level','Third Level','Top Level'], a:3, e:'The Top Level of the pyramid advises reducing/cutting down sedentary behavior, especially screen time.'},
     {q:'Which of the following is the correct purpose of "warming up" before exercise?', c:['Gradual recovery and reduced soreness','Preparing the body, reducing injury risk, and enhancing performance','Building muscle instantly','Replacing the need for cooling down'], a:1, e:'Warming up prepares your body, reduces injury risk, and enhances performance — cooling down is what handles gradual recovery.'},
     {q:'Which of the following is NOT listed as a benefit of recreational activities?', c:['Physical Health','Mental Well-Being','Social Connections','Guaranteed financial success'], a:3, e:'The listed benefits are Physical Health, Mental Well-Being, Social Connections, and Skill Development — not financial success.'}
+  ,
+    {type:'dual', s1:'Flexibility is classified under Skill-related Fitness Components.', s2:'Hypokinetic diseases result from a lack of physical activity.', a:3, e:'Statement 1 is false — Flexibility is a HEALTH-related component (Skill-related includes speed, coordination, balance, etc.). Statement 2 is true.'},
+    {type:'dual', s1:'The Philippines Physical Activity Pyramid recommends cutting down on everyday activities at its base.', s2:'Cardiovascular fitness is classified as a skill-related fitness component.', a:1, e:'Both false — everyday activities are the BASE, encouraged the most (sedentary behavior is what to cut down, at the top), and cardiovascular fitness is a HEALTH-related component.'}
   ], glossary:[
     {term:'Hypokinetic Diseases', def:'conditions from lack of physical activity (e.g. hypertension, Type 2 diabetes, musculoskeletal disorders).'},
     {term:'Health-related Fitness Components', def:'Body Composition, Flexibility, Muscular Fitness, Cardiovascular Fitness.'},
@@ -4038,6 +4269,9 @@ const DATA = [
     {q:'In the "STOP" technique for a mindful pause, what does the "O" stand for?', c:['Open your eyes','Observe your thoughts and/or feelings','Organize your schedule','Overcome your fears'], a:1, e:'In the STOP technique, O stands for "Observe your thoughts and/or feelings," following S (Stop) and T (Take a breath), before P (Proceed with awareness).'},
     {q:'The "Five Senses Check-In" mindfulness exercise follows which counting pattern?', c:['1-2-3-4-5','5-4-3-2-1 (see, touch, hear, smell, taste)','10-8-6-4-2','3-3-3-3-3'], a:1, e:'The Five Senses Check-In involves noticing 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, and 1 you can taste.'},
     {q:'Which mindfulness exercise involves mentally scanning your body from head to toe, releasing tension as you go?', c:['Mindful Walking','Body Scan Relaxation','Lion\'s Breath','Five Senses Check-In'], a:1, e:'Body Scan Relaxation involves mentally scanning the body from head to toe, noticing and releasing areas of tension.'}
+  ,
+    {type:'dual', s1:'Passive recreation includes low-physical-demand activities like reading or watching movies.', s2:'Box Breathing follows a 4-4-4-4 pattern: inhale, hold, exhale, hold.', a:0, e:'Both true — accurate definitions of Passive Recreation and Box Breathing.'},
+    {type:'dual', s1:'Active recreation involves activities with physical exertion, like hiking or dance.', s2:'The STOP Technique means to Stop, Take a breath, Overreact, and Panic.', a:2, e:'Statement 1 is true. Statement 2 is false — STOP means Stop, Take a breath, Observe, and Proceed with awareness, not overreact/panic.'}
   ], glossary:[
     {term:'Passive Recreation', def:'low physical demand, relaxation-focused activities (reading, movies, music).'},
     {term:'Active Recreation', def:'activities involving physical exertion/movement (hiking, dance, sports).'},
@@ -4586,6 +4820,10 @@ function renderMain(){
   studyBtn.innerHTML = ICONS.bookOpen + 'Study';
   studyBtn.className = state.mode==='study' ? 'active' : '';
   studyBtn.onclick = ()=>{ state.mode='study'; state.quiz=null; renderMain(); };
+  const summaryBtn = document.createElement('button');
+  summaryBtn.innerHTML = ICONS.bulb + 'Summary';
+  summaryBtn.className = state.mode==='summary' ? 'active' : '';
+  summaryBtn.onclick = ()=>{ state.mode='summary'; state.quiz=null; renderMain(); };
   const termsBtn = document.createElement('button');
   termsBtn.innerHTML = ICONS.bookmark + 'Terms';
   termsBtn.className = state.mode==='terms' ? 'active' : '';
@@ -4598,14 +4836,7 @@ function renderMain(){
   palaceBtn.innerHTML = ICONS.palace + 'Memory Palace';
   palaceBtn.className = state.mode==='palace' ? 'active' : '';
   palaceBtn.onclick = ()=>{ state.mode='palace'; state.quiz=null; renderMain(); };
-  toggle.appendChild(studyBtn); toggle.appendChild(termsBtn); toggle.appendChild(quizBtn); toggle.appendChild(palaceBtn);
-  if(lesson.summary && lesson.summary.length){
-    const summaryBtn = document.createElement('button');
-    summaryBtn.innerHTML = ICONS.bulb + 'Summary';
-    summaryBtn.className = state.mode==='summary' ? 'active' : '';
-    summaryBtn.onclick = ()=>{ state.mode='summary'; state.quiz=null; renderMain(); };
-    toggle.appendChild(summaryBtn);
-  }
+  toggle.appendChild(studyBtn); toggle.appendChild(summaryBtn); toggle.appendChild(termsBtn); toggle.appendChild(quizBtn); toggle.appendChild(palaceBtn);
   headerDiv.appendChild(toggle);
   main.appendChild(headerDiv);
 
@@ -4616,10 +4847,55 @@ function renderMain(){
   } else if(state.mode==='palace'){
     renderPalace(lesson, main);
   } else if(state.mode==='summary'){
-    renderHighlightableContent(lesson, main, 'summary', lesson.summary || [], 'summary-card');
+    const hasManualSummary = lesson.summary && lesson.summary.length > 0;
+    if(!hasManualSummary){
+      const note = document.createElement('div');
+      note.className = 'auto-summary-note';
+      note.innerHTML = `${ICONS.bulb}<span>Auto-condensed from this lesson's key terms and main points — a cram-sheet view, not a substitute for the full Study tab.</span>`;
+      main.appendChild(note);
+    }
+    const summaryContent = hasManualSummary ? lesson.summary : buildAutoSummary(lesson);
+    renderHighlightableContent(lesson, main, 'summary', summaryContent, 'summary-card');
   } else {
     renderQuiz(lesson, main);
   }
+}
+
+// Builds a condensed cram-sheet summary on the fly for lessons that don't have a hand-written
+// `summary` array: one shortened takeaway per content section, plus every glossary term's
+// already-short definition, formatted as compact "Term — definition" lines.
+function truncateToSentence(text, maxLen){
+  if(!text) return '';
+  if(text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
+  const lastPeriod = cut.lastIndexOf('. ');
+  if(lastPeriod > 40) return cut.slice(0, lastPeriod + 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  return (lastSpace > 40 ? cut.slice(0, lastSpace) : cut) + '…';
+}
+function buildAutoSummary(lesson){
+  const sections = [];
+  const contentSections = lesson.content || [];
+  if(contentSections.length){
+    sections.push({
+      h: 'Key Takeaways',
+      b: contentSections.map(sec=>{
+        const firstBullet = (sec.b && sec.b[0]) ? sec.b[0] : '';
+        return sec.h + ' — ' + truncateToSentence(firstBullet, 150);
+      })
+    });
+  }
+  const terms = lesson.glossary || [];
+  if(terms.length){
+    sections.push({
+      h: 'Quick Definitions',
+      b: terms.map(t=> t.term + ' — ' + t.def)
+    });
+  }
+  if(sections.length === 0){
+    sections.push({ h: 'Summary', b: ['No content available yet for this lesson.'] });
+  }
+  return sections;
 }
 
 /* ============================= HIGHLIGHTING ============================= */
