@@ -40,6 +40,13 @@
     border:1px solid rgba(255,255,255,0.35);color:#fff;border-radius:20px;
     padding:5px 14px;font-size:0.8rem;font-weight:bold;margin-top:8px;
   }
+  .due-badge{
+    display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.35);color:#fff;border-radius:20px;
+    padding:5px 14px;font-size:0.8rem;font-weight:bold;margin-top:8px;margin-left:8px;
+    cursor:pointer;font-family:inherit;
+  }
+  .due-badge:hover{background:rgba(255,255,255,0.24);}
 
   .layout{display:flex;max-width:1200px;margin:0 auto;min-height:calc(100vh - 80px);}
   .sidebar{
@@ -164,6 +171,39 @@
 
   main{flex:1;padding:22px 26px;}
   .welcome{color:var(--muted);text-align:center;margin-top:60px;font-size:0.95rem;}
+
+  .welcome-dashboard{max-width:640px;margin:0 auto;}
+  .welcome-dashboard .welcome{margin-top:24px;margin-bottom:28px;}
+  .due-review-card{
+    display:flex;flex-direction:column;gap:10px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--border);border-radius:14px;
+    padding:20px 22px;margin-bottom:20px;
+  }
+  .due-review-card:not(.due-review-empty){border-color:var(--accent2);background:var(--active-lesson-bg);}
+  .due-review-icon{font-size:1.6rem;}
+  .due-review-text h3{margin:0 0 4px 0;font-size:1.05rem;}
+  .due-review-text p{margin:0;color:var(--muted);font-size:0.88rem;line-height:1.5;}
+  .due-review-start-btn{
+    display:flex;align-items:center;gap:8px;background:var(--accent2);color:#fff;
+    border:none;border-radius:10px;padding:10px 18px;font-weight:bold;cursor:pointer;font-size:0.9rem;
+  }
+  .due-review-start-btn svg{width:16px;height:16px;}
+  .due-review-start-btn:hover{opacity:0.9;}
+  .due-review-source{text-align:center;color:var(--muted);font-size:0.8rem;margin-bottom:6px;font-style:italic;}
+  .exit-review-btn{
+    display:flex;align-items:center;gap:6px;background:none;border:1px solid var(--border);
+    border-radius:8px;padding:6px 12px;cursor:pointer;color:var(--muted);font-size:0.82rem;margin-left:auto;
+  }
+  .exit-review-btn svg{width:14px;height:14px;}
+  .exit-review-btn:hover{background:var(--hover);color:var(--ink);}
+  .memorize-tips{
+    background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 22px;
+  }
+  .memorize-tips h3{display:flex;align-items:center;gap:8px;margin:0 0 10px 0;font-size:1rem;}
+  .memorize-tips h3 svg{width:18px;height:18px;}
+  .memorize-tips ul{margin:0;padding-left:20px;}
+  .memorize-tips li{margin-bottom:8px;font-size:0.86rem;line-height:1.5;color:var(--ink);}
+  .memorize-tips li strong{color:var(--accent2);}
 
   .lesson-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
   .lesson-header h2{margin:0;color:var(--accent);font-size:1.3rem;}
@@ -394,6 +434,7 @@
   <h1><svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Multi-Subject Reviewer</h1>
   <p>GenMath · PKLP1 · EffCom1 · GenSci · Biology Notes · FunFaith · LCS — with randomized per-lesson quizzes</p>
   <div id="streakBadge" class="streak-badge" style="display:none;"></div>
+  <button id="dueReviewBadge" class="due-badge" style="display:none;" onclick="startDueReviewFromHeader()"></button>
   <div class="header-actions">
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Dark Mode</button>
     <button class="theme-toggle" id="exportHlBtn" onclick="exportAllHighlights()"><svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Export Highlights</button>
@@ -4040,7 +4081,7 @@ function toggleTheme(){
 }
 
 /* ============================= APP LOGIC ============================= */
-let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null, weakSpots:false, undoHighlight:null, revealHidden:{}, selectMode:{}, selectedForHide:{} };
+let state = { subjectId:null, lessonId:null, mode:'study', quiz:null, mixedReview:false, mixedSetup:null, weakSpots:false, undoHighlight:null, revealHidden:{}, selectMode:{}, selectedForHide:{}, dueReviewMode:false, dueReviewSession:null };
 
 function getSubject(id){ return DATA.find(s=>s.id===id); }
 function getLesson(subId, lesId){ return getSubject(subId).lessons.find(l=>l.id===lesId); }
@@ -4210,6 +4251,28 @@ function renderStreakBadge(){
   }
   el.style.display = 'inline-flex';
   el.innerHTML = `🔥 ${data.current}-day streak` + (data.longest > data.current ? ` <span style="opacity:0.75;font-weight:normal;">(best: ${data.longest})</span>` : '');
+}
+
+// Updates the header's "N due" badge from anywhere in the app — call after any flashcard rating
+// or on load, so the count stays accurate no matter which lesson the person is currently viewing.
+function renderDueBadge(){
+  const el = document.getElementById('dueReviewBadge');
+  if(!el) return;
+  const count = getAllDueTerms().length;
+  if(count === 0){
+    el.style.display = 'none';
+    return;
+  }
+  el.style.display = 'inline-flex';
+  el.innerHTML = `📅 ${count} due`;
+}
+// Jumps straight into a cross-subject review session from the header badge, regardless of what's on screen.
+function startDueReviewFromHeader(){
+  const dueTerms = getAllDueTerms();
+  if(dueTerms.length === 0) return;
+  state.dueReviewMode = true;
+  state.dueReviewSession = { order: shuffle(dueTerms.map((_,i)=>i)), pos: 0, flipped: false, known: 0, learning: 0, cards: dueTerms };
+  renderMain();
 }
 
 // Returns a rounded mastery % based on the average of the last up to 3 attempts, or null if never attempted.
@@ -4495,6 +4558,10 @@ function renderSidebar(){
 
 function renderMain(){
   const main = document.getElementById('main');
+  if(state.dueReviewMode){
+    renderDueReview(main);
+    return;
+  }
   if(state.subjectId && state.mixedReview){
     renderMixedReview(main);
     return;
@@ -4504,7 +4571,7 @@ function renderMain(){
     return;
   }
   if(!state.subjectId || !state.lessonId){
-    main.innerHTML = `<div class="welcome"><svg class="icon" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Pick a subject, then a lesson, to start studying or take its quiz.</div>`;
+    renderWelcomeDashboard(main);
     return;
   }
   const lesson = getLesson(state.subjectId, state.lessonId);
@@ -4724,7 +4791,172 @@ function renderPalace(lesson, main){
   main.appendChild(track);
 }
 
-/* ============================= FLASHCARD PRACTICE (TERMS) ============================= */
+/* ============================= WELCOME DASHBOARD (SPACED REPETITION HUB) ============================= */
+function renderWelcomeDashboard(main){
+  main.innerHTML = '';
+  const dueTerms = getAllDueTerms();
+
+  const wrap = document.createElement('div');
+  wrap.className = 'welcome-dashboard';
+
+  const hero = document.createElement('div');
+  hero.className = 'welcome';
+  hero.innerHTML = `<svg class="icon" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Pick a subject, then a lesson, to start studying or take its quiz.`;
+  wrap.appendChild(hero);
+
+  const dueCard = document.createElement('div');
+  dueCard.className = 'due-review-card' + (dueTerms.length===0 ? ' due-review-empty' : '');
+  if(dueTerms.length === 0){
+    dueCard.innerHTML = `
+      <div class="due-review-icon">${ICONS.check}</div>
+      <div class="due-review-text">
+        <h3>You're all caught up</h3>
+        <p>No flashcards are due for review right now. Rate some terms in any lesson's Terms tab and they'll resurface here on a schedule.</p>
+      </div>`;
+  } else {
+    const subjectsInvolved = new Set(dueTerms.map(t=>t.subjectId)).size;
+    dueCard.innerHTML = `
+      <div class="due-review-icon">📅</div>
+      <div class="due-review-text">
+        <h3>${dueTerms.length} card${dueTerms.length===1?'':'s'} due for review</h3>
+        <p>Pulled from ${subjectsInvolved} subject${subjectsInvolved===1?'':'s'}, mixed together — spaced repetition works best when topics are interleaved instead of studied one at a time.</p>
+      </div>`;
+    const startBtn = document.createElement('button');
+    startBtn.className = 'due-review-start-btn';
+    startBtn.innerHTML = ICONS.dice + 'Start Review Session';
+    startBtn.onclick = ()=>{
+      state.dueReviewMode = true;
+      state.dueReviewSession = { order: shuffle(dueTerms.map((_,i)=>i)), pos: 0, flipped: false, known: 0, learning: 0, cards: dueTerms };
+      renderMain();
+    };
+    dueCard.appendChild(startBtn);
+  }
+  wrap.appendChild(dueCard);
+
+  const tips = document.createElement('div');
+  tips.className = 'memorize-tips';
+  tips.innerHTML = `
+    <h3>${ICONS.bulb} Memorize faster</h3>
+    <ul>
+      <li><strong>Active recall</strong> — use the Terms and Quiz tabs instead of just re-reading Study; forcing your brain to retrieve an answer builds a stronger memory than rereading it does.</li>
+      <li><strong>Spaced repetition</strong> — the due-cards box above resurfaces terms right before you're likely to forget them. Rate honestly ("Still Learning" vs "Got It") so the schedule stays accurate.</li>
+      <li><strong>Interleave subjects</strong> — use Mixed Review within a subject, or the cross-subject review above, instead of grinding one topic for hours straight.</li>
+      <li><strong>Memory Palace</strong> — for lists and sequences, walk through a lesson's Memory Palace tab and picture each scene vividly.</li>
+      <li><strong>Teach it back</strong> — after a quiz, try explaining the topic out loud in your own words. Where you get stuck is exactly what to restudy.</li>
+    </ul>`;
+  wrap.appendChild(tips);
+
+  main.appendChild(wrap);
+}
+
+/* ============================= CROSS-SUBJECT DUE REVIEW SESSION ============================= */
+function renderDueReview(main){
+  main.innerHTML = '';
+  if(!state.dueReviewSession){
+    state.dueReviewMode = false;
+    renderMain();
+    return;
+  }
+  const sess = state.dueReviewSession;
+  const cards = sess.cards;
+
+  const headerDiv = document.createElement('div');
+  headerDiv.className = 'lesson-header';
+  headerDiv.innerHTML = `<h2>📅 Due for Review</h2>`;
+  const exitBtn = document.createElement('button');
+  exitBtn.className = 'exit-review-btn';
+  exitBtn.innerHTML = ICONS.cross + 'Exit';
+  exitBtn.onclick = ()=>{ state.dueReviewMode = false; state.dueReviewSession = null; renderMain(); };
+  headerDiv.appendChild(exitBtn);
+  main.appendChild(headerDiv);
+
+  if(sess.pos >= sess.order.length){
+    const box = document.createElement('div');
+    box.className = 'practice-complete';
+    box.innerHTML = `
+      <div class="big">${sess.known} / ${sess.order.length}</div>
+      <p>Marked as known this round. ${sess.learning} will come back sooner for another pass.</p>
+    `;
+    const doneBtn = document.createElement('button');
+    doneBtn.className = 'retry-btn';
+    doneBtn.innerHTML = ICONS.check + 'Back to Dashboard';
+    doneBtn.onclick = ()=>{ state.dueReviewMode = false; state.dueReviewSession = null; renderMain(); };
+    box.appendChild(doneBtn);
+    main.appendChild(box);
+    return;
+  }
+
+  const wrap = document.createElement('div');
+  wrap.className = 'practice-session';
+
+  const progress = document.createElement('div');
+  progress.className = 'practice-progress';
+  progress.innerHTML = `<span>Card ${sess.pos+1} of ${sess.order.length}</span>`;
+  wrap.appendChild(progress);
+
+  const tally = document.createElement('div');
+  tally.className = 'practice-tally';
+  tally.innerHTML = `<span>✅ Known: ${sess.known}</span><span>🔁 Learning: ${sess.learning}</span>`;
+  wrap.appendChild(tally);
+
+  const t = cards[sess.order[sess.pos]];
+  const source = document.createElement('div');
+  source.className = 'due-review-source';
+  source.textContent = t.subjectName + ' · ' + t.lessonTitle;
+  wrap.appendChild(source);
+
+  const card = document.createElement('div');
+  card.className = 'practice-card' + (sess.flipped ? ' flipped' : '');
+  card.innerHTML = `
+    <div class="practice-card-inner">
+      <div class="practice-face practice-front">
+        <span class="flashcard-tag">TERM</span>
+        <div class="practice-term">${t.term}</div>
+        <span class="flashcard-hint">tap to reveal definition</span>
+      </div>
+      <div class="practice-face practice-back">
+        <span class="flashcard-tag">DEFINITION</span>
+        <div class="practice-def">${t.def}</div>
+      </div>
+    </div>`;
+  card.onclick = ()=>{ sess.flipped = !sess.flipped; renderMain(); };
+  wrap.appendChild(card);
+
+  const rateRow = document.createElement('div');
+  rateRow.className = 'practice-rate-row';
+  const learningBtn = document.createElement('button');
+  learningBtn.className = 'practice-rate-btn practice-rate-learning';
+  learningBtn.textContent = '🔁 Still Learning';
+  learningBtn.onclick = ()=>{
+    setTermRating(t.subjectId, t.lessonId, t.term, 'learning');
+    sess.learning++;
+    sess.pos++;
+    sess.flipped = false;
+    renderMain();
+  };
+  const knownBtn = document.createElement('button');
+  knownBtn.className = 'practice-rate-btn practice-rate-known';
+  knownBtn.textContent = '✅ Got It';
+  knownBtn.onclick = ()=>{
+    setTermRating(t.subjectId, t.lessonId, t.term, 'known');
+    sess.known++;
+    sess.pos++;
+    sess.flipped = false;
+    renderMain();
+  };
+  rateRow.appendChild(learningBtn);
+  rateRow.appendChild(knownBtn);
+  wrap.appendChild(rateRow);
+
+  main.appendChild(wrap);
+}
+
+
+// Leitner box system: each term lives in a box (1-5). Missing a card resets it to box 1 (review tomorrow);
+// getting it right bumps it up a box with a longer interval, so well-known terms resurface less often.
+const LEITNER_INTERVALS_DAYS = { 1: 1, 2: 2, 3: 4, 4: 7, 5: 14 };
+const DAY_MS = 86400000;
+
 function termStatsKey(subjectId, lessonId){
   return 'reviewer_termstats__' + subjectId + '__' + lessonId;
 }
@@ -4735,11 +4967,55 @@ function getTermStats(subjectId, lessonId){
   }catch(e){ /* ignore */ }
   return {};
 }
+function saveTermStats(subjectId, lessonId, stats){
+  try{ localStorage.setItem(termStatsKey(subjectId, lessonId), JSON.stringify(stats)); }catch(e){ /* ignore */ }
+}
+// Normalizes an entry to { box, due } regardless of legacy string format ('known'/'learning') or missing data.
+// Uses a fixed past timestamp (0) rather than Date.now() for "due now" cases — Date.now() would be evaluated
+// at call time, which can land a millisecond after the caller's own "now" snapshot and wrongly count as not-yet-due.
+function normalizeTermEntry(entry){
+  if(entry && typeof entry === 'object' && typeof entry.box === 'number'){
+    return entry;
+  }
+  if(entry === 'known') return { box: 3, due: 0 }; // legacy — treat as partially learned, due now
+  if(entry === 'learning') return { box: 1, due: 0 };
+  return { box: 0, due: 0 }; // never rated — due immediately
+}
 function setTermRating(subjectId, lessonId, term, rating){
   const stats = getTermStats(subjectId, lessonId);
-  stats[term] = rating; // 'known' | 'learning'
-  try{ localStorage.setItem(termStatsKey(subjectId, lessonId), JSON.stringify(stats)); }catch(e){}
+  const current = normalizeTermEntry(stats[term]);
+  let box;
+  if(rating === 'learning'){
+    box = 1;
+  } else { // 'known' / Good
+    box = Math.min((current.box || 0) + 1, 5);
+  }
+  const intervalDays = LEITNER_INTERVALS_DAYS[box] || 1;
+  stats[term] = { box, due: Date.now() + intervalDays * DAY_MS, last: rating };
+  saveTermStats(subjectId, lessonId, stats);
   touchStreak();
+  renderDueBadge();
+}
+
+// Scans every lesson in every subject and returns flashcards that are due (or never rated), each tagged
+// with where it came from, so a review session can pull the right term list from anywhere in the app.
+function getAllDueTerms(){
+  const due = [];
+  const now = Date.now();
+  DATA.forEach(subj=>{
+    subj.lessons.forEach(les=>{
+      const terms = les.glossary || [];
+      if(!terms.length) return;
+      const stats = getTermStats(subj.id, les.id);
+      terms.forEach(t=>{
+        const entry = normalizeTermEntry(stats[t.term]);
+        if(entry.due <= now){
+          due.push({ term: t.term, def: t.def, subjectId: subj.id, lessonId: les.id, subjectName: subj.name, lessonTitle: les.title, box: entry.box });
+        }
+      });
+    });
+  });
+  return due;
 }
 
 function renderTerms(lesson, main){
@@ -5361,6 +5637,7 @@ function renderQuiz(lesson, main, opts){
 renderSidebar();
 renderMain();
 renderStreakBadge();
+renderDueBadge();
 
 /* ============================= QUIZ KEYBOARD SHORTCUTS ============================= */
 // Number keys pick an answer, Enter confirms/advances, Escape backs out of the confirm step.
