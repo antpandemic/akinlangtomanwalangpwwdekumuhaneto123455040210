@@ -378,6 +378,16 @@
   body.dark .confirm-no{background:#2a2d36;color:#e8e8ea;}
   .choice[disabled]{cursor:default;}
   .choice.selected-pending{background:#eaf0fa;border-color:var(--accent);color:var(--accent);font-weight:bold;}
+  .match-wrap{margin:4px 0 16px;}
+  .match-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .match-left{flex:1 1 160px;font-weight:bold;font-size:0.92rem;}
+  .match-select{flex:1 1 220px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--choice-bg);color:var(--ink);font-size:0.85rem;}
+  .match-select[disabled]{opacity:0.85;cursor:default;}
+  .match-mark{font-weight:bold;font-size:0.82rem;white-space:nowrap;}
+  .match-mark-correct{color:var(--good);}
+  .match-mark-wrong{color:var(--warn);}
+  .match-submit-btn{padding:9px 18px;border-radius:20px;border:none;background:var(--accent2);color:#fff;font-weight:bold;cursor:pointer;font-size:0.85rem;margin-top:2px;}
+  .match-submit-btn[disabled]{opacity:0.45;cursor:not-allowed;}
   .confirm-box{
     background:#fff8ec;border:1px dashed #d98c2b;border-radius:8px;
     padding:12px 16px;margin-top:6px;text-align:center;
@@ -3221,6 +3231,26 @@ const DATA = [
     {q:'A biologist compares the bone structure of a human arm, a bat wing, and a whale flipper and finds striking underlying similarities despite very different modern uses. What does this suggest about their evolutionary history?', c:['They likely share a common evolutionary origin, making them homologous structures','They evolved completely independently with no shared ancestry','They must be vestigial organs in all three species','They are analogous structures with no evolutionary implication'], a:0, e:'Shared structure despite different functions across species is the hallmark of homologous structures, suggesting a common evolutionary origin.'},
     {q:'A student argues that "evolution" and "adaptation" mean exactly the same thing. How would you correct this using the definitions given?', c:['Adaptation is an organism\'s ability to adjust to environmental change, while Evolution is the broader, gradual change of heritable traits across a species over generations','They are identical concepts with no meaningful distinction','Evolution happens in a single organism\'s lifetime, while adaptation never does','Adaptation only applies to plants, while evolution only applies to animals'], a:0, e:'Adaptation is about an individual organism\'s adjustment ability, while Evolution is the broader, population-level, gradual change of heritable traits across generations.'},
     {q:'A person claims a virus should count as "alive" simply because it can reproduce inside a host cell. Based on the 7 characteristics framework, what else would need to be considered?', c:['Whether it also shows metabolism, homeostasis, growth/development, movement, heredity, and evolution — not just reproduction alone','Reproduction alone is always sufficient to classify something as living','Nothing else matters if reproduction is present','Viruses cannot be evaluated using this framework at all'], a:0, e:'The framework uses all 7 characteristics together (metabolism, reproduction, homeostasis, growth/development, movement, heredity, evolution) — reproduction alone does not automatically qualify something as living.'}
+,
+    {type:'match', prompt:'Match each mode of reproduction to its correct description.', pairs:[
+      {left:'Binary fission', right:'One organism splits into two genetically identical organisms (asexual)'},
+      {left:'Budding', right:'A growth on the parent matures and may detach into a new organism (asexual)'},
+      {left:'Gametogenesis', right:'Meiosis produces sperm/ovum, each with half the chromosome number'},
+      {left:'Fertilization', right:'A sperm and an ovum combine to form a new organism (sexual)'}
+    ], e:'Binary fission and budding are asexual (one organism only); gametogenesis and fertilization are the two steps of sexual reproduction.'},
+    {type:'match', prompt:'Match each comparison-of-traits term to its correct example or definition.', pairs:[
+      {left:'Homologous structures', right:'A whale flipper and a bat wing — same underlying bone structure, different function'},
+      {left:'Analogous structures', right:'A butterfly wing and a bird wing — same function (flight), unrelated origin'},
+      {left:'Vestigial organ', right:'The human appendix — once had a bigger function, now greatly reduced'},
+      {left:'Adaptation', right:'A finch developing a beak shape suited to its island\'s available seeds'}
+    ], e:'Homologous = shared structure/origin; analogous = shared function only; vestigial = reduced leftover function; adaptation = adjusting to environment.'},
+    {type:'match', prompt:'Match each of the 7 characteristics of life to what it specifically describes.', pairs:[
+      {left:'Homeostasis', right:'Sweating to keep body temperature stable on a hot day'},
+      {left:'Metabolism', right:'All the chemical reactions that convert food into usable energy'},
+      {left:'Heredity', right:'Passing of traits from parents to offspring'},
+      {left:'Evolution', right:'Gradual, permanent change of heritable traits across generations'},
+      {left:'Growth', right:'Increase in size or mass of an organism'}
+    ], e:'Each of these is one of the 7 defining characteristics used to determine whether something is alive.'}
 ], glossary:[
     {term:'Metabolism', def:'all chemical reactions necessary for life; converts food into energy and building blocks.'},
     {term:'Reproduction', def:'passing of genetic material to offspring, for the continuation of a species.'},
@@ -3318,6 +3348,26 @@ const DATA = [
     {q:'A group of the same fish species lives together in one lake, while a separate group of frogs lives in the same lake alongside them. If we study only the fish population, what are we examining?', c:['A Population — a group of the SAME species in the same area','A Community — multiple different species together','An Ecosystem — living and non-living factors together','A Biosphere — global scale of life'], a:0, e:'Studying only the fish (a single species) group is examining a Population, distinct from a Community which includes multiple species.'},
     {q:'A student is confused about why "Population → Community → Ecosystem → Biosphere" comes AFTER "Organisms" in the hierarchy of biological organization. What is the correct reasoning?', c:['Because these levels describe groups of organisms and their environment, building beyond the level of a single organism','Because populations are smaller than organs','Because these levels replace the need for organs and organ systems','Because ecosystems exist inside individual organisms'], a:0, e:'After reaching the level of a complete Organism, the hierarchy continues to build outward to groups of organisms (Population), then multiple species (Community), then living+non-living factors (Ecosystem), then globally (Biosphere).'},
     {q:'A student is asked to identify at which level "interacting parts" first becomes relevant to biological organization, according to the overview. What is the correct answer?', c:['At every level — living organisms, from the smallest cell to the largest organism, are composed of interacting parts throughout the entire hierarchy','Only at the Organ System level','Only at the Ecosystem level','Only at the Chemical level'], a:0, e:'The overview states living organisms, from the smallest cell to the largest organism, are composed of interacting parts — this idea of interacting parts applies at every level of the hierarchy.'}
+,
+    {type:'match', prompt:'Match each level of biological organization to its correct example.', pairs:[
+      {left:'Chemical Level', right:'DNA molecules carrying genetic information'},
+      {left:'Cellular Level', right:'A single red blood cell (erythrocyte)'},
+      {left:'Tissue Level', right:'Muscle tissue made of similar cells working together'},
+      {left:'Organ Level', right:'The lungs, made of several tissue types'},
+      {left:'Organ System Level', right:'The digestive system, made of several organs'}
+    ], e:'The hierarchy runs Chemical → Cellular → Tissue → Organ → Organ System, each level built from the one before it.'},
+    {type:'match', prompt:'Match each level ABOVE the individual organism to its correct definition.', pairs:[
+      {left:'Population', right:'A group of the SAME species living in the same area'},
+      {left:'Community', right:'Different species interacting together in the same area'},
+      {left:'Ecosystem', right:'A community plus abiotic (non-living) factors like soil and climate'},
+      {left:'Biosphere', right:'The entirety of life on Earth, across all ecosystems'}
+    ], e:'These four levels build outward from a single organism to the global scale: Population → Community → Ecosystem → Biosphere.'},
+    {type:'match', prompt:'Match each principle or structure to what it illustrates about biological organization.', pairs:[
+      {left:'"Form Follows Function"', right:'A bird\'s wing shape is directly related to its ability to fly'},
+      {left:'Leaf', right:'An example of a plant ORGAN, made of tissues working together'},
+      {left:'Macrophage', right:'A specialized CELL that seeks out and destroys pathogens'},
+      {left:'Biological system', right:'A group of organs/parts working together to keep an organism alive'}
+    ], e:'These illustrate how structure, level, and function connect throughout the hierarchy of biological organization.'}
   ], glossary:[
     {term:'Form Follows Function', def:'the structure of a biological component is directly related to its function.'},
     {term:'Biological organization hierarchy', def:'Atoms → Cells → Tissues → Organs → Organ Systems → Organisms → Population → Community → Ecosystem → Biosphere.'}
@@ -3407,6 +3457,26 @@ const DATA = [
     {q:'A biology teacher explains that "breaking down = release energy; building up = use energy" as a summary of an entire cycle. What is this entire cycle collectively called?', c:['Metabolism','Catabolism only','Anabolism only','Homeostasis'], a:0, e:'The full cycle of breaking down (releasing energy) and building up (using energy) together is called metabolism.'},
     {q:'A student is asked to distinguish Chemoautotrophs from regular Autotrophs. What is the key difference?', c:['Chemoautotrophs use inorganic compounds (not sunlight) to get energy, while typical (photosynthetic) autotrophs use sunlight','Chemoautotrophs and Autotrophs are the exact same thing','Chemoautotrophs consume other organisms for energy, just like Heterotrophs','Chemoautotrophs cannot produce their own food at all'], a:0, e:'Chemoautotrophs are a special group that use inorganic compounds (not sunlight) to get energy, distinguishing them from photosynthetic autotrophs.'},
     {q:'Enzymes are described as being able to help molecules JOIN as well as come apart. Which of the two processes (catabolism/anabolism) does "joining molecules" correspond to?', c:['Anabolism — building smaller molecules into a bigger one','Catabolism — breaking large molecules into smaller ones','Neither process, since joining is unrelated to catabolism/anabolism','Both processes equally, with no distinction'], a:0, e:'Anabolism is specifically the building of small molecules into a bigger one — the "joining" process enzymes can also facilitate, alongside catabolism\'s breaking-apart role.'}
+,
+    {type:'match', prompt:'Match each energy-related term to its correct description.', pairs:[
+      {left:'Autotroph', right:'Makes its own food, usually via photosynthesis (e.g. a plant)'},
+      {left:'Heterotroph', right:'Consumes other organisms to obtain energy (e.g. a rabbit)'},
+      {left:'Chemoautotroph', right:'Uses inorganic chemical compounds instead of sunlight for energy'},
+      {left:'ATP', right:'Releases a smaller, precisely usable amount of energy for cell work'},
+      {left:'Glucose', right:'A more stable molecule better suited to energy storage/transport'}
+    ], e:'Autotrophs/heterotrophs/chemoautotrophs describe how organisms get energy; ATP and glucose are the two key energy-carrying molecules, suited to different jobs.'},
+    {type:'match', prompt:'Match each term to its correct definition regarding metabolism and enzymes.', pairs:[
+      {left:'Catabolism', right:'Breaking large molecules into smaller ones, releasing energy'},
+      {left:'Anabolism', right:'Building small molecules into a larger one, using energy'},
+      {left:'Enzyme specificity', right:'Each reaction needs its own specific enzyme, like a key fitting one lock'},
+      {left:'Enzyme reusability', right:'An enzyme is not changed by the reaction, so it can be used again'}
+    ], e:'Catabolism releases energy by breaking bonds; anabolism uses energy to build bonds; enzymes are specific to one reaction type and are reusable.'},
+    {type:'match', prompt:'Match each blood-sugar-related term to its correct meaning.', pairs:[
+      {left:'Hyperglycemia', right:'Abnormally HIGH blood sugar level'},
+      {left:'Hypoglycemia', right:'Abnormally LOW blood sugar level, can cause shakiness/weakness'},
+      {left:'ADP', right:'What ATP becomes after releasing energy from a phosphate bond'},
+      {left:'ADP + phosphate → ATP', right:'The process of rebuilding ATP, which requires energy input'}
+    ], e:'Hyper=high, hypo=low blood sugar; ATP↔ADP is the core energy-cycling pair in cellular metabolism.'}
   ], glossary:[
     {term:'Glucose', def:'energy-rich product of photosynthesis, universal food for life, delivers energy via blood.'},
     {term:'ATP (adenosine triphosphate)', def:'releases just the right amount of usable energy for cellular work.'},
@@ -3514,6 +3584,25 @@ const DATA = [
     {q:'A researcher wants to protect coastal marine food webs by focusing conservation efforts on the group that produces the most oxygen in the ocean. Which group should be prioritized based on the material?', c:['Microalgae','Macroalgae','Land plants','Cyanobacteria specifically'], a:0, e:'Microalgae are explicitly identified as the primary producers of oxygen and the foundation of aquatic food webs, producing the most oxygen among all groups discussed.'},
     {q:'A student summarizes photosynthesis as simply "plants making food from sunlight," without mentioning water or carbon dioxide. What is missing from this summary based on the equation?', c:['The full equation requires CO2 and H2O as reactants too, not just light energy — 6CO2 + 6H2O + Light energy → C6H12O6 + 6O2','Nothing is missing; sunlight alone is sufficient for the reaction','Oxygen is a reactant, not water or CO2','Glucose is a reactant, not a product'], a:0, e:'The full photosynthesis equation requires THREE reactants: CO2, H2O, and light energy — not light alone — to produce glucose and oxygen.'},
     {q:'A student is asked which two products result from photosynthesis, and what each is used for. What is the correct answer?', c:['Glucose (food/energy) and Oxygen (released into the air)','Carbon dioxide (waste) and Water (waste)','ATP (energy) and Carbon dioxide (waste)','NADPH (electron carrier) and Water (waste)'], a:0, e:'The products of photosynthesis are Glucose (C6H12O6, used as food/energy) and Oxygen (O2, released into the air).'}
+,
+    {type:'match', prompt:'Match each part of photosynthesis to where it occurs or what it does.', pairs:[
+      {left:'Light-Dependent Reactions', right:'Occur in the thylakoid membranes; split water, produce ATP and NADPH'},
+      {left:'Calvin Cycle', right:'Occurs in the stroma; uses CO2, ATP, and NADPH to build glucose'},
+      {left:'Photolysis', right:'The splitting of water molecules, releasing oxygen'},
+      {left:'Chlorophyll', right:'The pigment in thylakoid membranes that absorbs light and gives plants their green color'}
+    ], e:'Photosynthesis has two linked stages: the Light-Dependent Reactions (thylakoid) feed ATP/NADPH into the Calvin Cycle (stroma).'},
+    {type:'match', prompt:'Match each photosynthesis input/output to its correct role.', pairs:[
+      {left:'Carbon dioxide (CO2)', right:'A reactant combined with RuBP during Carbon Fixation'},
+      {left:'Water (H2O)', right:'A reactant split during Photolysis to release oxygen'},
+      {left:'Glucose (C6H12O6)', right:'The sugar product built during the Calvin Cycle'},
+      {left:'Oxygen (O2)', right:'Released as a byproduct of splitting water'}
+    ], e:'The full equation is 6CO2 + 6H2O + Light energy → C6H12O6 + 6O2 — each molecule has a specific role as reactant or product.'},
+    {type:'match', prompt:'Match each photosynthetic organism group to its key fact.', pairs:[
+      {left:'Microalgae', right:'The primary producers of oxygen on Earth, foundation of aquatic food webs'},
+      {left:'Macroalgae', right:'Serves as habitat and food for marine organisms'},
+      {left:'Cyanobacteria', right:'A type of bacteria that performs photosynthesis'},
+      {left:'Land plants', right:'The primary photosynthetic organisms on land'}
+    ], e:'Photosynthesis isn\'t limited to land plants — microalgae, macroalgae, and cyanobacteria all contribute significantly, especially in aquatic ecosystems.'}
   ], glossary:[
     {term:'Photosynthesis equation', def:'6CO2 + 6H2O + Light energy → C6H12O6 + 6O2.'},
     {term:'Light-dependent reactions', def:'in the thylakoid; light + water → O2 + ATP + NADPH.'},
@@ -3627,6 +3716,25 @@ const DATA = [
     {q:'A researcher notes that respiration of carbohydrates BEGINS in one part of the cell (the cytoplasm) before the products move to a different organelle for the remaining stages. Which organelle do the products move to?', c:['Mitochondria','Chloroplast','Nucleus','Ribosome'], a:0, e:'After glycolysis in the cytoplasm, the resulting molecules move into the mitochondria for the Krebs Cycle and ETC, which use oxygen and release much more energy.'},
     {q:'A student needs to remember that plants can reproduce via budding or pollination, are mostly rooted/immobile, and respire through stomata. Which comparison table (plant vs. animal traits) does this belong to?', c:['The Plant vs. Animal comparison at the end of the Cellular Respiration lesson','The Photosynthesis equation','The Krebs Cycle stages','The Enzyme catabolism/anabolism comparison'], a:0, e:'This set of traits (reproduction method, mobility, gas exchange via stomata) is part of the Plant vs. Animal comparison summarizing key differences between the two kingdoms.'},
     {q:'A wine producer wants yeast to convert sugar into alcohol as efficiently as possible during fermentation, understanding this happens without oxygen. Why does the process still begin the same way as aerobic respiration?', c:['Because fermentation still starts with glycolysis in the cytoplasm (producing 2 ATP + pyruvate), just like aerobic respiration, before diverging due to lack of oxygen','Because fermentation and aerobic respiration are identical from start to finish','Because glycolysis requires oxygen and could not occur in fermentation otherwise','Because yeast never actually performs glycolysis at all'], a:0, e:'Fermentation still starts with glycolysis in the cytoplasm; because oxygen is absent, pyruvate then stays in the cytoplasm instead of entering the mitochondria, diverging into fermentation.'}
+,
+    {type:'match', prompt:'Match each stage of cellular respiration to where it occurs and its key output.', pairs:[
+      {left:'Glycolysis', right:'Cytoplasm; splits glucose into 2 pyruvate, net gain of 2 ATP'},
+      {left:'Krebs Cycle', right:'Mitochondrial matrix; produces CO2 and electron carriers (NADH, FADH2)'},
+      {left:'Electron Transport Chain', right:'Inner mitochondrial membrane; produces about 34 ATP, uses O2 as final acceptor'},
+      {left:'Fermentation', right:'Cytoplasm; occurs without oxygen, produces lactic acid or alcohol + CO2'}
+    ], e:'Respiration runs Glycolysis → Krebs Cycle → ETC when oxygen is available; without oxygen, cells switch to fermentation after glycolysis.'},
+    {type:'match', prompt:'Match each fermentation type to its correct example.', pairs:[
+      {left:'Lactic acid fermentation', right:'Human muscles during intense exercise with limited oxygen'},
+      {left:'Alcohol/yeast fermentation', right:'Bread dough rising as yeast produces CO2 gas'},
+      {left:'Bacterial (lactic acid) fermentation', right:'Milk turning into yogurt or cheese'},
+      {left:'Aerobic respiration', right:'Produces about 36 ATP total, far more than fermentation'}
+    ], e:'Fermentation is far less efficient than aerobic respiration, but lets cells keep producing some ATP when oxygen is scarce.'},
+    {type:'match', prompt:'Match each plant vs. animal trait to the correct organism.', pairs:[
+      {left:'Stores food as starch', right:'Plant'},
+      {left:'Stores food as glycogen', right:'Animal'},
+      {left:'Exchanges gases through stomata', right:'Plant'},
+      {left:'Exchanges gases through lungs, gills, or skin', right:'Animal'}
+    ], e:'Plants and animals both respire, but differ in how they store energy reserves and exchange gases.'}
   ], glossary:[
     {term:'Glycolysis', def:'Glucose → 2 pyruvate, in the cytoplasm; anaerobic; net 2 ATP + 2 NADH.'},
     {term:'Krebs Cycle (Citric Acid Cycle)', def:'Pyruvate → CO2 + electron carriers (NADH, FADH2), in the mitochondrial matrix.'},
@@ -3733,6 +3841,26 @@ const DATA = [
     {q:'A student notices that both plants and animals maintain stable internal conditions despite changing external environments. What is this SHARED principle called?', c:['Homeostasis','Reproduction','Metabolism','Evolution'], a:0, e:'Homeostasis — maintaining stable internal conditions — is explicitly listed as a shared principle between plant and animal systems.'},
     {q:'A vaccine researcher explains that vaccines do NOT cause the actual disease, but still train the immune system effectively. How is this possible?', c:['Vaccines introduce a harmless piece of a pathogen (antigen) that mimics infection without causing illness, still triggering an immune response','Vaccines contain the full, active disease-causing pathogen at reduced strength only','Vaccines work by directly killing any future pathogens on contact','Vaccines bypass the immune system entirely and act like antibiotics'], a:0, e:'Vaccines introduce a harmless piece of a pathogen (an antigen) to mimic infection without illness, which is enough to trigger a primary immune response and build memory cells.'},
     {q:'A student summarizes that plants respond to threats through pattern response/immunity, while animals use a nervous system PLUS white blood cells. What does this comparison illustrate about biological systems across kingdoms?', c:['Different organisms can achieve similar goals (responding to stimuli/threats) using structurally very different systems','Only animals are capable of responding to any stimuli or threats at all','Plants and animals use the identical exact mechanism to respond to threats','Response to stimuli is not actually a shared characteristic across kingdoms'], a:0, e:'This illustrates that plants and animals, despite very different systems, share the underlying principle of responding to stimuli, achieving similar protective goals through different structural means.'}
+,
+    {type:'match', prompt:'Match each plant response term to its correct description.', pairs:[
+      {left:'Phototropism', right:'Bending toward light'},
+      {left:'Gravitropism', right:'Roots growing downward in response to gravity'},
+      {left:'Transpiration', right:'Water evaporating from leaves, creating "transpirational pull"'},
+      {left:'Xylem', right:'Transports water/minerals one-way, from roots to leaves'},
+      {left:'Phloem', right:'Transports sugars two-way, to all parts of the plant'}
+    ], e:'Plants respond to stimuli (phototropism, gravitropism) and transport materials via specialized tissues (xylem for water, phloem for sugar).'},
+    {type:'match', prompt:'Match each body-response term to its correct description.', pairs:[
+      {left:'Nervous system', right:'Provides an IMMEDIATE response, e.g. shivering when cold'},
+      {left:'Endocrine system', right:'Provides LONG-TERM control via hormones, e.g. thyroid regulating metabolism'},
+      {left:'Lymphatic system', right:'Filters lymph and pathogens via lymph nodes and the spleen'},
+      {left:'Herd/Community Immunity', right:'High vaccination rates protect even those who cannot be vaccinated'}
+    ], e:'The body\'s response systems work on different timescales and through different structures, from immediate reflexes to community-level protection.'},
+    {type:'match', prompt:'Match each shared principle to the plant AND animal example that illustrates it.', pairs:[
+      {left:'Material Transport', right:'Plant xylem/phloem and animal circulatory/respiratory systems'},
+      {left:'Response to threats', right:'Plant pattern response (e.g. makahiya) and animal white blood cells'},
+      {left:'Homeostasis', right:'Maintaining stable internal conditions despite a changing environment'},
+      {left:'Cell wall vs. no cell wall', right:'Explains why plants are sessile while animals are typically motile'}
+    ], e:'Plants and animals achieve similar biological goals — transport, defense, stability — through very different structures.'}
   ], glossary:[
     {term:'Xylem', def:'transports water/minerals unidirectionally, roots to leaves.'},
     {term:'Phloem', def:'transports sugars bidirectionally to all parts of the plant.'},
@@ -3822,6 +3950,26 @@ const DATA = [
     {q:'A conservation group focuses specifically on protecting delicate calcium carbonate-based ecosystems that serve as habitats for fish and marine organisms in the Philippines. Which ecosystem type are they protecting?', c:['Coral Reefs','Grasslands','Estuaries','Rivers'], a:0, e:'Coral Reefs are made of calcium carbonate deposits, very delicate ecosystems that are natural habitats of fish/marine organisms.'},
     {q:'A researcher wants to study an ecosystem type that acts as a natural defense mechanism against typhoons for nearby communities. Which ecosystem type best fits this description?', c:['Forest','Grassland','Coral Reef only','Estuary only'], a:0, e:'Forests are specifically noted as acting as a defense against typhoons, alongside their biodiversity and high humidity/rainfall.'},
     {q:'A student is asked to distinguish a Lake from a River based on the material\'s definitions. What is the key difference?', c:['A Lake is a large body of water surrounded by land, while a River flows toward the sea','A Lake flows toward the sea, while a River is surrounded by land','Both terms are defined identically, with no distinction','A Lake is always smaller than a River'], a:0, e:'Lakes are defined as large bodies of water surrounded by land, while Rivers are defined as bodies of water that flow toward the sea.'}
+,
+    {type:'match', prompt:'Match each Philippine ecosystem type to a location or species example.', pairs:[
+      {left:'Forest', right:'Sierra Madre, home to the Philippine Eagle'},
+      {left:'Grassland', right:'Mt. Pulag and the Lantawan Grassland'},
+      {left:'Freshwater (Lake)', right:'Taal Lake, home to Sardinella tawilis (an endemic sardine)'},
+      {left:'Coral Reef', right:'Tubbataha Reef, a UNESCO World Heritage Site in the Sulu Sea'},
+      {left:'Estuary', right:'Where freshwater rivers meet the salty ocean, home to mangroves'}
+    ], e:'The Philippines hosts a wide range of ecosystem types, each with distinctive locations and signature species.'},
+    {type:'match', prompt:'Match each freshwater body type to its correct definition.', pairs:[
+      {left:'Lake', right:'A large body of water surrounded by land'},
+      {left:'River', right:'A body of water that flows toward the sea'},
+      {left:'Swamp', right:'Permanently saturated low-lying land, e.g. Candaba Swamp'},
+      {left:'Estuary', right:'Where freshwater meets salty ocean water'}
+    ], e:'Each freshwater/transitional body type has a distinct definition based on how the water is contained or how it flows.'},
+    {type:'match', prompt:'Match each ecosystem-related fact to the correct ecosystem category.', pairs:[
+      {left:'Acts as a natural defense against typhoons', right:'Forest'},
+      {left:'Supports species adapted to moderate rainfall, not enough for a forest', right:'Grassland'},
+      {left:'The Philippines holds about 5% of the world\'s total of this', right:'Coral Reef'},
+      {left:'The Cagayan River is the longest/largest example of this', right:'River'}
+    ], e:'These facts connect back to specific Philippine ecosystem categories discussed in the lesson.'}
   ], glossary:[
     {term:'Biotic / Abiotic', def:'living factors / nonliving factors in an ecosystem.'},
     {term:'Estuary', def:'area where freshwater rivers meet the salty ocean, creating brackish water (mangroves).'},
@@ -3911,6 +4059,25 @@ const DATA = [
     {q:'A greenhouse gas traps heat from the sun similarly to how a blanket traps body heat. What effect does this have on global temperatures over time?', c:['It raises global temperatures — the core mechanism behind climate change','It has no measurable effect on global temperatures','It only affects temperatures in industrial areas','It cools global temperatures by reflecting sunlight away'], a:0, e:'Greenhouse gases act like a blanket trapping the sun\'s heat, which raises global temperatures — the fundamental mechanism of climate change.'},
     {q:'A marine sanctuary reports a significant decline in coral cover after a period of unusually warm ocean temperatures. What direct climate-related process likely explains this?', c:['Coral bleaching, caused by oceans absorbing 90%+ of excess heat','Photosynthesis, unrelated to ocean temperature','Fermentation, occurring in coral tissue','Transpiration, a plant-specific process'], a:0, e:'Coral bleaching is directly linked to oceans absorbing excess heat (90%+), making it the most likely explanation for coral decline after warm temperature events.'},
     {q:'A student distinguishes between "Adaptation" and "Mitigation" using the phrase "coping with vs. reducing the cause of." Which term matches "reducing the cause"?', c:['Mitigation — actions to REDUCE man-made climate change','Adaptation — actions to COPE with climate change effects','Both terms equally describe "reducing the cause"','Neither term relates to reducing causes'], a:0, e:'Mitigation is specifically about reducing man-made climate change (the cause), while Adaptation is about coping with its effects.'}
+,
+    {type:'match', prompt:'Match each climate strategy example to whether it is Adaptation or Mitigation.', pairs:[
+      {left:'Climate-smart flood control systems', right:'Adaptation — coping with impacts already occurring'},
+      {left:'Climate-resilient rice varieties', right:'Adaptation — building resilience to cope with effects'},
+      {left:'Reforestation projects', right:'Mitigation — increasing greenhouse gas sequestration'},
+      {left:'Installing solar panels / bike lanes', right:'Mitigation — reducing greenhouse gas emissions'}
+    ], e:'Adaptation copes with climate change already happening; Mitigation reduces the emissions causing it in the first place.'},
+    {type:'match', prompt:'Match each climate change term to its correct description.', pairs:[
+      {left:'Greenhouse gases', right:'Trap the sun\'s heat like a blanket, raising global temperatures'},
+      {left:'Coral bleaching', right:'Caused by oceans absorbing 90%+ of the planet\'s excess heat'},
+      {left:'Ocean acidification', right:'Rising CO2 levels making oceans more acidic, harming marine life'},
+      {left:'Philippine National Climate Change Action Plan', right:'The country\'s strategic framework, aligned with RA 9729 (2011-2028)'}
+    ], e:'These terms describe both the mechanisms behind climate change and the Philippines\' policy response to it.'},
+    {type:'match', prompt:'Match each source of greenhouse gas emissions to its category.', pairs:[
+      {left:'Factories/industrial processes', right:'A major source of GHG emissions'},
+      {left:'Transportation', right:'A major source of GHG emissions'},
+      {left:'Agriculture and land use', right:'A major source of GHG emissions'},
+      {left:'Human activities (mainly fossil fuels)', right:'The MAIN driver of recent climate change'}
+    ], e:'Industry, transportation, and agriculture/land are the three major listed emission sources, all rooted in human activity as the main climate driver.'}
   ], glossary:[
     {term:'Adaptation', def:'actions helping people/species/ecosystems cope with climate change effects.'},
     {term:'Mitigation', def:'actions that reduce man-made climate change (reduce emissions or increase sequestration).'},
@@ -4031,6 +4198,25 @@ const DATA = [
     {q:'A student compares diffusion, facilitated diffusion, active transport, and bulk transport based on whether they require ATP. Which of these do NOT require ATP?', c:['Diffusion and Facilitated Diffusion','Active Transport and Bulk Transport','All four require ATP','None of the four require ATP'], a:0, e:'Diffusion and facilitated diffusion are both passive transport methods requiring NO energy, unlike active transport and bulk transport, which both require ATP.'},
     {q:'A researcher wants to know the ULTIMATE GOAL that passive transport processes (like simple diffusion) are working toward. What is this goal?', c:['Equilibrium — equal parts in and out of the cell','Maximum concentration difference between inside and outside','Continuous, one-directional movement forever','Complete depletion of the substance from one side'], a:0, e:'The goal of passive transport is equilibrium — equal parts in and out of the cell, achieved once concentrations balance out.'},
     {q:'A student notes that potassium transport in the described system does NOT require the same level of active energy investment as sodium transport. What does this illustrate?', c:['Not all ions cross the membrane the same way — active transport requirements can differ between different ions','All ions always require identical amounts of active transport energy','Potassium never crosses cell membranes under any circumstances','Sodium transport never actually requires any ATP at all'], a:0, e:'The material explicitly notes that potassium transport does not require the same active energy investment as sodium, illustrating that not all ions cross the membrane the same way.'}
+,
+    {type:'match', prompt:'Match each membrane transport type to its correct description.', pairs:[
+      {left:'Diffusion (simple)', right:'Passive; high to low concentration; no protein, no energy needed'},
+      {left:'Facilitated diffusion', right:'Passive; high to low concentration; needs a transport protein, no ATP'},
+      {left:'Active transport', right:'Needs ATP; moves substances AGAINST their concentration gradient'},
+      {left:'Bulk transport (endo/exocytosis)', right:'Needs ATP; moves large materials via vesicles'}
+    ], e:'The four transport types differ mainly in whether they need a protein and whether they need ATP.'},
+    {type:'match', prompt:'Match each tonicity term to what happens to a cell placed in that solution.', pairs:[
+      {left:'Hypertonic solution', right:'More solute outside; water leaves the cell, causing it to shrink'},
+      {left:'Hypotonic solution', right:'More solute inside; water enters the cell, risking lysis (or turgor in plants)'},
+      {left:'Isotonic solution', right:'Balanced solute inside and outside; no net water movement'},
+      {left:'Plasmolysis', right:'A plant cell\'s membrane pulling away from its wall in a hypertonic solution'}
+    ], e:'Water in osmosis always follows the higher solute concentration — this drives every tonicity effect on a cell.'},
+    {type:'match', prompt:'Match each type of endocytosis to its correct example.', pairs:[
+      {left:'Phagocytosis', right:'A white blood cell engulfing a whole bacterium ("cell eating")'},
+      {left:'Pinocytosis', right:'A cell taking in small amounts of dissolved fluid ("cell drinking")'},
+      {left:'Receptor-mediated endocytosis', right:'A cell using a specific surface receptor to capture cholesterol'},
+      {left:'Exocytosis', right:'A vesicle fusing with the membrane to release its contents OUTSIDE the cell'}
+    ], e:'Endocytosis (in) has three forms based on what\'s being taken in and how; exocytosis (out) releases material via the same vesicle-based mechanism in reverse.'}
   ], glossary:[
     {term:'Phospholipid bilayer', def:'two layers of phospholipids (hydrophilic heads out, hydrophobic tails in) forming the cell membrane.'},
     {term:'Passive transport', def:'movement of substances requiring no energy (diffusion, facilitated diffusion, osmosis).'},
@@ -4147,6 +4333,24 @@ const DATA = [
     {q:'A student mixes up the roles of DNA Replication and Transcription. What is the KEY distinguishing feature between the two processes?', c:['Replication copies DNA into more DNA, while Transcription copies DNA into mRNA (using Uracil instead of Thymine)','Both processes produce identical DNA copies with no distinction','Replication occurs at the ribosome, while Transcription occurs in the nucleus','Transcription copies DNA into more DNA, while Replication produces mRNA'], a:0, e:'DNA Replication copies DNA into a new DNA strand, while Transcription copies DNA into an mRNA strand (with Uracil replacing Thymine) — a key distinction.'},
     {q:'A student is asked why a cell needs BOTH Helicase and Polymerase during DNA replication, rather than just one enzyme. What is the distinct role of each?', c:['Helicase unwinds the DNA double helix, while Polymerase binds and adds new nucleotides to build the new strand — two distinct, necessary roles','Both enzymes perform the exact same function redundantly','Helicase builds new nucleotides, while Polymerase unwinds the helix','Neither enzyme is actually required for DNA replication'], a:0, e:'Helicase and Polymerase perform distinct roles: Helicase unwinds the double helix, and Polymerase then binds and adds new nucleotides to build the new strand.'},
     {q:'A student explains that translation determines the ORDER in which amino acids are linked together into a protein. What directly determines this order?', c:['The tRNA sequence, which itself is determined by the mRNA template','The DNA sequence directly, bypassing mRNA and tRNA entirely','Random assembly with no template guiding the order','The ribosome\'s physical shape alone, unrelated to any RNA sequence'], a:0, e:'The mRNA template determines the sequence of tRNA, and the tRNA sequence in turn determines the sequence of amino acids linked into a protein.'}
+,
+    {type:'match', prompt:'Match each step of protein synthesis to where it happens and what it produces.', pairs:[
+      {left:'DNA Replication', right:'Nucleus; Helicase unwinds, Polymerase builds a new identical DNA strand'},
+      {left:'Transcription', right:'Nucleus; DNA is copied into a strand of mRNA (using Uracil, not Thymine)'},
+      {left:'Translation', right:'Ribosome; mRNA + tRNA build a chain of amino acids into a protein'}
+    ], e:'The Central Dogma flows DNA → mRNA → Ribosome → Protein, matching Replication → Transcription → Translation.'},
+    {type:'match', prompt:'Match each molecule/enzyme to its correct role in protein synthesis.', pairs:[
+      {left:'Helicase', right:'Unwinds the DNA double helix'},
+      {left:'Polymerase', right:'Binds and adds new nucleotides to build a new DNA strand'},
+      {left:'mRNA', right:'Carries genetic instructions out of the nucleus to the ribosome'},
+      {left:'tRNA', right:'Matches codons on mRNA to bring in the correct amino acid'}
+    ], e:'Each of these molecules plays a distinct, necessary role in copying and reading genetic information.'},
+    {type:'match', prompt:'Match each base-pairing rule to the correct context.', pairs:[
+      {left:'Adenine pairs with Thymine', right:'DNA Replication (DNA-to-DNA)'},
+      {left:'Adenine pairs with Uracil', right:'Transcription (DNA-to-mRNA)'},
+      {left:'Guanine pairs with Cytosine', right:'Both DNA Replication and Transcription'},
+      {left:'Codon pairs with Anti-codon', right:'Translation (mRNA-to-tRNA) at the ribosome'}
+    ], e:'Uracil replaces Thymine specifically in RNA, which is why Transcription\'s A-pairing rule differs from DNA Replication\'s.'}
   ], glossary:[
     {term:'Central Dogma', def:'DNA → mRNA → Ribosomes → Proteins.'},
     {term:'Helicase', def:'enzyme that unwinds the DNA double helix during replication.'},
@@ -4292,6 +4496,26 @@ const DATA = [
     {q:'Oxygen from the air passes into the bloodstream at thin-walled sacs surrounded by a network of tiny blood vessels in the lungs. What are these sacs called?', c:['Alveoli','Bronchi','Trachea','Nephrons'], a:0, e:'Alveoli are the thin-walled sacs in the lungs, surrounded by a network of capillaries, where oxygen passes into the bloodstream.'},
     {q:'Food arrives in the duodenum, where it receives pancreatic enzymes (amylase, lipase, proteases) plus bile from the liver/gallbladder. Which specific enzyme targets FATS?', c:['Lipase','Amylase','Proteases','Peptidases'], a:0, e:'Lipase specifically breaks fats into fatty acids/glycerol, distinct from amylase (carbs) and proteases (proteins).'},
     {q:'A section of the small intestine is lined with microvilli and serves as the MAIN site of nutrient absorption, breaking disaccharides into monosaccharides. Which section is this?', c:['Jejunum','Duodenum','Ileum','Esophagus'], a:0, e:'The Jejunum is the main site of nutrient absorption, lined with microvilli, where disaccharides are broken into monosaccharides.'}
+,
+    {type:'match', prompt:'Match each root/xylem structure to its correct description.', pairs:[
+      {left:'Taproot', right:'One thick, deep primary root with smaller lateral roots (e.g. carrot)'},
+      {left:'Fibrous roots', right:'A dense network of thin roots spreading from the stem base (e.g. grass)'},
+      {left:'Tracheids', right:'Xylem cells connected in a series with pitted walls'},
+      {left:'Vessel elements', right:'Long, wide, hollow xylem tubes connecting continuously root to leaf'}
+    ], e:'Root systems and xylem cell types both come in more than one structural form, each suited to a different function.'},
+    {type:'match', prompt:'Match each phloem cell type to its correct description.', pairs:[
+      {left:'Sieve tube', right:'Lacks a nucleus and has very little cytoplasm'},
+      {left:'Companion cell', right:'Has abundant cytoplasm and a nucleus; thin, flexible cell wall'},
+      {left:'Fiber cell (bast fiber)', right:'Provides structural support to phloem tissue'},
+      {left:'Intermediary cell', right:'A specialized cell involved in loading sugars into sieve tubes'}
+    ], e:'Phloem tissue overall is living, made of several specialized cell types each with a distinct structural or functional role.'},
+    {type:'match', prompt:'Match each human body system component to its correct function.', pairs:[
+      {left:'Arteries', right:'Carry blood AWAY from the heart'},
+      {left:'Veins', right:'Carry blood TOWARD the heart'},
+      {left:'Alveoli', right:'Thin-walled lung sacs where oxygen enters the bloodstream'},
+      {left:'Lipase', right:'A pancreatic enzyme that breaks down fats'},
+      {left:'Jejunum', right:'Main site of nutrient absorption in the small intestine'}
+    ], e:'The circulatory, respiratory, and digestive systems each rely on specialized structures and enzymes suited to their specific job.'}
   ], glossary:[
     {term:'Taproot / Fibrous roots', def:'a single deep primary root with laterals / a spreading network of thin roots for anchoring.'},
     {term:'Root Cap', def:'protective structure at the root tip; helps penetrate and lubricate its path through soil.'},
@@ -7463,6 +7687,16 @@ function qKey(q){
   return q.q || (q.type==='dual' ? ('DUAL::' + q.s1 + '::' + q.s2) : JSON.stringify(q));
 }
 
+// Generalized correctness check across question types — mc/dual use a single selected index,
+// match type uses an array of per-row selected indices that must all line up with q.answer.
+function isQuizAnswerCorrect(q, selected){
+  if(q.type === 'match'){
+    if(!Array.isArray(selected)) return false;
+    return q.answer.every((correctIdx, i) => selected[i] === correctIdx);
+  }
+  return selected === q.answer;
+}
+
 function recordAnswer(subjectId, lessonId, questionKey, wasCorrect){
   const stats = getStats(subjectId, lessonId);
   if(!stats.questions[questionKey]) stats.questions[questionKey] = { correct:0, wrong:0 };
@@ -7590,6 +7824,13 @@ function buildQuizQuestion(q){
   const statsLessonId = q._statsLessonId || null; // per-question override, used by Weak Spots drilling
   if(q.type === 'dual'){
     return { type:'dual', s1:q.s1, s2:q.s2, choices: DUAL_CHOICES.slice(), answer: q.a, explanation: q.e || null, source: q._src || null, statKey, statsLessonId, difficulty: q.difficulty || null };
+  }
+  if(q.type === 'match'){
+    const rightIdxs = shuffle(q.pairs.map((_,i)=>i));
+    const right = rightIdxs.map(i=>q.pairs[i].right);
+    const left = q.pairs.map(p=>p.left);
+    const answer = q.pairs.map((_,i)=>rightIdxs.indexOf(i));
+    return { type:'match', prompt: q.prompt || 'Match each item on the left with its correct match on the right.', left, right, answer, explanation: q.e || null, source: q._src || null, statKey, statsLessonId, difficulty: q.difficulty || null };
   }
   const idxs = shuffle(q.c.map((_,i)=>i));
   const choices = idxs.map(i=>q.c[i]);
@@ -8884,6 +9125,11 @@ function renderQuiz(lesson, main, opts){
     dualWrap.appendChild(s1div);
     dualWrap.appendChild(s2div);
     box.appendChild(dualWrap);
+  } else if(q.type === 'match'){
+    const qt = document.createElement('div');
+    qt.className = 'question-text';
+    qt.textContent = q.prompt;
+    box.appendChild(qt);
   } else {
     const qt = document.createElement('div');
     qt.className = 'question-text';
@@ -8891,26 +9137,88 @@ function renderQuiz(lesson, main, opts){
     box.appendChild(qt);
   }
 
-  q.choices.forEach((choice, i)=>{
-    const cbtn = document.createElement('button');
-    cbtn.className = 'choice';
-    cbtn.textContent = choice;
-    if(quiz.locked){
-      cbtn.disabled = true;
-      if(i===q.answer) cbtn.classList.add('correct');
-      else if(i===quiz.selected) cbtn.classList.add('wrong');
-    } else if(quiz.confirming){
-      cbtn.disabled = true;
-      if(i===quiz.selected) cbtn.classList.add('selected-pending');
+  if(q.type === 'match'){
+    if(!Array.isArray(quiz.selected) || quiz.selected.length !== q.left.length){
+      quiz.selected = new Array(q.left.length).fill(null);
     }
-    cbtn.onclick = ()=>{
-      if(quiz.locked || quiz.confirming) return;
-      quiz.selected = i;
-      quiz.confirming = true;
-      renderMain();
-    };
-    box.appendChild(cbtn);
-  });
+    const matchWrap = document.createElement('div');
+    matchWrap.className = 'match-wrap';
+    q.left.forEach((leftText, i)=>{
+      const row = document.createElement('div');
+      row.className = 'match-row';
+
+      const leftDiv = document.createElement('div');
+      leftDiv.className = 'match-left';
+      leftDiv.textContent = leftText;
+      row.appendChild(leftDiv);
+
+      const select = document.createElement('select');
+      select.className = 'match-select';
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = '— choose a match —';
+      select.appendChild(placeholder);
+      q.right.forEach((rightText, ri)=>{
+        const opt = document.createElement('option');
+        opt.value = String(ri);
+        opt.textContent = String.fromCharCode(65+ri) + '. ' + rightText;
+        select.appendChild(opt);
+      });
+      select.value = (quiz.selected[i]===null || quiz.selected[i]===undefined) ? '' : String(quiz.selected[i]);
+      select.disabled = quiz.locked || quiz.confirming;
+      select.onchange = ()=>{
+        quiz.selected[i] = select.value === '' ? null : parseInt(select.value, 10);
+        renderMain();
+      };
+      row.appendChild(select);
+
+      if(quiz.locked){
+        const correctIdx = q.answer[i];
+        const gotCorrect = quiz.selected[i] === correctIdx;
+        const mark = document.createElement('span');
+        mark.className = 'match-mark ' + (gotCorrect ? 'match-mark-correct' : 'match-mark-wrong');
+        mark.textContent = gotCorrect ? '✓ Correct' : ('✗ Correct: ' + q.right[correctIdx]);
+        row.appendChild(mark);
+      }
+      matchWrap.appendChild(row);
+    });
+    box.appendChild(matchWrap);
+
+    if(!quiz.confirming && !quiz.locked){
+      const allPicked = quiz.selected.every(v => v !== null);
+      const submitBtn = document.createElement('button');
+      submitBtn.className = 'match-submit-btn';
+      submitBtn.textContent = 'Check My Matches';
+      submitBtn.disabled = !allPicked;
+      submitBtn.onclick = ()=>{
+        if(!allPicked) return;
+        quiz.confirming = true;
+        renderMain();
+      };
+      box.appendChild(submitBtn);
+    }
+  } else {
+    q.choices.forEach((choice, i)=>{
+      const cbtn = document.createElement('button');
+      cbtn.className = 'choice';
+      cbtn.textContent = choice;
+      if(quiz.locked){
+        cbtn.disabled = true;
+        if(i===q.answer) cbtn.classList.add('correct');
+        else if(i===quiz.selected) cbtn.classList.add('wrong');
+      } else if(quiz.confirming){
+        cbtn.disabled = true;
+        if(i===quiz.selected) cbtn.classList.add('selected-pending');
+      }
+      cbtn.onclick = ()=>{
+        if(quiz.locked || quiz.confirming) return;
+        quiz.selected = i;
+        quiz.confirming = true;
+        renderMain();
+      };
+      box.appendChild(cbtn);
+    });
+  }
 
   if(quiz.confirming && !quiz.locked){
     const confirmBox = document.createElement('div');
@@ -8922,7 +9230,7 @@ function renderQuiz(lesson, main, opts){
     yesBtn.onclick = ()=>{
       quiz.locked = true;
       quiz.confirming = false;
-      const wasCorrect = quiz.selected===q.answer;
+      const wasCorrect = isQuizAnswerCorrect(q, quiz.selected);
       if(wasCorrect) quiz.score++;
       recordAnswer(quiz.statsSubjectId, q.statsLessonId || quiz.statsLessonId, q.statKey, wasCorrect);
       if(q.statsLessonId) renderSidebar(); // weak-spot drills can touch several lessons' badges mid-session
@@ -8942,7 +9250,7 @@ function renderQuiz(lesson, main, opts){
   }
 
   if(quiz.locked){
-    const wasCorrect = quiz.selected === q.answer;
+    const wasCorrect = isQuizAnswerCorrect(q, quiz.selected);
     const expBox = document.createElement('div');
     expBox.className = 'explain-box ' + (wasCorrect ? 'explain-correct' : 'explain-wrong');
     const headerLine = wasCorrect
@@ -8953,6 +9261,8 @@ function renderQuiz(lesson, main, opts){
       bodyLine = q.explanation;
     } else if(wasCorrect){
       bodyLine = 'Nice work — that\'s the right answer.';
+    } else if(q.type === 'match'){
+      bodyLine = 'Check the marks above for the correct matches. Review this lesson\'s Study tab for the full context.';
     } else {
       bodyLine = `The correct answer is "${q.choices[q.answer]}." Review this lesson's Study tab for the full context.`;
     }
@@ -8992,11 +9302,10 @@ function handleQuizKeydown(e){
   const quiz = state.quiz;
   if(quiz.current >= quiz.questions.length) return; // score screen — no shortcuts there
   const choiceButtons = Array.from(document.querySelectorAll('.quiz-box .choice'));
-  if(!choiceButtons.length) return;
 
   if(e.key >= '1' && e.key <= '9'){
     const idx = parseInt(e.key, 10) - 1;
-    if(idx < choiceButtons.length && !quiz.locked && !quiz.confirming){
+    if(choiceButtons.length && idx < choiceButtons.length && !quiz.locked && !quiz.confirming){
       e.preventDefault();
       choiceButtons[idx].click();
     }
