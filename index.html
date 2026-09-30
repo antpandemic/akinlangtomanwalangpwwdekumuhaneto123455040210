@@ -447,6 +447,29 @@
     .hl-float-btn{max-width:90vw;}
   }
 
+  /* ============================= TIMED EXAM & DEEP DIVE ============================= */
+  .timed-exam-mode-btn{background:#7a2ea8;color:#fff;border-color:#7a2ea8;}
+  .timed-exam-mode-btn.active{background:#5c2180;border-color:#5c2180;}
+  .deepdive-mode-btn{background:#0f6e6e;color:#fff;border-color:#0f6e6e;}
+  .deepdive-mode-btn.active{background:#0a4f4f;border-color:#0a4f4f;}
+  .exam-timer{
+    display:inline-block;margin-left:8px;padding:2px 10px;border-radius:14px;
+    background:#7a2ea8;color:#fff;font-weight:bold;font-variant-numeric:tabular-nums;
+  }
+  .exam-timer-critical{background:#c0392b !important;color:#fff !important;animation:examPulse 1s infinite;}
+  @keyframes examPulse{0%{opacity:1;}50%{opacity:0.6;}100%{opacity:1;}}
+  .timed-setup{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0;padding:10px 12px;
+    background:var(--choice-bg);border:1px solid var(--border);border-radius:10px;
+  }
+  .timed-setup label{font-weight:bold;}
+  .timed-setup input[type="number"]{
+    width:70px;padding:6px 8px;border-radius:6px;border:1px solid var(--border);
+    background:var(--card);color:var(--ink);font-size:1rem;
+  }
+  .deepdive-card{border-left:4px solid #0f6e6e;}
+  .deepdive-intro-note{background:rgba(15,110,110,0.08);}
+
   /* ============================= CALCULATOR ============================= */
   .calc-fab{
     position:fixed;bottom:22px;right:22px;width:54px;height:54px;border-radius:50%;
@@ -1053,6 +1076,12 @@ const DATA = [
       'A pattern is the underlying rule that generates each term from the ones before it (or from its position n).',
       'Sequences may be finite (a fixed number of terms) or infinite (continuing without end).'
     ]},
+    {h:'Patterns in Everyday Life, Art, and Nature', b:[
+      'A pattern is a repeated arrangement seen in shapes, colors, movements, numbers, or events; patterns can be finite (they come to an end) or infinite (they continue without limit).',
+      'Patterns show up in Filipino culture too — the geometric, symmetrical "okir" designs woven into the Maranao "Malong" from Mindanao reflect the same mathematical ideas of order and repetition found in numerical sequences.',
+      'To find the rule behind a numeric pattern, first check whether consecutive terms differ by a CONSTANT AMOUNT (this points to an arithmetic sequence); if not, check whether the QUOTIENT between a term and the one before it is always the same constant (this points to a geometric sequence).',
+      'Not every sequence is arithmetic or geometric — a sequence can also be defined directly by a formula in n (e.g., aₙ = n²) or piece-by-piece under different conditions (e.g., a different rule for odd n than for even n).'
+    ]},
     {h:'Arithmetic Sequence', b:[
       'An arithmetic sequence is a sequence where each term is obtained by adding a constant value, called the common difference (d), to the previous term.',
       'General/nth term formula: aₙ = a₁ + (n − 1)d, where a₁ = first term, n = term number, d = common difference.',
@@ -1076,10 +1105,33 @@ const DATA = [
       'Infinite geometric series (only when |r| < 1): S = a₁ / (1 − r).',
       'Example: Sum of the first 5 terms of 3, 6, 12, 24, 48: S₅ = 3 × (1 − 2⁵)/(1 − 2) = 3 × (1−32)/(−1) = 3 × 31 = 93.'
     ]},
+    {h:'Sequences vs. Series, and Partial Sums', b:[
+      'A sequence is an ordered LIST of numbers (terms separated by commas, e.g., 2, 4, 6, 8); a series is the SUM of the terms of a sequence (terms joined by + or − signs, e.g., 2 + 4 + 6 + 8).',
+      'Given the infinite sequence a₁, a₂, a₃, ..., the sum of ALL its terms is called an infinite series; the sum of just the FIRST n terms is called a finite series, denoted Sₙ = a₁ + a₂ + a₃ + ... + aₙ.',
+      'Partial sums build up one term at a time: S₁ = a₁ (the first partial sum), S₂ = a₁ + a₂ (the second partial sum), S₃ = a₁ + a₂ + a₃ (the third partial sum), and so on — Sₙ is called the nth partial sum of the sequence.',
+      'A quick check: "2, 4, 6, 8" (commas) is a sequence; "2 + 4 + 6 + 8" (plus signs) is its associated series, equal to 20.'
+    ]},
+    {h:'Sigma (Summation) Notation', b:[
+      'Sigma notation is a compact way to write a series using the Greek capital letter Σ (sigma, for "sum") instead of writing out every term.',
+      'The general form is Σ (from k=m to n) of aₖ, read as "the summation of aₖ from k = m to n," where k is the index of summation, m is the lower limit (starting value), n is the upper limit (ending value), and aₖ is the general term/summand being added.',
+      'To EXPAND a sigma expression into a series, substitute each integer from the lower limit to the upper limit into the general term and add the results: Σ (k=0 to 3) of 2ᵏ expands to 2⁰+2¹+2²+2³ = 1+2+4+8 = 15.',
+      'To COMPACT a series into sigma notation, identify the general term (as a formula in terms of the index) and the starting/ending values of that index: the series 5+10+15+20 (each term is 5 times its position) becomes Σ (k=1 to 4) of 5k.',
+      'Sigma notation isn\'t just for simple sequences — it can represent arithmetic series (e.g., a savings plan with a fixed monthly increase) or geometric series (e.g., a population or investment growing by a fixed percentage) just as compactly.'
+    ]},
     {h:'Other Notable Patterns', b:[
-      'Fibonacci Sequence: each term is the sum of the two preceding terms (1, 1, 2, 3, 5, 8, 13, 21, ...) — appears often in nature and biology.',
+      'Fibonacci Sequence: each term is the sum of the two preceding terms (1, 1, 2, 3, 5, 8, 13, 21, ...) — appears often in nature (tree branching, snail shells, sunflower seeds, pinecones, leaf arrangement) and in art, architecture, computer science, and financial market analysis.',
       'Harmonic Sequence: a sequence whose reciprocals form an arithmetic sequence (e.g., 1, 1/2, 1/3, 1/4, ...).',
       'Triangular Numbers: 1, 3, 6, 10, 15, ... formed by adding consecutive counting numbers (a pattern, not strictly arithmetic or geometric).'
+    ]},
+    {h:'Recursively Defined Sequences', b:[
+      'Some sequences don\'t have a simple direct formula for aₙ in terms of n alone — instead, the nth term depends on one or more of the terms that came before it. A sequence defined this way is called recursive.',
+      'The Fibonacci sequence is the classic example: it\'s defined recursively by F₁ = 1, F₂ = 1, and Fₙ = Fₙ₋₁ + Fₙ₋₂ for n ≥ 3 — each term is built directly from the two terms before it, rather than computed straight from n.',
+      'The Fibonacci sequence is named after Leonardo Fibonacci, a 13th-century Italian mathematician (1170–1240).'
+    ]},
+    {h:'Binet\'s Formula: Finding Any Fibonacci Number Directly', b:[
+      'Since a recursive formula requires computing every earlier term first, mathematicians looked for a direct (explicit) formula instead — one that gives any Fibonacci number immediately, without needing all the preceding ones.',
+      'That formula is Binet\'s Formula: aₙ = [((1+√5)/2)ⁿ − ((1−√5)/2)ⁿ] / √5. It was published by Jacques Philippe Marie Binet in 1843, though it was actually known earlier to mathematicians like Abraham de Moivre.',
+      'Example: using Binet\'s Formula, the 20th Fibonacci number is a₂₀ = 6,765, and the 12th Fibonacci number is a₁₂ = 144 — both can be found directly, without first computing all the terms in between.'
     ]},
     {h:'Connecting Patterns to Business Math', b:[
       'Compound growth models (like the inflation formula Future Price = Present Price × (1 + rate)ᵗ studied earlier) are actually geometric sequences, where the common ratio r = (1 + rate) and t is the term number.',
@@ -1137,6 +1189,39 @@ const DATA = [
     {q:'A delivery van is now worth ₱490,000 after depreciating at a fixed 12.5% per year (r=0.875) for exactly 2 years. Using aₙ = a₁ × rⁿ⁻¹, roughly what was its ORIGINAL value?', c:['≈₱640,000 (₱490,000 ÷ 0.875²)','≈₱560,000','≈₱612,500','≈₱700,000'], a:0, e:'Value after 2 years = Original × r² → Original = ₱490,000 ÷ (0.875)² = ₱490,000 ÷ 0.765625 ≈ ₱640,000.'},
     {q:'A theater sells 150 tickets on opening night, and ticket sales increase by a fixed 25 tickets each following night. What is the TOTAL number of tickets sold over a 6-night run?', c:['1,275 tickets (S₆ = 6/2 × (150+275))','1,650 tickets','900 tickets','1,050 tickets'], a:0, e:'a₆=150+(5)(25)=275. S₆=6/2×(150+275)=3×425=1,275 total tickets.'},
     {q:'Isang halagang ₱5,000 ay pinapalago sa fixed na 6% na interest kada taon (r=1.06), compounding. Gamit ang aₙ = a₁ × rⁿ⁻¹, magkano ang halaga nito pagkatapos ng 3 taon?', c:['≈₱5,955.08 (a₄ = 5,000 × 1.06³)','≈₱5,900.00','≈₱6,300.00','₱5,000, walang pagbabago'], a:0, e:'aₙ = a₁ × r^(n−1) = 5,000 × 1.06³ = 5,000 × 1.191016 ≈ ₱5,955.08, sumusunod sa geometric growth model ng compounding interest.', difficulty:'hard'}
+  ,
+    {q:'Consider the sequence 1, 4, 9, 16, 25, .... What formula (in terms of n) generates this pattern?', c:['aₙ = n²','aₙ = n + 3','aₙ = 2n − 1','aₙ = n × (n+1)'], a:0, e:'Each term is a perfect square of its position: 1²=1, 2²=4, 3²=9, 4²=16, 5²=25 — so aₙ = n².'},
+    {q:'Given the sequence 2, 4, 8, 16, 32, ..., search for the pattern by inspection: what are the next THREE terms?', c:['64, 128, 256','48, 64, 80','36, 40, 44','40, 50, 60'], a:0, e:'Each term is double the one before it (a geometric sequence with r=2), so after 32 comes 32×2=64, then 128, then 256.'},
+    {q:'Following the sequence 2, 4, 8, 16, 32, ... (geometric, r=2), what is the 10th term?', c:['1,024 (2 × 2⁹)','512','2,048','256'], a:0, e:'aₙ = 2 × 2^(n−1); a₁₀ = 2 × 2⁹ = 2 × 512 = 1,024.'},
+    {q:'A sequence is defined by aₙ = 5n² − 2. What are its first four terms?', c:['3, 18, 43, 78','5, 20, 45, 80','3, 8, 13, 18','5, 18, 43, 78'], a:0, e:'a₁=5(1)²−2=3; a₂=5(4)−2=18; a₃=5(9)−2=43; a₄=5(16)−2=78.'},
+    {q:'A sequence\'s nth term is defined piecewise: aₙ = n − 1 when n is odd, and aₙ = n² + 1 when n is even. What are its first six terms?', c:['0, 5, 2, 17, 4, 37','1, 5, 3, 17, 5, 37','0, 4, 2, 16, 4, 36','1, 2, 3, 4, 5, 6'], a:0, e:'n=1 (odd): 1−1=0. n=2 (even): 4+1=5. n=3 (odd): 3−1=2. n=4 (even): 16+1=17. n=5 (odd): 5−1=4. n=6 (even): 36+1=37. So the terms are 0, 5, 2, 17, 4, 37.'},
+    {q:'For the sequence with nth term aₙ = n/(n+1), what are the first five terms, and what is the 100th term?', c:['1/2, 2/3, 3/4, 4/5, 5/6; 100th term = 100/101','1, 2, 3, 4, 5; 100th term = 100','1/2, 1/3, 1/4, 1/5, 1/6; 100th term = 1/100','1, 1/2, 1/3, 1/4, 1/5; 100th term = 1/100'], a:0, e:'aₙ = n/(n+1): a₁=1/2, a₂=2/3, a₃=3/4, a₄=4/5, a₅=5/6, and a₁₀₀=100/101.'},
+    {q:'Which formula generates the sequence −2, 4, −8, 16, −32, ...?', c:['aₙ = (−1)ⁿ × 2ⁿ','aₙ = (−2)ⁿ⁻¹','aₙ = −2 × n','aₙ = (−1)ⁿ⁻¹ × 2ⁿ'], a:0, e:'The terms are powers of 2 that alternate in sign, starting negative at n=1: aₙ = (−1)ⁿ × 2ⁿ gives a₁=(−1)(2)=−2, a₂=(1)(4)=4, a₃=(−1)(8)=−8, matching the sequence.'},
+    {q:'Which of the following is a SEQUENCE rather than a SERIES?', c:['1, 3, 5, 7, 9','0 + 2 + 0 + 2 + 0','−3 + 3 − 3 + 3 − 3','2 + 4 + 6 + 8'], a:0, e:'"1, 3, 5, 7, 9" is an ordered LIST of numbers separated by commas — a sequence. The other three options use + and − signs, making them series (sums), not sequences.'},
+    {q:'Which of the following is a SERIES rather than a SEQUENCE?', c:['0 + 2 + 0 + 2 + 0','2, 4, 6, 8, ...','1, 3, 5, 7, 9','5, 10, 15, 20'], a:0, e:'"0 + 2 + 0 + 2 + 0" joins its terms with + signs, meaning it represents a SUM — a series, not a sequence.'},
+    {q:'What is Sₙ, the "nth partial sum" of a sequence?', c:['The sum of the first n terms of the sequence: Sₙ = a₁ + a₂ + a₃ + ... + aₙ','The value of just the nth term, aₙ, alone','The average of the first n terms','The common difference multiplied by n'], a:0, e:'The nth partial sum, Sₙ, is the running total of the first n terms of a sequence: Sₙ = a₁ + a₂ + a₃ + ... + aₙ.'},
+    {q:'Expand the sigma notation Σ (k=0 to 3) of 2ᵏ into its corresponding series, and evaluate it.', c:['1 + 2 + 4 + 8 = 15','2 + 4 + 8 = 14','0 + 2 + 4 + 6 = 12','1 + 2 + 3 + 8 = 14'], a:0, e:'Substituting k=0,1,2,3: 2⁰+2¹+2²+2³ = 1+2+4+8 = 15.'},
+    {q:'Expand Σ (k=1 to 4) of 3k into its series form and evaluate the sum.', c:['3 + 6 + 9 + 12 = 30','1 + 2 + 3 + 4 = 10','3 + 4 + 5 + 6 = 18','12 (4 × 3, without expanding)'], a:0, e:'Substituting k=1,2,3,4 into 3k: 3+6+9+12 = 30.'},
+    {q:'Write the series 2 + 4 + 8 + 16 + 32 + 64 in sigma (Σ) notation, using k=1 as the starting index.', c:['Σ (k=1 to 6) of 2ᵏ','Σ (k=1 to 6) of 2k','Σ (k=0 to 6) of 2ᵏ','Σ (k=1 to 5) of 2ᵏ'], a:0, e:'Each term is 2 raised to the power of its position (k=1 gives 2¹=2, ..., k=6 gives 2⁶=64), so the series is Σ (k=1 to 6) of 2ᵏ.'},
+    {q:'Write the series 11 + 12 + 13 + 14 in sigma (Σ) notation, using k=1 as the starting index.', c:['Σ (k=1 to 4) of (10 + k)','Σ (k=11 to 14) of k²','Σ (k=1 to 4) of 11k','Σ (k=1 to 4) of k'], a:0, e:'Each term equals 10 plus its position (k=1 gives 10+1=11, ..., k=4 gives 10+4=14), so the series is Σ (k=1 to 4) of (10+k). (Writing it as Σ (k=11 to 14) of k is also valid, just with a different index range.)'},
+    {q:'Write the series 1 + 1/2 + 1/4 + 1/8 + 1/16 in sigma (Σ) notation, using k=0 as the starting index.', c:['Σ (k=0 to 4) of (1/2)ᵏ','Σ (k=1 to 5) of (1/2)ᵏ','Σ (k=0 to 4) of (1/2)k','Σ (k=0 to 5) of (1/2)ᵏ'], a:0, e:'Each term is (1/2) raised to the power of its index, starting at k=0 (giving 1): Σ (k=0 to 4) of (1/2)ᵏ = 1+1/2+1/4+1/8+1/16.'},
+    {q:'Evaluate: Σ (k=1 to 5) of 2^(k−1).', c:['31 (1+2+4+8+16)','32','15','63'], a:0, e:'Substituting k=1..5 into 2^(k−1): 2⁰+2¹+2²+2³+2⁴ = 1+2+4+8+16 = 31.'},
+    {q:'Evaluate: Σ (n=1 to 6) of (−1)ⁿ.', c:['0','6','−6','1'], a:0, e:'The terms alternate −1, +1, −1, +1, −1, +1 for n=1 to 6, which sum to exactly 0.'},
+    {q:'Evaluate: Σ (n=1 to 4) of [(−1)ⁿ × 2ⁿ].', c:['10 (−2 + 4 − 8 + 16)','4','−10','2'], a:0, e:'n=1: (−1)(2)=−2. n=2: (1)(4)=4. n=3: (−1)(8)=−8. n=4: (1)(16)=16. Sum: −2+4−8+16 = 10.'},
+    {q:'A saver deposits ₱1,000 in month 1, then increases her deposit by ₱200 every following month (month 2 = ₱1,200, month 3 = ₱1,400, etc.). Using the sigma-notation model Σ (n=1 to 12) of [1,000 + (n−1)(200)], how much will she have saved after 12 months?', c:['₱25,200','₱24,000','₱13,200','₱26,400'], a:0, e:'This is an arithmetic series with a₁=1,000, d=200, n=12. Sₙ = n/2 × [2a₁+(n−1)d] = 12/2 × [2,000+11(200)] = 6 × [2,000+2,200] = 6×4,200 = ₱25,200.'},
+    {q:'An auditorium has 50 rows, with 30 seats in the first row, 32 in the second, 34 in the third, and so on (increasing by 2 seats per row). What is the TOTAL number of seats?', c:['3,950 seats','3,900 seats','4,000 seats','3,850 seats'], a:0, e:'Arithmetic series: a₁=30, d=2, n=50. S₅₀ = 50/2 × [2(30)+(49)(2)] = 25 × [60+98] = 25×158 = 3,950 seats.'},
+    {q:'Telephone poles are stacked in a pile with 25 poles in the first layer, 24 in the second, and so on (decreasing by 1 pole per layer). If there are 12 layers, how many poles does the pile contain in total?', c:['234 poles','300 poles','264 poles','250 poles'], a:0, e:'Arithmetic series: a₁=25, d=−1, n=12. S₁₂ = 12/2 × [2(25)+(11)(−1)] = 6 × [50−11] = 6×39 = 234 poles.'},
+    {q:'Sha-shi barks every 12 minutes, and Yumi barks every 16 minutes. If they bark together at midnight, how many more times will they bark together in the next 24 hours?', c:['30 times','24 times','48 times','20 times'], a:0, e:'They bark together every LCM(12,16)=48 minutes, forming the arithmetic sequence 48, 96, 144, ..., 1440 (24 hrs = 1,440 min). Solving 1,440=48+(n−1)(48) gives n=30 — they bark together 30 times in that 24-hour period.'},
+    {q:'In marathon training, Belle jogs 2 km on day 1, 2.5 km on day 2, 3 km on day 3, and so on (increasing by 0.5 km per day). How far will she jog IN TOTAL over 15 days?', c:['82.5 km','75 km','90 km','52.5 km'], a:0, e:'Arithmetic series: a₁=2, d=0.5, n=15. S₁₅ = 15/2 × [2(2)+(14)(0.5)] = 7.5 × [4+7] = 7.5×11 = 82.5 km.'},
+    {q:'A ball is dropped from a height of 8 m. Each time it bounces, it rises to HALF its previous height. What total distance has the ball traveled by the time it hits the ground the 4th time?', c:['22 meters (8 down, then 8, 4, and 2 for the up-and-down bounces)','16 meters','30 meters','8 meters'], a:0, e:'Initial fall: 8m (1st hit). Bounce to 4m and back down: 4+4=8m (2nd hit). Bounce to 2m and back: 2+2=4m (3rd hit). Bounce to 1m and back: 1+1=2m (4th hit). Total: 8+8+4+2 = 22 meters.'},
+    {q:'Kyle invests ₱10,000 in an account earning 5% interest compounded annually. Using the geometric sequence aₙ = 10,000 × (1.05)ⁿ⁻¹, how much will his investment be worth after 6 years?', c:['≈₱12,762.82 (a₆ = 10,000 × 1.05⁵)','₱13,000.00','₱12,500.00','₱10,500.00'], a:0, e:'a₆ = 10,000 × (1.05)^(6−1) = 10,000 × 1.05⁵ ≈ ₱12,762.82.'},
+    {q:'A laptop worth ₱60,000 depreciates by 20% every year. Using the geometric sequence aₙ = 60,000 × (0.80)ⁿ⁻¹, what will its value be after 5 years?', c:['₱24,576 (a₅ = 60,000 × 0.80⁴)','₱30,720','₱19,660.80','₱48,000'], a:0, e:'a₅ = 60,000 × (0.80)^(5−1) = 60,000 × 0.80⁴ = 60,000 × 0.4096 = ₱24,576.'},
+    {q:'A newly hired salesman starts at ₱300,000/year, with a fixed ₱20,000 raise every year (Sₙ = 300,000 + 20,000n, where n is the number of years after hiring). What will his salary be in his 10th year?', c:['₱500,000','₱320,000','₱480,000','₱600,000'], a:0, e:'S₁₀ = 300,000 + 20,000(10) = 300,000 + 200,000 = ₱500,000 — this models an arithmetic sequence, since a FIXED peso amount is added each year.'},
+    {q:'Using the 2020 census figure of 17,000 residents for Batanes, and an expected 20% annual growth rate (Aₙ = 17,000 × 1.2ⁿ, where n = years after 2020), what is the projected population in 2024?', c:['≈35,251 (A₄ = 17,000 × 1.2⁴)','≈20,400','≈29,376','≈17,000, unchanged'], a:0, e:'2024 is 4 years after the 2020 census, so n=4: A₄ = 17,000 × (1.2)⁴ = 17,000 × 2.0736 ≈ 35,251.'},
+    {q:'Given a geometric sequence with a₁ = 2 and r = 4, the sequence is 2, __, 32, __, __, 2048, __, 32768. What is the SUM of all 8 terms?', c:['43,690','32,768','16,384','21,845'], a:0, e:'S₈ = a₁×(1−rⁿ)/(1−r) = 2×(1−4⁸)/(1−4) = 2×(1−65,536)/(−3) = 2×(−65,535)/(−3) = 2×21,845 = 43,690.'},
+    {q:'A concert hall has 20 seats in the first row, 24 in the second, 28 in the third, and so on (increasing by 4 seats per row). How many total seats are in the first 30 rows?', c:['2,340 seats','2,400 seats','2,280 seats','2,500 seats'], a:0, e:'Arithmetic series: a₁=20, d=4, n=30. S₃₀ = 30/2 × [2(20)+(29)(4)] = 15 × [40+116] = 15×156 = 2,340 seats.'},
+    {q:'Given the geometric sequence 2, 4, 8, 16, 32, 64, 128, ..., what is the DIFFERENCE between the 16th term and the 14th term?', c:['49,152 (65,536 − 16,384)','16,384','32,768','8,192'], a:0, e:'a₁₆ = 2¹⁶ = 65,536 and a₁₄ = 2¹⁴ = 16,384. Difference: 65,536 − 16,384 = 49,152.'},
+    {q:'A new Civil Engineer overruns a ₱7M construction contract and must pay a daily penalty: ₱3,500/day for the first 6 days, then increasing by ₱350/day after that (forming an arithmetic sequence with a=3,850, d=350 starting on day 7). If his total penalty after day 6 comes out to ₱40,600, how many EXTRA days (beyond the first 6) did he overrun, and what is the TOTAL overrun?', c:['8 extra days, for a total overrun of 14 days','14 extra days, for a total overrun of 20 days','6 extra days, for a total overrun of 12 days','8 extra days, for a total overrun of 8 days'], a:0, e:'Solving 40,600 = n/2×[2(3,850)+(n−1)(350)] gives n=8 (the negative root n=−29 is discarded as absurd). Total overrun = 6 initial days + 8 extra days = 14 days.'}
   ], glossary:[
     {term:'Sequence', def:'an ordered list of terms following a specific pattern or rule.'},
     {term:'Arithmetic Sequence', def:'each term adds a constant common difference (d); aₙ = a₁ + (n−1)d.'},
@@ -1144,13 +1229,21 @@ const DATA = [
     {term:'Geometric Sequence', def:'each term multiplies by a constant common ratio (r); aₙ = a₁ × r^(n−1).'},
     {term:'Geometric Series', def:'the sum of a geometric sequence; Sₙ = a₁(1−rⁿ)/(1−r).'},
     {term:'Fibonacci Sequence', def:'each term is the sum of the two preceding terms.'},
-    {term:'Harmonic Sequence', def:'a sequence whose reciprocals form an arithmetic sequence.'}
+    {term:'Harmonic Sequence', def:'a sequence whose reciprocals form an arithmetic sequence.'},
+    {term:'Recursive Sequence', def:'a sequence where the nth term depends on one or more previous terms, rather than a direct formula in n.'},
+    {term:'Binet\'s Formula', def:'an explicit (non-recursive) formula that gives any Fibonacci number directly: aₙ = [((1+√5)/2)ⁿ − ((1−√5)/2)ⁿ] / √5.'},
+    {term:'Series', def:'the sum of the terms of a sequence, joined by + or − signs (as opposed to a sequence, whose terms are just listed).'},
+    {term:'Partial Sum (Sₙ)', def:'the sum of the first n terms of a sequence: Sₙ = a₁ + a₂ + ... + aₙ.'},
+    {term:'Sigma Notation', def:'a compact way to write a series using Σ, e.g. Σ (k=1 to n) of aₖ, instead of writing out every term.'},
+    {term:'Index of Summation', def:'the variable (often k, i, or j) that is substituted with each integer from the lower to upper limit in a sigma expression.'}
   ], palace:[
     {stop:'Staircase with Even Steps', image:'Each step of the staircase is exactly 3 inches taller than the last, all the way up, with a little "+3" painted on every step.', fact:'Arithmetic Sequence: each term adds the same common difference (d).'},
     {stop:'Doubling Photocopier', image:'A photocopier keeps doubling the stack of paper output every time you press the button — 3, 6, 12, 24, 48 sheets.', fact:'Geometric Sequence: each term is multiplied by the same common ratio (r).'},
     {stop:'Rabbit Family Tree', image:'A family tree of rabbits shows each new generation\'s count equal to the sum of the two generations right before it.', fact:'Fibonacci Sequence: each term is the sum of the two preceding terms.'},
     {stop:'Shrinking Car Value Sign', image:'A used car lot sign shows the same car\'s price shrinking by exactly 10% every single year on the price tag.', fact:'A fixed percentage depreciation forms a Geometric Sequence (r < 1).'},
-    {stop:'Yearly Raise Envelope', image:'An employee opens an identical bonus envelope every year, always containing exactly ₱1,000 more than the last envelope.', fact:'A fixed peso raise every year forms an Arithmetic Sequence.'}
+    {stop:'Yearly Raise Envelope', image:'An employee opens an identical bonus envelope every year, always containing exactly ₱1,000 more than the last envelope.', fact:'A fixed peso raise every year forms an Arithmetic Sequence.'},
+    {stop:'The Giant Tally Sign', image:'Instead of writing out a hundred individual hash marks one by one, a scoreboard just posts a single giant "Σ" symbol with a starting number at the bottom and an ending number at the top, letting everyone know the whole sum at a glance.', fact:'Sigma (Σ) notation compactly represents a series without writing out every individual term.'},
+    {stop:'The Fibonacci Shortcut Booth', image:'A long line of people wait to add up numbers one-by-one to reach the 20th Fibonacci number, while one clever person skips the whole line and plugs straight into a golden-ratio formula at a booth marked "Binet\'s Shortcut" to get the same answer instantly.', fact:'Binet\'s Formula gives any Fibonacci number directly, without computing every term before it.'}
   ]}
 ]},
 
@@ -1178,7 +1271,28 @@ const DATA = [
       'Nagbibigay linaw sa maaaring mangyari sa hinaharap.',
       'Itinataguyod ang nasyonalismo at pagkamakabayan; kasangkapan sa pag-unawa ng pambansang pagkakakilanlan.'
     ]}
-  ], quiz:[
+  ],
+  deepdive: [
+    {h:'Mga Paaralan ng Historiograpiya (Schools of Historical Thought)', b:[
+      'Positivism (hal. Leopold von Ranke): naniniwalang dapat nakabatay lamang ang kasaysayan sa mahigpit na pagsusuri ng primary sources, may layuning maabot ang "wie es eigentlich gewesen" — ang "kung ano talaga ang nangyari."',
+      'Marxist historiography (hal. Renato Constantino): binibigyang-diin ang class struggle at material/economic conditions bilang pangunahing puwersa ng pagbabago sa kasaysayan, hindi lamang ang kilos ng mga "dakilang tao" (great men theory).',
+      'Postmodernist critique (hal. Hayden White): hinahamon ang ideyang maaaring maging ganap na "obhetibo" ang isang salaysay pangkasaysayan, dahil ang bawat narrative ay hinuhubog na rin ng pananaw, wika, at retorika ng sumulat nito.'
+    ]},
+    {h:'External vs. Internal Criticism sa Historical Method', b:[
+      'External criticism: pagsusuri sa AWTENTISIDAD ng dokumento mismo — tunay ba ito, hindi peke, at nagmula ba talaga ito sa panahong inaangkin nitong ito ay sinulat.',
+      'Internal criticism: pagsusuri sa NILALAMAN ng dokumento matapos mapatunayang awtentiko — may bias ba ang may-akda, tumpak ba ang mga detalye, may motibo ba siyang baguhin o palakihin ang katotohanan.',
+      'Kailangang gawin ang PAREHONG hakbang — external muna, saka internal — bago ganap na tanggapin ang isang source bilang mapagkakatiwalaan.'
+    ]},
+    {h:'History Laban sa Historiography', b:[
+      'History ang mismong mga pangyayari sa nakaraan; Historiography ay ang PAG-AARAL kung paano isinusulat, binibigyang-interpretasyon, at binabago ang salaysay ng kasaysayan sa iba\'t ibang panahon at ng iba\'t ibang manunulat.',
+      'Dahil dito, posibleng magkaiba ang interpretasyon ng IISANG pangyayari depende sa kung sinong historyador, anong paaralan ng kaisipan ang kanyang sinusunod, at anong panahon niya ito isinulat.'
+    ]},
+    {h:'Ang Limitasyon ng mga Salaysay ng mga Kolonyal na Manunulat', b:[
+      'Marami sa mga unang salaysay tungkol sa mga Pilipino (hal. nina Chirino, Morga, Plasencia) ay isinulat ng mga Espanyol na may layuning i-justify rin ang kolonisasyon at Kristiyanisasyon ng Kapuluan.',
+      'Hindi ito nangangahulugang walang halaga ang mga akdang ito — kundi dapat itong basahin nang may "historical skepticism," at i-cross-check laban sa ibang uri ng ebidensya (arkeolohiko, lingguwistiko, oral tradition) bago ganap na tanggapin.'
+    ]}
+  ],
+  quiz:[
     {q:'Sino ang tinaguriang "Ama ng Kasaysayan"?', c:['Leopold Von Ranke','Herodotus','Teodoro Agoncillo','Zeus Salazar'], a:1, e:'Si Herodotus ng Gresya ang tinaguriang "Ama ng Kasaysayan," na nagpasimula ng pamamaraang tinawag niyang "historiya" (imbestigasyon).'},
     {q:'Ano ang tawag ni Herodotus sa kanyang pamamaraan ng pag-aaral ng nakaraan?', c:['Historiya (imbestigasyon)','Historiography','Archival study','Ethnography'], a:0, e:'Tinawag ni Herodotus na "historiya" ang kanyang pamamaraan, na ang ibig sabihin ay imbestigasyon.'},
     {q:'Ano ang kahinaan ng tradisyunal na kahulugan ng kasaysayan?', c:['Masyadong maraming batis','Batay lamang sa nakasulat na dokumento, hindi isinasaalang-alang ang oral history','Hindi kailanman ginamit sa paaralan','Wala itong kahinaan'], a:1, e:'Ang tradisyunal na kahulugan ay batay lamang sa nakasulat na dokumento — hindi isinasaalang-alang ang oral history o mga cultural artifact.'},
@@ -1230,6 +1344,12 @@ const DATA = [
     {q:'Isang batang mag-aaral ang nagsabing "kung walang nakasulat na dokumento, walang kasaysayan." Anong pananaw ang ipinapakita nito, at ano ang kahinaan nito?', c:['Tradisyunal na pananaw; kahinaan nito ay hindi nito isinasaalang-alang ang oral history at artifacts','Makabagong pananaw; kahinaan nito ay masyadong maraming batis ang ginagamit','Historical Distortion; kahinaan nito ay hindi ito totoo','Pilosopiya ng kasaysayan; walang kahinaan ito'], a:0, e:'Ito ang tradisyunal na pananaw, na ang kahinaan ay batay lamang ito sa nakasulat na dokumento at hindi isinasaalang-alang ang ibang batis.'},
     {q:'Isang lolo ang nagkwento sa kanyang apo tungkol sa kanyang karanasan noong World War II, at ginamit ito ng isang historyador bilang batis. Ano ang tawag sa ganitong uri ng batis?', c:['Oral history','Nakasulat na dokumento','Historical Distortion','Determinismong pananaw'], a:0, e:'Ang kwentong ibinahagi ng isang tao tungkol sa kanyang sariling karanasan ay oral history, isang uri ng batis sa makabagong pananaw.'},
     {q:'Bakit mahalaga na tama at kapani-paniwala ang interpretasyon ng isang historyador sa mga batis na kanyang ginagamit?', c:['Dahil ang pagbuhay-muli sa nakaraan ay dapat maayos at sistematiko para maging tumpak ang kasaysayang isinusulat','Dahil walang epekto ang interpretasyon sa katotohanan ng kasaysayan','Dahil ang lahat ng interpretasyon ay pareho lamang','Dahil ang mga batis ay hindi na kailangan pang suriin'], a:0, e:'Kailangan ng tamang interpretasyon dahil ito ang mahalagang gawain ng isang historyador — ang tamang pagbuhay-muli sa nakaraan sa sistematikong paraan.'}
+  ,
+    {q:'Isang mag-aaral ang nakahanap ng dalawang magkaibang salaysay tungkol sa parehong labanan noong ika-16 na siglo — isa mula sa isang Espanyol na misyonero, isa naman mula sa oral tradition ng katutubong komunidad. Aling hakbang sa historical method ang dapat NIYANG unahin bago pa man niya ihambing ang NILALAMAN ng dalawang salaysay?', c:['External criticism — tiyakin muna kung awtentiko/tunay ang bawat batis bago suriin ang nilalaman nito','Internal criticism — suriin agad ang bias ng bawat may-akda','Basahin lamang ang mas matandang batis at balewalain ang isa','Ipagpalagay na parehong tama ang dalawang salaysay nang walang pagsusuri'], a:0, e:'Dapat munang tiyakin sa pamamagitan ng external criticism kung tunay/awtentiko ang bawat dokumento (o kung tapat na naitala ang oral tradition), bago isagawa ang internal criticism na susuri sa nilalaman at posibleng bias nito.', difficulty:'hard'},
+    {q:'Ipaliwanag kung bakit itinuturing na magkaibang bagay ang "history" at "historiography," gamit ang isang halimbawa kung paano posibleng magkaiba ang interpretasyon ng DALAWANG historyador sa IISANG pangyayari.', c:['History ang mismong pangyayari sa nakaraan; historiography ang pag-aaral kung paano ito isinusulat/binibigyang-kahulugan — kaya halimbawa, maaaring tingnan ni Ranke (positivist) ang isang rebolusyon bilang serye lamang ng mapapatunayang pangyayari, samantalang tinitingnan ito ni Constantino (Marxist) bilang resulta ng malawakang class struggle','History at historiography ay eksaktong parehong bagay, walang pagkakaiba','Historiography ay mas matanda kaysa history, kaya mas mapagkakatiwalaan ito','Walang historyador ang maaaring magkaiba ng interpretasyon sa iisang pangyayari'], a:0, e:'History ay ang nakaraan mismo; historiography ay kung paano isinusulat/binibigyang-interpretasyon iyon. Iba\'t ibang paaralan ng kaisipan (positivism, Marxist historiography, atbp.) ay maaaring bigyang-diin ang iba\'t ibang aspeto ng parehong pangyayari.', difficulty:'hard'},
+    {q:'Ihambing ang pananaw ni Leopold von Ranke (positivism) laban sa pananaw ni Renato Constantino (Marxist historiography) hinggil sa kung ano ang PANGUNAHING dapat pagtuunan ng pansin sa pag-aaral ng kasaysayan.', c:['Si Ranke: mahigpit na katotohanan batay sa primary sources ("kung ano talaga ang nangyari"); si Constantino: ang class struggle at material/economic conditions bilang tunay na puwersa ng pagbabago','Pareho silang naniniwala na ang mga "dakilang tao" lamang ang dapat pag-aralan','Si Ranke ay Marxist, samantalang si Constantino ay positivist','Wala silang pagkakaiba sa pananaw hinggil sa kasaysayan'], a:0, e:'Si von Ranke ay kumakatawan sa positivist na tradisyon (mahigpit na ebidensya, "wie es eigentlich gewesen"), habang si Constantino ay gumagamit ng lente ng Marxist historiography, na binibigyang-diin ang class struggle at material conditions kaysa sa aksyon lamang ng mga indibidwal na "bayani."', difficulty:'hard'},
+    {q:'Isang estudyante ang bumasa ng isang akda ng isang Espanyol na misyonero tungkol sa mga katutubong Pilipino, at direktang tinanggap ang lahat ng nilalaman nito bilang ganap na katotohanan nang walang karagdagang pagsusuri. Anong konsepto sa historical method ang nakaligtaan niyang gamitin, at bakit ito partikular na mahalaga sa mga akda ng mga kolonyal na manunulat?', c:['Internal criticism (pagsusuri sa posibleng bias/motibo ng may-akda) — mahalaga ito dahil maraming kolonyal na salaysay ay may layuning i-justify rin ang kolonisasyon o Kristiyanisasyon','External criticism lamang, dahil awtentiko na ang dokumento kaya wala nang dapat pang suriin','Walang kailangang gawin pang pagsusuri, dahil lahat ng nasusulat na dokumento ay palaging tama','Dapat niyang unahing isalin ang dokumento sa ibang wika bago ito paniwalaan'], a:0, e:'Kahit awtentiko (napatunayan na sa external criticism) ang isang dokumento, kailangan pa ring suriin ang posibleng bias o motibo ng may-akda (internal criticism) — partikular na mahalaga ito sa mga salaysay ng mga kolonyalista, na madalas may layuning ipagtanggol ang kanilang mismong pananakop.', difficulty:'hard'},
+    {q:'Ipaliwanag kung bakit hinahamon ng mga postmodernist historian (tulad ni Hayden White) ang ideyang maaaring maging ganap na "obhetibo" ang isang akdang pangkasaysayan.', c:['Dahil ang bawat salaysay ay kinakailangang dumaan sa pagpili ng manunulat (kung ano ang isasama, paano ito isasalaysay), kaya hinuhubog na rin ito ng pananaw, wika, at retorika nito — hindi ito isang "purong salamin" ng nakaraan','Dahil naniniwala silang lahat ng dokumento ay peke','Dahil naniniwala silang hindi na kailangan pang mag-aral ng kasaysayan sa kasalukuyan','Dahil naniniwala silang isa lamang ang tamang paraan ng pagsulat ng kasaysayan, at iyon ay dapat sundin ng lahat'], a:0, e:'Ang mga postmodernist historian ay nagtatanong kung talagang posible ang ganap na obhetibidad, dahil ang bawat salaysay — kahit gaano pa ito kaingat na isulat — ay dumaraan pa rin sa pagpili at interpretasyon ng manunulat nito.', difficulty:'hard'}
   ], glossary:[
     {term:'Historia/Historie', def:'salitang Griyego na nangangahulugang pagkatuto/pagtatanong sa pag-aaral o pag-iimbestiga.'},
     {term:'Historical Revisionism', def:'pagbabago/pag-rerevise ng kasaysayan para maging mas accurate.'},
@@ -1684,6 +1804,26 @@ const DATA = [
       'Bilang mga mag-aaral at historyador, hinihikayat tayong linangin ang mga Key Critical Thinking Skills: Inference, Open-mindedness, Communication, Analysis, Problem-solving, at Evaluation.'
     ]}
   ],
+  deepdive: [
+    {h:'Annales School at ang "Longue Durée"', b:[
+      'Ang Annales School ng Pransiya (Marc Bloch, Lucien Febvre, at higit sa lahat si Fernand Braudel) ay lumayo sa pagsasalaysay ng mga digmaan at hari, at itinuon ang pag-aaral sa heograpiya, ekonomiya, at pang-araw-araw na buhay.',
+      'Hinati ni Braudel ang panahon sa tatlong antas: événements (mabilis na pangyayari, hal. isang labanan), conjonctures (katamtamang ikot, hal. ekonomikong pagbabago sa loob ng ilang dekada), at longue durée (napakahabang panahon, hal. heograpiya at kulturang halos hindi nagbabago sa loob ng mga siglo).',
+      'Implikasyon: ang isang pangyayaring tila biglaan ay madalas na nakaugat sa mas mabagal na istruktura sa ilalim nito — kaya mahalagang tingnan ang kabuuang konteksto, hindi lamang ang mismong sandali.'
+    ]},
+    {h:'Structuralism laban sa Post-structuralism', b:[
+      'Structuralism: naniniwalang may malalalim na istruktura (ekonomiko, panlipunan, o pangwika) na humuhubog sa mga pangyayari, at maaaring matuklasan ng maingat na pag-aaral.',
+      'Post-structuralism: pinagdududahan ang ideya ng iisang, matatag na "katotohanan" sa likod ng mga teksto; binibigyang-diin nito na ang kapangyarihan (sino ang nagsasalaysay, para kanino, at bakit) ay humuhubog kung ano ang tinatanggap na kasaysayan.',
+      'Kaya nagkakaiba ang dalawa sa tanong: may "tunay na istruktura" bang matutuklasan, o bawat salaysay ay produkto rin ng kapangyarihan at pananaw?'
+    ]},
+    {h:'Microhistory: Malaking Konteksto sa Maliit na Salaysay', b:[
+      'Sa halip na malalaking istruktura, ang microhistory ay nakatuon sa isang tao, pamayanan, o partikular na insidente upang ipakita kung paano nito sinasalamin ang mas malawak na lipunan.',
+      'Klasikong halimbawa: ang "The Cheese and the Worms" ni Carlo Ginzburg, na gumamit ng rekord ng paglilitis sa isang karaniwang manggagawang Italyano noong ika-16 na siglo upang unawain ang popular na kultura at paniniwala ng panahong iyon.'
+    ]},
+    {h:'Kritika sa Pantayong Pananaw', b:[
+      'Pinuri ang Pantayong Pananaw ni Zeus Salazar dahil binibigyang-boses nito ang kasaysayang isinusulat ng mga Pilipino para sa mga Pilipino, gamit ang sariling wika at kategorya ng kaisipan.',
+      'Ngunit may mga nagtatanong: kung nakabatay ito sa iisang "wika ng bayan," paano nito isasama ang maraming wika at kultura sa loob mismo ng bansa (hal. mga Moro, Lumad, at Igorot na may sariling salaysay)? Kailangang timbangin ang pambansang pananaw at ang pagkakaiba-iba ng mga rehiyon.'
+    ]}
+  ],
   quiz: [
     {q:'Aling pananaw sa kasaysayan ang naniniwalang umuunlad at sumusulong ito nang tuwid o diretsong linya?', c:['Cyclical','Progressive/Linear','Open-ended','Interpretive'], a:1, e:'Ang Progressive/Linear na pananaw ay naniniwalang ang kasaysayan ay umuunlad nang tuwid o diretsong linya.'},
     {q:'Aling pananaw sa kasaysayan ang gumagamit ng halimbawang "pagbagsak at muling pag-angat ng mga imperyo"?', c:['Progressive/Linear','Cyclical','Open-ended','Interpretive'], a:1, e:'Ang Cyclical na pananaw ay naniniwalang umiikot at inuulit ang kasaysayan, gaya ng pagbagsak at muling pag-angat ng mga imperyo.'},
@@ -1728,6 +1868,11 @@ const DATA = [
     {q:'Isang mag-aaral ang nagsasabing "walang pagkakaiba ang Progressive/Linear at Cyclical na pananaw." Itama ang pahayag na ito.', c:['Mali — ang Progressive/Linear ay tuwid na pag-unlad, habang ang Cyclical ay umiikot at inuulit gaya ng siklo ng panahon','Tama — pareho lamang silang tumutukoy sa pag-unlad','Tama — pareho lamang silang tumutukoy sa pag-ikot','Mali — pareho silang hindi tiyak o nakatakda'], a:0, e:'Magkaiba ang dalawa: ang Progressive/Linear ay tuwid na pagsulong, habang ang Cyclical ay umiikot at inuulit tulad ng pagbagsak at pag-angat ng mga imperyo.'},
     {q:'Isang historyador ang gustong maunawaan ang layunin ng Araling Panlipunan bilang disiplina. Ano ang tamang paglalarawan?', c:['Siyasatin ang malawak na karanasan ng sangkatauhan — pagsusuri sa nakaraan, pakikilahok sa kasalukuyan, at paghubog ng kinabukasan','Pag-aaral lamang ng mga petsa at pangalan','Pag-aaral lamang ng heograpiya','Pag-aaral lamang ng pilosopiya'], a:0, e:'Ang layunin ng Araling Panlipunan ay siyasatin ang malawak na karanasan ng sangkatauhan — pagsusuri sa nakaraan, pakikilahok sa kasalukuyan, at paghubog ng kinabukasan.'},
     {q:'Isang mananaliksik ang nagsasagot ng tatlong tanong tungkol sa isang pangyayari: Ano ang nangyari? Bakit ito nangyari? Ano ang aral? Anong larangan ang sumasagot dito?', c:['Historiography','Cognitive History lamang','Pantayong Pananaw lamang','Progressive/Linear na pananaw lamang'], a:0, e:'Ang Historiography ay sumasagot sa: Ano ang nangyari? Bakit ito nangyari? Ano ang aral? — hindi lamang "ano ang nangyari."'}
+,
+    {q:'Isang historyador ang nagsasabing ang pagbagsak ng isang kaharian ay hindi sanhi lamang ng isang labanan, kundi ng daan-daang taong pagbabago sa klima, kalakalan, at pagkakaayos ng lupa. Aling lente ni Braudel ang pinakamalapit sa kanyang pangangatwiran?', c:['Longue durée — ang mabagal na istrukturang humuhubog sa mga pangyayari sa loob ng mahabang panahon','Événements — ang mabilis at biglaang pangyayari','Conjonctures lamang — ang maiikling ikot ng ekonomiya sa loob ng ilang buwan','Wala sa mga ito; hindi kailanman tinatalakay ni Braudel ang klima o kalakalan'], a:0, e:'Ang longue durée ay tumutukoy sa napakabagal na pagbabago ng heograpiya, klima, at kultura na nagsisilbing batayan ng mga mabilis na pangyayari, kaya ito ang lente ng historyador sa sitwasyon.', difficulty:'hard'},
+    {q:'Isang mananaliksik ang nag-aral ng talaarawan at paglilitis ng isang ordinaryong magsasaka noong ika-19 na siglo upang ipakita ang mas malawak na kalagayan ng lipunan noong panahong iyon. Anong pamamaraan ng historiograpiya ito?', c:['Microhistory — ang maliit na kaso ay ginagamit upang ilarawan ang mas malaking konteksto','Longue durée — pag-aaral ng libo-libong taong heograpikal na pagbabago','Positivism na tumatangging gumamit ng anumang personal na tala','Cognitive History na walang kaugnayan sa mga taong nabuhay noon'], a:0, e:'Ang microhistory ay nakatuon sa isang tao, pamayanan, o insidente upang tuklasin ang mas malawak na lipunan — tulad ng "The Cheese and the Worms" ni Ginzburg.', difficulty:'hard'},
+    {q:'Bakit inuuri ng ilang kritiko ang Pantayong Pananaw bilang posibleng "eksklusibo" kung hindi ito iuugnay sa aktwal na pagkakaiba-iba ng mga grupo sa bansa?', c:['Dahil kung nakabatay ito sa iisang wikang pambansa, maaaring hindi mapansin ang sariling salaysay at wika ng mga grupong tulad ng Moro, Lumad, at Igorot','Dahil ipinagbabawal nitong gumamit ng anumang wikang Pilipino','Dahil ito ay isinulat ng mga dayuhan para sa mga dayuhan','Dahil wala itong anumang kaugnayan sa kasaysayan ng mga Pilipino'], a:0, e:'Ang puna ay ang pambansang "tayo" ay maaaring makalimutan ang maraming rehiyonal na "tayo" na may sariling wika at salaysay, kaya kailangang timbangin ang pambansang pananaw at lokal na pagkakaiba.', difficulty:'hard'},
+    {q:'Paano naiiba ang Structuralism sa Post-structuralism pagdating sa "katotohanan" ng isang tekstong pangkasaysayan?', c:['Naniniwala ang Structuralism sa mga matutuklasang malalim na istruktura; pinagdududahan ng Post-structuralism ang iisang katotohanan at binibigyang-diin ang kapangyarihan sa likod ng nagsasalaysay','Parehong tinatanggihan ng dalawa ang lahat ng uri ng ebidensya','Ang Post-structuralism ang naniniwalang iisa lamang ang tamang salaysay, hindi ang Structuralism','Walang pagkakaiba ang dalawa; magkasingkahulugan lamang sila'], a:0, e:'Ang Structuralism ay naghahanap ng mga pinagbabatayang istruktura; ang Post-structuralism ay nagtatanong kung sino ang may kapangyarihang magsalaysay at kung paano nito hinuhubog ang tinatanggap na katotohanan.', difficulty:'hard'}
   ],
   glossary: [
     {term:'Progressive/Linear', def:'pananaw na ang kasaysayan ay umuunlad nang tuwid o diretsong linya.'},
@@ -3963,7 +4108,29 @@ const DATA = [
       'Plants: autotrophs, store food as starch, respire through stomata, mostly rooted/immobile, reproduce via budding/pollination.',
       'Animals: heterotrophs, store food as glycogen, exchange gases via lungs/gills/skin, mostly mobile, mostly reproduce sexually, have well-developed nervous systems for fast stimulus response.'
     ]}
-  ], quiz:[
+  ],
+  deepdive: [
+    {h:'Chemiosmosis and the Proton-Motive Force', b:[
+      'The electron transport chain doesn\'t make ATP directly — instead, it uses the energy released as electrons move along the chain to pump H⁺ ions into the intermembrane space, building an electrochemical gradient called the proton-motive force.',
+      'ATP synthase acts like a molecular turbine: as H⁺ flows back down its gradient through the enzyme, that flow\'s mechanical/rotational energy drives the synthesis of ATP from ADP + phosphate.',
+      'This chemiosmotic theory was proposed by Peter Mitchell, who won the 1978 Nobel Prize in Chemistry for it — though the idea was initially controversial, since it wasn\'t obvious that a simple ion gradient (rather than some direct chemical intermediate) could power ATP synthesis.'
+    ]},
+    {h:'Why Cyanide Is Lethal: Chemistry Meets Physiology', b:[
+      'Cyanide binds and blocks Complex IV (cytochrome c oxidase), the final enzyme in the electron transport chain that passes electrons on to oxygen.',
+      'This backs up the entire chain, collapses the proton gradient, and halts ATP synthase — even though oxygen is still present and being carried by hemoglobin in the blood.',
+      'Tissues with the highest ATP demand — especially the brain and heart — fail first, which is why cyanide poisoning can be lethal within minutes despite the victim still breathing normally.'
+    ]},
+    {h:'Fermentation vs. True Anaerobic Respiration — a Common Mix-Up', b:[
+      'Fermentation (lactic acid or alcoholic) does NOT use an electron transport chain at all — its only job is regenerating NAD⁺ from NADH so glycolysis can keep running, netting just 2 ATP per glucose (from glycolysis alone).',
+      'True anaerobic respiration (used by some bacteria and archaea) DOES use an electron transport chain — just with a final electron acceptor other than oxygen, such as sulfate or nitrate.',
+      '"Fermentation" and "anaerobic respiration" are therefore NOT interchangeable terms, despite being commonly confused with each other.'
+    ]},
+    {h:'Theoretical vs. Actual ATP Yield', b:[
+      'The "traditional" textbook figure of 36–38 ATP per glucose is now understood to be a theoretical maximum, not a typical real-world result.',
+      'The actual yield in most eukaryotic cells is often closer to ~30–32 ATP per glucose, mainly because: (1) shuttling NADH\'s electrons from the cytoplasm (glycolysis) into the mitochondrial matrix across the inner membrane has an energy cost, (2) the proton gradient also gets used for other transport jobs besides ATP synthase, and (3) ATP synthase\'s actual H⁺-to-ATP ratio isn\'t a clean whole number.'
+    ]}
+  ],
+  quiz:[
     {q:'In which part of the cell does glycolysis take place?', c:['Mitochondrial matrix','Cytoplasm','Inner mitochondrial membrane','Nucleus'], a:1, e:'Glycolysis, the breakdown of glucose into pyruvate, occurs in the cytoplasm.'},
     {q:'What is the net ATP gain from glycolysis?', c:['0 ATP','2 ATP (plus 2 NADH)','4 ATP','34 ATP'], a:1, e:'Glycolysis has a gross yield of 4 ATP but requires an investment of 2 ATP, for a NET gain of 2 ATP (plus 2 NADH).'},
     {q:'Which stage of cellular respiration produces the LARGEST amount of ATP?', c:['Glycolysis','Krebs Cycle','Electron Transport Chain (ETC)','Fermentation'], a:2, e:'The Electron Transport Chain (ETC) produces the largest amount of ATP — approximately 34 ATP per glucose.'},
@@ -4042,6 +4209,12 @@ const DATA = [
       {left:'Exchanges gases through stomata', right:'Plant'},
       {left:'Exchanges gases through lungs, gills, or skin', right:'Animal'}
     ], e:'Plants and animals both respire, but differ in how they store energy reserves and exchange gases.'}
+  ,
+    {q:'A patient exposed to a lethal dose of cyanide still shows oxygen present and bound to hemoglobin in their blood. Explain why the patient dies anyway, essentially from an inability to USE that oxygen.', c:['Cyanide blocks Complex IV of the electron transport chain, so electrons can no longer be passed to oxygen at all — backing up the whole chain, collapsing the proton gradient, and halting ATP synthase despite oxygen being present','Cyanide destroys hemoglobin directly, so oxygen can no longer be transported anywhere in the body','Cyanide converts all available oxygen into carbon dioxide instantly','Cyanide blocks glycolysis in the cytoplasm, so no pyruvate can ever reach the mitochondria'], a:0, e:'Cyanide specifically blocks Complex IV, the enzyme that hands electrons off to oxygen. With that final step blocked, the entire electron transport chain backs up, the proton gradient collapses, and ATP synthase stops — even though oxygen is physically present in the blood.', difficulty:'hard'},
+    {q:'A toxin makes the inner mitochondrial membrane "leaky" to protons (H⁺), without directly damaging any electron transport chain protein complex. Predict the effect on ATP synthesis, and explain your reasoning.', c:['ATP synthesis drops sharply, since the leaked protons dissipate the proton-motive force before it can be properly used by ATP synthase, even though the ETC complexes themselves still work fine','ATP synthesis increases, since more protons are now available for ATP synthase to use','There is no effect, since ATP synthase does not depend on a proton gradient at all','The cell switches entirely to glycolysis-only respiration with no other consequences'], a:0, e:'ATP synthase depends on an intact proton gradient (the proton-motive force) to drive ATP synthesis. If the membrane becomes leaky to H⁺, protons flow back across DIRECTLY (bypassing ATP synthase), dissipating that gradient — so ATP output drops sharply even if every ETC protein itself is perfectly intact.', difficulty:'hard'},
+    {q:'A student claims: "Yeast performing alcoholic fermentation are using a form of anaerobic cellular respiration." Evaluate this statement\'s accuracy.', c:['The statement is inaccurate — fermentation does not use an electron transport chain at all, while true anaerobic respiration does (just with a non-oxygen final electron acceptor); the two terms are not interchangeable','The statement is fully accurate, since both terms mean exactly the same thing','The statement is inaccurate because fermentation only occurs in animals, never in yeast','The statement is inaccurate because yeast cannot perform any form of respiration'], a:0, e:'Fermentation regenerates NAD⁺ without any electron transport chain, netting only the 2 ATP from glycolysis. True anaerobic respiration DOES use an electron transport chain, just with a different final electron acceptor (like sulfate or nitrate) instead of oxygen — so the two are meaningfully different processes.', difficulty:'hard'},
+    {q:'Textbooks often cite 36–38 ATP as the yield per glucose molecule, yet the actual measured yield in most human cells is closer to 30–32 ATP. Using the concept of NADH shuttle systems, explain why the real-world number tends to be lower than the theoretical maximum.', c:['Shuttling electrons from cytoplasmic NADH (made during glycolysis) across the inner mitochondrial membrane into the matrix has an energy cost, reducing the net ATP actually produced','NADH produced in the cytoplasm is simply destroyed and never used at all','Mitochondria only exist in some human cells, so the average yield is artificially lowered','Textbooks intentionally cite an incorrect number for simplicity, with no real biological basis'], a:0, e:'Cytoplasmic NADH (from glycolysis) can\'t cross the inner mitochondrial membrane directly — shuttle systems are needed to transfer its electrons into the matrix, and this transfer has an energy cost that reduces the net ATP yield below the theoretical maximum.', difficulty:'hard'},
+    {q:'Suppose ATP synthase in a cell is fully functional, but Complex IV is completely nonfunctional, and no alternative final electron acceptor is available. Trace the chain of consequences for ATP production.', c:['Electrons back up through the entire ETC since they have nowhere to go, the proton gradient cannot be maintained/replenished, and ATP synthase — though itself undamaged — eventually stops producing ATP due to loss of that gradient','ATP production continues completely normally, since ATP synthase does not need the rest of the ETC to function','The cell switches immediately and painlessly to using Complex IV\'s backup enzyme instead','Only Krebs cycle activity is affected; the ETC and ATP synthase continue working normally regardless'], a:0, e:'Without Complex IV to hand electrons off to oxygen, the whole electron transport chain backs up and can no longer pump protons to maintain the gradient. Even though ATP synthase itself isn\'t damaged, it has nothing to work with once that gradient collapses.', difficulty:'hard'}
   ], glossary:[
     {term:'Glycolysis', def:'Glucose → 2 pyruvate, in the cytoplasm; anaerobic; net 2 ATP + 2 NADH.'},
     {term:'Krebs Cycle (Citric Acid Cycle)', def:'Pyruvate → CO2 + electron carriers (NADH, FADH2), in the mitochondrial matrix.'},
@@ -4569,7 +4742,31 @@ const DATA = [
       'Even though every cell in an organism carries the same DNA, each cell can produce a different protein / express its DNA differently.',
       'Which genes get expressed depends on the specific need of that cell — this is why, for example, a muscle cell and a skin cell (with identical DNA) look and function so differently.'
     ]}
-  ], quiz:[
+  ],
+  deepdive: [
+    {h:'The Wobble Hypothesis', b:[
+      'There are 61 sense codons but only about 40–45 distinct tRNA types in a typical cell — far fewer than one tRNA per codon.',
+      'This works because the THIRD (3\') base of an mRNA codon can pair less strictly with the FIRST (5\') base of the tRNA anticodon, letting a single tRNA recognize more than one codon for the same amino acid.',
+      'This "wobble" at the third position is a major reason the genetic code is degenerate (redundant) — many codons differing only in their third letter still code for the same amino acid.'
+    ]},
+    {h:'Alternative Splicing: One Gene, Many Proteins', b:[
+      'Most human genes contain introns that are cut out of the pre-mRNA by the spliceosome, leaving only the exons to be joined into the mature mRNA.',
+      'Alternative splicing allows different combinations of exons to be joined together in different cell types or conditions, letting a SINGLE gene produce multiple distinct protein isoforms.',
+      'This is a major reason the human genome\'s roughly 20,000 protein-coding genes can still produce a proteome of well over 100,000 distinct proteins.'
+    ]},
+    {h:'Antibiotics That Exploit Ribosome Differences', b:[
+      'Prokaryotic ribosomes (70S, made of 30S+50S subunits) are structurally distinct from eukaryotic ribosomes (80S, made of 40S+60S subunits).',
+      'Antibiotics like tetracycline (targets the 30S subunit) and erythromycin (targets the 50S subunit) selectively block bacterial ribosomes while mostly sparing human ribosomes — this selective toxicity is the basis for how many antibiotics work safely.',
+      'Mitochondria have their own 70S-like ribosomes, considered strong evidence for the endosymbiotic origin of mitochondria — this is also why a few antibiotics can carry mitochondria-linked side effects in human cells.'
+    ]},
+    {h:'Classifying Mutations by Their Molecular Effect', b:[
+      'Silent mutation: the codon changes, but (often thanks to wobble) it still codes for the SAME amino acid — no effect on the protein.',
+      'Missense mutation: the codon change results in a DIFFERENT amino acid; effects range from negligible to severe (e.g., sickle cell anemia arises from a single glutamic-acid-to-valine substitution in hemoglobin).',
+      'Nonsense mutation: the codon change creates a premature STOP codon, usually truncating and inactivating the protein.',
+      'Frameshift mutation: an insertion or deletion NOT a multiple of three shifts the entire downstream reading frame — usually the most severe type, since it scrambles everything that follows.'
+    ]}
+  ],
+  quiz:[
     {q:'What is the correct order of the "Central Dogma" of molecular biology?', c:['Proteins → mRNA → DNA → Ribosomes','DNA → mRNA → Ribosomes → Proteins','mRNA → DNA → Proteins → Ribosomes','Ribosomes → DNA → mRNA → Proteins'], a:1, e:'The Central Dogma flows: DNA (nucleus) → mRNA → Ribosomes → Proteins.'},
     {q:'Proteins produced through protein synthesis are used for which purposes?', c:['Structural support, communication, and enzymes','Only as a backup energy source','Exclusively for photosynthesis','Only for DNA replication'], a:0, e:'Proteins serve many roles, including structural support, cellular communication, and functioning as enzymes.'},
     {q:'During DNA replication, which enzyme UNWINDS the DNA double helix?', c:['Polymerase','Helicase','RuBisCo','Amylase'], a:1, e:'Helicase is the enzyme responsible for unwinding the DNA double helix during replication.'},
@@ -4658,6 +4855,13 @@ const DATA = [
       {left:'Guanine pairs with Cytosine', right:'Both DNA Replication and Transcription'},
       {left:'Codon pairs with Anti-codon', right:'Translation (mRNA-to-tRNA) at the ribosome'}
     ], e:'Uracil replaces Thymine specifically in RNA, which is why Transcription\'s A-pairing rule differs from DNA Replication\'s.'}
+  ,
+    {q:'Sickle cell anemia arises from a single DNA base substitution that changes the mRNA codon for glutamic acid (GAG) into a codon for valine (GUG) at one specific position in the beta-globin protein. Classify this mutation type, and explain why such a small change can cause such severe physiological consequences.', c:['It\'s a missense mutation; even one wrong amino acid can distort a protein\'s shape enough to change its function — here, causing hemoglobin to distort red blood cells into a sickle shape under low oxygen','It\'s a silent mutation, so it should have no effect on the protein at all','It\'s a nonsense mutation, since it changes the protein\'s length','It\'s a frameshift mutation, since it shifts the entire downstream reading frame'], a:0, e:'This is a classic missense mutation — one amino acid substitution. Even a single amino acid change can drastically alter a protein\'s structure and function, as seen in sickle cell anemia, where it causes hemoglobin to polymerize abnormally under low oxygen, distorting red blood cells.', difficulty:'hard'},
+    {q:'A cell has only about 45 distinct tRNA types available to translate all 61 sense codons. Explain, using the Wobble Hypothesis, how translation can still proceed accurately despite this apparent shortage.', c:['The third (3\') base of the mRNA codon can pair loosely with the first (5\') base of the tRNA anticodon, letting a single tRNA recognize more than one codon for the same amino acid','Ribosomes simply skip any codon that lacks a matching tRNA, shortening the resulting protein','Extra tRNAs are synthesized on demand any time a codon without a dedicated tRNA appears','The mRNA itself mutates in real time to match whatever tRNA is available'], a:0, e:'Wobble allows flexible pairing at the third codon position, so fewer tRNA types than codons are needed — a single tRNA can recognize several codons that differ only in that third position.', difficulty:'hard'},
+    {q:'A single-nucleotide insertion (a frameshift mutation) occurs very near the BEGINNING of a gene\'s coding sequence. A second, similar insertion occurs in a different gene, but right before that gene\'s natural stop codon at the very END. Which is generally more damaging to the resulting protein, and why?', c:['The insertion near the beginning, since it shifts the reading frame for almost the ENTIRE protein sequence that follows, while the one near the end only affects the last few amino acids','The insertion near the end, since stop codons are more sensitive to mutation than start codons','Both are equally damaging, since any frameshift mutation destroys 100% of a protein regardless of position','Neither is damaging, since frameshift mutations only affect noncoding regions'], a:0, e:'A frameshift near the start scrambles the reading frame for nearly the whole downstream protein, usually destroying its function; a frameshift right before the stop codon only affects a few final amino acids, leaving most of the protein\'s structure intact.', difficulty:'hard'},
+    {q:'Drug A binds bacterial 30S ribosomal subunits; Drug B binds bacterial 50S ribosomal subunits. Explain why both drugs can selectively target bacteria without heavily damaging most human cells, and name ONE category of human cell/organelle where a side effect might still occur.', c:['Human (80S) ribosomes are structurally different from bacterial (70S) ribosomes, so these drugs mostly spare human cytoplasmic ribosomes — EXCEPT mitochondria, which carry their own bacteria-like 70S ribosomes','Human cells have no ribosomes at all, so these drugs cannot possibly affect them','These drugs work by destroying bacterial DNA directly, not their ribosomes','Human and bacterial ribosomes are functionally identical, so these drugs are equally toxic to both'], a:0, e:'Bacterial (70S) and human cytoplasmic (80S) ribosomes differ enough structurally that antibiotics targeting bacterial subunits are largely selective — but mitochondria retain their own 70S-like ribosomes (evidence of their bacterial evolutionary origin), which is why some antibiotics can still cause mitochondria-linked side effects in human cells.', difficulty:'hard'},
+    {q:'A gene with 8 exons produces mRNA that includes exons 1-2-3-5-6-7-8 (skipping exon 4) in liver cells, but includes all 8 exons in brain cells. What is this mechanism called, and why does it matter for protein diversity?', c:['Alternative splicing — it lets a single gene produce multiple distinct protein isoforms in different cell types, helping explain how a limited number of genes can produce a much larger proteome','Nondisjunction — it explains why liver and brain cells have different chromosome numbers','Wobble pairing — it explains why the liver\'s tRNA differs from the brain\'s','Frameshift mutation — a permanent DNA change unique to liver cells'], a:0, e:'Alternative splicing joins different combinations of exons in different tissues, letting one gene generate multiple protein variants — a major reason ~20,000 human genes can produce a much larger, more diverse proteome.', difficulty:'hard'},
+    {q:'Which is generally more likely to be tolerated with little to no effect on an organism: a silent mutation, or a nonsense mutation occurring near the very start of a gene? Justify your answer based on each mutation\'s molecular consequence.', c:['The silent mutation, since it (often via wobble) still codes for the same amino acid, while a nonsense mutation near the start creates a premature stop codon that truncates nearly the entire protein','The nonsense mutation, since stop codons are usually harmless wherever they occur','Both are equally severe, since any mutation to a codon has the same downstream effect','Neither mutation type affects protein structure in any way'], a:0, e:'A silent mutation changes the codon but not the amino acid it specifies, so the protein is typically unaffected. A nonsense mutation near a gene\'s start creates an early stop codon, truncating almost the whole protein — usually far more damaging.', difficulty:'hard'}
   ], glossary:[
     {term:'Central Dogma', def:'DNA → mRNA → Ribosomes → Proteins.'},
     {term:'Helicase', def:'enzyme that unwinds the DNA double helix during replication.'},
@@ -5354,6 +5558,29 @@ const DATA = [
       'Defects in spermatogenesis that can prevent a sperm cell from being able to penetrate an egg: an amorphous head (a vastly misshapen head), a bent neck (the midpiece meets the sperm head at an angle of 90° or less relative to the long axis), and a coiled tail (the tail is coiled around itself by more than 360°).'
     ]}
   ],
+  deepdive: [
+    {h:'Cyclins and CDKs: The Molecular Engine Behind Checkpoints', b:[
+      'Checkpoints aren\'t enforced by magic — they run on Cyclin-Dependent Kinases (CDKs), enzymes that stay at roughly constant levels throughout the cycle but are only ACTIVE when bound to a partner protein called a cyclin.',
+      'Cyclin concentrations rise and fall in a predictable, oscillating pattern across the cycle; it\'s this rise-and-fall of cyclins — not the CDK itself — that drives the cell forward through each transition.',
+      'MPF (Maturation-Promoting Factor, also called M-phase Promoting Factor) = Cyclin B bound to CDK1; its sudden, sharp activation is what actually triggers entry into mitosis at the G2/M transition.',
+      'Leland Hartwell, Tim Hunt, and Paul Nurse won the 2001 Nobel Prize in Physiology or Medicine for discovering cyclins and CDKs as the key regulators of the cell cycle.'
+    ]},
+    {h:'p53: "The Guardian of the Genome"', b:[
+      'p53 is a tumor-suppressor protein activated by DNA damage; once active, it can pause the cycle at G1 (via a protein called p21, which directly inhibits CDKs) to allow time for repair, OR trigger apoptosis if the damage is judged irreparable.',
+      'p53 is the single most frequently mutated gene across human cancers — found altered in over half of all human tumors — which is why it earned the nickname "guardian of the genome."',
+      'Li-Fraumeni syndrome is an inherited condition caused by inheriting one already-faulty copy of the p53 gene, dramatically raising a person\'s lifetime risk of developing multiple different cancers at a young age.'
+    ]},
+    {h:'Retinoblastoma Protein (Rb) and the Restriction Point', b:[
+      'Rb normally binds and blocks E2F, a transcription factor required to switch on the genes needed for S phase; this keeps the cell from replicating its DNA until it truly should.',
+      'As a cell grows and receives enough growth-factor signaling, Cyclin D bound to CDK4/6 phosphorylates Rb, which releases E2F — this is what commits the cell irreversibly past the G1 Restriction Point.',
+      'In retinoblastoma (a childhood eye cancer that gives the protein its name), a mutated, non-functional Rb can no longer hold E2F back, so E2F stays active and drives uncontrolled division regardless of growth signals.'
+    ]},
+    {h:'Telomerase and the Hayflick Limit', b:[
+      'Most normal somatic cells lack active telomerase, so their telomeres shorten a little with every division — this is called the "end-replication problem."',
+      'After roughly 40–60 divisions (the Hayflick limit), accumulated telomere shortening pushes a cell into permanent senescence — a biological "division odometer" running out.',
+      'Most cancer cells reactivate telomerase, which rebuilds their telomeres and grants them essentially unlimited replicative potential — this is recognized as one of the core "Hallmarks of Cancer" (Hanahan & Weinberg).'
+    ]}
+  ],
   quiz: [
     {q:'What are the two main phases of the cell cycle?', c:['Mitosis and Meiosis','Interphase and the Mitotic (M) Phase','G1 and G2','Prophase and Telophase'], a:1, e:'The cell cycle consists of Interphase (growth and DNA replication) and the Mitotic (M) Phase (division of nucleus and cytoplasm).'},
     {q:'Approximately what percentage of the cell cycle is spent in Interphase?', c:['10%','50%','90%','100%'], a:2, e:'Interphase makes up about 90% of the total cell cycle — most of a cell\'s time is spent growing, not dividing.'},
@@ -5468,6 +5695,14 @@ const DATA = [
     {q:'What is the GOAL of therapeutic cloning, as opposed to reproductive cloning?', c:['To create tissue or organs to treat a disease/condition, not to produce a whole new organism','To produce an exact copy of an entire adult organism','To permanently halt the cell cycle in all of a patient\'s cells','To eliminate the need for the immune system entirely'], a:0, e:'Therapeutic cloning aims to create replacement tissue or organs to treat a disease or condition — unlike reproductive cloning, which aims to produce a whole new organism.'},
     {q:'What is an ectopic pregnancy, and what commonly causes it?', c:['Implantation occurring somewhere other than the uterus (e.g. fallopian tube, ovary, or cervix), often due to fallopian tube cilia problems, Chlamydia infection, or reproductive tract inflammation','A pregnancy that lasts longer than the normal gestational period','A pregnancy involving twins conceived at different times','A pregnancy where the placenta forms outside the mother\'s body entirely'], a:0, e:'An ectopic pregnancy occurs when implantation happens outside the uterus (such as the fallopian tube, an ovary, or the cervix); common causes include fallopian tube cilia problems, Chlamydia infection, or inflammation of the reproductive tract.'},
     {q:'Which of the following is a defect in spermatogenesis that can prevent a sperm cell from penetrating an egg?', c:['A coiled tail (coiled more than 360°) or a bent neck (meeting the head at 90° or less)','A perfectly straight tail','An oversized flagellum with no other abnormalities','Excess cytoplasm surrounding a normal head and tail'], a:0, e:'Sperm defects like an amorphous (misshapen) head, a bent neck (90° or less to the long axis), or a coiled tail (more than 360° of coiling) can all prevent successful penetration of an egg.'}
+  ,
+    {q:'A cell line carries a mutation that leaves its p53 protein permanently nonfunctional. Researchers then treat these cells with a chemotherapy drug that deliberately damages DNA. What is the MOST likely outcome, and why?', c:['The damaged cells keep dividing anyway, since p53 can no longer trigger a G1 pause or apoptosis in response to the damage','The cells die instantly, since p53 is required for the cell to survive at all','The damage is automatically repaired by a backup checkpoint that ignores p53 entirely','Nothing changes, since chemotherapy drugs only affect cells already in G0'], a:0, e:'p53 is the "guardian of the genome" — it normally halts the cycle (via p21) or triggers apoptosis when DNA is damaged. Without functional p53, damaged cells lose that safeguard and can continue dividing, passing on the damage — part of why p53 mutations are so strongly linked to cancer.', difficulty:'hard'},
+    {q:'A drug experimentally blocks the synthesis of Cyclin B throughout the cell cycle, even though CDK1 protein levels remain completely normal. What is the most likely consequence for the cell?', c:['The cell cannot enter mitosis, since CDK1 alone is catalytically inactive — it requires binding to Cyclin B to form active MPF','The cell skips G1 and S phase entirely, jumping straight into mitosis','The cell divides on schedule, since CDK1 alone is sufficient to trigger mitosis','DNA replication in S phase fails completely, even though mitosis proceeds normally'], a:0, e:'MPF (Maturation-Promoting Factor) is Cyclin B bound to CDK1; without Cyclin B, CDK1 stays inactive, so the trigger for entering mitosis never fires — the cell stalls before M phase.', difficulty:'hard'},
+    {q:'In a particular tumor, E2F is found to be constantly active even when growth-factor signaling is completely absent. Which regulatory pathway has most likely failed?', c:['The Rb–E2F pathway — Rb can no longer hold E2F in check, so E2F drives S-phase genes regardless of growth signals','The p53–p21 pathway — p53 is overactive and forcing the cell to keep dividing','The telomerase pathway — telomeres have become artificially elongated','The cohesin pathway — sister chromatids can no longer separate'], a:0, e:'Rb normally binds and represses E2F until growth signals (via Cyclin D-CDK4/6) release it. If Rb is nonfunctional (as in retinoblastoma), E2F escapes control entirely — active independent of growth-factor input.', difficulty:'hard'},
+    {q:'A cancer cell has reactivated telomerase, an enzyme most of its healthy neighboring somatic cells do not express. Specifically, how does this help the tumor evade a normal biological limit on cell division?', c:['Telomerase rebuilds shortened telomeres each division, preventing the progressive shortening that would otherwise trigger senescence at the Hayflick limit','Telomerase directly repairs any mutations in the tumor\'s DNA sequence','Telomerase permanently arrests the cell in G0, protecting it from immune detection','Telomerase produces extra copies of p53 to protect the cell from apoptosis'], a:0, e:'Without telomerase, telomeres shorten with each division until the Hayflick limit forces senescence. Cancer cells that reactivate telomerase keep rebuilding their telomeres, granting them essentially unlimited replicative potential.', difficulty:'hard'},
+    {q:'What specific discovery earned Hartwell, Hunt, and Nurse the 2001 Nobel Prize in Physiology or Medicine?', c:['Cyclins and CDKs as the key molecular regulators controlling progression through the cell cycle','The double-helix structure of DNA','The mechanism of telomere shortening','The discovery of the p53 tumor suppressor gene'], a:0, e:'Hartwell, Hunt, and Nurse were jointly awarded the 2001 Nobel Prize for identifying cyclins and cyclin-dependent kinases (CDKs) as the core regulators driving the cell cycle forward.', difficulty:'hard'},
+    {q:'A researcher compares two tumor-suppressor pathways: one (p53) mainly responds to acute DNA damage by pausing the cycle or triggering apoptosis, while the other (Rb) mainly gatekeeps whether the cell commits to dividing at all based on growth signals. A patient\'s tumor shows normal p53 function but E2F activity that never turns off. Which pathway is most likely disrupted?', c:['The Rb pathway, since it specifically governs whether E2F is released to commit the cell past the Restriction Point','The p53 pathway, since E2F is one of its direct downstream targets','Neither — E2F activity is entirely independent of both pathways','Both pathways equally, since they are functionally identical'], a:0, e:'Since p53 function is confirmed normal, the defect pointing to constant E2F activity implicates the Rb pathway specifically, which is what directly controls E2F\'s release.', difficulty:'hard'},
+    {q:'A pregnant woman\'s child is later diagnosed with Li-Fraumeni syndrome, a condition caused by inheriting one already-mutated copy of a specific tumor-suppressor gene. Which cell-cycle safeguard is most directly compromised, and what is the clinical consequence?', c:['The p53-mediated DNA-damage response — the child faces a dramatically elevated lifetime risk of multiple, early-onset cancers','The Rb-E2F restriction-point checkpoint — the child will be unable to grow at all','Telomerase regulation — the child\'s cells will age unusually slowly','The spindle assembly checkpoint — the child\'s cells will be unable to complete mitosis'], a:0, e:'Li-Fraumeni syndrome results from an inherited faulty p53 gene; with one functional copy already lost, cells are one mutation away from losing p53 protection entirely, dramatically raising cancer risk across multiple tissues from a young age.', difficulty:'hard'}
   ],
   glossary: [
     {term:'Interphase', def:'the growth phase of the cell cycle (G1, S, G2), making up ~90% of the total cycle.'},
@@ -6143,6 +6378,28 @@ const DATA = [
       'Reproductive cloning aims to create a new organism; therapeutic cloning aims to create tissues or stem cells for treatment, not a new individual.'
     ]}
   ],
+  deepdive: [
+    {h:'Nondisjunction and Aneuploidy', b:[
+      'Nondisjunction is the failure of homologous chromosomes (in Meiosis I) or sister chromatids (in Meiosis II) to separate properly, producing gametes with an abnormal chromosome number — a condition called aneuploidy.',
+      'Down syndrome (Trisomy 21) most often arises from nondisjunction during Meiosis I in the egg; its risk rises sharply with maternal age, a pattern linked to the fact that human oocytes can remain arrested in Prophase I for DECADES, during which the cohesin proteins holding chromosomes together can gradually degrade.',
+      'Other well-known trisomies include Edwards syndrome (Trisomy 18) and Patau syndrome (Trisomy 13); a missing sex chromosome (45,X) causes Turner syndrome, while an extra one (47,XXY) causes Klinefelter syndrome.'
+    ]},
+    {h:'Genetic Recombination: Quantifying Crossing Over', b:[
+      'Genetic distance is measured in map units (centimorgans, cM), based on recombination FREQUENCY — not the actual physical distance along the DNA.',
+      'Genes located very close together on a chromosome are tightly linked and rarely separated by crossing over; genes far apart on a long chromosome recombine so often that they can behave as if unlinked (up to a 50% recombination frequency).',
+      'This principle underlies genetic linkage mapping, pioneered by Thomas Hunt Morgan and his student Alfred Sturtevant using fruit flies (Drosophila melanogaster) in the early 20th century.'
+    ]},
+    {h:'Why Cloning (SCNT) Is So Technically Difficult', b:[
+      'A major challenge in SCNT is that the donor somatic nucleus still carries epigenetic marks (DNA methylation, histone modifications) appropriate to its ORIGINAL differentiated cell type — not to an early embryo.',
+      'For cloning to succeed, these marks must be erased and "reset" to an embryonic state; this reprogramming is frequently incomplete, which helps explain the historically low success rates of SCNT.',
+      'Dolly the sheep, cloned from a 6-year-old ewe\'s mammary cell, was found to have telomeres shorter than expected for her chronological age — a hint that a clone can inherit some of its donor cell\'s existing "biological age."'
+    ]},
+    {h:'Genomic Imprinting: When Which Parent Matters', b:[
+      'Some genes are epigenetically marked so they are normally expressed from only ONE parent\'s copy — either always the maternal copy or always the paternal copy, with the other copy silenced.',
+      'Prader-Willi syndrome results from losing the PATERNALLY-expressed genes in a specific region of chromosome 15 (e.g. via deletion of the paternal copy); Angelman syndrome results from losing the MATERNALLY-expressed genes in that very same region.',
+      'This shows that an individual\'s phenotype can depend not just on which alleles they inherit, but specifically on WHICH PARENT each allele came from.'
+    ]}
+  ],
   quiz: [
     {q:'By the end of meiosis II, a cell that had entered meiosis I with 10 chromosomes would have produced ___ daughter cells, which are genetically ______ and which have _____ chromosomes.', c:['2; identical; 20','4; non-identical; 5','2; identical; 5','4; non-identical; 10'], a:1, e:'Meiosis takes ONE diploid cell through TWO divisions, yielding FOUR haploid daughter cells. Each has HALF the original chromosome number (10÷2=5), and because of crossing over and independent assortment, the four cells are genetically DIFFERENT (non-identical) from each other.'},
     {q:'If a cell enters meiosis I with 8 chromosomes, how many chromosomes will EACH resulting daughter cell have after meiosis II, and how many daughter cells are produced in total?', c:['4 daughter cells, each with 4 chromosomes','2 daughter cells, each with 4 chromosomes','4 daughter cells, each with 8 chromosomes','2 daughter cells, each with 8 chromosomes'], a:0, e:'Meiosis halves the chromosome number and produces 4 haploid daughter cells: 8÷2=4 chromosomes per cell, 4 cells total.'},
@@ -6173,6 +6430,13 @@ const DATA = [
     ], e:'These four structures work together during Prophase I to enable synapsis and crossing over — the source of genetic variation in meiosis.'},
     {type:'dual', s1:'Meiosis I is called the "reduction division" because it halves the chromosome number.', s2:'Meiosis II separates homologous chromosomes from each other.', a:2, e:'Statement 1 is TRUE — Meiosis I is the reduction division, halving the chromosome number. Statement 2 is FALSE — homologous chromosomes are separated during MEIOSIS I; Meiosis II separates SISTER CHROMATIDS.'},
     {q:'What is the biological purpose of producing non-functional polar bodies during oogenesis, instead of four equal egg cells like in spermatogenesis?', c:['Unequal cytoplasm division concentrates nutrients/resources into just ONE large, viable egg cell to support a potential embryo','Polar bodies eventually mature into a second functional egg after a delay','Polar bodies fuse with sperm during fertilization instead of the main egg','There is no biological purpose; it is simply a random error in the process'], a:0, e:'Oogenesis divides its cytoplasm unequally so that nearly all nutrients and resources go into ONE large, viable egg cell, better supporting a future embryo — the smaller polar bodies simply degrade.'}
+  ,
+    {q:'A 45-year-old woman has a substantially higher risk of having a child with Down syndrome than a 25-year-old woman does. What is the leading biological explanation, tied to a unique feature of oogenesis\'s timeline?', c:['Her oocytes have been arrested in Prophase I for decades, during which the cohesin holding chromosomes together can gradually degrade, raising the risk of nondisjunction','Her eggs have fewer chromosomes overall by that age','Sperm quality declines equally with age, making the father equally responsible regardless of his age','Meiosis II always fails after age 35, regardless of Meiosis I'], a:0, e:'Human oocytes can sit arrested in Prophase I for decades before ovulation. Over that time, cohesin proteins holding chromosomes together can degrade, increasing the chance of nondisjunction and conditions like Trisomy 21.', difficulty:'hard'},
+    {q:'Two genes sit very close together on the same chromosome, while a third gene sits extremely far away on the same (long) chromosome. Predict how their recombination frequencies with each other will compare, and why.', c:['The two close genes will show a LOW recombination frequency (tightly linked); the distant gene will show a much HIGHER recombination frequency, potentially behaving as if unlinked','All three genes will show identical recombination frequencies, since they are on the same chromosome','The two close genes will recombine MORE often than the distant one, since proximity increases crossover likelihood','Recombination frequency depends only on chromosome number, not on distance along a chromosome'], a:0, e:'Crossing over is more likely to occur BETWEEN two genes the farther apart they are; genes close together are rarely separated by a crossover (low recombination frequency/tightly linked), while genes very far apart can recombine so often (up to 50%) that they behave as if unlinked.', difficulty:'hard'},
+    {q:'Historically, Somatic Cell Nuclear Transfer (SCNT) has had a very low success rate. What is the leading BIOLOGICAL explanation for this difficulty?', c:['The donor nucleus\'s existing epigenetic marks (from its original differentiated cell type) must be erased and reset to an embryonic state, and this reprogramming is often incomplete','The donor nucleus\'s DNA sequence is always too damaged to be usable','Egg cells are biologically incapable of dividing after their nucleus is replaced','SCNT is banned in most countries, which is why so few successful attempts exist'], a:0, e:'A somatic donor nucleus carries epigenetic marks appropriate to its original (differentiated) cell type. Successfully reprogramming those marks back to an embryonic state is technically difficult and frequently incomplete — a major reason for SCNT\'s historically low success rate.', difficulty:'hard'},
+    {q:'Dolly the sheep, cloned via SCNT from a 6-year-old ewe\'s mammary cell, was found to have telomeres shorter than expected for a newborn lamb. What does this observation suggest about cloning?', c:['A clone may partly inherit the "biological age" (e.g. telomere length) of the original donor cell, not just its genetic sequence','Cloned animals always have LONGER telomeres than normal, extending their lifespan','Telomere length is completely unrelated to the age of the donor cell used in cloning','SCNT automatically resets telomeres to a fully youthful state in every case'], a:0, e:'Dolly\'s shorter-than-expected telomeres hinted that some aspects of a donor cell\'s existing "age" — not just its genetic sequence — can carry over into a clone, since telomere length reflects a cell\'s replicative history.', difficulty:'hard'},
+    {q:'A specific region of chromosome 15 causes Prader-Willi syndrome when the genes normally expressed from the PATERNAL copy are lost, but causes Angelman syndrome when the genes normally expressed from the MATERNAL copy are lost. What phenomenon explains why the SAME chromosomal region causes two completely different conditions depending on which parent\'s copy is affected?', c:['Genomic imprinting — certain genes there are epigenetically silenced depending on which parent they came from, so only one parent\'s copy is normally active','Simple recessive inheritance — both parents must contribute a mutated copy for either condition to occur','Codominance — both parental copies are always expressed equally, so parental origin should not matter','X-linked inheritance — since chromosome 15 is a sex chromosome, its inheritance pattern differs by sex'], a:0, e:'Genomic imprinting silences certain genes in a parent-of-origin-specific way. At this region of chromosome 15, only the paternal copy of some genes is normally active (its loss causes Prader-Willi), while only the maternal copy of other nearby genes is normally active (its loss causes Angelman).', difficulty:'hard'},
+    {q:'A child is found to have Trisomy 21 present uniformly in EVERY cell of their body (non-mosaic). Based on what you know about the timing of DNA replication and division in meiosis, which of the following statements is most accurate about when the nondisjunction occurred?', c:['It occurred during meiosis (I or II) while the gamete itself was forming — a mitotic error after fertilization would typically produce a MOSAIC pattern instead of a uniform one','It must have occurred during mitosis, immediately after fertilization','It occurred during fertilization itself, when the sperm and egg fused','Non-mosaic trisomy can only be explained by an error during spermatogenesis, never oogenesis'], a:0, e:'A nondisjunction event during meiosis (forming the gamete itself) affects every cell descended from that one zygote uniformly. A nondisjunction event happening later, during mitosis after fertilization, would instead produce a MOSAIC pattern — some cells affected, others not.', difficulty:'hard'}
   ],
   glossary: [
     {term:'Meiosis', def:'cell division producing 4 genetically distinct haploid gametes from 1 diploid cell, via two divisions after one DNA replication.'},
@@ -8447,6 +8711,54 @@ function startQuiz(lesson, servedCount, statsSubjectId, statsLessonId){
   };
 }
 
+/* ============================= TIMED EXAM ENGINE ============================= */
+// Runs on top of the existing quiz engine (startQuiz/renderQuiz) rather than duplicating it.
+// The countdown is anchored to an absolute wall-clock deadline (examEndsAt), not a tick counter,
+// so it stays accurate even if a render is skipped or the tab was briefly backgrounded.
+function clearExamTimer(){
+  if(state.quiz && state.quiz.timerId){
+    clearInterval(state.quiz.timerId);
+    state.quiz.timerId = null;
+  }
+}
+
+function formatExamTime(ms){
+  const totalSec = Math.max(0, Math.ceil(ms/1000));
+  const m = Math.floor(totalSec/60);
+  const s = totalSec % 60;
+  return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+}
+
+function startTimedExam(lesson, servedCount, statsSubjectId, statsLessonId, minutes){
+  startQuiz(lesson, servedCount, statsSubjectId, statsLessonId);
+  const mins = Math.max(1, Math.min(180, Math.round(Number(minutes)) || 15));
+  const myQuiz = state.quiz; // captured by reference so the interval can detect if it's been replaced/cleared
+  myQuiz.timedExam = true;
+  myQuiz.examMinutes = mins;
+  myQuiz.examEndsAt = Date.now() + mins*60000;
+  myQuiz.timedOut = false;
+  myQuiz.timerId = setInterval(()=>{
+    if(state.quiz !== myQuiz){ clearInterval(myQuiz.timerId); return; } // user left/retried; this session is dead
+    if(myQuiz.current >= myQuiz.questions.length){ clearInterval(myQuiz.timerId); myQuiz.timerId = null; return; } // already on results
+    const remainingMs = myQuiz.examEndsAt - Date.now();
+    if(remainingMs <= 0){
+      myQuiz.timedOut = true;
+      myQuiz.current = myQuiz.questions.length; // jump straight to results — auto-submit
+      myQuiz.confirming = false;
+      clearInterval(myQuiz.timerId);
+      myQuiz.timerId = null;
+      renderMain();
+    } else {
+      // Light-touch update: just the countdown text, not a full re-render, so typing/clicking stays smooth.
+      const el = document.getElementById('examTimerDisplay');
+      if(el){
+        el.textContent = '⏱ ' + formatExamTime(remainingMs);
+        el.classList.toggle('exam-timer-critical', remainingMs <= 60000);
+      }
+    }
+  }, 1000);
+}
+
 function formatMasteryBadge(pct){
   if(pct===null) return { label:'New', cls:'mastery-new' };
   if(pct>=85) return { label:pct+'%', cls:'mastery-high' };
@@ -8675,28 +8987,36 @@ function renderMain(){
   const studyBtn = document.createElement('button');
   studyBtn.innerHTML = ICONS.bookOpen + 'Study';
   studyBtn.className = state.mode==='study' ? 'active' : '';
-  studyBtn.onclick = ()=>{ state.mode='study'; state.quiz=null; renderMain(); };
+  studyBtn.onclick = ()=>{ clearExamTimer(); state.mode='study'; state.quiz=null; renderMain(); };
   const summaryBtn = document.createElement('button');
   summaryBtn.innerHTML = ICONS.bulb + 'Summary';
   summaryBtn.className = state.mode==='summary' ? 'active' : '';
-  summaryBtn.onclick = ()=>{ state.mode='summary'; state.quiz=null; renderMain(); };
+  summaryBtn.onclick = ()=>{ clearExamTimer(); state.mode='summary'; state.quiz=null; renderMain(); };
   const termsBtn = document.createElement('button');
   termsBtn.innerHTML = ICONS.bookmark + 'Terms';
   termsBtn.className = state.mode==='terms' ? 'active' : '';
-  termsBtn.onclick = ()=>{ state.mode='terms'; state.quiz=null; renderMain(); };
+  termsBtn.onclick = ()=>{ clearExamTimer(); state.mode='terms'; state.quiz=null; renderMain(); };
+  const deepDiveBtn = document.createElement('button');
+  deepDiveBtn.innerHTML = '🔬 Deep Dive';
+  deepDiveBtn.className = 'deepdive-mode-btn' + (state.mode==='deepdive' ? ' active' : '');
+  deepDiveBtn.onclick = ()=>{ clearExamTimer(); state.mode='deepdive'; state.quiz=null; renderMain(); };
   const quizBtn = document.createElement('button');
   quizBtn.innerHTML = ICONS.edit + 'Quiz';
   quizBtn.className = state.mode==='quiz' ? 'active' : '';
-  quizBtn.onclick = ()=>{ state.mode='quiz'; state.quiz=null; renderMain(); };
+  quizBtn.onclick = ()=>{ clearExamTimer(); state.mode='quiz'; state.quiz=null; renderMain(); };
   const challengeBtn = document.createElement('button');
   challengeBtn.innerHTML = '🎓 Challenge';
   challengeBtn.className = 'challenge-mode-btn' + (state.mode==='challenge' ? ' active' : '');
-  challengeBtn.onclick = ()=>{ state.mode='challenge'; state.quiz=null; renderMain(); };
+  challengeBtn.onclick = ()=>{ clearExamTimer(); state.mode='challenge'; state.quiz=null; renderMain(); };
+  const timedBtn = document.createElement('button');
+  timedBtn.innerHTML = '⏱ Timed Exam';
+  timedBtn.className = 'timed-exam-mode-btn' + (state.mode==='timed' ? ' active' : '');
+  timedBtn.onclick = ()=>{ clearExamTimer(); state.mode='timed'; state.quiz=null; renderMain(); };
   const palaceBtn = document.createElement('button');
   palaceBtn.innerHTML = ICONS.palace + 'Memory Palace';
   palaceBtn.className = state.mode==='palace' ? 'active' : '';
-  palaceBtn.onclick = ()=>{ state.mode='palace'; state.quiz=null; renderMain(); };
-  toggle.appendChild(studyBtn); toggle.appendChild(summaryBtn); toggle.appendChild(termsBtn); toggle.appendChild(quizBtn); toggle.appendChild(challengeBtn); toggle.appendChild(palaceBtn);
+  palaceBtn.onclick = ()=>{ clearExamTimer(); state.mode='palace'; state.quiz=null; renderMain(); };
+  toggle.appendChild(studyBtn); toggle.appendChild(summaryBtn); toggle.appendChild(termsBtn); toggle.appendChild(deepDiveBtn); toggle.appendChild(quizBtn); toggle.appendChild(challengeBtn); toggle.appendChild(timedBtn); toggle.appendChild(palaceBtn);
   headerDiv.appendChild(toggle);
   main.appendChild(headerDiv);
 
@@ -8704,6 +9024,26 @@ function renderMain(){
     renderHighlightableContent(lesson, main, 'study', lesson.content, '');
   } else if(state.mode==='terms'){
     renderTerms(lesson, main);
+  } else if(state.mode==='deepdive'){
+    const hasDeepDive = lesson.deepdive && lesson.deepdive.length > 0;
+    if(!hasDeepDive){
+      const note = document.createElement('div');
+      note.className = 'auto-summary-note';
+      note.innerHTML = `${ICONS.bulb}<span>No Deep Dive notes yet for this lesson. Deep Dive is a sub-tab of university-level supplementary reading — beyond the slide deck — added lesson by lesson.</span>`;
+      main.appendChild(note);
+    } else {
+      const note = document.createElement('div');
+      note.className = 'auto-summary-note deepdive-intro-note';
+      note.innerHTML = `🔬<span>Deep Dive — supplementary, university-level material that goes beyond this lesson's slides: nuance, edge cases, and the kind of detail a board exam or a college-level course might expect.</span>`;
+      main.appendChild(note);
+    }
+    renderHighlightableContent(lesson, main, 'deepdive', hasDeepDive ? lesson.deepdive : [{h:'Coming Soon', b:['Check back after this lesson\'s Deep Dive notes are added.']}], 'deepdive-card');
+  } else if(state.mode==='timed'){
+    renderQuiz(lesson, main, {
+      statsSubjectId: state.subjectId,
+      statsLessonId: 'timed:' + lesson.id,
+      timed: true
+    });
   } else if(state.mode==='palace'){
     renderPalace(lesson, main);
   } else if(state.mode==='summary'){
@@ -9604,19 +9944,43 @@ function renderQuiz(lesson, main, opts){
     const masteryLine = mastery===null
       ? ''
       : `<div class="mastery-line">Your recent average on this ${opts.isMixed ? 'mixed review' : (opts.isChallenge ? 'challenge' : 'quiz')}: <strong>${mastery}%</strong></div>`;
-    const introLine = opts.isChallenge
+    const introLine = opts.timed
+      ? `<div><span class="challenge-tag" style="margin:0 0 4px;display:inline-block;background:#7a2ea8;">⏱ Timed Exam</span><br>Questions are mixed easy-to-hard, drawn from this lesson's full pool of ${poolSize}. Set your own time limit below — the exam auto-submits the instant time runs out, whatever you've answered so far.</div>`
+      : opts.isChallenge
       ? `<div><span class="challenge-tag" style="margin:0 0 4px;display:inline-block;">🎓 Challenge Mode</span><br>Every question here is hard-tier: understanding, application, and situational/scenario items — no direct definitions. This pool has ${poolSize} question${poolSize===1?'':'s'}; each attempt serves ${served}, weighted toward ones you've missed before.</div>`
       : `<div>This ${opts.isMixed ? 'review pulls from' : 'lesson has'} a pool of ${poolSize} question${poolSize===1?'':'s'}. Each attempt serves ${served} of them — weighted so questions you've missed before show up more often, and ones you've mastered show up less. Freshly shuffled every time you start.</div>`;
-    panel.innerHTML = `${introLine}${masteryLine}<div class="mastery-line">⌨️ Tip: press 1-4 to pick an answer, Enter to confirm/continue, Esc to change your pick.</div>`;
+    const timedSetupHtml = opts.timed
+      ? `<div class="timed-setup">
+           <label for="examMinutesInput">Time limit:</label>
+           <input type="number" id="examMinutesInput" min="1" max="180" step="1" value="${Math.max(5, Math.min(60, served))}" />
+           <span>minutes for ${served} question${served===1?'':'s'}</span>
+         </div>`
+      : '';
+    panel.innerHTML = `${introLine}${timedSetupHtml}${masteryLine}<div class="mastery-line">⌨️ Tip: press 1-4 to pick an answer, Enter to confirm/continue, Esc to change your pick.</div>`;
     const btn = document.createElement('button');
-    btn.innerHTML = ICONS.dice + (opts.isMixed ? 'Start Mixed Review' : (opts.isChallenge ? 'Start Challenge' : 'Start Quiz'));
+    btn.innerHTML = ICONS.dice + (opts.timed ? 'Start Timed Exam' : (opts.isMixed ? 'Start Mixed Review' : (opts.isChallenge ? 'Start Challenge' : 'Start Quiz')));
     btn.onclick = ()=>{
-      startQuiz(lesson, served, statsSubjectId, statsLessonId);
+      if(opts.timed){
+        const minInput = document.getElementById('examMinutesInput');
+        const minutes = minInput ? parseInt(minInput.value, 10) : 15;
+        startTimedExam(lesson, served, statsSubjectId, statsLessonId, minutes);
+      } else {
+        startQuiz(lesson, served, statsSubjectId, statsLessonId);
+      }
       renderMain();
     };
     panel.appendChild(btn);
     main.appendChild(panel);
     return;
+  }
+
+  // Safety net: if a timed exam's deadline passed while this view wasn't visible to tick,
+  // catch it here too so the render always reflects reality before painting a question.
+  if(state.quiz && state.quiz.timedExam && !state.quiz.timedOut && state.quiz.current < state.quiz.questions.length && Date.now() >= state.quiz.examEndsAt){
+    state.quiz.timedOut = true;
+    state.quiz.current = state.quiz.questions.length;
+    state.quiz.confirming = false;
+    clearExamTimer();
   }
 
   const quiz = state.quiz;
@@ -9630,21 +9994,27 @@ function renderQuiz(lesson, main, opts){
     box.className = 'quiz-box score-screen';
     const pct = Math.round((quiz.score/quiz.questions.length)*100);
     const overallMastery = getMasteryPct(quiz.statsSubjectId, quiz.statsLessonId);
+    const timedNote = quiz.timedExam
+      ? (quiz.timedOut
+          ? `<p class="mastery-line exam-timer-critical">⏰ Time's up — this exam auto-submitted with whatever was answered.</p>`
+          : `<p class="mastery-line">✅ Submitted with ${formatExamTime(quiz.examEndsAt - Date.now())} left on the clock.</p>`)
+      : '';
     box.innerHTML = `
       <div class="big">${quiz.score} / ${quiz.questions.length}</div>
       <p>You scored ${pct}%</p>
+      ${timedNote}
       ${overallMastery!==null ? `<p class="mastery-line">Recent average: <strong>${overallMastery}%</strong></p>` : ''}
     `;
     const retry = document.createElement('button');
     retry.className = 'retry-btn';
     retry.innerHTML = ICONS.refresh + 'Retry with shuffled questions';
-    retry.onclick = ()=>{ state.quiz = null; renderMain(); };
+    retry.onclick = ()=>{ clearExamTimer(); state.quiz = null; renderMain(); };
     box.appendChild(retry);
     if(opts.isMixed){
       const exitBtn = document.createElement('button');
       exitBtn.className = 'retry-btn';
       exitBtn.innerHTML = ICONS.arrowLeft ? (ICONS.arrowLeft+'Exit Mixed Review') : 'Exit Mixed Review';
-      exitBtn.onclick = ()=>{ state.quiz=null; state.mixedReview=false; renderSidebar(); renderMain(); };
+      exitBtn.onclick = ()=>{ clearExamTimer(); state.quiz=null; state.mixedReview=false; renderSidebar(); renderMain(); };
       box.appendChild(exitBtn);
     }
     main.appendChild(box);
@@ -9657,7 +10027,10 @@ function renderQuiz(lesson, main, opts){
 
   const meta = document.createElement('div');
   meta.className = 'quiz-meta';
-  meta.innerHTML = `<span>Question ${quiz.current+1} of ${quiz.questions.length}</span><span>Score: ${quiz.score}</span>`;
+  const timerBadge = quiz.timedExam
+    ? `<span id="examTimerDisplay" class="exam-timer${(quiz.examEndsAt-Date.now())<=60000 ? ' exam-timer-critical' : ''}">⏱ ${formatExamTime(quiz.examEndsAt - Date.now())}</span>`
+    : '';
+  meta.innerHTML = `<span>Question ${quiz.current+1} of ${quiz.questions.length}</span><span>Score: ${quiz.score}</span>${timerBadge}`;
   box.appendChild(meta);
 
   const pbar = document.createElement('div');
